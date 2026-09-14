@@ -1,0 +1,36 @@
+name: Update sitemap
+
+# Runs on every push to main, EXCEPT pushes that only touch sitemap.xml
+# itself — that exclusion stops the workflow from triggering itself in
+# an infinite loop when it commits the regenerated file back.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "sitemap.xml"
+
+permissions:
+  contents: write
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history, needed to read each file's real last-changed date
+
+      - name: Regenerate sitemap.xml
+        run: bash scripts/generate-sitemap.sh
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- sitemap.xml; then
+            git add sitemap.xml
+            git commit -m "Auto-update sitemap.xml lastmod dates"
+            git push
+          else
+            echo "sitemap.xml unchanged, nothing to commit."
+          fi
