@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://merikaboss.github.io/deutsch-ecke-merikaboss/sitemap.xml
