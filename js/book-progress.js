@@ -1,0 +1,8 @@
+/* ============================================================
+   Tracks which Written Book chapters actually exist yet, so the
+   table of contents can link only to real pages and show
+   "coming soon" for the rest. Update this list as chapters are
+   written — it is the single source of truth for book progress.
+   ============================================================ */
+
+const WRITTEN_CHAPTERS = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53"];

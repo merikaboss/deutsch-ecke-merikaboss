@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Picture Book — A1 — Deutsch Ecke</title>
+  <meta name="description" content="All A1 topic sheets from my own study notes, in order, as a page-by-page picture book." />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+
+  <div class="attribution-bar">
+    A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../../index.html" class="brand">Deutsch Ecke</a>
+      <nav>
+        <a href="../../index.html">All levels</a>
+        <a href="../index.html">Home</a>
+        <a href="index.html" class="current">Picture Book</a>
+        <a href="../book/index.html">Written Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="toc-intro">
+      <h1>Picture Book</h1>
+      <p>
+        My original A1 topic sheets, in the order I studied them. Click any topic
+        to open it full-size, then use the arrows (or the ← → keys) to flip
+        through the rest.
+      </p>
+    </div>
+
+    <ul class="toc-list" id="toc-list">
+      <!-- populated by JS from CHAPTERS -->
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      Notes from a personal A1 study journey.
+      <div class="footer-links">
+        <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/chapters.js"></script>
+  <script>
+    var list = document.getElementById("toc-list");
+    CHAPTERS.forEach(function (c) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "page.html?n=" + c.id;
+      a.innerHTML =
+        '<span class="toc-num">' + c.id + '</span>' +
+        '<span class="toc-titles">' +
+        '<span class="toc-de">' + c.de + '</span>' +
+        '<span class="toc-en">' + c.en + '</span>' +
+        '</span>';
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>

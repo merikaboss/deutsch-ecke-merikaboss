@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Picture Book — A1 — Deutsch Ecke</title>
+  <meta name="description" content="A page from my own A1 study notes." />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body data-page="picture-book-viewer">
+
+  <div class="attribution-bar">
+    A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../../index.html" class="brand">Deutsch Ecke</a>
+      <nav>
+        <a href="../../index.html">All levels</a>
+        <a href="../index.html">Home</a>
+        <a href="index.html" class="current">Picture Book</a>
+        <a href="../book/index.html">Written Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="viewer">
+      <div class="back-to-book" id="pb-back-to-book" hidden>
+        <a href="#" id="pb-back-link">← Back to the Written Book</a>
+      </div>
+
+      <div class="viewer-counter" id="pb-counter"></div>
+
+      <div class="viewer-frame">
+        <img id="pb-image" src="" alt="" />
+      </div>
+
+      <div class="viewer-caption">
+        <p class="de" id="pb-title-de"></p>
+        <p class="en" id="pb-title-en"></p>
+        <p class="en" id="pb-syllabus-ref" style="font-size:0.8rem;"></p>
+      </div>
+
+      <div class="viewer-controls">
+        <a href="#" class="nav-btn" id="pb-prev">← Previous</a>
+        <a href="index.html" class="nav-btn">Table of Contents</a>
+        <a href="#" class="nav-btn" id="pb-next">Next →</a>
+      </div>
+
+      <div class="viewer-jump">
+        <label for="pb-jump">Jump to a topic: </label>
+        <select id="pb-jump"></select>
+      </div>
+
+      <p class="kbd-hint">Tip: use the ← and → arrow keys to flip pages.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      Notes from a personal A1 study journey.
+      <div class="footer-links">
+        <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/chapters.js"></script>
+  <script src="../../js/reader.js"></script>
+</body>
+</html>
