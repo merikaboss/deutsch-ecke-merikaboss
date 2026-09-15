@@ -1,42 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="reader">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Mein eigenes Testbeispiel — Written Book — Deutsch Ecke</title>
   <meta name="description" content="A real evening test from my own A1 studies, and the final chapter of this book." />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/book.css" />
+  <link rel="stylesheet" href="../../css/bookreader.css" />
 </head>
 <body class="premium" data-page="book-chapter" data-chapter="53">
-  <div class="attribution-bar">
-    A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
-  </div>
 
-  <header class="site-header">
-    <div class="wrap">
-      <a href="../../index.html" class="brand"><span class="brand-mark" aria-hidden="true">DE</span> Deutsch Ecke</a>
-      <nav>
-        <a href="../../index.html">All levels</a>
-        <a href="../index.html">Home</a>
-        <a href="../picture-book/index.html">Picture Book</a>
-        <a href="index.html" class="current">Written Book</a>
-      </nav>
+  <div class="rdr" id="rdr">
+
+    <div class="rdr-bar">
+      <div class="rdr-bar-left">
+        <button class="rdr-btn" id="rdr-contents" type="button" aria-label="Contents">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-list"></use></svg>
+        </button>
+        <a class="rdr-btn" href="../index.html" aria-label="A1 home">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-home"></use></svg>
+        </a>
+      </div>
+
+      <div class="rdr-title">
+        <span class="kick">Written Book</span>
+        <span class="name" id="rdr-name">Mein eigenes Testbeispiel — Written Book — Deutsch Ecke</span>
+      </div>
+
+      <div class="rdr-bar-right">
+        <button class="rdr-btn" id="rdr-font" type="button" aria-label="Text size">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-text-size"></use></svg>
+        </button>
+        <button class="rdr-btn" id="rdr-mode" type="button" aria-label="Switch to scroll view">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-written-book"></use></svg>
+        </button>
+      </div>
     </div>
-  </header>
 
-  <main class="wrap">
-    <div class="book-header">
+    <div class="rdr-stage" id="rdr-stage">
+      <span class="rdr-gutter" aria-hidden="true"></span>
+      <div class="rdr-track" id="rdr-track">
+        <div class="rdr-flow" id="rdr-flow">
+<div class="book-header">
       <div class="book-kicker">Chapter 53 · Written Book (final chapter)</div>
       <h1>Mein eigenes Testbeispiel</h1>
       <p class="subtitle">A real evening test from my own A1 studies — and the end of this book</p>
     </div>
 
     <a class="image-link" href="../picture-book/page.html?n=53&from=53">
-      <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-picture-book"></use></svg>
+      <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-picture-book"></use></svg>
       <span class="text">
         <span class="label">Original topic sheet</span>
         <span class="cta">View my actual handwritten test in the Picture Book →</span>
@@ -53,7 +70,7 @@
       </p>
 
       <div class="info-box exercise">
-        <h3>✏️ 1. Wortschatz — Ergänze die passenden Wörter</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-pencil"></use></svg> 1. Wortschatz — Ergänze die passenden Wörter</h3>
         <p>(Haus, Schule, Bruder, Tisch, Freundin, Buch, Kugelschreiber, Hund)</p>
         <div class="exercise-item"><span class="num">1.</span> Das ist mein ___.</div>
         <div class="exercise-item"><span class="num">2.</span> Ich gehe jeden Tag in die ___.</div>
@@ -66,7 +83,7 @@
       </div>
 
       <div class="info-box exercise">
-        <h3>✏️ 2. Grammatik</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-pencil"></use></svg> 2. Grammatik</h3>
         <p><strong>A.</strong> Setze die richtige Form von "sein" ein.</p>
         <div class="exercise-item"><span class="num">1.</span> Ich ___ 18 Jahre alt.</div>
         <div class="exercise-item"><span class="num">2.</span> Du ___ aus Uganda.</div>
@@ -88,12 +105,12 @@
       </div>
 
       <div class="info-box exercise">
-        <h3>✏️ 3. Zahlen — Schreibe die Zahlen in Buchstaben</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-pencil"></use></svg> 3. Zahlen — Schreibe die Zahlen in Buchstaben</h3>
         <p>17, 24, 31, 45, 68, 90, 100</p>
       </div>
 
       <div class="info-box exercise">
-        <h3>✏️ 4. Fragen — Bilde Fragen mit den Fragewörtern</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-pencil"></use></svg> 4. Fragen — Bilde Fragen mit den Fragewörtern</h3>
         <div class="exercise-item"><span class="num">1.</span> du / wohnen / wo ?</div>
         <div class="exercise-item"><span class="num">2.</span> dein Bruder / heißen / wie ?</div>
         <div class="exercise-item"><span class="num">3.</span> du / kommen / woher ?</div>
@@ -102,7 +119,7 @@
       </div>
 
       <div class="info-box example">
-        <h3>💬 5. Lesen — Lies den Text und beantworte die Fragen</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-chat"></use></svg> 5. Lesen — Lies den Text und beantworte die Fragen</h3>
         <p class="de-word">
           Hallo! Ich heiße Merika. Ich bin 18 Jahre alt. Ich komme aus Uganda.
           Ich wohne in Kampala. Ich habe einen Bruder und eine Schwester. Mein
@@ -120,12 +137,12 @@
       </div>
 
       <div class="info-box exercise">
-        <h3>✏️ 6. Schreiben</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-pencil"></use></svg> 6. Schreiben</h3>
         <p>Schreibe 5 Sätze über dich (Name, Alter, Herkunft, Familie, Hobbys). <span class="en">(Write 5 sentences about yourself: name, age, origin, family, hobbies — the exact same task the reading text above just modeled for you.)</span></p>
       </div>
 
       <div class="info-box example">
-        <h3>🎉 Das war's — geschafft!</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-check"></use></svg> Das war's — geschafft!</h3>
         <p>
           If you've worked through this book from Chapter 0 to here, you've
           covered the same ground a real A1 course covers: the case system,
@@ -141,29 +158,41 @@
       </div>
 
     </div>
+        </div>
+      </div>
 
-    <div class="chapter-nav-bottom">
-      <a href="#" class="nav-btn" id="book-prev">← Previous</a>
-      <a href="index.html" class="nav-btn">Table of Contents</a>
-      <a href="#" class="nav-btn disabled" id="book-next">Next →</a>
+      <button class="rdr-turn back" id="rdr-turn-back" type="button" aria-label="Previous page">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-arrow-right"></use></svg>
+      </button>
+      <button class="rdr-turn fwd" id="rdr-turn-fwd" type="button" aria-label="Next page">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-arrow-right"></use></svg>
+      </button>
     </div>
-    <div class="chapter-jump">
-      <label for="book-jump">Jump to a chapter: </label>
-      <select id="book-jump"></select>
-    </div>
-  </main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      Notes from a personal A1 study journey.
-      <div class="footer-links">
-        <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
+    <div class="rdr-foot">
+      <div class="rdr-progress"><span id="rdr-progress"></span></div>
+      <div class="rdr-foot-row">
+        <span id="rdr-chap-label"></span>
+        <span class="rdr-hintbar"><kbd>&#8592;</kbd><kbd>&#8594;</kbd> turn pages &middot; <kbd>C</kbd> contents</span>
+        <span id="rdr-page-label"></span>
       </div>
     </div>
-  </footer>
+
+  </div>
+
+  <div class="rdr-scrim" id="rdr-scrim"></div>
+  <aside class="rdr-drawer" id="rdr-drawer" aria-label="Chapters">
+    <div class="rdr-drawer-head">
+      <strong>Chapters</strong>
+      <button class="rdr-btn" id="rdr-drawer-close" type="button" aria-label="Close contents">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-close"></use></svg>
+      </button>
+    </div>
+    <ul class="rdr-drawer-list" id="rdr-drawer-list"></ul>
+  </aside>
 
   <script src="../../js/chapters.js"></script>
   <script src="../../js/book-progress.js"></script>
-  <script src="../../js/reader.js"></script>
+  <script src="../../js/book-reader.js"></script>
 </body>
 </html>

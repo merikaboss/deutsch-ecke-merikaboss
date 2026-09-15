@@ -131,8 +131,27 @@ a.path-card:hover .path-cta .icon-svg {
   color: var(--text-muted);
 }
 
+.premium .resume-banner strong {
+  display: block;
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 7px;
+}
+
+.premium .resume-banner .resume-row + .resume-row {
+  margin-top: 4px;
+}
+
 .premium .resume-banner a {
   font-weight: 700;
+  color: var(--text);
+}
+
+.premium .resume-banner a:hover {
   color: var(--accent);
 }
 

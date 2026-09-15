@@ -1,42 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="reader">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Negative Artikel — Written Book — Deutsch Ecke</title>
   <meta name="description" content="Kein and keine — how to say 'no' or 'not a' in German, and when to use kein instead of nicht." />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/book.css" />
+  <link rel="stylesheet" href="../../css/bookreader.css" />
 </head>
 <body class="premium" data-page="book-chapter" data-chapter="12">
-  <div class="attribution-bar">
-    A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
-  </div>
 
-  <header class="site-header">
-    <div class="wrap">
-      <a href="../../index.html" class="brand"><span class="brand-mark" aria-hidden="true">DE</span> Deutsch Ecke</a>
-      <nav>
-        <a href="../../index.html">All levels</a>
-        <a href="../index.html">Home</a>
-        <a href="../picture-book/index.html">Picture Book</a>
-        <a href="index.html" class="current">Written Book</a>
-      </nav>
+  <div class="rdr" id="rdr">
+
+    <div class="rdr-bar">
+      <div class="rdr-bar-left">
+        <button class="rdr-btn" id="rdr-contents" type="button" aria-label="Contents">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-list"></use></svg>
+        </button>
+        <a class="rdr-btn" href="../index.html" aria-label="A1 home">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-home"></use></svg>
+        </a>
+      </div>
+
+      <div class="rdr-title">
+        <span class="kick">Written Book</span>
+        <span class="name" id="rdr-name">Negative Artikel — Written Book — Deutsch Ecke</span>
+      </div>
+
+      <div class="rdr-bar-right">
+        <button class="rdr-btn" id="rdr-font" type="button" aria-label="Text size">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-text-size"></use></svg>
+        </button>
+        <button class="rdr-btn" id="rdr-mode" type="button" aria-label="Switch to scroll view">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-written-book"></use></svg>
+        </button>
+      </div>
     </div>
-  </header>
 
-  <main class="wrap">
-    <div class="book-header">
+    <div class="rdr-stage" id="rdr-stage">
+      <span class="rdr-gutter" aria-hidden="true"></span>
+      <div class="rdr-track" id="rdr-track">
+        <div class="rdr-flow" id="rdr-flow">
+<div class="book-header">
       <div class="book-kicker">Chapter 12 · Written Book (Syllabus #21)</div>
       <h1>Negative Artikel</h1>
       <p class="subtitle">Kein, keine — saying "no" or "not a"</p>
     </div>
 
     <a class="image-link" href="../picture-book/page.html?n=12&from=12">
-      <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-picture-book"></use></svg>
+      <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-picture-book"></use></svg>
       <span class="text">
         <span class="label">Original topic sheet</span>
         <span class="cta">View "Negativartikel – kein und keine" in the Picture Book →</span>
@@ -54,7 +71,7 @@
       </table>
 
       <div class="info-box rule">
-        <h3>📐 Grammar rule: kein vs. nicht</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-rule"></use></svg> Grammar rule: kein vs. nicht</h3>
         <p>
           German has two negation words that English squashes into one "not."
           Use <span class="de-word">kein</span> to negate a <strong>noun with
@@ -66,7 +83,7 @@
       </div>
 
       <div class="info-box example">
-        <h3>💬 Examples</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-chat"></use></svg> Examples</h3>
         <ul>
           <li><span class="de-word">Ist das ein Apfel? Nein, das ist kein Apfel.</span> <span class="en">(Is that an apple? No, that isn't an apple.)</span></li>
           <li><span class="de-word">Ist das eine Orange? Nein, das ist keine Orange.</span> <span class="en">(Is that an orange? No, it isn't an orange.)</span></li>
@@ -76,7 +93,7 @@
       </div>
 
       <div class="info-box example">
-        <h3>💬 Compare: when "nicht" is correct instead</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-chat"></use></svg> Compare: when "nicht" is correct instead</h3>
         <ul>
           <li><span class="de-word">Trinkst du das Wasser? Nein, ich trinke das Wasser nicht.</span> <span class="en">(Are you drinking the water? No, I'm not drinking the water.)</span> — "das Wasser" already has a definite article, so it's "nicht," not "kein"</li>
           <li><span class="de-word">Bist du müde? Nein, ich bin nicht müde.</span> <span class="en">(Are you tired? No, I'm not tired.)</span> — negating an adjective, not a noun</li>
@@ -84,7 +101,7 @@
       </div>
 
       <div class="info-box mistake">
-        <h3>⚠️ Common mistake: using "nicht ein" instead of "kein"</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-warning"></use></svg> Common mistake: using "nicht ein" instead of "kein"</h3>
         <p>
           Literally translating "not a" word-for-word gives
           <span class="de-word">"nicht ein"</span> — understandable, but not
@@ -109,7 +126,7 @@
 
       <h2>Exercises</h2>
       <div class="info-box exercise">
-        <h3>✏️ Try it yourself</h3>
+        <h3><svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-pencil"></use></svg> Try it yourself</h3>
         <div class="exercise-item"><span class="num">1.</span> Negate: <em>Das ist ein Brot.</em></div>
         <div class="exercise-item"><span class="num">2.</span> Negate: <em>Das ist eine Suppe.</em></div>
         <div class="exercise-item"><span class="num">3.</span> Negate: <em>Ich habe Geld (money, no article).</em></div>
@@ -119,29 +136,41 @@
       </div>
 
     </div>
+        </div>
+      </div>
 
-    <div class="chapter-nav-bottom">
-      <a href="#" class="nav-btn" id="book-prev">← Previous</a>
-      <a href="index.html" class="nav-btn">Table of Contents</a>
-      <a href="#" class="nav-btn" id="book-next">Next →</a>
+      <button class="rdr-turn back" id="rdr-turn-back" type="button" aria-label="Previous page">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-arrow-right"></use></svg>
+      </button>
+      <button class="rdr-turn fwd" id="rdr-turn-fwd" type="button" aria-label="Next page">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-arrow-right"></use></svg>
+      </button>
     </div>
-    <div class="chapter-jump">
-      <label for="book-jump">Jump to a chapter: </label>
-      <select id="book-jump"></select>
-    </div>
-  </main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      Notes from a personal A1 study journey.
-      <div class="footer-links">
-        <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
+    <div class="rdr-foot">
+      <div class="rdr-progress"><span id="rdr-progress"></span></div>
+      <div class="rdr-foot-row">
+        <span id="rdr-chap-label"></span>
+        <span class="rdr-hintbar"><kbd>&#8592;</kbd><kbd>&#8594;</kbd> turn pages &middot; <kbd>C</kbd> contents</span>
+        <span id="rdr-page-label"></span>
       </div>
     </div>
-  </footer>
+
+  </div>
+
+  <div class="rdr-scrim" id="rdr-scrim"></div>
+  <aside class="rdr-drawer" id="rdr-drawer" aria-label="Chapters">
+    <div class="rdr-drawer-head">
+      <strong>Chapters</strong>
+      <button class="rdr-btn" id="rdr-drawer-close" type="button" aria-label="Close contents">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-close"></use></svg>
+      </button>
+    </div>
+    <ul class="rdr-drawer-list" id="rdr-drawer-list"></ul>
+  </aside>
 
   <script src="../../js/chapters.js"></script>
   <script src="../../js/book-progress.js"></script>
-  <script src="../../js/reader.js"></script>
+  <script src="../../js/book-reader.js"></script>
 </body>
 </html>
