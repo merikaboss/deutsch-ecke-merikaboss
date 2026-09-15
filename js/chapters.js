@@ -30,7 +30,7 @@ const CHAPTERS = [
   { id: "07", file: "08-verben-konjugation-regelmaessig.jpg", de: "Haben und Sein / Regelmäßige Verben", en: "Verb conjugation: haben/sein and regular verbs", syllabus: "12, 14" },
   { id: "08", file: "09-verben-stammveraenderung.jpg", de: "Unregelmäßige Verben", en: "Irregular (vowel-changing) verbs", syllabus: "15" },
   { id: "09", file: "10-adjektive-gegenteile.jpg", de: "Adjektive und Gegenteile", en: "Adjectives and opposites", syllabus: "17" },
-  { id: "10", file: "11-bestimmter-artikel.jpg", de: "Bestimmte Artikel im Nominativ", en: "Definite articles (nominative)", syllabus: "19" },
+  { id: "10", file: "11-bestimmter-artikel.jpg", de: "Bestimmte Artikel (alle Fälle)", en: "Definite articles in all four cases", syllabus: "19, 26, 32" },
   { id: "11", file: "12-unbestimmter-artikel.jpg", de: "Unbestimmte Artikel", en: "Indefinite articles", syllabus: "20" },
   { id: "12", file: "13-negativartikel-kein.jpg", de: "Negative Artikel", en: "Negative articles (kein/keine)", syllabus: "21" },
   { id: "13", file: "14-uhrzeit.jpg", de: "Die Uhrzeit", en: "Telling time (official and unofficial)", syllabus: "22–23" },
