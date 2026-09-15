@@ -1,0 +1,509 @@
+/* ============================================================
+   Deutsch Ecke — contents pages and the Written Book
+   Loaded after theme.css. Covers the Picture Book contents
+   grid, the Written Book chapter list, and the reading
+   typography inside a chapter.
+   ============================================================ */
+
+/* ============================================================
+   Shared page intro
+   ============================================================ */
+
+.premium .toc-intro {
+  padding: 52px 0 10px;
+  text-align: center;
+}
+
+.premium .toc-intro h1 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 90;
+  font-weight: 900;
+  font-size: clamp(2.1rem, 6vw, 3.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.032em;
+  margin: 0 0 12px;
+}
+
+.premium .toc-intro > p {
+  color: var(--text-muted);
+  max-width: 58ch;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.toc-kicker {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.toc-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 6px;
+}
+
+.toc-meta span {
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  box-shadow: var(--shadow);
+}
+
+/* ============================================================
+   Picture Book contents — thumbnail grid
+   ============================================================ */
+
+.contents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+  padding: 34px 0 60px;
+  list-style: none;
+  margin: 0;
+}
+
+.sheet-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  height: 100%;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease;
+}
+
+a.sheet-card:hover {
+  text-decoration: none;
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  box-shadow: 0 18px 38px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.sheet-thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.sheet-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+a.sheet-card:hover .sheet-thumb img {
+  transform: scale(1.05);
+}
+
+.sheet-num {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 9px;
+  border-radius: 9px;
+  background: var(--grad);
+  color: #fff;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 0.86rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+}
+
+.sheet-body {
+  padding: 15px 16px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-grow: 1;
+}
+
+.sheet-de {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 30;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.sheet-en {
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.sheet-syl {
+  margin-top: auto;
+  padding-top: 9px;
+  font-family: var(--ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ============================================================
+   Written Book contents — chapter list
+   ============================================================ */
+
+.chapter-list {
+  list-style: none;
+  margin: 0;
+  padding: 30px 0 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 12px;
+}
+
+.chapter-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 17px;
+  border-radius: 14px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  height: 100%;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.24s ease,
+              border-color 0.24s ease;
+}
+
+a.chapter-row:hover {
+  text-decoration: none;
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.chapter-row .n {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "opsz" 30;
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  transition: background 0.24s ease, color 0.24s ease;
+}
+
+a.chapter-row:hover .n {
+  background: var(--grad);
+  color: #fff;
+  border-color: transparent;
+}
+
+.chapter-row .t {
+  min-width: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chapter-row .t .de {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 30;
+  font-weight: 700;
+  font-size: 0.99rem;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--text);
+  font-style: normal;
+}
+
+.chapter-row .t .en {
+  font-family: var(--ui);
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  font-style: normal;
+  line-height: 1.4;
+}
+
+.chapter-row .go {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  display: flex;
+  transition: transform 0.24s ease, color 0.24s ease;
+}
+
+.chapter-row .go .icon-svg {
+  width: 18px;
+  height: 18px;
+}
+
+a.chapter-row:hover .go {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.chapter-row.not-ready {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Written Book — a chapter page
+   ============================================================ */
+
+.premium .book-header {
+  padding: 46px 0 6px;
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.premium .book-kicker {
+  font-family: var(--ui);
+  color: var(--accent);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+}
+
+.premium .book-header h1 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 90;
+  font-weight: 900;
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin: 12px 0 8px;
+}
+
+.premium .book-header .subtitle {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  color: var(--text-muted);
+}
+
+.premium .image-link {
+  margin: 30px auto 10px;
+  max-width: 640px;
+  border-radius: 16px;
+  padding: 15px 20px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.24s ease,
+              border-color 0.24s ease;
+}
+
+.premium .image-link:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.premium .image-link .label {
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.premium .image-link .cta {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "opsz" 30;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+.premium .chapter-body {
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: var(--ui);
+  font-size: 1.04rem;
+  line-height: 1.75;
+  padding-top: 14px;
+}
+
+.premium .chapter-body h2 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 50;
+  font-weight: 700;
+  font-size: 1.55rem;
+  letter-spacing: -0.024em;
+  margin: 48px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: none;
+  position: relative;
+}
+
+.premium .chapter-body h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--grad);
+}
+
+.premium .chapter-body h3 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "opsz" 30;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.015em;
+  margin: 30px 0 10px;
+}
+
+.premium .chapter-body table {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow);
+}
+
+.premium .chapter-body th {
+  font-family: var(--ui);
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg-raised));
+  color: var(--text-muted);
+  letter-spacing: 0.07em;
+}
+
+.premium .chapter-body th,
+.premium .chapter-body td {
+  padding: 11px 14px;
+}
+
+.premium .chapter-body tr:last-child td {
+  border-bottom: none;
+}
+
+.premium .info-box {
+  border-radius: 14px;
+  border-left-width: 4px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+}
+
+.premium .info-box h3,
+.premium .info-box h4 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "opsz" 30;
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: -0.015em;
+}
+
+.premium .de-word {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* bottom chapter nav */
+.premium .chapter-nav-bottom {
+  max-width: 720px;
+  margin: 30px auto 0;
+  padding: 26px 0 10px;
+}
+
+.premium .chapter-nav-bottom .nav-btn,
+.premium .chapter-jump select {
+  font-family: var(--ui);
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.premium .chapter-nav-bottom .nav-btn {
+  padding: 12px 18px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.premium .chapter-nav-bottom .nav-btn:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.premium .chapter-jump select {
+  padding: 10px 14px;
+  max-width: 100%;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 760px) {
+  .premium .toc-intro {
+    padding: 36px 0 6px;
+  }
+
+  .contents-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+    padding: 26px 0 48px;
+  }
+
+  .sheet-body {
+    padding: 12px 13px 14px;
+  }
+
+  .sheet-de {
+    font-size: 0.92rem;
+  }
+
+  .sheet-en {
+    font-size: 0.78rem;
+  }
+
+  .chapter-list {
+    grid-template-columns: 1fr;
+    padding: 24px 0 48px;
+  }
+
+  .premium .chapter-body {
+    font-size: 1rem;
+  }
+}

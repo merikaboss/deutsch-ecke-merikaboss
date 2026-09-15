@@ -48,6 +48,38 @@
     <path d="M12 18.2h.01" stroke-width="2.2"></path>
   </symbol>
 
+  <symbol id="icon-zoom-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10.6" cy="10.6" r="6.6"></circle>
+    <path d="m15.6 15.6 4.4 4.4"></path>
+    <path d="M10.6 7.8v5.6M7.8 10.6h5.6"></path>
+  </symbol>
+
+  <symbol id="icon-zoom-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10.6" cy="10.6" r="6.6"></circle>
+    <path d="m15.6 15.6 4.4 4.4"></path>
+    <path d="M7.8 10.6h5.6"></path>
+  </symbol>
+
+  <symbol id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 9V4.6A.6.6 0 0 1 4.6 4H9"></path>
+    <path d="M15 4h4.4a.6.6 0 0 1 .6.6V9"></path>
+    <path d="M20 15v4.4a.6.6 0 0 1-.6.6H15"></path>
+    <path d="M9 20H4.6a.6.6 0 0 1-.6-.6V15"></path>
+  </symbol>
+
+  <symbol id="icon-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round">
+    <rect x="3.6" y="3.6" width="7.2" height="7.2" rx="1.6"></rect>
+    <rect x="13.2" y="3.6" width="7.2" height="7.2" rx="1.6"></rect>
+    <rect x="3.6" y="13.2" width="7.2" height="7.2" rx="1.6"></rect>
+    <rect x="13.2" y="13.2" width="7.2" height="7.2" rx="1.6"></rect>
+  </symbol>
+
+  <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.6 10.4 12 3.8l8.4 6.6"></path>
+    <path d="M5.8 12.1v7.5a.6.6 0 0 0 .6.6h11.2a.6.6 0 0 0 .6-.6v-7.5"></path>
+    <path d="M9.8 20.2v-5.2h4.4v5.2"></path>
+  </symbol>
+
   <symbol id="icon-hourglass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
     <path d="M6.5 3.5h11"></path>
     <path d="M6.5 20.5h11"></path>

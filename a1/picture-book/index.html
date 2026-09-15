@@ -5,43 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Picture Book — A1 — Deutsch Ecke</title>
   <meta name="description" content="All A1 topic sheets from my own study notes, in order, as a page-by-page picture book." />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/book.css" />
 </head>
-<body>
+<body class="premium">
+
+  <div class="aurora" aria-hidden="true">
+    <span class="a1"></span>
+    <span class="a2"></span>
+    <span class="a3"></span>
+    <span class="mesh"></span>
+    <span class="grain"></span>
+  </div>
 
   <div class="attribution-bar">
     A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
   </div>
 
   <header class="site-header">
-    <div class="wrap">
-      <a href="../../index.html" class="brand">Deutsch Ecke</a>
+    <div class="wrap-wide">
+      <a href="../../index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">DE</span>
+        Deutsch Ecke
+      </a>
       <nav>
         <a href="../../index.html">All levels</a>
-        <a href="../index.html">Home</a>
+        <a href="../index.html">A1 home</a>
         <a href="index.html" class="current">Picture Book</a>
         <a href="../book/index.html">Written Book</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <div class="toc-intro">
-      <h1>Picture Book</h1>
+  <main class="wrap-wide">
+    <div class="toc-intro reveal">
+      <span class="toc-kicker">A1 · Picture Book</span>
+      <h1>All 54 topic sheets</h1>
       <p>
-        My original A1 topic sheets, in the order I studied them. Click any topic
-        to open it full-size, then use the arrows (or the ← → keys) to flip
-        through the rest.
+        The original sheets I studied from, in the order I worked through them.
+        Open any one to read it full screen — tap the sheet to zoom right into
+        the handwriting, and swipe or use the arrows to move through the rest.
       </p>
+      <div class="toc-meta">
+        <span>54 sheets</span>
+        <span>Tap to zoom</span>
+        <span>Swipe to turn</span>
+      </div>
     </div>
 
-    <ul class="toc-list" id="toc-list">
+    <ul class="contents-grid" id="toc-list">
       <!-- populated by JS from CHAPTERS -->
     </ul>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
+    <div class="wrap-wide">
       Notes from a personal A1 study journey.
       <div class="footer-links">
         <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
@@ -51,20 +74,38 @@
 
   <script src="../../js/chapters.js"></script>
   <script>
-    var list = document.getElementById("toc-list");
-    CHAPTERS.forEach(function (c) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.href = "page.html?n=" + c.id;
-      a.innerHTML =
-        '<span class="toc-num">' + c.id + '</span>' +
-        '<span class="toc-titles">' +
-        '<span class="toc-de">' + c.de + '</span>' +
-        '<span class="toc-en">' + c.en + '</span>' +
-        '</span>';
-      li.appendChild(a);
-      list.appendChild(li);
-    });
+    (function () {
+      var list = document.getElementById("toc-list");
+      CHAPTERS.forEach(function (c, i) {
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.className = "sheet-card";
+        a.href = "page.html?n=" + c.id;
+
+        var syl = c.syllabus
+          ? (/^\d/.test(c.syllabus) ? "Syllabus #" + c.syllabus : c.syllabus)
+          : "";
+
+        a.innerHTML =
+          '<span class="sheet-thumb">' +
+            '<img src="../assets/thumbs/' + c.file + '" alt="" loading="lazy" decoding="async" />' +
+            '<span class="sheet-num">' + (i + 1) + '</span>' +
+          '</span>' +
+          '<span class="sheet-body">' +
+            '<span class="sheet-de"></span>' +
+            '<span class="sheet-en"></span>' +
+            (syl ? '<span class="sheet-syl"></span>' : '') +
+          '</span>';
+
+        a.querySelector(".sheet-de").textContent = c.de;
+        a.querySelector(".sheet-en").textContent = c.en;
+        if (syl) a.querySelector(".sheet-syl").textContent = syl;
+
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    })();
   </script>
+  <script src="../../js/ui.js"></script>
 </body>
 </html>

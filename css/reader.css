@@ -1,0 +1,545 @@
+/* ============================================================
+   Deutsch Ecke — Picture Book reader
+   A single, non-scrolling screen: top bar, image stage, slim
+   footer. Page turns happen in place (no reload), the image
+   can be zoomed and panned, and on touch you swipe to turn.
+
+   IMPORTANT: no border-radius on the stage or the image, and
+   no backdrop-filter / blur / mix-blend-mode anywhere. Both
+   have caused stale-repaint artifacts around the large topic
+   images in this project before.
+   ============================================================ */
+
+html.reader,
+html.reader body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.pbv {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ============================================================
+   Top bar — nav, title, counter, jump-to-topic
+   ============================================================ */
+
+.pbv-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+  z-index: 5;
+}
+
+.pbv-bar-left,
+.pbv-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.pbv-bar-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.pbv-bar-title .de {
+  display: block;
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 40;
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pbv-bar-title .en {
+  display: block;
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* round icon buttons */
+.pbv-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.pbv-btn .icon-svg {
+  width: 19px;
+  height: 19px;
+}
+
+.pbv-btn:hover {
+  text-decoration: none;
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+}
+
+.pbv-btn:disabled,
+.pbv-btn.is-off {
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+.pbv-counter {
+  font-family: var(--ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+
+.pbv-counter b {
+  color: var(--accent);
+}
+
+/* the jump-to-topic select lives at the TOP, never at the bottom */
+.pbv-jump {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pbv-jump select {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  padding: 9px 32px 9px 13px;
+  max-width: 260px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+.pbv-jump select:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
+.pbv-jump::after {
+  content: "";
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin-top: -5px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+/* ============================================================
+   Stage — the image, side arrows, zoom cluster
+   ============================================================ */
+
+.pbv-stage {
+  flex: 1 1 auto;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.pbv-canvas {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.pbv-canvas.animate {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pbv-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /* no border-radius here on purpose (see file header) */
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.16);
+  background: #fff;
+  -webkit-user-drag: none;
+  transition: opacity 0.2s ease;
+}
+
+.pbv-stage.is-turning img {
+  opacity: 0.25;
+}
+
+.pbv-stage.zoomed {
+  cursor: grab;
+}
+
+.pbv-stage.zoomed.grabbing {
+  cursor: grabbing;
+}
+
+/* side arrows — left and right edges, never at the bottom */
+.pbv-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  z-index: 4;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.pbv-nav .icon-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.pbv-nav.prev {
+  left: 14px;
+}
+
+.pbv-nav.next {
+  right: 14px;
+}
+
+.pbv-nav:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  transform: translateY(-50%) scale(1.08);
+}
+
+.pbv-nav.prev .icon-svg {
+  transform: rotate(180deg);
+}
+
+.pbv-nav.is-off {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* zoom cluster, bottom right of the stage */
+.pbv-tools {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.pbv-tools .pbv-btn {
+  background: var(--bg-raised);
+  box-shadow: var(--shadow);
+}
+
+.pbv-zoom-level {
+  font-family: var(--ui);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* first-run hint */
+.pbv-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.pbv-hint.gone {
+  opacity: 0;
+}
+
+/* loading shimmer */
+.pbv-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 6;
+  background: var(--grad);
+  transform-origin: left;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.pbv-loading.on {
+  opacity: 1;
+  transform: scaleX(0.7);
+}
+
+/* ============================================================
+   Footer — progress + optional "back to chapter" pill
+   ============================================================ */
+
+.pbv-foot {
+  flex: 0 0 auto;
+  background: var(--bg-raised);
+  border-top: 1px solid var(--border);
+  padding: 0;
+}
+
+.pbv-progress {
+  height: 3px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.pbv-progress span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--grad);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pbv-foot-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 14px;
+  min-height: 42px;
+}
+
+.pbv-back-chapter[hidden] {
+  display: none;
+}
+
+.pbv-back-chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pbv-back-chapter .icon-svg {
+  width: 15px;
+  height: 15px;
+  transform: rotate(180deg);
+  flex-shrink: 0;
+}
+
+.pbv-syllabus {
+  font-family: var(--ui);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.pbv-kbd {
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.pbv-kbd kbd {
+  font-family: var(--ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 1px 5px;
+  margin: 0 1px;
+  color: var(--text);
+}
+
+/* ============================================================
+   Phone layout — its own arrangement, not the desktop one
+   ============================================================ */
+
+@media (max-width: 720px) {
+  .pbv-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .pbv-bar-title {
+    order: 3;
+    flex-basis: 100%;
+    text-align: left;
+    display: none;
+  }
+
+  /* on a phone the jump select replaces the title row entirely */
+  .pbv-jump {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .pbv-jump select {
+    width: 100%;
+    max-width: none;
+    padding: 10px 32px 10px 13px;
+  }
+
+  .pbv-bar-left {
+    flex: 1 1 auto;
+  }
+
+  .pbv-bar-right {
+    margin-left: auto;
+  }
+
+  /* arrows sit low on the sides, in thumb reach, and stay clear
+     of the middle of the sheet you are actually reading */
+  .pbv-nav {
+    width: 46px;
+    height: 46px;
+    top: auto;
+    bottom: 16px;
+    transform: none;
+  }
+
+  .pbv-nav:hover {
+    transform: none;
+  }
+
+  .pbv-nav.prev {
+    left: 10px;
+  }
+
+  .pbv-nav.next {
+    right: 10px;
+  }
+
+  .pbv-tools {
+    right: 10px;
+    bottom: 74px;
+  }
+
+  .pbv-hint {
+    bottom: 76px;
+    font-size: 0.72rem;
+    padding: 7px 13px;
+  }
+
+  .pbv-canvas {
+    padding: 6px;
+  }
+
+  .pbv-kbd {
+    display: none;
+  }
+
+  .pbv-foot-row {
+    min-height: 0;
+    padding: 6px 12px;
+  }
+
+  .pbv-foot-row:empty {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .pbv-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .pbv-counter {
+    font-size: 0.74rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pbv-canvas.animate,
+  .pbv-stage img,
+  .pbv-progress span {
+    transition: none;
+  }
+}

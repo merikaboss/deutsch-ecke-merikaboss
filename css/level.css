@@ -1,0 +1,148 @@
+/* ============================================================
+   Deutsch Ecke — a level landing page (A1 now, A2 later)
+   Loaded after theme.css. The two big "which half do you want
+   to study from" cards, and the resume banner.
+   ============================================================ */
+
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+  padding: 14px 0 8px;
+}
+
+.path-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 30px 28px 28px;
+  border-radius: 22px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-raised), var(--bg-raised)) padding-box,
+    linear-gradient(140deg, var(--border), var(--border)) border-box;
+  box-shadow: var(--shadow);
+  color: var(--text);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease,
+              background 0.3s ease;
+}
+
+a.path-card:hover {
+  text-decoration: none;
+  transform: translateY(-8px);
+  box-shadow: 0 22px 46px color-mix(in srgb, var(--accent) 20%, transparent);
+  background:
+    linear-gradient(var(--bg-raised), var(--bg-raised)) padding-box,
+    var(--grad) border-box;
+}
+
+.path-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--grad);
+  color: #fff;
+  box-shadow: 0 10px 24px var(--glow);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.path-icon .icon-svg {
+  width: 28px;
+  height: 28px;
+}
+
+a.path-card:hover .path-icon {
+  transform: scale(1.08) rotate(-7deg);
+}
+
+.path-count {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  color: var(--accent);
+}
+
+.path-card h2 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 50;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.024em;
+  margin: 6px 0 0;
+}
+
+.path-card p {
+  font-family: var(--ui);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 0;
+  flex-grow: 1;
+}
+
+.path-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--ui);
+  font-weight: 700;
+  font-size: 0.93rem;
+  color: var(--accent);
+  margin-top: 6px;
+}
+
+.path-cta .icon-svg {
+  width: 17px;
+  height: 17px;
+  transition: transform 0.25s ease;
+}
+
+a.path-card:hover .path-cta .icon-svg {
+  transform: translateX(5px);
+}
+
+/* ---------- resume banner ---------- */
+
+.premium .resume-banner {
+  margin: 28px auto 0;
+  max-width: 52ch;
+  border-radius: 16px;
+  padding: 14px 20px;
+  font-family: var(--ui);
+  font-size: 0.93rem;
+  background: var(--bg-raised);
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--border));
+  box-shadow: var(--shadow);
+  color: var(--text-muted);
+}
+
+.premium .resume-banner a {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+@media (max-width: 760px) {
+  .path-card {
+    padding: 26px 22px 24px;
+  }
+
+  .path-count {
+    top: 20px;
+    right: 20px;
+  }
+}

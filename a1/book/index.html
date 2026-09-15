@@ -5,43 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Written Book — A1 — Deutsch Ecke</title>
   <meta name="description" content="The full written read-through of my A1 study notes, chapter by chapter, with German translated in brackets throughout." />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/book.css" />
 </head>
-<body data-page="book-toc">
+<body class="premium" data-page="book-toc">
+
+  <div class="aurora" aria-hidden="true">
+    <span class="a1"></span>
+    <span class="a2"></span>
+    <span class="a3"></span>
+    <span class="mesh"></span>
+    <span class="grain"></span>
+  </div>
+
   <div class="attribution-bar">
     A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
   </div>
 
   <header class="site-header">
-    <div class="wrap">
-      <a href="../../index.html" class="brand">Deutsch Ecke</a>
+    <div class="wrap-wide">
+      <a href="../../index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">DE</span>
+        Deutsch Ecke
+      </a>
       <nav>
         <a href="../../index.html">All levels</a>
-        <a href="../index.html">Home</a>
+        <a href="../index.html">A1 home</a>
         <a href="../picture-book/index.html">Picture Book</a>
         <a href="index.html" class="current">Written Book</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <div class="toc-intro">
-      <h1>Written Book</h1>
+  <main class="wrap-wide">
+    <div class="toc-intro reveal">
+      <span class="toc-kicker">A1 · Written Book</span>
+      <h1>The full read-through</h1>
       <p>
-        The full read-through version of my A1 notes — every topic explained in
-        plain English, with German translated in brackets throughout so you never
-        hit a word you can't look up. Each chapter links back to the original
-        topic image if you want the quick-glance summary too.
+        Every topic explained properly, with each German word translated in
+        brackets so you never hit something you can't look up. Rules, examples,
+        the mistakes I kept making, and exercises at the end of each chapter.
       </p>
+      <div class="toc-meta">
+        <span>54 chapters</span>
+        <span>Every word translated</span>
+        <span>Exercises included</span>
+      </div>
     </div>
 
-    <ul class="toc-list" id="book-toc-list">
+    <ul class="chapter-list" id="book-toc-list">
       <!-- populated by JS from CHAPTERS + WRITTEN_CHAPTERS -->
     </ul>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
+    <div class="wrap-wide">
       Notes from a personal A1 study journey.
       <div class="footer-links">
         <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
@@ -51,6 +74,33 @@
 
   <script src="../../js/chapters.js"></script>
   <script src="../../js/book-progress.js"></script>
-  <script src="../../js/reader.js"></script>
+  <script>
+    (function () {
+      var list = document.getElementById("book-toc-list");
+      var written = (typeof WRITTEN_CHAPTERS !== "undefined") ? WRITTEN_CHAPTERS : [];
+
+      CHAPTERS.forEach(function (c, i) {
+        var ready = written.indexOf(c.id) !== -1;
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.className = "chapter-row" + (ready ? "" : " not-ready");
+        a.href = ready ? "chapter-" + c.id + ".html" : "#";
+        if (!ready) a.setAttribute("aria-disabled", "true");
+
+        a.innerHTML =
+          '<span class="n">' + (i + 1) + '</span>' +
+          '<span class="t"><span class="de"></span><span class="en"></span></span>' +
+          '<span class="go"><svg class="icon-svg" aria-hidden="true">' +
+          '<use href="../../assets/icons.svg#icon-arrow-right"></use></svg></span>';
+
+        a.querySelector(".de").textContent = c.de;
+        a.querySelector(".en").textContent = c.en;
+
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    })();
+  </script>
+  <script src="../../js/ui.js"></script>
 </body>
 </html>

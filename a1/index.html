@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A1 — My German Journey — Deutsch Ecke by merikaboss</title>
   <meta name="description" content="merikaboss's personal notes, images and exercises from his own German A1 self-study journey — shared for friends who are learning too." />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/level.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,71 +33,156 @@
   }
   </script>
 </head>
-<body data-page="landing">
+<body class="premium" data-page="landing">
+
+  <div class="aurora" aria-hidden="true">
+    <span class="a1"></span>
+    <span class="a2"></span>
+    <span class="a3"></span>
+    <span class="mesh"></span>
+    <span class="grain"></span>
+  </div>
 
   <div class="attribution-bar">
     A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
   </div>
 
   <header class="site-header">
-    <div class="wrap">
-      <a href="../index.html" class="brand">Deutsch Ecke</a>
+    <div class="wrap-wide">
+      <a href="../index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">DE</span>
+        Deutsch Ecke
+      </a>
       <nav>
         <a href="../index.html">All levels</a>
-        <a href="index.html" class="current">Home</a>
+        <a href="index.html" class="current">A1 home</a>
         <a href="picture-book/index.html">Picture Book</a>
         <a href="book/index.html">Written Book</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="wrap-wide">
 
     <section class="hero">
-      <div class="hero-logo" id="hero-logo">
-        <img
-          src="../assets/images/deutsch-ecke-logo.jpg"
-          alt="Deutsch Ecke logo — a friendly mascot reading an A1 book in front of the Brandenburg Gate and the Berlin TV Tower"
-        />
+      <span class="hero-eyebrow reveal">
+        <span class="dot"></span>
+        Level A1 · Complete
+      </span>
+
+      <div class="hero-logo-shell reveal d1">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="ring" aria-hidden="true"></span>
+        <div class="hero-logo">
+          <img
+            src="../assets/images/deutsch-ecke-logo.jpg"
+            alt="Deutsch Ecke logo — a friendly mascot reading an A1 book in front of the Brandenburg Gate and the Berlin TV Tower"
+          />
+        </div>
       </div>
-      <h1>My A1 German Journey</h1>
-      <p class="tagline">
+
+      <h1 class="reveal d1">My A1 Journey</h1>
+
+      <p class="hero-sub-de reveal d2">Meine persönlichen Notizen aus meiner eigenen A1-Reise</p>
+
+      <p class="tagline reveal d2">
         These are my own notes, images and exercises from studying German A1 —
-        <span class="de">meine persönlichen Notizen aus meiner eigenen A1-Reise</span> —
-        put together here for a few friends who are learning too and want something
-        to study from at home, at their own pace.
+        put together here for a few friends who are learning too and want
+        something to study from at home, at their own pace.
       </p>
-      <div id="resume-banner" class="resume-banner" hidden></div>
+
+      <div id="resume-banner" class="resume-banner reveal d3" hidden></div>
     </section>
 
-    <section class="card-grid">
-      <a class="card" href="picture-book/index.html">
-        <span class="icon-wrap"><svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-picture-book"></use></svg></span>
+    <section class="path-grid">
+      <a class="path-card reveal d1" href="picture-book/index.html">
+        <span class="path-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-picture-book"></use></svg>
+        </span>
+        <span class="path-count">54 sheets</span>
         <h2>Picture Book</h2>
-        <p>Flip through my original topic sheets, page by page — a fast visual reference for every subject.</p>
-        <span class="cta">Open the Picture Book →</span>
+        <p>
+          The original topic sheets, one per screen. Tap to zoom right into the
+          handwriting, swipe to turn the page — the fast visual reference.
+        </p>
+        <span class="path-cta">
+          Open the Picture Book
+          <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-arrow-right"></use></svg>
+        </span>
       </a>
 
-      <a class="card" href="book/index.html">
-        <span class="icon-wrap"><svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-written-book"></use></svg></span>
+      <a class="path-card reveal d2" href="book/index.html">
+        <span class="path-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-written-book"></use></svg>
+        </span>
+        <span class="path-count">54 chapters</span>
         <h2>Written Book</h2>
-        <p>The full read-through version — every topic explained in plain English, with German translated in brackets throughout.</p>
-        <span class="cta">Open the Written Book →</span>
+        <p>
+          The full read-through. Every topic explained in plain English with the
+          German translated in brackets, plus exercises at the end of each chapter.
+        </p>
+        <span class="path-cta">
+          Open the Written Book
+          <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-arrow-right"></use></svg>
+        </span>
       </a>
     </section>
 
-    <section class="about-note">
+    <section class="section-head reveal">
+      <span class="kicker">How I'd use it</span>
+      <h2>Two halves of the same topic</h2>
+      <p>Each sheet in the Picture Book has a matching chapter in the Written Book, and they link to each other both ways.</p>
+      <div class="rule"></div>
+    </section>
+
+    <section class="feature-grid">
+      <div class="feature reveal d1">
+        <div class="f-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-picture-book"></use></svg>
+        </div>
+        <h3>1. Look at the sheet</h3>
+        <p>Open the topic in the Picture Book and read it the way I first did.</p>
+      </div>
+
+      <div class="feature reveal d2">
+        <div class="f-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-written-book"></use></svg>
+        </div>
+        <h3>2. Read the chapter</h3>
+        <p>The written version explains the same material slowly, with every word translated.</p>
+      </div>
+
+      <div class="feature reveal d3">
+        <div class="f-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-spark"></use></svg>
+        </div>
+        <h3>3. Do the exercises</h3>
+        <p>Each chapter ends with practice that gets harder as the book goes on.</p>
+      </div>
+
+      <div class="feature reveal d4">
+        <div class="f-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="../assets/icons.svg#icon-users"></use></svg>
+        </div>
+        <h3>4. Ask when stuck</h3>
+        <p>The WhatsApp group is where we work out the things a book can't answer.</p>
+      </div>
+    </section>
+
+    <section class="about-note reveal">
+      <span class="quote-mark" aria-hidden="true">&ldquo;</span>
       <p>
         No teacher, no classroom — just what I studied on my own, written down so
         it's easier for the next person. If something looks off or you get stuck,
-        that's normal; work through it slowly, or ask in the WhatsApp group below.
+        that's normal; work through it slowly, or ask in the WhatsApp group.
       </p>
+      <span class="signed">merikaboss</span>
     </section>
 
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
+    <div class="wrap-wide">
       Notes from a personal A1 study journey.
       <div class="footer-links">
         <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
@@ -101,5 +192,6 @@
 
   <script src="../js/chapters.js"></script>
   <script src="../js/reader.js"></script>
+  <script src="../js/ui.js"></script>
 </body>
 </html>

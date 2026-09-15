@@ -1,73 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="reader">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Picture Book — A1 — Deutsch Ecke</title>
   <meta name="description" content="A page from my own A1 study notes." />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/reader.css" />
 </head>
-<body data-page="picture-book-viewer">
+<body class="premium" data-page="picture-book-reader">
 
-  <div class="attribution-bar">
-    A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
+  <div class="pbv">
+
+    <div class="pbv-bar">
+      <div class="pbv-bar-left">
+        <a class="pbv-btn" href="index.html" title="All topics" aria-label="All topics">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-grid"></use></svg>
+        </a>
+        <a class="pbv-btn" href="../index.html" title="A1 home" aria-label="A1 home">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-home"></use></svg>
+        </a>
+        <span class="pbv-counter" id="pbv-counter"></span>
+      </div>
+
+      <div class="pbv-bar-title">
+        <span class="de" id="pbv-title-de"></span>
+        <span class="en" id="pbv-title-en"></span>
+      </div>
+
+      <div class="pbv-jump">
+        <select id="pbv-jump" aria-label="Jump to a topic"></select>
+      </div>
+    </div>
+
+    <div class="pbv-stage" id="pbv-stage">
+      <span class="pbv-loading" id="pbv-loading"></span>
+
+      <div class="pbv-canvas" id="pbv-canvas">
+        <img id="pbv-image" src="" alt="" />
+      </div>
+
+      <button class="pbv-nav prev" id="pbv-prev" type="button" aria-label="Previous topic">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-arrow-right"></use></svg>
+      </button>
+
+      <button class="pbv-nav next" id="pbv-next" type="button" aria-label="Next topic">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-arrow-right"></use></svg>
+      </button>
+
+      <div class="pbv-tools">
+        <button class="pbv-btn" id="pbv-zoom-in" type="button" aria-label="Zoom in">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-zoom-in"></use></svg>
+        </button>
+        <span class="pbv-zoom-level" id="pbv-zoom-level">100%</span>
+        <button class="pbv-btn" id="pbv-zoom-out" type="button" aria-label="Zoom out">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-zoom-out"></use></svg>
+        </button>
+        <button class="pbv-btn" id="pbv-fullscreen" type="button" aria-label="Full screen">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-expand"></use></svg>
+        </button>
+      </div>
+
+      <span class="pbv-hint" id="pbv-hint">Tap the sheet to zoom · swipe to turn the page</span>
+    </div>
+
+    <div class="pbv-foot">
+      <div class="pbv-progress"><span id="pbv-progress"></span></div>
+      <div class="pbv-foot-row">
+        <a class="pbv-back-chapter" id="pbv-back-chapter" href="#" hidden>
+          <svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-arrow-right"></use></svg>
+          <span id="pbv-back-label"></span>
+        </a>
+        <span class="pbv-kbd">
+          <kbd>←</kbd><kbd>→</kbd> turn · <kbd>+</kbd><kbd>−</kbd> zoom · <kbd>F</kbd> full screen
+        </span>
+        <span class="pbv-syllabus" id="pbv-syllabus"></span>
+      </div>
+    </div>
+
   </div>
 
-  <header class="site-header">
-    <div class="wrap">
-      <a href="../../index.html" class="brand">Deutsch Ecke</a>
-      <nav>
-        <a href="../../index.html">All levels</a>
-        <a href="../index.html">Home</a>
-        <a href="index.html" class="current">Picture Book</a>
-        <a href="../book/index.html">Written Book</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <div class="viewer">
-      <div class="back-to-book" id="pb-back-to-book" hidden>
-        <a href="#" id="pb-back-link">← Back to the Written Book</a>
-      </div>
-
-      <div class="viewer-counter" id="pb-counter"></div>
-
-      <div class="viewer-frame">
-        <img id="pb-image" src="" alt="" />
-      </div>
-
-      <div class="viewer-caption">
-        <p class="de" id="pb-title-de"></p>
-        <p class="en" id="pb-title-en"></p>
-        <p class="en" id="pb-syllabus-ref" style="font-size:0.8rem;"></p>
-      </div>
-
-      <div class="viewer-controls">
-        <a href="#" class="nav-btn" id="pb-prev">← Previous</a>
-        <a href="index.html" class="nav-btn">Table of Contents</a>
-        <a href="#" class="nav-btn" id="pb-next">Next →</a>
-      </div>
-
-      <div class="viewer-jump">
-        <label for="pb-jump">Jump to a topic: </label>
-        <select id="pb-jump"></select>
-      </div>
-
-      <p class="kbd-hint">Tip: use the ← and → arrow keys to flip pages.</p>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      Notes from a personal A1 study journey.
-      <div class="footer-links">
-        <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
-      </div>
-    </div>
-  </footer>
-
   <script src="../../js/chapters.js"></script>
-  <script src="../../js/reader.js"></script>
+  <script src="../../js/picture-reader.js"></script>
 </body>
 </html>

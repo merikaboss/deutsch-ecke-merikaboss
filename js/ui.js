@@ -1,4 +1,5 @@
-/* Landing page only: scroll reveals, stat count-up, card cursor spotlight. */
+/* Shared page polish: scroll reveals, stat count-up, card cursor spotlight.
+   Safe to load on any page — each part no-ops if its markup isn't there. */
 (function () {
   "use strict";
 
@@ -63,7 +64,7 @@
 
   /* ---- cursor spotlight on level cards ---- */
   if (!calm && window.matchMedia("(hover: hover)").matches) {
-    document.querySelectorAll(".level-card").forEach(function (card) {
+    document.querySelectorAll(".level-card, .path-card").forEach(function (card) {
       card.addEventListener("mousemove", function (e) {
         var r = card.getBoundingClientRect();
         card.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
