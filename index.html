@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deutsch Ecke — merikaboss's personal German study corner</title>
   <meta name="description" content="merikaboss's own German study notes, shared for friends learning too — starting with A1, with more levels on the way." />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/landing.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -26,7 +31,15 @@
   }
   </script>
 </head>
-<body>
+<body class="landing">
+
+  <div class="aurora" aria-hidden="true">
+    <span class="a1"></span>
+    <span class="a2"></span>
+    <span class="a3"></span>
+    <span class="mesh"></span>
+    <span class="grain"></span>
+  </div>
 
   <div class="attribution-bar">
     A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
@@ -34,10 +47,14 @@
 
   <header class="site-header">
     <div class="wrap-wide">
-      <a href="index.html" class="brand">Deutsch Ecke</a>
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">DE</span>
+        Deutsch Ecke
+      </a>
       <nav>
         <a href="index.html" class="current">Levels</a>
         <a href="a1/index.html">A1</a>
+        <a href="#inside">What's inside</a>
       </nav>
     </div>
   </header>
@@ -45,58 +62,159 @@
   <main class="wrap-wide">
 
     <section class="hero">
-      <div class="hero-logo" id="hero-logo">
-        <img
-          src="assets/images/deutsch-ecke-logo.jpg"
-          alt="Deutsch Ecke logo — a friendly mascot reading an A1 book in front of the Brandenburg Gate and the Berlin TV Tower"
-          onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
-        />
-        <span class="hero-logo-fallback">Deutsch<br />Ecke</span>
+
+      <div class="floaters" aria-hidden="true">
+        <b>ä</b>
+        <b>ß</b>
+        <b>ö</b>
+        <b>ü</b>
+        <b>der</b>
+        <b>die</b>
+        <b>das</b>
+        <b>Hallo</b>
       </div>
 
-      <h1>Deutsch Ecke</h1>
-      <p class="tagline">
-        <span class="de">Gemeinsam Deutsch lernen</span> — learning German together.
-        This is my personal study corner: my own notes, images and exercises from
-        teaching myself German, organized by level, shared for friends who are
+      <span class="hero-eyebrow reveal">
+        <span class="dot"></span>
+        A1 notes ready · A2 in progress
+      </span>
+
+      <div class="hero-logo-shell reveal d1">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="ring" aria-hidden="true"></span>
+        <div class="hero-logo" id="hero-logo">
+          <img
+            src="assets/images/deutsch-ecke-logo.jpg"
+            alt="Deutsch Ecke logo — a friendly mascot reading an A1 book in front of the Brandenburg Gate and the Berlin TV Tower"
+            onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+          />
+          <span class="hero-logo-fallback">Deutsch<br />Ecke</span>
+        </div>
+      </div>
+
+      <h1 class="reveal d1">Deutsch Ecke</h1>
+
+      <p class="hero-sub-de reveal d2">Gemeinsam Deutsch lernen — learning German together</p>
+
+      <p class="tagline reveal d2">
+        My personal study corner: my own notes, images and exercises from teaching
+        myself German, organized level by level and shared for friends who are
         learning too and want something to study from at home, at their own pace.
       </p>
 
-      <a
-        class="whatsapp-btn"
-        href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc"
-        target="_blank"
-        rel="noopener"
-      >
-        <svg class="icon-svg" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"></use></svg>
-        Join the study group on WhatsApp
-      </a>
+      <div class="hero-actions reveal d3">
+        <a class="btn-primary" href="a1/index.html">
+          <svg class="icon-svg" aria-hidden="true"><use href="assets/icons.svg#icon-spark"></use></svg>
+          Start with A1
+          <svg class="icon-svg arrow" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"></use></svg>
+        </a>
+
+        <a
+          class="whatsapp-btn"
+          href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg class="icon-svg" aria-hidden="true"><use href="assets/icons.svg#icon-whatsapp"></use></svg>
+          Join the study group
+        </a>
+      </div>
+
+      <div class="hero-stats reveal d4">
+        <div class="stat">
+          <span class="num" data-count="54">54</span>
+          <span class="lbl">Picture sheets</span>
+        </div>
+        <div class="stat">
+          <span class="num" data-count="54">54</span>
+          <span class="lbl">Book chapters</span>
+        </div>
+        <div class="stat">
+          <span class="num">100%</span>
+          <span class="lbl">Free forever</span>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section-head reveal">
+      <span class="kicker">Choose a level</span>
+      <h2>Start where you are</h2>
+      <p>Each level has the same two halves — the picture sheets I studied from, and the written notes I made from them.</p>
+      <div class="rule"></div>
     </section>
 
     <section class="level-grid">
-      <a class="level-card" href="a1/index.html">
+      <a class="level-card reveal d1" href="a1/index.html">
+        <span class="spot" aria-hidden="true"></span>
         <span class="status-pill">Ready</span>
         <span class="level-badge">A1</span>
         <h2>A1 — Grundstufe</h2>
-        <p>Where I started: greetings, articles, verbs, everyday situations — the full picture book and written notes.</p>
-        <span class="cta">Open A1 →</span>
+        <p>Where I started: greetings, articles, verbs, everyday situations — the full picture book and all 54 written chapters.</p>
+        <span class="cta">
+          Open A1
+          <svg class="icon-svg" aria-hidden="true"><use href="assets/icons.svg#icon-arrow-right"></use></svg>
+        </span>
       </a>
 
-      <div class="level-card disabled">
+      <div class="level-card disabled reveal d2">
         <span class="status-pill muted">Coming soon</span>
         <span class="level-badge">A2</span>
         <h2>A2 — Aufbaustufe</h2>
-        <p>Still studying this level myself — I'll add my notes here once I've worked through it. Check back soon.</p>
+        <p>Still studying this level myself — I'll add my notes here once I've worked through it properly. Check back soon.</p>
         <span class="cta">In progress — I'll update you</span>
       </div>
     </section>
 
-    <section class="about-note">
+    <section class="section-head reveal" id="inside">
+      <span class="kicker">What's inside</span>
+      <h2>Two ways to study the same thing</h2>
+      <p>The images are what I actually learned from. The chapters are how I explained them to myself afterwards.</p>
+      <div class="rule"></div>
+    </section>
+
+    <section class="feature-grid">
+      <div class="feature reveal d1">
+        <div class="f-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="assets/icons.svg#icon-picture-book"></use></svg>
+        </div>
+        <h3>Picture Book</h3>
+        <p>54 topic sheets, one screen at a time, with arrow-key and swipe navigation.</p>
+      </div>
+
+      <div class="feature reveal d2">
+        <div class="f-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="assets/icons.svg#icon-written-book"></use></svg>
+        </div>
+        <h3>Written Book</h3>
+        <p>54 chapters with rules, examples, common mistakes and exercises — every German word translated.</p>
+      </div>
+
+      <div class="feature reveal d3">
+        <div class="f-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="assets/icons.svg#icon-users"></use></svg>
+        </div>
+        <h3>Study group</h3>
+        <p>A WhatsApp group where we ask each other the things a book can't answer.</p>
+      </div>
+
+      <div class="feature reveal d4">
+        <div class="f-icon">
+          <svg class="icon-svg" aria-hidden="true"><use href="assets/icons.svg#icon-phone"></use></svg>
+        </div>
+        <h3>Reads anywhere</h3>
+        <p>Built for a phone first — light and dark, no sign-up, nothing to install.</p>
+      </div>
+    </section>
+
+    <section class="about-note reveal">
+      <span class="quote-mark" aria-hidden="true">&ldquo;</span>
       <p>
         No teacher, no classroom — just what I studied on my own, organized so
-        it's easier for the next person. Got stuck on something or want to study
-        with others? That's what the WhatsApp group above is for.
+        it's easier for the next person. Got stuck on something, or want to study
+        with others? That's what the WhatsApp group is for.
       </p>
+      <span class="signed">merikaboss</span>
     </section>
 
   </main>
@@ -110,5 +228,6 @@
     </div>
   </footer>
 
+  <script src="js/landing.js"></script>
 </body>
 </html>
