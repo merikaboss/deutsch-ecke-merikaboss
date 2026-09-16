@@ -776,6 +776,851 @@ var SCHREIBEN_UNITS = [
         ]
       }
     ]
+  },
+  /* ---------------------------------------------------------- */
+  {
+    id: "S07",
+    gruppe: "briefe",
+    stufe: 2,
+    title: "Formelle E-Mails: Termine",
+    subtitle: "Writing to a practice, an office or a school",
+    focus: "Sehr geehrte …, Sie-Form, Termin vereinbaren und verschieben",
+    intro:
+      "As soon as you write to someone you do not know personally — a doctor's practice, an office, a school, a landlord — the email changes. It uses *Sie*, it opens and closes in a fixed way, and it gets to the point quickly.",
+    lernen: [
+      "The difference between a personal and a formal email is mostly in four places: the greeting, the pronoun, the closing and the name at the end. Everything in between is ordinary German, just a little more polite.",
+      {
+        kopf: ["", "persönlich", "formell"],
+        zeilen: [
+          ["Anrede", "Liebe Petra, / Lieber Jan,", "Sehr geehrte Frau Hoffmann, / Sehr geehrter Herr Yılmaz,"],
+          ["Name unbekannt", "—", "Sehr geehrte Damen und Herren,"],
+          ["Pronomen", "du, dich, dir, dein", "Sie, Ihnen, Ihr — immer groß"],
+          ["Schlusssatz", "Bis bald!", "Vielen Dank im Voraus. / Ich freue mich auf Ihre Antwort."],
+          ["Gruß", "Viele Grüße / Liebe Grüße", "Mit freundlichen Grüßen"],
+          ["Name", "Dein Samuel", "Samuel Owusu (full name)"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "Four steps in a formal email",
+        liste: [
+          "*Why you are writing* — in the first sentence: _ich möchte gern einen Termin vereinbaren._",
+          "*The details* — what the problem is, which day, who it is for.",
+          "*The question or request* — _Haben Sie am Donnerstag einen Termin frei?_",
+          "*A closing sentence*, then the greeting and your full name."
+        ]
+      },
+      {
+        brief: [
+          "Betreff: Terminanfrage",
+          "",
+          "Sehr geehrte Frau Dr. Hoffmann,",
+          "",
+          "ich möchte gern einen Termin für eine Kontrolle vereinbaren. Seit ein paar Tagen tut mir ein Zahn oben links weh, besonders beim Essen.",
+          "Haben Sie nächste Woche einen Termin frei? Ich arbeite bis 15 Uhr, deshalb kann ich nur am Nachmittag. Am Mittwoch kann ich leider gar nicht.",
+          "",
+          "Vielen Dank im Voraus.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Samuel Owusu"
+        ],
+        titel: "Beispiel"
+      },
+      {
+        box: "mistake",
+        titel: "Small things that stand out",
+        liste: [
+          "*Sie* for _you_ is always written with a capital. Small *sie* means _she_ or _they_: ~Können sie mir helfen?~ asks whether _she_ can help.",
+          "After *Sehr geehrte Frau Hoffmann,* the email continues with a small letter: *ich möchte …*",
+          "*Sehr geehrte* for a woman, *Sehr geehrter* for a man.",
+          "No comma after *Mit freundlichen Grüßen*, and no *Dein* or *Ihr* before your name."
+        ]
+      }
+    ],
+    redemittel: [
+      {
+        titel: "Termine",
+        zeilen: [
+          ["Ich möchte gern einen Termin vereinbaren.", "I would like to make an appointment."],
+          ["Haben Sie am … einen Termin frei?", "Do you have an appointment free on … ?"],
+          ["Ich kann nur vormittags / nachmittags.", "I can only make mornings / afternoons."],
+          ["Leider kann ich am … nicht kommen.", "Unfortunately I can't come on …"],
+          ["Kann ich den Termin verschieben?", "Can I move the appointment?"],
+          ["Passt Ihnen Donnerstag um zehn Uhr?", "Does Thursday at ten suit you?"],
+          ["Bitte bestätigen Sie den Termin.", "Please confirm the appointment."]
+        ]
+      }
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Formell schreiben", typ: "mc", frage: "Sie schreiben an Frau Lange, die Sekretärin der Sprachschule.", optionen: ["Liebe Frau Lange,", "Sehr geehrter Frau Lange,", "Sehr geehrte Frau Lange,", "Hallo Lange,"], antwort: 2 },
+      { teil: "Teil 1 — Formell schreiben", typ: "mc", frage: "Sie schreiben an das Bürgeramt und kennen keinen Namen.", optionen: ["Sehr geehrte Damen und Herren,", "Liebe Bürgeramt,", "Sehr geehrtes Bürgeramt,", "Hallo zusammen,"], antwort: 0 },
+      { teil: "Teil 1 — Formell schreiben", typ: "mc", frage: "Welches Ende passt zu einer formellen E-Mail?", optionen: ["Liebe Grüße, deine Aylin", "Mit freundlichen Grüßen — und darunter: Aylin Demir", "Tschüss und bis bald!", "Viele Grüße, Aylin"], antwort: 1 },
+      { teil: "Teil 1 — Formell schreiben", typ: "mc", frage: "Welcher Satz ist in einer formellen E-Mail richtig?", optionen: ["Kannst du mir einen Termin geben?", "Können sie mir einen Termin geben?", "Können Sie mir einen Termin geben?", "Gib mir bitte einen Termin."], antwort: 2, warum: "*Sie* groß — sonst heißt es _sie_ (she / they)." },
+
+      { teil: "Teil 2 — Ergänzen Sie die E-Mail.", teilIntro: "Ein Wort fehlt in jeder Zeile.", typ: "luecke", frage: "Sehr ___ Herr Braun,", antwort: ["geehrter"] },
+      { teil: "Teil 2 — Ergänzen Sie die E-Mail.", typ: "luecke", frage: "ich ___ gern einen Termin für meinen Sohn vereinbaren.", antwort: ["möchte", "moechte", "würde"] },
+      { teil: "Teil 2 — Ergänzen Sie die E-Mail.", typ: "luecke", frage: "Haben Sie nächste Woche einen Termin ___?", antwort: ["frei"] },
+      { teil: "Teil 2 — Ergänzen Sie die E-Mail.", typ: "luecke", frage: "Ich kann leider nur ___ Nachmittag.", antwort: ["am"] },
+      { teil: "Teil 2 — Ergänzen Sie die E-Mail.", typ: "luecke", frage: "Vielen Dank im ___.", antwort: ["Voraus"] },
+      { teil: "Teil 2 — Ergänzen Sie die E-Mail.", typ: "luecke", frage: "Mit freundlichen ___", antwort: ["Grüßen", "Gruessen"] },
+
+      {
+        teil: "Teil 3 — Lesen Sie die Antwort der Praxis.",
+        typ: "rf",
+        frage: "Herr Owusu hat einen Termin am Nachmittag.",
+        vorlageTitel: "Antwort: Zahnarztpraxis Dr. Hoffmann",
+        vorlage: [
+          "Sehr geehrter Herr Owusu,",
+          "",
+          "vielen Dank für Ihre Nachricht. Wir können Ihnen am Dienstag, den 13. Oktober, um 16:30 Uhr einen Termin anbieten.",
+          "Bitte bringen Sie Ihre Versichertenkarte mit und kommen Sie zehn Minuten früher, denn Sie sind neu bei uns und müssen einen Fragebogen ausfüllen.",
+          "Wenn Sie den Termin nicht wahrnehmen können, sagen Sie bitte mindestens 24 Stunden vorher telefonisch ab: 0431 55 62 70.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Ihr Praxisteam Dr. Hoffmann"
+        ],
+        antwort: true
+      },
+      { teil: "Teil 3 — Lesen Sie die Antwort der Praxis.", typ: "rf", frage: "Er soll um 16:30 Uhr in der Praxis sein.", antwort: false, warum: "Er soll zehn Minuten früher kommen, also um 16:20 Uhr." },
+      { teil: "Teil 3 — Lesen Sie die Antwort der Praxis.", typ: "rf", frage: "Er kann den Termin auch per E-Mail absagen.", antwort: false, warum: "Absagen soll man *telefonisch*." },
+      { teil: "Teil 3 — Lesen Sie die Antwort der Praxis.", typ: "mc", frage: "Warum soll Herr Owusu früher kommen?", optionen: ["Die Praxis öffnet früher.", "Er muss einen Fragebogen ausfüllen.", "Er muss bezahlen.", "Der Arzt hat wenig Zeit."], antwort: 1 },
+
+      {
+        teil: "Teil 4 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Ihre Tochter (7 Jahre) braucht einen Termin bei der Kinderärztin, Frau Dr. Schäfer. Schreiben Sie eine E-Mail an die Praxis.",
+        punkte: ["Warum brauchen Sie einen Termin?", "Wann können Sie kommen, wann nicht?", "Fragen Sie, was Sie mitbringen müssen."],
+        woerter: 45,
+        muster: [
+          "Betreff: Termin für meine Tochter",
+          "",
+          "Sehr geehrte Frau Dr. Schäfer,",
+          "",
+          "ich möchte gern einen Termin für meine Tochter Amina vereinbaren. Sie ist sieben Jahre alt und hustet seit einer Woche sehr stark.",
+          "Ich arbeite vormittags, deshalb kann ich nur nach 14 Uhr kommen. Am Freitag geht es leider nicht.",
+          "Wir sind neu in Freiburg. Was muss ich zum ersten Termin mitbringen?",
+          "",
+          "Vielen Dank im Voraus.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Fatou Diop"
+        ],
+        checkliste: [
+          "*Sehr geehrte Frau Dr. Schäfer,* — und danach klein weiter?",
+          "Sind alle drei Punkte da?",
+          "*Sie, Ihnen, Ihr* überall groß?",
+          "*Mit freundlichen Grüßen* und Ihr ganzer Name?"
+        ]
+      },
+      {
+        teil: "Teil 4 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Sie haben am Montag um 9 Uhr einen Termin beim Bürgeramt. Sie müssen an diesem Tag arbeiten. Schreiben Sie eine E-Mail.",
+        punkte: ["Sagen Sie den Termin ab und nennen Sie den Grund.", "Bitten Sie um einen neuen Termin.", "Schreiben Sie, wann Sie Zeit haben."],
+        woerter: 40,
+        muster: [
+          "Betreff: Termin am Montag, 9 Uhr — Bitte um neuen Termin",
+          "",
+          "Sehr geehrte Damen und Herren,",
+          "",
+          "ich habe am Montag, den 5. Oktober, um 9 Uhr einen Termin zur Anmeldung. Leider kann ich an diesem Tag nicht kommen, denn ich muss arbeiten.",
+          "Kann ich bitte einen neuen Termin bekommen? Ich habe am Donnerstag und am Freitag frei, dann passt mir jede Uhrzeit.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Kwame Mensah"
+        ],
+        checkliste: [
+          "Steht der alte Termin genau da — Tag, Datum, Uhrzeit?",
+          "Nach *denn* normale Wortstellung: *denn ich muss arbeiten*.",
+          "Ist die Bitte eine höfliche Frage?"
+        ]
+      }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "S08",
+    gruppe: "briefe",
+    stufe: 2,
+    title: "Absagen und entschuldigen",
+    subtitle: "Saying you can't come, and apologising",
+    focus: "können und müssen, Entschuldigung, Grund nennen",
+    intro:
+      "Illness, a child at home, a shift that changed — sooner or later you have to write that you cannot come. A good cancellation says three things: that you are not coming, why, and what happens next.",
+    lernen: [
+      "Whether you write to a friend or to your teacher, the content is the same. Only the form changes — *du* or *Sie*, and the greeting at the top and bottom.",
+      {
+        kopf: ["Teil", "persönlich", "formell"],
+        zeilen: [
+          ["Absage", "Ich kann am Samstag leider nicht kommen.", "Leider kann ich morgen nicht zum Kurs kommen."],
+          ["Grund", "Meine Eltern besuchen mich.", "Mein Sohn ist krank und ich muss zu Hause bleiben."],
+          ["Entschuldigung", "Tut mir echt leid!", "Es tut mir sehr leid."],
+          ["Wie geht es weiter?", "Hast du am Sonntag Zeit?", "Können Sie mir bitte die Hausaufgaben schicken?"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "können and müssen",
+        text: ["Both are modal verbs: *ich* and *er / sie* have the same form, with no ending. The second verb goes to the end of the sentence as an infinitive."],
+        zeilen: [
+          ["ich kann / muss", "wir können / müssen"],
+          ["du kannst / musst", "ihr könnt / müsst"],
+          ["er, sie, es kann / muss", "sie, Sie können / müssen"]
+        ]
+      },
+      {
+        brief: [
+          "Betreff: Abwesenheit am Dienstag und Mittwoch",
+          "",
+          "Sehr geehrte Frau Neumann,",
+          "",
+          "leider kann ich am Dienstag und am Mittwoch nicht zum Deutschkurs kommen. Meine Tochter hat Fieber, und ich muss bei ihr zu Hause bleiben.",
+          "Es tut mir sehr leid. Können Sie mir bitte schreiben, welche Hausaufgaben wir machen sollen? Am Donnerstag bin ich wieder da.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Leyla Ahmadi"
+        ],
+        titel: "Beispiel"
+      },
+      {
+        box: "mistake",
+        titel: "Watch the verb at the end",
+        liste: [
+          "~Ich kann nicht kommen morgen.~ → Ich kann morgen nicht *kommen*.",
+          "~Er muss arbeitet.~ → Er muss *arbeiten*. — the second verb stays in the infinitive.",
+          "~Ich kannst …~ → Ich *kann*. The *-st* belongs to *du* only."
+        ]
+      }
+    ],
+    redemittel: [
+      {
+        titel: "Absagen und entschuldigen",
+        zeilen: [
+          ["Leider kann ich (am …) nicht kommen.", "Unfortunately I can't come (on …)."],
+          ["Es tut mir (sehr) leid.", "I'm (very) sorry."],
+          ["Entschuldigen Sie bitte, ich war gestern nicht da.", "I'm sorry I wasn't there yesterday."],
+          ["Ich bin krank. / Ich habe Fieber.", "I'm ill. / I have a temperature."],
+          ["Ich muss (leider) arbeiten.", "I (unfortunately) have to work."],
+          ["Können wir einen anderen Tag finden?", "Can we find another day?"],
+          ["Am … bin ich wieder da.", "I'll be back on …"]
+        ]
+      }
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — können oder müssen?", typ: "luecke", frage: "Ich ___ morgen leider nicht zum Kurs kommen.", antwort: ["kann"] },
+      { teil: "Teil 1 — können oder müssen?", typ: "luecke", frage: "Mein Sohn ist krank. Ich ___ zu Hause bleiben.", antwort: ["muss"] },
+      { teil: "Teil 1 — können oder müssen?", typ: "luecke", frage: "___ du am Samstag wirklich arbeiten?", antwort: ["Musst"] },
+      { teil: "Teil 1 — können oder müssen?", typ: "luecke", frage: "Wir ___ leider nicht zu deiner Party kommen.", antwort: ["können", "koennen"] },
+      { teil: "Teil 1 — können oder müssen?", typ: "luecke", frage: "Frau Weber, ___ Sie mir bitte die Hausaufgaben schicken?", antwort: ["können", "koennen", "könnten"] },
+
+      { teil: "Teil 2 — Bauen Sie den Satz.", teilIntro: "Schreiben Sie den ganzen Satz. Das Modalverb steht auf Position 2.", typ: "luecke", lang: true, frage: "Satz mit *muss*", woerter: ["morgen", "zum Arzt", "ich", "gehen", "muss"], antwort: ["Ich muss morgen zum Arzt gehen.", "Morgen muss ich zum Arzt gehen."] },
+      { teil: "Teil 2 — Bauen Sie den Satz.", typ: "luecke", lang: true, frage: "Satz mit *kann*", woerter: ["am Freitag", "leider", "nicht", "kommen", "ich", "kann"], antwort: ["Ich kann am Freitag leider nicht kommen.", "Am Freitag kann ich leider nicht kommen.", "Leider kann ich am Freitag nicht kommen."] },
+      { teil: "Teil 2 — Bauen Sie den Satz.", typ: "luecke", lang: true, frage: "Frage mit *können*", woerter: ["einen anderen Tag", "wir", "finden", "können"], antwort: ["Können wir einen anderen Tag finden?"] },
+
+      { teil: "Teil 3 — An wen?", typ: "mc", frage: "Sie schreiben Ihrem Kursleiter, Herrn Koch.", optionen: ["Hi Koch, sorry, ich komm heute nicht!", "Sehr geehrter Herr Koch, leider kann ich heute nicht zum Kurs kommen.", "Lieber Herr, ich kann nicht.", "Sehr geehrte Herr Koch, ich komme nicht."], antwort: 1 },
+      { teil: "Teil 3 — An wen?", typ: "mc", frage: "Ihre Freundin Nina hat Sie zum Essen eingeladen. Sie können nicht.", optionen: ["Sehr geehrte Nina, ich sage den Termin ab.", "Liebe Nina, danke für die Einladung! Leider kann ich am Freitag nicht, ich habe Spätschicht. Tut mir leid!", "Nina, nein.", "Liebe Nina, ich muss kommen."], antwort: 1 },
+
+      {
+        teil: "Teil 4 — Lesen Sie die Nachricht.",
+        typ: "rf",
+        frage: "Am Donnerstag gibt es keinen Kurs.",
+        vorlageTitel: "E-Mail an alle Kursteilnehmer",
+        vorlage: [
+          "Liebe Kursteilnehmerinnen und Kursteilnehmer,",
+          "",
+          "leider bin ich krank und muss den Kurs am Donnerstag absagen. Wir holen die Stunde am Samstag, den 17. Oktober, von 10 bis 13 Uhr nach — diesmal in Raum 204, nicht in Raum 112.",
+          "Bitte machen Sie bis Samstag die Übungen 3 bis 6 auf Seite 45.",
+          "Wer am Samstag nicht kann, schreibt mir bitte kurz.",
+          "",
+          "Viele Grüße",
+          "Petra Neumann"
+        ],
+        antwort: true
+      },
+      { teil: "Teil 4 — Lesen Sie die Nachricht.", typ: "rf", frage: "Der Samstagskurs ist im gleichen Raum wie immer.", antwort: false, warum: "Am Samstag ist der Kurs in Raum 204, sonst in Raum 112." },
+      { teil: "Teil 4 — Lesen Sie die Nachricht.", typ: "rf", frage: "Die Teilnehmer sollen vier Übungen machen.", antwort: true, warum: "Übung 3, 4, 5 und 6." },
+
+      {
+        teil: "Teil 5 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Sie können nicht zum Nachholtermin am Samstag kommen. Schreiben Sie Frau Neumann.",
+        punkte: ["Sagen Sie ab und nennen Sie den Grund.", "Entschuldigen Sie sich.", "Fragen Sie nach dem Material aus der Stunde."],
+        woerter: 40,
+        muster: [
+          "Sehr geehrte Frau Neumann,",
+          "",
+          "gute Besserung! Leider kann ich am Samstag nicht zum Kurs kommen, denn ich muss an diesem Tag bis 14 Uhr arbeiten. Es tut mir sehr leid.",
+          "Können Sie mir bitte die Arbeitsblätter aus der Stunde per E-Mail schicken? Die Übungen auf Seite 45 mache ich natürlich.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Daniel Okello"
+        ],
+        checkliste: [
+          "Formelle Anrede und formeller Gruß?",
+          "Steht der Infinitiv nach *kann* / *muss* am Satzende?",
+          "Absage, Entschuldigung und Frage — alle drei da?"
+        ]
+      },
+      {
+        teil: "Teil 5 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Sie wollten am Samstag mit Ihrem Freund Tobias ins Kino gehen. Jetzt besuchen Sie Ihre Eltern am Wochenende. Schreiben Sie Tobias.",
+        punkte: ["Sagen Sie ab und nennen Sie den Grund.", "Entschuldigen Sie sich.", "Schlagen Sie einen anderen Tag vor."],
+        woerter: 35,
+        muster: [
+          "Hallo Tobias,",
+          "",
+          "es tut mir echt leid, aber ich kann am Samstag nicht mit ins Kino. Meine Eltern kommen am Wochenende überraschend zu Besuch, und ich muss sie am Bahnhof abholen.",
+          "Hast du am Mittwochabend Zeit? Dann läuft der Film noch, und ich lade dich zum Popcorn ein!",
+          "",
+          "Liebe Grüße",
+          "Kofi"
+        ],
+        checkliste: [
+          "Persönliche Anrede, *du*-Form?",
+          "Ein Grund und ein neuer Vorschlag mit Tag?",
+          "Trennbare Verben richtig: *abholen* am Ende?"
+        ]
+      }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "S09",
+    gruppe: "briefe",
+    stufe: 3,
+    title: "Informationen erfragen",
+    subtitle: "Asking a school, club or hotel for details",
+    focus: "Fragen in E-Mails, Wie viel? Wie lange? Gibt es …?",
+    intro:
+      "You have seen an advert for a course, a club or a place to stay, and something is missing — the price, the start date, whether you need to bring anything. The email that asks for it is short, but the questions have to be clear enough that the answer is useful.",
+    lernen: [
+      "An enquiry has a simple order: say who you are and where you saw the offer, ask your questions — each one as a complete question with a question mark — and thank them.",
+      {
+        kopf: ["Sie möchten wissen …", "Frage"],
+        zeilen: [
+          ["den Preis", "Wie viel kostet der Kurs?"],
+          ["den Beginn", "Wann beginnt der nächste Kurs?"],
+          ["die Dauer", "Wie lange dauert eine Stunde?"],
+          ["den Ort", "Wo findet der Kurs statt?"],
+          ["die Anmeldung", "Wie kann ich mich anmelden?"],
+          ["was man braucht", "Muss ich etwas mitbringen?"],
+          ["Ermäßigung", "Gibt es eine Ermäßigung für Studenten?"],
+          ["ob etwas möglich ist", "Kann ich auch später einsteigen?"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "Make it easy to answer",
+        liste: [
+          "Ask about what is *not* in the advert. Asking for information that is already there looks careless.",
+          "Two or three questions are enough. Give each its own sentence.",
+          "Start with a sentence that gives context: _Ich habe Ihre Anzeige auf der Webseite der Stadt gelesen._"
+        ]
+      },
+      {
+        brief: [
+          "Betreff: Frage zum Schwimmkurs für Erwachsene",
+          "",
+          "Sehr geehrte Damen und Herren,",
+          "",
+          "ich habe im Gemeindeblatt Ihre Anzeige für den Schwimmkurs für Erwachsene gelesen. Ich kann noch gar nicht schwimmen und interessiere mich sehr für den Kurs.",
+          "Ich habe noch einige Fragen: Wie viele Personen sind in einer Gruppe? Gibt es auch einen Kurs am Wochenende? Und muss ich den ganzen Kurs am Anfang bezahlen?",
+          "",
+          "Vielen Dank für Ihre Antwort.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Grace Achieng"
+        ],
+        titel: "Beispiel"
+      }
+    ],
+    aufgaben: [
+      {
+        teil: "Teil 1 — Lesen Sie die Anzeige.",
+        typ: "rf",
+        frage: "Der Kurs findet an einem Tag statt.",
+        vorlageTitel: "Anzeige: Familienbildungsstätte Kassel",
+        vorlage: [
+          "*Brot backen wie früher*",
+          "Sie lernen, wie man Sauerteig ansetzt, und backen drei verschiedene Brote. Zum Schluss essen wir gemeinsam.",
+          "Samstag, 7. November, 10:00 – 15:00 Uhr",
+          "Küche im Erdgeschoss, Wilhelmstraße 12",
+          "Kursleitung: Bäckermeister Jens Fuchs",
+          "Maximal 10 Personen · Anmeldung bis 30. Oktober",
+          "Fragen an: info@fbs-kassel.de"
+        ],
+        antwort: true
+      },
+      { teil: "Teil 1 — Lesen Sie die Anzeige.", typ: "rf", frage: "Es können höchstens zehn Personen mitmachen.", antwort: true },
+      { teil: "Teil 1 — Lesen Sie die Anzeige.", typ: "rf", frage: "In der Anzeige steht der Preis.", antwort: false, warum: "Der Preis fehlt — danach kann man fragen." },
+      { teil: "Teil 1 — Lesen Sie die Anzeige.", typ: "mc", frage: "Welche Frage ist *nicht* nötig? Die Antwort steht schon in der Anzeige.", optionen: ["Wie viel kostet der Kurs?", "Muss ich etwas mitbringen?", "Wann beginnt der Kurs?", "Kann ich mein Kind mitbringen?"], antwort: 2 },
+
+      { teil: "Teil 2 — Fragen bilden", teilIntro: "Ergänzen Sie das Fragewort oder das fehlende Wort.", typ: "luecke", frage: "___ kostet der Kurs?", hinweis: "zwei Wörter", antwort: ["Wie viel", "Wieviel"] },
+      { teil: "Teil 2 — Fragen bilden", typ: "luecke", frage: "Wie ___ dauert der Kurs?", antwort: ["lange"] },
+      { teil: "Teil 2 — Fragen bilden", typ: "luecke", frage: "___ es eine Ermäßigung für Schüler?", antwort: ["Gibt"] },
+      { teil: "Teil 2 — Fragen bilden", typ: "luecke", frage: "Muss ich ___ mitbringen?", antwort: ["etwas", "was"] },
+      { teil: "Teil 2 — Fragen bilden", typ: "luecke", frage: "Wo ___ der Kurs statt?", antwort: ["findet"], warum: "*stattfinden* ist trennbar: der Kurs *findet* … *statt*." },
+
+      { teil: "Teil 3 — Der erste Satz", typ: "mc", frage: "Welcher Satz ist ein guter Anfang für die Anfrage zum Backkurs?", optionen: ["Ich will backen.", "ich habe Ihre Anzeige für den Brotbackkurs gelesen und interessiere mich sehr dafür.", "Hallo, was ist das für ein Kurs?", "Ich schreibe, weil ich Brot esse."], antwort: 1, warum: "Nach der Anrede mit Komma geht es klein weiter, und der Satz sagt, worum es geht." },
+
+      {
+        teil: "Teil 4 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Schreiben Sie an die Familienbildungsstätte Kassel. Sie möchten am Brotbackkurs teilnehmen.",
+        punkte: ["Sagen Sie, wo Sie die Anzeige gelesen haben.", "Fragen Sie nach dem Preis.", "Fragen Sie, was Sie mitbringen müssen."],
+        woerter: 45,
+        muster: [
+          "Betreff: Frage zum Kurs „Brot backen wie früher“",
+          "",
+          "Sehr geehrte Damen und Herren,",
+          "",
+          "ich habe Ihre Anzeige für den Brotbackkurs am 7. November in der Zeitung gelesen. Ich backe sehr gern und möchte gern mitmachen.",
+          "Ich habe zwei Fragen: Wie viel kostet der Kurs? Und muss ich etwas mitbringen, zum Beispiel eine Schürze oder Behälter für das Brot?",
+          "",
+          "Vielen Dank für Ihre Antwort.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Nadia Benali"
+        ],
+        checkliste: [
+          "Keine Frage nach etwas, das schon in der Anzeige steht?",
+          "Jede Frage ein eigener Satz mit Fragezeichen?",
+          "Formelle Anrede, *Sie* groß, formeller Gruß?"
+        ]
+      },
+      {
+        teil: "Teil 4 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Sie möchten mit einer Freundin zwei Nächte in einer Jugendherberge in Hamburg übernachten. Schreiben Sie eine Anfrage.",
+        punkte: ["Wann kommen Sie, und wie viele Personen sind Sie?", "Fragen Sie nach dem Preis mit Frühstück.", "Fragen Sie nach Fahrrädern oder nach dem Weg vom Bahnhof."],
+        woerter: 45,
+        muster: [
+          "Betreff: Anfrage für zwei Nächte im November",
+          "",
+          "Sehr geehrte Damen und Herren,",
+          "",
+          "meine Freundin und ich möchten vom 20. bis 22. November nach Hamburg kommen. Haben Sie für diese zwei Nächte ein Zimmer für zwei Personen frei?",
+          "Wie viel kostet eine Nacht mit Frühstück? Außerdem möchten wir gern die Stadt mit dem Fahrrad ansehen. Kann man bei Ihnen Fahrräder leihen?",
+          "",
+          "Ich freue mich auf Ihre Antwort.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Esther Boateng"
+        ],
+        checkliste: [
+          "Datum und Personenzahl genau angegeben?",
+          "Zwei klare Fragen?",
+          "Ein Schlusssatz vor dem Gruß?"
+        ]
+      }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "S10",
+    gruppe: "briefe",
+    stufe: 3,
+    title: "Ein Problem melden",
+    subtitle: "Writing to a landlord or an online shop",
+    focus: "kaputt, funktioniert nicht, seit + Dativ, Perfekt, höflich bleiben",
+    intro:
+      "The heating stopped, the wrong parcel arrived, the washing machine in the basement leaks. A complaint in German does not need strong words. It needs the facts in the right order and a clear request — and it gets a faster answer when it stays polite.",
+    lernen: [
+      "A message about a problem answers four questions, in this order. If one is missing, the reply is usually a question back to you — and the problem waits another day.",
+      {
+        kopf: ["Frage", "Beispiel"],
+        zeilen: [
+          ["Was ist das Problem?", "Die Heizung im Schlafzimmer funktioniert nicht."],
+          ["Seit wann?", "Seit Sonntag ist das Zimmer kalt."],
+          ["Was haben Sie schon gemacht?", "Ich habe schon zweimal angerufen, aber niemand ist ans Telefon gegangen."],
+          ["Was möchten Sie?", "Bitte schicken Sie so schnell wie möglich einen Techniker."],
+          ["Wann sind Sie da?", "Ich bin jeden Tag ab 16 Uhr zu Hause."]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "seit + dative",
+        text: ["*seit* says how long something has been going on, and it takes the dative. German uses the *present tense* for it — not a past tense."],
+        zeilen: [
+          ["seit Montag / seit Mai", "no article"],
+          ["seit einem Tag / seit einer Woche", "ein → einem / eine → einer"],
+          ["seit zwei Tagen / seit drei Wochen", "plural adds -n"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "What already happened: Perfekt",
+        zeilen: [
+          ["bestellen", "Ich *habe* eine Jacke *bestellt*."],
+          ["bekommen", "Ich *habe* eine falsche Größe *bekommen*."],
+          ["anrufen", "Ich *habe* schon *angerufen*."],
+          ["kommen", "Der Techniker *ist* nicht *gekommen*."]
+        ]
+      },
+      {
+        box: "mistake",
+        titel: "Firm, but polite",
+        liste: [
+          "~Machen Sie das sofort!~ → *Bitte* kümmern Sie sich so schnell wie möglich darum.",
+          "~Ich wohne hier seit zwei Jahren und die Heizung war kaputt seit Sonntag.~ → Die Heizung *ist seit Sonntag* kaputt.",
+          "*bestellt* and *bekommen* have no *ge-*: verbs that begin with *be-, ver-, er-* never take it."
+        ]
+      }
+    ],
+    redemittel: [
+      {
+        titel: "Probleme beschreiben",
+        zeilen: [
+          ["… ist kaputt. / … funktioniert nicht.", "… is broken. / … doesn't work."],
+          ["Das Wasser läuft nicht ab.", "The water doesn't drain."],
+          ["Ich habe … bestellt, aber … bekommen.", "I ordered … but received …"],
+          ["Die Ware ist beschädigt.", "The goods are damaged."],
+          ["Ich möchte die Jacke umtauschen / zurückschicken.", "I'd like to exchange / return the jacket."],
+          ["Bitte schicken Sie einen Techniker.", "Please send a technician."],
+          ["Ich bitte um eine schnelle Antwort.", "I would appreciate a quick reply."]
+        ]
+      }
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — seit", typ: "luecke", frage: "Die Heizung ist seit drei ___ kaputt.", antwort: ["Tagen"] },
+      { teil: "Teil 1 — seit", typ: "luecke", frage: "Ich warte seit ___ Woche auf mein Paket.", antwort: ["einer"] },
+      { teil: "Teil 1 — seit", typ: "luecke", frage: "Die Waschmaschine funktioniert seit ___ Monat nicht.", antwort: ["einem"] },
+      { teil: "Teil 1 — seit", typ: "mc", frage: "Welcher Satz ist richtig?", optionen: ["Die Dusche war seit Freitag kaputt.", "Die Dusche ist seit Freitag kaputt.", "Die Dusche ist kaputt seit dem Freitags.", "Seit Freitag die Dusche ist kaputt."], antwort: 1, warum: "Mit *seit* benutzt man das Präsens, wenn das Problem noch da ist." },
+
+      { teil: "Teil 2 — Perfekt", typ: "luecke", frage: "Ich ___ schon dreimal angerufen.", antwort: ["habe"] },
+      { teil: "Teil 2 — Perfekt", typ: "luecke", frage: "Der Techniker ___ gestern nicht gekommen.", antwort: ["ist"] },
+      { teil: "Teil 2 — Perfekt", typ: "luecke", frage: "Ich habe am 2. Oktober eine blaue Jacke ___.", hinweis: "bestellen", antwort: ["bestellt"] },
+      { teil: "Teil 2 — Perfekt", typ: "luecke", frage: "Aber ich habe eine grüne Jacke ___.", hinweis: "bekommen", antwort: ["bekommen"] },
+
+      { teil: "Teil 3 — Höflich oder unhöflich?", typ: "mc", frage: "Welcher Satz passt am besten in eine E-Mail an die Hausverwaltung?", optionen: ["Reparieren Sie endlich die Heizung!", "Die Heizung ist kaputt. Das ist eine Katastrophe!", "Können Sie bitte so schnell wie möglich einen Techniker schicken?", "Ich zahle keine Miete mehr."], antwort: 2 },
+
+      {
+        teil: "Teil 4 — Lesen Sie den Aushang.",
+        typ: "rf",
+        frage: "Am Dienstagvormittag gibt es im Haus kein Wasser.",
+        vorlageTitel: "Aushang im Treppenhaus",
+        vorlage: [
+          "*Hausverwaltung Brandt & Söhne — Information für alle Mieter*",
+          "Wegen einer Reparatur an der Hauptleitung stellen wir am Dienstag, den 20. Oktober, von 8 bis 12 Uhr das Wasser ab.",
+          "Bitte stellen Sie vorher Wasser in Flaschen bereit. Benutzen Sie in dieser Zeit keine Wasch- und Spülmaschinen.",
+          "Ab Mittwoch erneuern wir die Briefkästen. Die Post liegt dann zwei Tage bei Familie Kowalski im Erdgeschoss.",
+          "Bei Fragen: 0561 400 77 12 (Mo – Fr, 9 – 16 Uhr)"
+        ],
+        antwort: true
+      },
+      { teil: "Teil 4 — Lesen Sie den Aushang.", typ: "rf", frage: "Die Mieter sollen am Dienstag um 10 Uhr die Waschmaschine benutzen.", antwort: false, warum: "Von 8 bis 12 Uhr soll man *keine* Waschmaschine benutzen." },
+      { teil: "Teil 4 — Lesen Sie den Aushang.", typ: "mc", frage: "Wo bekommen die Mieter ab Mittwoch ihre Post?", optionen: ["Im Briefkasten", "Bei der Hausverwaltung", "Bei Familie Kowalski", "Auf der Post"], antwort: 2 },
+
+      {
+        teil: "Teil 5 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Die Heizung in Ihrem Schlafzimmer funktioniert seit Sonntag nicht. Schreiben Sie an die Hausverwaltung Brandt & Söhne.",
+        punkte: ["Beschreiben Sie das Problem. Seit wann?", "Was haben Sie schon versucht?", "Bitten Sie um einen Techniker und sagen Sie, wann Sie zu Hause sind."],
+        woerter: 50,
+        muster: [
+          "Betreff: Heizung kaputt — Wohnung 3. OG links, Gartenstraße 9",
+          "",
+          "Sehr geehrte Damen und Herren,",
+          "",
+          "seit Sonntag funktioniert die Heizung in meinem Schlafzimmer nicht. Das Zimmer ist nachts nur 14 Grad warm, und mein kleiner Sohn schläft auch dort.",
+          "Ich habe schon am Montag bei Ihnen angerufen, aber niemand ist ans Telefon gegangen.",
+          "Bitte schicken Sie so schnell wie möglich einen Techniker. Ich bin jeden Tag ab 15 Uhr zu Hause, am Freitag den ganzen Tag.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Emeka Nwosu"
+        ],
+        checkliste: [
+          "Adresse oder Wohnung im Betreff?",
+          "*seit* + Präsens für das Problem, Perfekt für das, was schon passiert ist?",
+          "Eine klare Bitte und Ihre Zeiten?",
+          "Der Ton: bestimmt, aber höflich?"
+        ]
+      },
+      {
+        teil: "Teil 5 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Sie haben im Online-Shop „Schuhwerk24“ schwarze Sportschuhe in Größe 42 bestellt. Gekommen sind braune Schuhe in Größe 44. Schreiben Sie an den Kundenservice.",
+        punkte: ["Was haben Sie bestellt, was haben Sie bekommen?", "Was möchten Sie jetzt?", "Fragen Sie, wie Sie die Schuhe zurückschicken."],
+        woerter: 45,
+        muster: [
+          "Betreff: Falsche Lieferung — Bestellnummer 4481 2290",
+          "",
+          "Sehr geehrte Damen und Herren,",
+          "",
+          "am 5. Oktober habe ich bei Ihnen schwarze Sportschuhe in Größe 42 bestellt. Heute ist das Paket gekommen, aber darin sind braune Schuhe in Größe 44.",
+          "Ich möchte die Schuhe gern umtauschen. Bitte schicken Sie mir die richtigen Schuhe. Wie kann ich die falschen Schuhe zurückschicken? Muss ich das Porto bezahlen?",
+          "",
+          "Vielen Dank im Voraus.",
+          "",
+          "Mit freundlichen Grüßen",
+          "Ali Hassan"
+        ],
+        checkliste: [
+          "Bestellnummer oder Datum genannt?",
+          "*bestellt* und *bekommen* ohne *ge-*?",
+          "Was Sie möchten, ist eindeutig: umtauschen oder Geld zurück?"
+        ]
+      }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "S11",
+    gruppe: "texte",
+    stufe: 2,
+    title: "Über mich schreiben",
+    subtitle: "A profile for a language exchange",
+    focus: "Possessivartikel, Absätze, Sätze abwechslungsreich beginnen",
+    intro:
+      "A tandem partner, a new course group, a club's website — they all ask you to write a few lines about yourself. You already know how to introduce yourself out loud. Written, it needs a little more order, and sentences that do not all begin with *Ich*.",
+    lernen: [
+      "A good short profile has three or four small paragraphs, each about one thing. Put a blank line between them — on a phone screen a single block of text is hard to read.",
+      {
+        kopf: ["Absatz", "Inhalt", "Beispiel"],
+        zeilen: [
+          ["1", "Wer sind Sie?", "Ich heiße Omar, bin 31 und komme aus Marokko."],
+          ["2", "Ihr Alltag", "Seit zwei Jahren lebe ich in Dortmund und arbeite als Krankenpfleger."],
+          ["3", "Freizeit", "Am Wochenende spiele ich Fußball oder koche für Freunde."],
+          ["4", "Was Sie suchen", "Ich suche einen Tandempartner: Ich helfe dir mit Arabisch oder Französisch, du hilfst mir mit Deutsch."]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "mein, meine — and the others",
+        text: ["Possessive articles take the same endings as *ein / eine*. In the plural they end in *-e*."],
+        zeilen: [
+          ["ich", "mein Bruder · meine Schwester · mein Kind · meine Eltern"],
+          ["du", "dein Bruder · deine Schwester · dein Kind · deine Eltern"],
+          ["er / es", "sein Bruder · seine Schwester …"],
+          ["sie", "ihr Bruder · ihre Schwester …"],
+          ["Sie", "Ihr Bruder · Ihre Schwester …"]
+        ]
+      },
+      {
+        box: "example",
+        titel: "Don't start every sentence with Ich",
+        text: [
+          "~Ich wohne in Dortmund. Ich arbeite im Krankenhaus. Ich spiele gern Fußball.~",
+          "*In Dortmund* wohne ich seit zwei Jahren. *Dort* arbeite ich im Krankenhaus. *In meiner Freizeit* spiele ich gern Fußball.",
+          "Put a time, a place or *dort / dann / außerdem* at the front — and remember the verb stays in position 2."
+        ]
+      },
+      {
+        brief: [
+          "Hallo!",
+          "",
+          "Ich heiße Omar, bin 31 Jahre alt und komme aus Marokko, aus Fès. Meine Muttersprache ist Arabisch, außerdem spreche ich Französisch.",
+          "",
+          "Seit zwei Jahren lebe ich in Dortmund. Dort arbeite ich als Krankenpfleger in einem großen Krankenhaus. Meine Arbeit macht mir viel Spaß, aber die Schichten sind lang.",
+          "",
+          "In meiner Freizeit spiele ich Fußball in einem Verein. Außerdem koche ich gern — am liebsten Tajine für meine Freunde.",
+          "",
+          "Ich suche einen Tandempartner oder eine Tandempartnerin. Ich möchte mein Deutsch im Gespräch verbessern, und ich helfe dir gern mit Arabisch oder Französisch. Wir können uns in einem Café treffen.",
+          "",
+          "Bis bald!",
+          "Omar"
+        ],
+        titel: "Beispiel: Tandem-Profil"
+      }
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — mein, dein, sein, ihr …", typ: "luecke", frage: "Ich habe eine Schwester. ___ Schwester wohnt in Ghana.", antwort: ["Meine"] },
+      { teil: "Teil 1 — mein, dein, sein, ihr …", typ: "luecke", frage: "Das ist Tarek und das ist ___ Vater.", antwort: ["sein"] },
+      { teil: "Teil 1 — mein, dein, sein, ihr …", typ: "luecke", frage: "Wie heißt ___ Freundin, Paul?", antwort: ["deine"] },
+      { teil: "Teil 1 — mein, dein, sein, ihr …", typ: "luecke", frage: "Frau Kaya, wo arbeitet ___ Mann?", antwort: ["Ihr"] },
+      { teil: "Teil 1 — mein, dein, sein, ihr …", typ: "luecke", frage: "Lena kommt mit ___ Kindern.", hinweis: "Dativ Plural", antwort: ["ihren"] },
+
+      { teil: "Teil 2 — Anders anfangen", teilIntro: "Beginnen Sie den Satz mit dem markierten Teil.", typ: "luecke", lang: true, frage: "Ich spiele *am Wochenende* Fußball.", antwort: ["Am Wochenende spiele ich Fußball."] },
+      { teil: "Teil 2 — Anders anfangen", typ: "luecke", lang: true, frage: "Ich lerne *seit einem Jahr* Deutsch.", antwort: ["Seit einem Jahr lerne ich Deutsch."] },
+      { teil: "Teil 2 — Anders anfangen", typ: "luecke", lang: true, frage: "Ich koche *außerdem* gern.", antwort: ["Außerdem koche ich gern.", "Ausserdem koche ich gern."] },
+
+      { teil: "Teil 3 — Lesen Sie Omars Profil noch einmal.", typ: "rf", frage: "Omar spricht drei Sprachen.", antwort: true, warum: "Arabisch, Französisch — und jetzt Deutsch." },
+      { teil: "Teil 3 — Lesen Sie Omars Profil noch einmal.", typ: "rf", frage: "Omar arbeitet in einem Restaurant.", antwort: false, warum: "Er ist Krankenpfleger in einem Krankenhaus. Kochen ist sein Hobby." },
+      { teil: "Teil 3 — Lesen Sie Omars Profil noch einmal.", typ: "mc", frage: "Was möchte Omar im Tandem vor allem üben?", optionen: ["Deutsch schreiben", "Deutsch sprechen", "Französisch lernen", "Kochen"], antwort: 1, warum: "*… mein Deutsch im Gespräch verbessern* — im Gespräch heißt: sprechen." },
+
+      {
+        teil: "Teil 4 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Schreiben Sie Ihr eigenes Tandem-Profil.",
+        punkte: ["Wer sind Sie? Woher kommen Sie, welche Sprachen sprechen Sie?", "Wo leben Sie, was machen Sie beruflich?", "Was machen Sie in der Freizeit?", "Was suchen Sie und was bieten Sie an?"],
+        woerter: 70,
+        muster: [
+          "Hallo zusammen!",
+          "",
+          "Ich heiße Grace, bin 26 Jahre alt und komme aus Kenia. Ich spreche Luo, Swahili und Englisch.",
+          "",
+          "Seit acht Monaten wohne ich in Leipzig. Hier mache ich eine Ausbildung zur Pflegefachfrau. Die Arbeit ist anstrengend, aber ich lerne jeden Tag viel.",
+          "",
+          "In meiner Freizeit tanze ich gern. Außerdem gehe ich am Sonntag oft mit meiner Mitbewohnerin am See spazieren.",
+          "",
+          "Ich suche eine Tandempartnerin für Deutsch. Mein Deutsch ist noch nicht so gut, besonders beim Sprechen. Dafür helfe ich dir gern mit Englisch oder Swahili!",
+          "",
+          "Viele Grüße",
+          "Grace"
+        ],
+        checkliste: [
+          "Vier kurze Absätze mit Leerzeilen?",
+          "Beginnen nicht alle Sätze mit *Ich*?",
+          "Possessivartikel mit der richtigen Endung (*meine Mitbewohnerin*, *mein Deutsch*)?"
+        ]
+      },
+      {
+        teil: "Teil 4 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Antworten Sie auf Omars Profil.",
+        punkte: ["Stellen Sie sich kurz vor.", "Sagen Sie, welche Sprache Sie lernen möchten.", "Schlagen Sie ein erstes Treffen vor: wann und wo?"],
+        woerter: 45,
+        muster: [
+          "Hallo Omar,",
+          "",
+          "ich habe dein Profil gelesen und finde es sehr interessant. Ich heiße Julia, bin 29 und wohne auch in Dortmund. Ich bin Grundschullehrerin.",
+          "Seit einem Jahr lerne ich Französisch, aber ich spreche noch sehr wenig. Ich helfe dir gern mit Deutsch!",
+          "Hast du am Samstagnachmittag Zeit? Wir können uns um 15 Uhr im Café am Westpark treffen.",
+          "",
+          "Viele Grüße",
+          "Julia"
+        ],
+        checkliste: [
+          "*du*-Form, weil Omar im Profil auch *du* schreibt?",
+          "Ein konkreter Vorschlag mit Tag, Uhrzeit und Ort?"
+        ]
+      }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "S12",
+    gruppe: "texte",
+    stufe: 3,
+    title: "Grüße aus dem Urlaub",
+    subtitle: "Writing about a trip",
+    focus: "Perfekt mit haben und sein, Wetter, Postkarte und Nachricht",
+    intro:
+      "A postcard or a long message from a trip mixes two times: what you have already done, in the Perfekt, and what it is like here now, in the present. Keeping those two apart is what this unit practises.",
+    lernen: [
+      "A holiday message is short, but it follows a pattern. After the greeting, say where you are, tell two or three things you did, describe the place or the weather, and finish with what happens next.",
+      {
+        kopf: ["Teil", "Zeit", "Beispiel"],
+        zeilen: [
+          ["Wo sind Sie?", "Präsens", "Viele Grüße aus Dresden!"],
+          ["Was haben Sie gemacht?", "Perfekt", "Gestern haben wir die Frauenkirche besichtigt."],
+          ["Wie ist es?", "Präsens", "Die Stadt ist wunderschön, aber es regnet oft."],
+          ["Was kommt noch?", "Präsens", "Morgen fahren wir mit dem Schiff auf der Elbe."]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "haben or sein?",
+        text: ["Most verbs form the Perfekt with *haben*. Verbs of movement from one place to another, and *bleiben*, *passieren*, *werden*, take *sein*."],
+        zeilen: [
+          ["haben", "gegessen · gesehen · gekauft · gemacht · getrunken · fotografiert"],
+          ["sein", "gefahren · geflogen · gegangen · gekommen · geschwommen · geblieben"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "Participles without ge-",
+        liste: [
+          "Verbs ending in *-ieren*: fotografieren → *fotografiert*, telefonieren → *telefoniert*.",
+          "Verbs starting with *be-, ver-, er-, ent-*: besuchen → *besucht*, besichtigen → *besichtigt*, vergessen → *vergessen*.",
+          "Separable verbs put *ge* in the middle: ankommen → an*ge*kommen, einkaufen → ein*ge*kauft."
+        ]
+      },
+      {
+        box: "example",
+        titel: "The weather",
+        zeilen: [
+          ["Die Sonne scheint.", "The sun is shining."],
+          ["Es ist heiß / warm / kühl / kalt.", "It's hot / warm / cool / cold."],
+          ["Es regnet. / Es schneit.", "It's raining. / It's snowing."],
+          ["Es ist windig / bewölkt.", "It's windy / cloudy."],
+          ["Wir haben Glück mit dem Wetter.", "We're lucky with the weather."]
+        ]
+      }
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Das Partizip", typ: "luecke", frage: "Wir haben viele Fotos ___.", hinweis: "machen", antwort: ["gemacht"] },
+      { teil: "Teil 1 — Das Partizip", typ: "luecke", frage: "Am Montag sind wir in Wien ___.", hinweis: "ankommen", antwort: ["angekommen"] },
+      { teil: "Teil 1 — Das Partizip", typ: "luecke", frage: "Wir haben das Schloss ___.", hinweis: "besichtigen", antwort: ["besichtigt"] },
+      { teil: "Teil 1 — Das Partizip", typ: "luecke", frage: "Ich habe am Strand ein Buch ___.", hinweis: "lesen", antwort: ["gelesen"] },
+      { teil: "Teil 1 — Das Partizip", typ: "luecke", frage: "Ich habe den ganzen Tag ___.", hinweis: "fotografieren", antwort: ["fotografiert"] },
+
+      { teil: "Teil 2 — haben oder sein?", typ: "luecke", frage: "Wir ___ jeden Morgen im Meer geschwommen.", antwort: ["sind"] },
+      { teil: "Teil 2 — haben oder sein?", typ: "luecke", frage: "Am Abend ___ wir Fisch gegessen.", antwort: ["haben"] },
+      { teil: "Teil 2 — haben oder sein?", typ: "luecke", frage: "Es hat geregnet, deshalb ___ wir im Hotel geblieben.", antwort: ["sind"] },
+
+      {
+        teil: "Teil 3 — Lesen Sie die Postkarte.",
+        typ: "rf",
+        frage: "Sara ist mit ihrer Familie im Urlaub.",
+        vorlageTitel: "Postkarte aus Hamburg",
+        vorlage: [
+          "Liebe Frau Albrecht,",
+          "",
+          "viele Grüße aus Hamburg! Am Freitag bin ich mit meiner Freundin Merve hier angekommen. Wir haben schon eine Hafenrundfahrt gemacht und sind durch die Speicherstadt gelaufen. Gestern Abend haben wir ein Musical gesehen — fantastisch!",
+          "Das Wetter ist leider nicht so gut: Es ist windig und es regnet fast jeden Tag. Aber wir haben warme Jacken dabei.",
+          "Am Dienstag fahre ich zurück, und am Mittwoch bin ich wieder im Büro.",
+          "",
+          "Herzliche Grüße",
+          "Sara Yıldız"
+        ],
+        antwort: false,
+        warum: "Sie ist mit ihrer Freundin Merve in Hamburg."
+      },
+      { teil: "Teil 3 — Lesen Sie die Postkarte.", typ: "rf", frage: "Frau Albrecht ist wahrscheinlich Saras Kollegin oder Chefin.", antwort: true, warum: "Sie schreibt *Liebe Frau Albrecht* mit Nachnamen und ist am Mittwoch *wieder im Büro*." },
+      { teil: "Teil 3 — Lesen Sie die Postkarte.", typ: "mc", frage: "Wie ist das Wetter in Hamburg?", optionen: ["Sonnig und warm", "Windig und regnerisch", "Kalt mit Schnee", "Heiß"], antwort: 1 },
+      { teil: "Teil 3 — Lesen Sie die Postkarte.", typ: "mc", frage: "Was haben Sara und Merve noch *nicht* gemacht?", optionen: ["Eine Hafenrundfahrt", "Einen Spaziergang durch die Speicherstadt", "Ein Musical", "Eine Fahrt nach Berlin"], antwort: 3 },
+
+      {
+        teil: "Teil 4 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Sie machen drei Tage Urlaub in einer Stadt. Schreiben Sie Ihrer Freundin Lea eine Postkarte.",
+        punkte: ["Wo sind Sie, seit wann, mit wem?", "Was haben Sie schon gemacht? (zwei Dinge)", "Wie ist das Wetter oder das Essen?", "Wann kommen Sie zurück?"],
+        woerter: 55,
+        muster: [
+          "Liebe Lea,",
+          "",
+          "viele Grüße aus München! Seit Donnerstag bin ich mit meinem Bruder hier. Am ersten Tag sind wir mit dem Fahrrad durch den Englischen Garten gefahren. Gestern haben wir das Deutsche Museum besucht — wir sind vier Stunden geblieben!",
+          "Das Wetter ist super, die Sonne scheint jeden Tag. Und das Essen ist lecker, aber ziemlich teuer.",
+          "Am Sonntagabend bin ich wieder zu Hause. Dann erzähle ich dir alles!",
+          "",
+          "Liebe Grüße",
+          "Deine Chiara"
+        ],
+        checkliste: [
+          "Perfekt für das, was schon passiert ist — Präsens für Wetter, Essen, Pläne?",
+          "*sein* bei *fahren, gehen, bleiben*?",
+          "Partizip immer am Satzende?"
+        ]
+      },
+      {
+        teil: "Teil 4 — Schreiben Sie selbst.",
+        typ: "frei",
+        frage: "Ihr Deutschkurs hat am Samstag einen Ausflug gemacht. Eine Kollegin war krank. Schreiben Sie ihr in der Kursgruppe, was Sie gemacht haben.",
+        punkte: ["Wohin sind Sie gefahren und wie?", "Was haben Sie dort gemacht?", "Was hat Ihnen besonders gut gefallen?"],
+        woerter: 50,
+        muster: [
+          "Hallo Mariam,",
+          "",
+          "schade, dass du nicht dabei warst! Wir sind am Samstag um 9 Uhr mit dem Zug nach Heidelberg gefahren. Zuerst haben wir das Schloss besichtigt, dann sind wir über die Alte Brücke gegangen. Mittags haben wir alle zusammen Maultaschen gegessen.",
+          "Am besten hat mir die Aussicht vom Schloss gefallen. Ich habe viele Fotos gemacht, die schicke ich dir gleich.",
+          "",
+          "Gute Besserung!",
+          "Ahmed"
+        ],
+        checkliste: [
+          "Mindestens vier Sätze im Perfekt?",
+          "*zuerst, dann* mit Verb direkt danach?",
+          "Freundlicher Anfang und Schluss für eine kranke Kollegin?"
+        ]
+      }
+    ]
   }
 ];
 
@@ -797,5 +1642,11 @@ var SCHREIBEN_GRUPPEN = [
     titel: "E-Mails und Briefe",
     unter: "Emails and letters",
     text: "Personal emails to friends and formal emails to offices, schools and landlords — with the fixed openings and closings each one needs."
+  },
+  {
+    key: "texte",
+    titel: "Über sich schreiben",
+    unter: "Writing about yourself",
+    text: "Longer personal texts: a profile about yourself, and telling someone what you did on a trip."
   }
 ];

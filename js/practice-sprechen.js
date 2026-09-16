@@ -516,6 +516,527 @@ var SPRECHEN_UNITS = [
       { teil: "Teil 4 — Nein sagen", teilIntro: "Jemand bittet Sie um etwas. Sagen Sie freundlich nein und nennen Sie einen Grund.", typ: "sprechen", frage: "Ihr Nachbar fragt: *Können Sie am Samstag auf meinen Hund aufpassen?*", muster: "Tut mir leid, das geht leider nicht. Am Samstag bin ich den ganzen Tag bei meiner Schwester in Bonn." },
       { teil: "Teil 4 — Nein sagen", typ: "sprechen", frage: "Ein Kollege fragt: *Kannst du heute meine Schicht übernehmen?*", muster: "Heute kann ich leider nicht, ich habe am Abend einen Deutschkurs. Aber am Donnerstag kann ich dir helfen." }
     ]
+  },
+  /* ---------------------------------------------------------- */
+  {
+    id: "P07",
+    gruppe: "alltag",
+    stufe: 2,
+    title: "Im Café und im Restaurant",
+    subtitle: "Ordering, asking and paying",
+    focus: "bestellen, ich hätte gern / ich nehme, zahlen, Trinkgeld",
+    intro:
+      "Ordering is a short conversation with a fixed script, and the waiter follows it too. Once you know both halves — what you say and what you will hear — a restaurant stops being stressful.",
+    lernen: [
+      "A visit to a café or restaurant runs through the same steps almost every time. The table shows what the waiter says at each step and what you answer.",
+      {
+        kopf: ["Schritt", "Kellner / Kellnerin", "Sie"],
+        zeilen: [
+          ["Ankommen", "Guten Abend! Wie viele Personen?", "Einen Tisch für zwei, bitte."],
+          ["Getränke", "Was möchten Sie trinken?", "Ich hätte gern ein Wasser ohne Kohlensäure."],
+          ["Essen", "Haben Sie schon gewählt?", "Ja, ich nehme die Tomatensuppe."],
+          ["Nachfragen", "—", "Ist in dem Salat Fleisch?"],
+          ["Zwischendurch", "Schmeckt es Ihnen?", "Ja, danke, sehr gut!"],
+          ["Bezahlen", "Zusammen oder getrennt?", "Getrennt, bitte."],
+          ["Trinkgeld", "Das macht 18,40 Euro.", "Machen Sie 20."]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "Three ways to order",
+        zeilen: [
+          ["Ich hätte gern einen Kaffee.", "polite and very common"],
+          ["Ich nehme den Fisch.", "when choosing from the menu"],
+          ["Für mich bitte eine Cola.", "short, when ordering for a group"]
+        ],
+        text: ["All three take the *accusative*: *einen* Kaffee, *den* Fisch, *eine* Cola, *ein* Wasser."]
+      },
+      {
+        box: "example",
+        titel: "Paying in Germany",
+        liste: [
+          "You ask for the bill at the table: *Die Rechnung, bitte.* or *Ich möchte bitte zahlen.*",
+          "The waiter asks *Zusammen oder getrennt?* — one bill or separate.",
+          "Tip by saying the rounded total: the bill is 18,40 €, you hand over the money and say *Stimmt so* or *Machen Sie 20*."
+        ]
+      },
+      {
+        box: "mistake",
+        titel: "Watch out",
+        liste: [
+          "~Ich will einen Kaffee.~ sounds rude. Use *Ich hätte gern* or *Ich möchte*.",
+          "~Ich bekomme ein Wasser.~ is heard a lot, but *Ich hätte gern* is safer.",
+          "~Einen Wasser~ → *ein* Wasser. _das Wasser_ is neuter, so nothing changes in the accusative."
+        ]
+      }
+    ],
+    wortschatz: [
+      ["die Speisekarte, -n", "menu"],
+      ["die Vorspeise / Hauptspeise / Nachspeise", "starter / main / dessert"],
+      ["das Getränk, -e", "drink"],
+      ["mit / ohne Kohlensäure", "sparkling / still"],
+      ["vegetarisch / vegan", "vegetarian / vegan"],
+      ["die Rechnung, -en", "bill"],
+      ["zusammen / getrennt", "together / separately"],
+      ["das Trinkgeld", "tip"],
+      ["Stimmt so.", "Keep the change."],
+      ["lecker", "tasty"]
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Akkusativ", typ: "luecke", frage: "Ich hätte gern ___ Tee mit Milch.", hinweis: "der Tee", antwort: ["einen"] },
+      { teil: "Teil 1 — Akkusativ", typ: "luecke", frage: "Ich nehme ___ Gemüsesuppe.", hinweis: "die Suppe", antwort: ["die", "eine"] },
+      { teil: "Teil 1 — Akkusativ", typ: "luecke", frage: "Für mich bitte ___ Stück Apfelkuchen.", hinweis: "das Stück", antwort: ["ein"] },
+
+      { teil: "Teil 2 — Was sagt der Gast?", typ: "mc", frage: "Kellnerin: *Zusammen oder getrennt?*", optionen: ["Ja, bitte.", "Getrennt, bitte.", "Die Suppe, bitte.", "Mit Kohlensäure."], antwort: 1 },
+      { teil: "Teil 2 — Was sagt der Gast?", typ: "mc", frage: "Kellner: *Haben Sie schon gewählt?*", optionen: ["Ja, ich nehme das Schnitzel mit Salat.", "Ja, ich habe gegessen.", "Das macht 12 Euro.", "Guten Appetit!"], antwort: 0 },
+      { teil: "Teil 2 — Was sagt der Gast?", typ: "mc", frage: "Die Rechnung ist 23,60 €. Sie geben 25 € und möchten kein Wechselgeld.", optionen: ["Getrennt, bitte.", "Stimmt so.", "Ich hätte gern 25.", "Die Rechnung, bitte."], antwort: 1 },
+      { teil: "Teil 2 — Was sagt der Gast?", typ: "mc", frage: "Sie essen kein Fleisch. Was fragen Sie?", optionen: ["Ist das Fleisch lecker?", "Haben Sie auch etwas Vegetarisches?", "Ich hätte gern Fleisch.", "Wo ist das Fleisch?"], antwort: 1 },
+
+      { teil: "Teil 3 — Im Café", teilIntro: "Sie sind der Gast. Antworten Sie laut auf den Kellner.", typ: "sprechen", karte: { thema: "Kellner", wort: "Was darf es sein?" }, frage: "Bestellen Sie ein Getränk und etwas Süßes.", muster: "Ich hätte gern einen Cappuccino und ein Stück Käsekuchen, bitte." },
+      { teil: "Teil 3 — Im Café", typ: "sprechen", karte: { thema: "Kellner", wort: "Mit Sahne?" }, frage: "Sie möchten keine Sahne.", muster: "Nein, danke, ohne Sahne, bitte." },
+      { teil: "Teil 3 — Im Café", typ: "sprechen", karte: { thema: "Kellner", wort: "Noch etwas?" }, frage: "Sie möchten noch ein Glas Wasser.", muster: "Ja, bringen Sie mir bitte noch ein Glas Wasser." },
+      { teil: "Teil 3 — Im Café", typ: "sprechen", frage: "Sie möchten jetzt bezahlen. Rufen Sie die Kellnerin und sagen Sie es.", muster: "Entschuldigung! Ich möchte bitte zahlen." },
+
+      { teil: "Teil 4 — Im Restaurant", teilIntro: "Spielen Sie das ganze Gespräch. Sprechen Sie beide Rollen oder nur den Gast.", typ: "sprechen", frage: "Sie kommen mit einem Freund ins Restaurant, bestellen Getränke und zwei Hauptgerichte. Ihr Freund isst vegetarisch.", stichworte: ["Tisch für zwei", "Getränke", "vegetarisch?", "bestellen"], muster: ["Kellner: Guten Abend! Zu zweit?", "Gast: Ja, einen Tisch für zwei, bitte.", "Kellner: Was möchten Sie trinken?", "Gast: Ich hätte gern eine Apfelschorle, und mein Freund nimmt ein Wasser ohne Kohlensäure.", "Kellner: Haben Sie schon gewählt?", "Gast: Ich nehme das Hähnchen mit Reis. Haben Sie auch etwas Vegetarisches?", "Kellner: Ja, die Gemüsepfanne oder die Spinatlasagne.", "Gast: Dann nimmt mein Freund die Lasagne."] },
+      { teil: "Teil 4 — Im Restaurant", typ: "sprechen", frage: "Ihr Essen ist kalt. Sagen Sie es dem Kellner freundlich.", muster: "Entschuldigung, meine Suppe ist leider kalt. Können Sie sie bitte noch einmal warm machen?" },
+      { teil: "Teil 4 — Im Restaurant", typ: "sprechen", karte: { thema: "Rechnung", wort: "31,50 €" }, frage: "Sie bezahlen getrennt. Ihr Teil ist 31,50 €. Sie geben ein Trinkgeld.", muster: ["Kellnerin: Zusammen oder getrennt?", "Gast: Getrennt, bitte. Ich hatte das Hähnchen und die Schorle.", "Kellnerin: Das macht 31,50 Euro.", "Gast: Machen Sie 34, bitte.", "Kellnerin: Vielen Dank! Schönen Abend noch."] }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "P08",
+    gruppe: "alltag",
+    stufe: 2,
+    title: "Einkaufen und Kleidung",
+    subtitle: "In a shop: finding, trying on, paying",
+    focus: "Wie viel kostet …? Größe, Farbe, anprobieren, zu groß / zu klein",
+    intro:
+      "In a clothes shop you need a few questions — where something is, whether it comes in another size, whether you can try it on — and a few answers for when it does not fit. With those you can buy almost anything.",
+    lernen: [
+      "Most shopping conversations are short and follow the same path. You look for something, you ask about it, you try it, and you decide.",
+      {
+        kopf: ["Sie möchten …", "Sie sagen"],
+        zeilen: [
+          ["etwas finden", "Entschuldigung, wo finde ich Jacken?"],
+          ["eine Größe", "Haben Sie die Hose auch in Größe 38?"],
+          ["eine andere Farbe", "Gibt es das Hemd auch in Blau?"],
+          ["anprobieren", "Kann ich das anprobieren? — Wo sind die Umkleidekabinen?"],
+          ["den Preis", "Wie viel kostet der Pullover?"],
+          ["sich entscheiden", "Ich nehme sie. / Ich überlege es mir noch."],
+          ["bezahlen", "Kann ich mit Karte zahlen?"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "zu + adjective",
+        text: ["*zu* means _too_ and always says something is wrong: *zu groß, zu klein, zu lang, zu kurz, zu eng, zu weit, zu teuer*. To say it fits: *Sie passt.* / *Er passt gut.*"]
+      },
+      {
+        box: "rule",
+        titel: "Pronouns for things: er, sie, es",
+        text: ["Clothes are _der, die, das_, and the pronoun follows the article — also in the accusative when you take it."],
+        zeilen: [
+          ["der Pullover", "Er ist zu klein. → Ich nehme *ihn*."],
+          ["die Jacke", "Sie ist schön. → Ich nehme *sie*."],
+          ["das Kleid", "Es passt. → Ich nehme *es*."],
+          ["die Schuhe (Pl.)", "Sie sind bequem. → Ich nehme *sie*."]
+        ]
+      },
+      {
+        box: "mistake",
+        titel: "Watch out",
+        liste: [
+          "~Wie viel kostet die Schuhe?~ → Wie viel *kosten* die Schuhe? — plural verb.",
+          "~Ich nehme es~ for _der Mantel_ → Ich nehme *ihn*.",
+          "*Das steht Ihnen gut* means _it suits you_ — not that it stands."
+        ]
+      }
+    ],
+    wortschatz: [
+      ["die Größe, -n", "size"],
+      ["anprobieren", "to try on (separable)"],
+      ["die Umkleidekabine, -n", "changing room"],
+      ["passen", "to fit"],
+      ["eng / weit", "tight / loose"],
+      ["das Sonderangebot, -e", "special offer"],
+      ["reduziert", "reduced"],
+      ["umtauschen", "to exchange"],
+      ["der Kassenbon, -s", "receipt"],
+      ["die Kasse, -n", "till, checkout"]
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — er, sie, es — ihn, sie, es", typ: "luecke", frage: "Wie findest du den Mantel? — ___ ist schön, aber zu teuer.", antwort: ["Er"] },
+      { teil: "Teil 1 — er, sie, es — ihn, sie, es", typ: "luecke", frage: "Die Bluse passt gut. Ich nehme ___.", antwort: ["sie"] },
+      { teil: "Teil 1 — er, sie, es — ihn, sie, es", typ: "luecke", frage: "Der Rock ist zu kurz. Ich nehme ___ nicht.", antwort: ["ihn"] },
+      { teil: "Teil 1 — er, sie, es — ihn, sie, es", typ: "luecke", frage: "Wie viel ___ die Sportschuhe?", antwort: ["kosten"] },
+
+      { teil: "Teil 2 — Was passt?", typ: "mc", frage: "Verkäuferin: *Passt die Hose?*", optionen: ["Nein, sie ist zu lang.", "Ja, sie kostet 40 Euro.", "Die Umkleidekabine ist dort.", "Nein, ich habe Größe."], antwort: 0 },
+      { teil: "Teil 2 — Was passt?", typ: "mc", frage: "Sie möchten die Jacke in einer anderen Farbe.", optionen: ["Ist die Jacke zu groß?", "Gibt es die Jacke auch in Schwarz?", "Wo ist die Kasse?", "Ich nehme sie in Größe M."], antwort: 1 },
+      { teil: "Teil 2 — Was passt?", typ: "mc", frage: "Verkäufer: *Kann ich Ihnen helfen?* Sie möchten nur schauen.", optionen: ["Nein, danke, ich schaue nur.", "Ja, ich nehme es.", "Nein, das ist zu teuer.", "Ich möchte zahlen."], antwort: 0 },
+
+      { teil: "Teil 3 — Im Geschäft", teilIntro: "Sagen Sie laut, was Sie in der Situation sagen.", typ: "sprechen", karte: { thema: "Einkaufen", wort: "Winterjacke?" }, frage: "Sie suchen eine Winterjacke und finden sie nicht.", muster: "Entschuldigung, wo finde ich Winterjacken?" },
+      { teil: "Teil 3 — Im Geschäft", typ: "sprechen", karte: { thema: "Einkaufen", wort: "Größe 42" }, frage: "Die Hose gefällt Ihnen, aber Sie brauchen Größe 42.", muster: "Die Hose gefällt mir sehr. Haben Sie sie auch in Größe 42?" },
+      { teil: "Teil 3 — Im Geschäft", typ: "sprechen", karte: { thema: "Einkaufen", wort: "anprobieren" }, frage: "Sie möchten das Hemd anprobieren.", muster: "Kann ich das Hemd anprobieren? Wo sind die Umkleidekabinen?" },
+      { teil: "Teil 3 — Im Geschäft", typ: "sprechen", karte: { thema: "Einkaufen", wort: "zu eng" }, frage: "Der Pullover ist zu eng. Sagen Sie es und fragen Sie nach einer anderen Größe.", muster: "Der Pullover ist leider zu eng. Haben Sie ihn eine Nummer größer?" },
+      { teil: "Teil 3 — Im Geschäft", typ: "sprechen", karte: { thema: "Einkaufen", wort: "€ ?" }, frage: "An den Schuhen ist kein Preis.", muster: "Entschuldigung, wie viel kosten diese Schuhe? Ich finde keinen Preis." },
+      { teil: "Teil 3 — Im Geschäft", typ: "sprechen", karte: { thema: "Einkaufen", wort: "Karte?" }, frage: "Sie möchten mit Karte bezahlen.", muster: "Kann ich mit Karte zahlen?" },
+
+      { teil: "Teil 4 — Umtauschen", typ: "sprechen", frage: "Sie haben gestern ein T-Shirt gekauft. Zu Hause merken Sie: Es ist zu klein. Sie gehen mit dem Kassenbon zurück ins Geschäft. Spielen Sie das Gespräch.", stichworte: ["gestern gekauft", "zu klein", "umtauschen", "Kassenbon"], muster: ["Kunde: Guten Tag. Ich habe gestern dieses T-Shirt gekauft, aber es ist leider zu klein. Kann ich es umtauschen?", "Verkäuferin: Natürlich. Haben Sie den Kassenbon?", "Kunde: Ja, hier, bitte.", "Verkäuferin: Welche Größe brauchen Sie?", "Kunde: Größe L, bitte. In der gleichen Farbe.", "Verkäuferin: Hier, bitte. Möchten Sie es noch anprobieren?", "Kunde: Ja, gern. Danke!"] }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "P09",
+    gruppe: "alltag",
+    stufe: 2,
+    title: "Beim Arzt",
+    subtitle: "Saying what hurts",
+    focus: "Körperteile, Schmerzen, Termin, Anweisungen verstehen",
+    intro:
+      "At the doctor's you have to describe something you feel, answer quick questions, and understand what to do next. The words are few and they repeat, so practise saying them before you need them.",
+    lernen: [
+      "The conversation has three parts: at the reception, with the doctor, and the instructions at the end. You mainly need to say what is wrong and since when.",
+      {
+        kopf: ["Das Problem", "Sie sagen"],
+        zeilen: [
+          ["Kopf", "Ich habe Kopfschmerzen."],
+          ["Bauch", "Ich habe Bauchschmerzen."],
+          ["Hals", "Ich habe Halsschmerzen. / Mir tut der Hals weh."],
+          ["Rücken", "Mir tut der Rücken weh."],
+          ["Fieber", "Ich habe Fieber — 38,5 Grad."],
+          ["Husten / Schnupfen", "Ich habe Husten und Schnupfen."],
+          ["seit wann", "Seit drei Tagen. / Seit gestern Abend."]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "Two ways to say it hurts",
+        zeilen: [
+          ["Ich habe + …schmerzen", "Ich habe *Kopf*schmerzen. — only for some body parts: Kopf, Bauch, Hals, Rücken, Zahn, Ohren"],
+          ["Mir tut … weh", "Mir *tut* der Arm weh. — Mir *tun* die Füße weh. (plural: *tun*)"]
+        ]
+      },
+      {
+        box: "example",
+        titel: "What the doctor says",
+        zeilen: [
+          ["Was fehlt Ihnen?", "What's the matter?"],
+          ["Wo tut es weh?", "Where does it hurt?"],
+          ["Machen Sie bitte den Mund auf.", "Please open your mouth."],
+          ["Nehmen Sie die Tabletten dreimal täglich.", "Take the tablets three times a day."],
+          ["Bleiben Sie drei Tage im Bett.", "Stay in bed for three days."],
+          ["Hier ist Ihre Krankschreibung.", "Here is your sick note."]
+        ]
+      },
+      {
+        box: "mistake",
+        titel: "Watch out",
+        liste: [
+          "~Ich bin Kopfschmerzen.~ → Ich *habe* Kopfschmerzen.",
+          "~Mein Bauch tut mir Schmerzen.~ → Mir tut der Bauch weh.",
+          "~Ich bin krank seit Montag.~ → Ich bin *seit Montag* krank."
+        ]
+      }
+    ],
+    wortschatz: [
+      ["die Praxis, Praxen", "doctor's surgery"],
+      ["die Versichertenkarte, -n", "health insurance card"],
+      ["das Wartezimmer, -", "waiting room"],
+      ["weh tun", "to hurt"],
+      ["die Schmerzen (Pl.)", "pain"],
+      ["das Rezept, -e", "prescription"],
+      ["die Tablette, -n", "tablet"],
+      ["die Apotheke, -n", "pharmacy"],
+      ["die Krankschreibung, -en", "sick note"],
+      ["Gute Besserung!", "Get well soon!"]
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Ich habe … / Mir tut … weh", typ: "luecke", frage: "Ich ___ seit gestern Halsschmerzen.", antwort: ["habe"] },
+      { teil: "Teil 1 — Ich habe … / Mir tut … weh", typ: "luecke", frage: "Mir ___ der Rücken weh.", antwort: ["tut"] },
+      { teil: "Teil 1 — Ich habe … / Mir tut … weh", typ: "luecke", frage: "Mir ___ die Beine weh.", antwort: ["tun"], warum: "*die Beine* ist Plural, also *tun*." },
+      { teil: "Teil 1 — Ich habe … / Mir tut … weh", typ: "luecke", frage: "Nehmen Sie die Tabletten dreimal ___.", hinweis: "every day", antwort: ["täglich", "taeglich", "am Tag", "pro Tag"] },
+
+      { teil: "Teil 2 — Was passt?", typ: "mc", frage: "Arzthelferin: *Haben Sie Ihre Versichertenkarte dabei?*", optionen: ["Ja, hier, bitte.", "Ja, ich habe Fieber.", "Nein, danke.", "Seit drei Tagen."], antwort: 0 },
+      { teil: "Teil 2 — Was passt?", typ: "mc", frage: "Ärztin: *Seit wann haben Sie die Schmerzen?*", optionen: ["Im Bauch.", "Seit Montag.", "Sehr stark.", "Dreimal täglich."], antwort: 1 },
+      { teil: "Teil 2 — Was passt?", typ: "mc", frage: "Der Arzt sagt: *Bleiben Sie bis Freitag zu Hause.* Das heißt …", optionen: ["Sie sollen am Freitag kommen.", "Sie sollen bis Freitag nicht arbeiten gehen.", "Die Praxis ist bis Freitag geschlossen.", "Sie sollen Freitag Tabletten kaufen."], antwort: 1 },
+
+      { teil: "Teil 3 — In der Praxis", teilIntro: "Antworten Sie laut. Denken Sie an *seit* und an ganze Sätze.", typ: "sprechen", karte: { thema: "Anmeldung", wort: "Termin?" }, frage: "Die Arzthelferin fragt: *Haben Sie einen Termin?* Sie haben keinen, aber starke Zahnschmerzen.", muster: "Nein, ich habe leider keinen Termin. Ich habe seit gestern starke Zahnschmerzen. Kann ich heute noch kommen?" },
+      { teil: "Teil 3 — In der Praxis", typ: "sprechen", karte: { thema: "Arzt", wort: "Was fehlt Ihnen?" }, frage: "Sie haben Fieber, Husten und Kopfschmerzen seit drei Tagen.", muster: "Ich habe seit drei Tagen Fieber und Husten. Außerdem habe ich starke Kopfschmerzen." },
+      { teil: "Teil 3 — In der Praxis", typ: "sprechen", karte: { thema: "Arzt", wort: "Wo tut es weh?" }, frage: "Ihr rechtes Knie tut beim Treppensteigen weh.", muster: "Mir tut das rechte Knie weh, besonders auf der Treppe." },
+      { teil: "Teil 3 — In der Praxis", typ: "sprechen", karte: { thema: "Arzt", wort: "Medikamente?" }, frage: "Die Ärztin fragt, ob Sie Medikamente nehmen. Sie nehmen jeden Morgen eine Tablette für den Blutdruck.", muster: "Ja, ich nehme jeden Morgen eine Tablette gegen hohen Blutdruck." },
+      { teil: "Teil 3 — In der Praxis", typ: "sprechen", frage: "Sie haben nicht verstanden, wie oft Sie die Tabletten nehmen sollen. Fragen Sie nach.", muster: "Entschuldigung, wie oft soll ich die Tabletten nehmen? Vor oder nach dem Essen?" },
+
+      { teil: "Teil 4 — Anrufen", typ: "sprechen", frage: "Sie rufen in der Praxis an. Sie brauchen einen Termin, weil Ihr Sohn Ohrenschmerzen hat. Morgen früh können Sie nicht. Spielen Sie das Gespräch.", muster: ["Praxis: Praxis Dr. Weber, Sie sprechen mit Frau Lenz.", "Anrufer: Guten Tag, hier ist Ibrahim Keita. Mein Sohn hat seit gestern Ohrenschmerzen. Kann er heute oder morgen kommen?", "Praxis: Morgen um 8:30 Uhr ist etwas frei.", "Anrufer: Morgen früh kann ich leider nicht. Geht es auch am Nachmittag?", "Praxis: Ja, um 15:15 Uhr.", "Anrufer: Das passt. Vielen Dank!"] }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "P10",
+    gruppe: "alltag",
+    stufe: 3,
+    title: "Nach dem Weg fragen",
+    subtitle: "Asking for and giving directions",
+    focus: "Wie komme ich zu …? geradeaus, links, rechts, Präpositionen mit Dativ",
+    intro:
+      "Asking the way is easy. Understanding the answer is the hard part, because it comes fast and all at once. So this unit trains both: asking politely, and giving directions yourself — which is the best way to understand them.",
+    lernen: [
+      "Start with *Entschuldigung*, ask your question, and when the answer comes, repeat the key part back. Repeating is normal in German and it saves you from walking the wrong way.",
+      {
+        kopf: ["Fragen", "Antworten"],
+        zeilen: [
+          ["Entschuldigung, wie komme ich zum Bahnhof?", "Gehen Sie geradeaus bis zur Ampel."],
+          ["Wo ist hier eine Apotheke?", "Dann die zweite Straße links."],
+          ["Ist das weit?", "Nein, nur fünf Minuten zu Fuß."],
+          ["Gibt es hier in der Nähe eine Bank?", "Die Bank ist gegenüber vom Rathaus."],
+          ["Also: geradeaus, dann links?", "Genau!"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "zu, an, bis zu — and the dative",
+        zeilen: [
+          ["zu + dem = zum", "zum Bahnhof, zum Markt, zum Krankenhaus"],
+          ["zu + der = zur", "zur Post, zur Schule, zur Ampel"],
+          ["an + dem = am", "am Park vorbei, am Kiosk links"],
+          ["bis zu", "bis zur Kreuzung, bis zum Kreisverkehr"],
+          ["gegenüber von", "gegenüber vom Kino, gegenüber von der Kirche"]
+        ]
+      },
+      {
+        box: "example",
+        titel: "Directions — the words",
+        zeilen: [
+          ["geradeaus", "straight on"],
+          ["(nach) links / rechts", "(to the) left / right"],
+          ["die erste / zweite Straße links", "the first / second street on the left"],
+          ["die Ampel / die Kreuzung", "traffic lights / crossroads"],
+          ["über die Straße / über die Brücke", "across the road / over the bridge"],
+          ["an … vorbei", "past …"],
+          ["Da ist es.", "There it is."]
+        ]
+      },
+      {
+        box: "mistake",
+        titel: "Watch out",
+        liste: [
+          "~Wie komme ich nach Bahnhof?~ → *zum* Bahnhof. _nach_ is for towns and countries: nach Berlin.",
+          "Instructions to a stranger use the *Sie*-imperative: *Gehen Sie*, *Nehmen Sie*.",
+          "~die zwei Straße~ → die *zweite* Straße."
+        ]
+      }
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — zum oder zur?", typ: "luecke", frage: "Wie komme ich ___ Post?", hinweis: "die Post", antwort: ["zur"] },
+      { teil: "Teil 1 — zum oder zur?", typ: "luecke", frage: "Wie komme ich ___ Rathaus?", hinweis: "das Rathaus", antwort: ["zum"] },
+      { teil: "Teil 1 — zum oder zur?", typ: "luecke", frage: "Gehen Sie geradeaus bis ___ Kreuzung.", hinweis: "die Kreuzung", antwort: ["zur"] },
+      { teil: "Teil 1 — zum oder zur?", typ: "luecke", frage: "Der Bus fährt direkt ___ Flughafen.", hinweis: "der Flughafen", antwort: ["zum"] },
+
+      {
+        teil: "Teil 2 — Folgen Sie dem Weg.",
+        teilIntro: "Sie stehen am Bahnhof. Lesen Sie die Wegbeschreibung und antworten Sie.",
+        typ: "mc",
+        frage: "Wo kommen Sie an?",
+        vorlageTitel: "Wegbeschreibung",
+        vorlage: [
+          "Gehen Sie aus dem Bahnhof und dann nach rechts. Gehen Sie immer geradeaus bis zur Ampel. An der Ampel gehen Sie über die Straße und dann links in die Goethestraße. Gehen Sie am Supermarkt vorbei. Nach etwa 200 Metern sehen Sie auf der rechten Seite ein großes weißes Gebäude, gegenüber vom Park. Da ist es."
+        ],
+        optionen: ["Im Supermarkt", "An einem weißen Gebäude gegenüber vom Park", "Im Park", "Wieder am Bahnhof"],
+        antwort: 1
+      },
+      { teil: "Teil 2 — Folgen Sie dem Weg.", typ: "rf", frage: "Sie gehen zuerst nach links.", antwort: false, warum: "Zuerst *nach rechts*, erst an der Ampel links." },
+      { teil: "Teil 2 — Folgen Sie dem Weg.", typ: "rf", frage: "Sie gehen am Supermarkt vorbei.", antwort: true },
+      { teil: "Teil 2 — Folgen Sie dem Weg.", typ: "rf", frage: "Das Gebäude ist auf der linken Seite.", antwort: false, warum: "*auf der rechten Seite*." },
+
+      { teil: "Teil 3 — Fragen Sie nach dem Weg.", teilIntro: "Fragen Sie eine fremde Person höflich.", typ: "sprechen", karte: { thema: "Weg", wort: "Bahnhof" }, frage: "Sie suchen den Bahnhof.", muster: "Entschuldigung, wie komme ich zum Bahnhof?" },
+      { teil: "Teil 3 — Fragen Sie nach dem Weg.", typ: "sprechen", karte: { thema: "Weg", wort: "Apotheke?" }, frage: "Sie brauchen eine Apotheke in der Nähe.", muster: "Entschuldigung, gibt es hier in der Nähe eine Apotheke?" },
+      { teil: "Teil 3 — Fragen Sie nach dem Weg.", typ: "sprechen", karte: { thema: "Weg", wort: "weit?" }, frage: "Sie möchten wissen, ob es weit ist und ob Sie laufen können.", muster: "Ist das weit? Kann ich zu Fuß gehen, oder soll ich den Bus nehmen?" },
+      { teil: "Teil 3 — Fragen Sie nach dem Weg.", typ: "sprechen", frage: "Die Person hat sehr schnell gesprochen. Wiederholen Sie, was Sie verstanden haben: geradeaus, zweite Straße rechts.", muster: "Also: Ich gehe geradeaus und dann die zweite Straße rechts, richtig?" },
+
+      { teil: "Teil 4 — Den Weg beschreiben", teilIntro: "Jetzt fragt jemand Sie. Beschreiben Sie den Weg mit *Gehen Sie …*.", typ: "sprechen", karte: { thema: "Weg", wort: "Supermarkt" }, frage: "Der Supermarkt: geradeaus bis zur Kreuzung, dann rechts, nach 100 Metern links.", muster: "Gehen Sie hier geradeaus bis zur Kreuzung. Dann gehen Sie nach rechts. Nach ungefähr hundert Metern ist der Supermarkt auf der linken Seite." },
+      { teil: "Teil 4 — Den Weg beschreiben", typ: "sprechen", karte: { thema: "Weg", wort: "Bushaltestelle" }, frage: "Die Bushaltestelle: über die Brücke, am Kino vorbei, gegenüber von der Schule.", muster: "Gehen Sie über die Brücke und dann am Kino vorbei. Die Bushaltestelle ist gegenüber von der Schule." },
+      { teil: "Teil 4 — Den Weg beschreiben", typ: "sprechen", frage: "Beschreiben Sie den Weg von Ihrer Wohnung zu Ihrem Lieblingsort in der Stadt — ein Café, ein Park, ein Geschäft.", muster: "Von meiner Wohnung gehe ich zuerst nach links bis zur Ampel. Dort gehe ich über die Straße und dann geradeaus am Rathaus vorbei. Nach fünf Minuten komme ich zum Stadtpark. Direkt am Eingang ist mein Lieblingscafé." }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "P11",
+    gruppe: "alltag",
+    stufe: 3,
+    title: "Am Telefon",
+    subtitle: "Calls without seeing the other person",
+    focus: "sich melden, verbinden, Nachricht hinterlassen, nachfragen",
+    intro:
+      "On the phone there are no gestures and no lips to read, and people speak at normal speed. What helps is knowing the fixed phrases at the start and end of a call — and not being shy about asking someone to repeat.",
+    lernen: [
+      "In Germany people answer the phone with their *surname*, often with the company name first. When you call, you do the same: say your name before you say why you are calling.",
+      {
+        kopf: ["Situation", "Sie hören", "Sie sagen"],
+        zeilen: [
+          ["Anfang", "Sprachschule Lingua, Weber, guten Tag.", "Guten Tag, hier ist Amina Sow."],
+          ["Warum Sie anrufen", "Was kann ich für Sie tun?", "Ich rufe an, weil ich eine Frage zum Kurs habe."],
+          ["Verbinden", "Einen Moment, ich verbinde.", "Danke."],
+          ["Person nicht da", "Frau Klein ist leider nicht im Haus.", "Kann ich eine Nachricht hinterlassen?"],
+          ["Nicht verstanden", "…", "Entschuldigung, können Sie das bitte wiederholen?"],
+          ["Ende", "Auf Wiederhören!", "Vielen Dank, auf Wiederhören!"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "Auf Wiederhören",
+        text: ["On the phone you say *Auf Wiederhören* (_until we hear each other again_), not *Auf Wiedersehen*. With friends: *Tschüss* or *Bis dann*."]
+      },
+      {
+        box: "example",
+        titel: "Leaving a message on voicemail",
+        text: [
+          "Keep it in this order: name — why you called — what you would like — your number, slowly, twice.",
+          "_Guten Tag, hier ist Kwame Mensah. Ich habe eine Frage zu meinem Termin am Freitag. Bitte rufen Sie mich zurück. Meine Nummer ist 0157 32 18 44 — ich wiederhole: 0157 32 18 44. Vielen Dank!_"
+        ]
+      },
+      {
+        box: "mistake",
+        titel: "Watch out",
+        liste: [
+          "~Ich bin Amina.~ at the start of a call → *Hier ist* Amina Sow. / *Mein Name ist* Amina Sow.",
+          "~Hallo, wer ist da?~ is rude when you are the caller.",
+          "Asking to repeat is not a failure: *Wie bitte?* and *Langsamer, bitte* are completely normal."
+        ]
+      }
+    ],
+    redemittel: [
+      {
+        titel: "Am Telefon",
+        zeilen: [
+          ["Kann ich bitte mit Herrn Braun sprechen?", "Can I speak to Mr Braun, please?"],
+          ["Wann kann ich ihn erreichen?", "When can I reach him?"],
+          ["Können Sie ihm etwas ausrichten?", "Can you give him a message?"],
+          ["Bitte rufen Sie mich zurück.", "Please call me back."],
+          ["Ich habe mich verwählt.", "I dialled the wrong number."],
+          ["Die Verbindung ist schlecht.", "The line is bad."]
+        ]
+      }
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Was sagt man?", typ: "mc", frage: "Sie rufen an. Was sagen Sie zuerst?", optionen: ["Hallo, wer ist da?", "Guten Tag, hier ist Ali Hassan.", "Ich bin es.", "Auf Wiederhören!"], antwort: 1 },
+      { teil: "Teil 1 — Was sagt man?", typ: "mc", frage: "Wie beendet man ein formelles Telefongespräch?", optionen: ["Auf Wiedersehen!", "Auf Wiederhören!", "Gute Nacht!", "Bis gleich!"], antwort: 1 },
+      { teil: "Teil 1 — Was sagt man?", typ: "mc", frage: "Die Sekretärin sagt: *Herr Braun ist gerade in einer Besprechung.*", optionen: ["Dann spreche ich mit ihm.", "Kann ich eine Nachricht hinterlassen?", "Ich habe mich verwählt.", "Wie bitte? Tschüss."], antwort: 1 },
+
+      { teil: "Teil 2 — Ergänzen Sie.", typ: "luecke", frage: "Guten Tag, ___ ist Nadia Benali.", antwort: ["hier"] },
+      { teil: "Teil 2 — Ergänzen Sie.", typ: "luecke", frage: "Kann ich bitte mit Frau Klein ___?", antwort: ["sprechen"] },
+      { teil: "Teil 2 — Ergänzen Sie.", typ: "luecke", frage: "Bitte rufen Sie mich ___.", antwort: ["zurück", "zurueck"] },
+      { teil: "Teil 2 — Ergänzen Sie.", typ: "luecke", frage: "Entschuldigung, können Sie das bitte ___?", antwort: ["wiederholen"] },
+
+      { teil: "Teil 3 — Telefonieren", teilIntro: "Sprechen Sie laut. Nehmen Sie sich auf — am Telefon hört man nur Ihre Stimme.", typ: "sprechen", karte: { thema: "Telefon", wort: "Sprachschule" }, frage: "Sie rufen bei der Sprachschule an. Melden Sie sich und sagen Sie, warum Sie anrufen: Sie möchten wissen, wann der nächste A2-Kurs beginnt.", muster: "Guten Tag, hier ist Amina Sow. Ich rufe an, weil ich eine Frage habe: Wann beginnt der nächste A2-Kurs?" },
+      { teil: "Teil 3 — Telefonieren", typ: "sprechen", karte: { thema: "Telefon", wort: "Herr Braun?" }, frage: "Sie möchten mit Herrn Braun sprechen.", muster: "Kann ich bitte mit Herrn Braun sprechen?" },
+      { teil: "Teil 3 — Telefonieren", typ: "sprechen", karte: { thema: "Telefon", wort: "nicht da" }, frage: "Herr Braun ist nicht da. Fragen Sie, wann Sie ihn erreichen können.", muster: "Schade. Wann kann ich ihn denn erreichen? Ist er heute Nachmittag im Büro?" },
+      { teil: "Teil 3 — Telefonieren", typ: "sprechen", karte: { thema: "Telefon", wort: "???" }, frage: "Die Verbindung ist schlecht, Sie verstehen nichts.", muster: "Entschuldigung, die Verbindung ist sehr schlecht. Können Sie das bitte noch einmal wiederholen?" },
+      { teil: "Teil 3 — Telefonieren", typ: "sprechen", frage: "Sie haben die falsche Nummer gewählt. Entschuldigen Sie sich.", muster: "Oh, Entschuldigung, ich habe mich verwählt. Auf Wiederhören!" },
+
+      { teil: "Teil 4 — Auf den Anrufbeantworter sprechen", typ: "sprechen", frage: "Sie erreichen niemanden in der Autowerkstatt. Sprechen Sie eine Nachricht: Ihr Auto ist seit Montag dort, Sie möchten wissen, wann es fertig ist. Nennen Sie Ihre Nummer 0176 84 29 03.", stichworte: ["Name", "Grund", "Bitte", "Nummer zweimal"], muster: "Guten Tag, hier ist Kwame Mensah. Mein Auto, ein blauer Golf, ist seit Montag bei Ihnen in der Werkstatt. Ich möchte gern wissen, wann es fertig ist. Bitte rufen Sie mich zurück. Meine Nummer ist null-eins-sieben-sechs, vierundachtzig, neunundzwanzig, null-drei. Ich wiederhole: null-eins-sieben-sechs, vierundachtzig, neunundzwanzig, null-drei. Vielen Dank, auf Wiederhören!" },
+      { teil: "Teil 4 — Auf den Anrufbeantworter sprechen", typ: "sprechen", frage: "Rufen Sie Ihre Freundin Lisa an. Sie geht nicht ran. Sprechen Sie eine kurze Nachricht: Sie kommen heute Abend eine halbe Stunde später.", muster: "Hi Lisa, ich bin's, Chiara. Ich komme heute Abend leider eine halbe Stunde später, so um halb acht. Mein Zug hat Verspätung. Bis dann, tschüss!" }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "P12",
+    gruppe: "alltag",
+    stufe: 3,
+    title: "Gemeinsam etwas planen",
+    subtitle: "Suggesting, agreeing and finding a time",
+    focus: "Vorschläge machen, zustimmen, ablehnen, einen Termin finden",
+    intro:
+      "Planning something together — a birthday present, a trip, a meeting — is a real conversation: one person suggests, the other agrees or says no and suggests something else, and at the end you have a plan. That back-and-forth is exactly what this last unit practises.",
+    lernen: [
+      "A planning conversation goes round in a loop: *suggest — react — suggest again — agree*. Each person should speak several times, and the conversation ends only when you have decided who does what, and when.",
+      {
+        kopf: ["Sie möchten …", "Redemittel"],
+        zeilen: [
+          ["vorschlagen", "Wollen wir …? / Wie wäre es mit …? / Wir können doch …"],
+          ["zustimmen", "Gute Idee! / Ja, das passt. / Einverstanden."],
+          ["ablehnen", "Das geht leider nicht, weil … / Ich habe da keine Zeit."],
+          ["etwas anderes vorschlagen", "Und was ist mit Sonntag? / Lieber am Abend."],
+          ["nachfragen", "Hast du am … Zeit? / Wann passt es dir?"],
+          ["festlegen", "Also treffen wir uns am … um … / Ich kaufe …, und du …"]
+        ]
+      },
+      {
+        box: "rule",
+        titel: "Wollen wir …? and Wie wäre es mit …?",
+        zeilen: [
+          ["Wollen wir + Infinitiv am Ende?", "Wollen wir am Samstag ins Museum *gehen*?"],
+          ["Wie wäre es mit + Dativ?", "Wie wäre es mit *einem* Picknick? — mit *dem* Zug?"],
+          ["Lass uns …", "Lass uns zusammen *kochen*! (friends)"]
+        ]
+      },
+      {
+        box: "example",
+        titel: "A short planning conversation",
+        text: [
+          "*A:* Nächste Woche hat Tom Geburtstag. Wollen wir ihm zusammen etwas schenken?",
+          "*B:* Gute Idee! Wie wäre es mit einem Buch?",
+          "*A:* Hm, er liest nicht so gern. Was ist mit Kinokarten?",
+          "*B:* Ja, das ist besser. Wann kaufen wir sie?",
+          "*A:* Hast du am Donnerstag nach dem Kurs Zeit?",
+          "*B:* Donnerstag geht leider nicht, da arbeite ich. Freitag?",
+          "*A:* Freitag passt. Also treffen wir uns am Freitag um fünf am Kino."
+        ]
+      }
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Was passt?", typ: "mc", frage: "*Wollen wir am Sonntag grillen?* — Sie haben Lust.", optionen: ["Nein, danke.", "Au ja, gute Idee!", "Ich habe gegrillt.", "Das geht leider nicht."], antwort: 1 },
+      { teil: "Teil 1 — Was passt?", typ: "mc", frage: "*Treffen wir uns um 18 Uhr?* — Sie arbeiten bis 18 Uhr.", optionen: ["Einverstanden!", "18 Uhr ist zu früh, ich arbeite bis sechs. Geht es um sieben?", "Ja, um 18 Uhr arbeite ich.", "Nein."], antwort: 1 },
+      { teil: "Teil 1 — Was passt?", typ: "mc", frage: "Welcher Vorschlag ist richtig gebildet?", optionen: ["Wie wäre es mit ein Picknick?", "Wie wäre es mit einem Picknick?", "Wie wäre es mit einen Picknick?", "Wie wäre es mit Picknick machen?"], antwort: 1, warum: "*mit* + Dativ: *einem* Picknick." },
+
+      { teil: "Teil 2 — Ergänzen Sie.", typ: "luecke", frage: "___ wir am Wochenende an den See fahren?", antwort: ["Wollen", "Sollen"] },
+      { teil: "Teil 2 — Ergänzen Sie.", typ: "luecke", frage: "Wie ___ es mit einem Film?", antwort: ["wäre", "waere"] },
+      { teil: "Teil 2 — Ergänzen Sie.", typ: "luecke", frage: "Am Samstag ___ es leider nicht, da besuche ich meine Oma.", antwort: ["geht"] },
+      { teil: "Teil 2 — Ergänzen Sie.", typ: "luecke", frage: "Also ___ wir uns am Freitag um fünf.", antwort: ["treffen"] },
+
+      { teil: "Teil 3 — Reagieren Sie.", teilIntro: "Ihre Freundin macht einen Vorschlag. Reagieren Sie laut wie auf der Karte.", typ: "sprechen", karte: { thema: "Vorschlag", wort: "Kino am Freitag?" }, frage: "Sie haben Zeit und Lust.", muster: "Ja, gern! Welchen Film wollen wir sehen? Und um wie viel Uhr?" },
+      { teil: "Teil 3 — Reagieren Sie.", typ: "sprechen", karte: { thema: "Vorschlag", wort: "Joggen um 7 Uhr?" }, frage: "Das ist Ihnen zu früh. Machen Sie einen anderen Vorschlag.", muster: "Um sieben? Das ist mir zu früh! Wie wäre es mit neun Uhr?" },
+      { teil: "Teil 3 — Reagieren Sie.", typ: "sprechen", karte: { thema: "Vorschlag", wort: "Pizza bestellen?" }, frage: "Sie möchten lieber selbst kochen.", muster: "Hm, lieber nicht. Lass uns doch zusammen kochen, das ist billiger und macht mehr Spaß." },
+      { teil: "Teil 3 — Reagieren Sie.", typ: "sprechen", karte: { thema: "Vorschlag", wort: "Samstag Zoo?" }, frage: "Am Samstag arbeiten Sie. Sagen Sie ab und schlagen Sie Sonntag vor.", muster: "Samstag geht leider nicht, da muss ich arbeiten. Hast du am Sonntag Zeit?" },
+
+      {
+        teil: "Teil 4 — Planen Sie zusammen.",
+        teilIntro: "Spielen Sie beide Personen — oder üben Sie mit einem Partner. Sprechen Sie, bis der Plan fertig ist.",
+        typ: "sprechen",
+        frage: "Ihre Kursleiterin hört nächste Woche auf. Planen Sie mit einer Kollegin ein kleines Abschiedsgeschenk.",
+        stichworte: ["Was schenken?", "Wer kauft?", "Wie viel Geld?", "Wann übergeben?"],
+        muster: [
+          "A: Frau Neumann hört nächste Woche auf. Wollen wir ihr etwas schenken?",
+          "B: Ja, unbedingt! Wie wäre es mit Blumen?",
+          "A: Blumen sind schön, aber vielleicht noch eine Karte von allen?",
+          "B: Gute Idee. Ich kaufe die Blumen, und du kümmerst dich um die Karte.",
+          "A: Einverstanden. Wie viel Geld sammeln wir? Fünf Euro pro Person?",
+          "B: Ja, das ist okay. Wann geben wir ihr das Geschenk?",
+          "A: Am Donnerstag in der letzten Stunde, am Ende.",
+          "B: Perfekt, dann machen wir das so."
+        ]
+      },
+      {
+        teil: "Teil 4 — Planen Sie zusammen.",
+        typ: "sprechen",
+        frage: "Sie und ein Freund wollen am Wochenende einen Ausflug machen. Sie müssen einen Tag, ein Ziel und eine Uhrzeit finden. Ihr Freund hat am Samstagvormittag keine Zeit.",
+        stichworte: ["Wohin?", "Wann?", "Wie fahren?", "Was mitnehmen?"],
+        muster: [
+          "A: Das Wetter soll am Wochenende schön sein. Wollen wir einen Ausflug machen?",
+          "B: Gern! Wohin denn?",
+          "A: Wie wäre es mit dem Wildpark? Da war ich noch nie.",
+          "B: Gute Idee. Aber am Samstagvormittag kann ich nicht, da habe ich Training.",
+          "A: Kein Problem. Dann Samstagnachmittag oder Sonntag?",
+          "B: Lieber Sonntag, dann haben wir den ganzen Tag.",
+          "A: Okay. Fahren wir mit dem Bus? Er fährt um halb zehn am Marktplatz ab.",
+          "B: Ja, das passt. Ich bringe Brötchen und Obst mit.",
+          "A: Und ich nehme Getränke mit. Also bis Sonntag um Viertel nach neun am Marktplatz!"
+        ]
+      }
+    ]
   }
 ];
 
