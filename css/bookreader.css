@@ -711,9 +711,10 @@ html.reader body {
     font-size: 0.9rem;
   }
 
-  /* wide side margins so the turn buttons never sit on the words */
+  /* the page takes nearly the whole screen — see the turn buttons below,
+     which hug the edges instead of needing a margin of their own */
   .rdr-track {
-    padding: 18px 46px 16px;
+    padding: 18px 18px 16px;
   }
 
   .rdr-flow {
@@ -735,22 +736,31 @@ html.reader body {
     padding: 6px 8px;
   }
 
+  /* Bright tabs held against the screen edges. A round button in the middle
+     of the page would sit on two or three lines of text; a tab this narrow
+     covers a few pixels, so the text can have the full width of the screen. */
   .rdr-turn {
-    width: 38px;
-    height: 38px;
+    width: 27px;
+    height: 58px;
+    border-radius: 0 15px 15px 0;
+    background: var(--accent);
+    border-color: transparent;
+    color: var(--bg);
+    opacity: 0.95;
   }
 
   .rdr-turn .icon-svg {
-    width: 21px;
-    height: 21px;
+    width: 17px;
+    height: 17px;
   }
 
   .rdr-turn.back {
-    left: 3px;
+    left: 0;
   }
 
   .rdr-turn.fwd {
-    right: 3px;
+    right: 0;
+    border-radius: 15px 0 0 15px;
   }
 
   .rdr-hintbar {
