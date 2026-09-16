@@ -22,8 +22,8 @@
   "use strict";
 
   var script = document.currentScript;
-  /* Set once the relay is deployed. data-api on the script tag overrides it (used for testing). */
-  var API = (script && script.getAttribute("data-api")) || "";
+  /* The relay on Cloudflare. data-api on the script tag overrides it (used for testing). */
+  var API = (script && script.getAttribute("data-api")) || "https://deutsch-ecke-reviews.merikafx.workers.dev/reviews";
   var MAX_WORDS = 20;
   var ASK_AFTER_MS = 5 * 60 * 1000;    // active reading time before the card appears
   var SNOOZE_MS = 30 * 24 * 60 * 60 * 1000;
