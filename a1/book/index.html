@@ -52,7 +52,7 @@
         the mistakes I kept making, and exercises at the end of each chapter.
       </p>
       <div class="toc-meta">
-        <span>54 chapters</span>
+        <span>56 chapters</span>
         <span>Every word translated</span>
         <span>Exercises included</span>
       </div>
@@ -78,8 +78,10 @@
     (function () {
       var list = document.getElementById("book-toc-list");
       var written = (typeof WRITTEN_CHAPTERS !== "undefined") ? WRITTEN_CHAPTERS : [];
+      // the sheet-less reference chapters live in their own list
+      var extra = (typeof EXTRA_CHAPTERS !== "undefined") ? EXTRA_CHAPTERS : [];
 
-      CHAPTERS.forEach(function (c, i) {
+      CHAPTERS.concat(extra).forEach(function (c, i) {
         var ready = written.indexOf(c.id) !== -1;
         var li = document.createElement("li");
         var a = document.createElement("a");

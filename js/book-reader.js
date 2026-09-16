@@ -40,7 +40,10 @@
 
   function readableList() {
     var written = (typeof WRITTEN_CHAPTERS !== "undefined") ? WRITTEN_CHAPTERS : [];
-    return CHAPTERS.filter(function (c) {
+    // The reference chapters at the end have no picture sheet, so they live
+    // in their own list and appear only here, never in the Picture Book.
+    var extra = (typeof EXTRA_CHAPTERS !== "undefined") ? EXTRA_CHAPTERS : [];
+    return CHAPTERS.concat(extra).filter(function (c) {
       return written.indexOf(c.id) !== -1;
     });
   }

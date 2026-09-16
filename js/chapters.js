@@ -77,3 +77,18 @@ const CHAPTERS = [
   { id: "52", file: "52-abendtest-antworten.jpg", de: "Abendtest – Antworten (Lösungen)", en: "Evening test – answers (solutions)", syllabus: "practice" },
   { id: "53", file: "53-eigener-abendtest-beispiel.jpg", de: "Mein eigenes Testbeispiel", en: "My own test example", syllabus: "practice" }
 ];
+
+/* ============================================================
+   Written-Book-only chapters.
+
+   These fill gaps the topic sheets left open, so there is no
+   image behind them. They are deliberately kept out of CHAPTERS:
+   the Picture Book iterates that list and would try to load a
+   sheet and a thumbnail that do not exist. Only the Written Book
+   (its contents page and the reader) reads this second list.
+   ============================================================ */
+
+const EXTRA_CHAPTERS = [
+  { id: "54", file: null, de: "Präpositionen (alle Fälle)", en: "Prepositions in all four cases", syllabus: "reference" },
+  { id: "55", file: null, de: "Konjunktionen und Vergleiche", en: "Conjunctions and comparisons", syllabus: "reference" }
+];
