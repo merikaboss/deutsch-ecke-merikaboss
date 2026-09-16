@@ -1,11 +1,17 @@
 /* ============================================================
-   Deutsch Ecke — Übungsbuch (Practice Book)
-   Loaded after theme.css on the practice pages: the skill cards,
-   the unit index, the reading text, and the task marking.
+   Deutsch Ecke — Übungsbuch
+
+   Two jobs:
+     1. the index pages (skill cards, unit lists) — ordinary pages
+     2. the task styling *inside* the Written Book reader flow, since
+        a unit is read as real turnable pages via css/bookreader.css
+
    No backdrop-filter / blur anywhere, per the repaint rules.
    ============================================================ */
 
-/* ---------- skill cards (Lesen / Schreiben / Sprechen) ---------- */
+/* ============================================================
+   Index pages
+   ============================================================ */
 
 .skill-grid {
   display: grid;
@@ -85,7 +91,10 @@
   color: var(--text-muted);
 }
 
-/* ---------- unit index ---------- */
+.unit-intro {
+  color: var(--text-muted);
+  max-width: 62ch;
+}
 
 .unit-group {
   padding: 10px 0 4px;
@@ -161,432 +170,265 @@
   letter-spacing: 0.06em;
 }
 
-/* ---------- the unit page ---------- */
+/* ============================================================
+   Inside the reader flow
 
-.unit-head {
-  padding: 8px 0 6px;
-}
+   Fragmentation rules follow what the Written Book proved:
+   let long things split (forcing them whole strands a heading
+   above an empty box), but keep short groups together, and never
+   let a grid or flex container span a column break — a fragmented
+   one gets painted across both pages at once.
+   ============================================================ */
 
-.unit-head .u-kicker {
-  font-family: var(--ui);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.unit-head h1 {
-  margin: 6px 0 2px;
-}
-
-.unit-head .u-sub {
+.rdr-flow .u-intro {
   color: var(--text-muted);
-  font-style: italic;
-  margin: 0 0 10px;
 }
 
-.unit-intro {
-  color: var(--text-muted);
-  max-width: 62ch;
+/* the German text is plain book prose so it can flow across pages */
+.rdr-flow .lesetext p {
+  margin: 0 0 0.85em;
 }
 
-/* The German text itself. This never carries bracket translations —
-   that is what the Wortschatz and the reveal panel below are for. */
-.lesetext {
-  padding: 22px 24px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  background: var(--bg-raised);
-  margin: 20px 0 8px;
-  line-height: 1.85;
+/* Signs and small ads: a grid box cannot fragment, so in the reader each
+   card is its own block that simply avoids being split. */
+.rdr-flow .schild-grid {
+  display: block;
 }
 
-.lesetext p {
-  margin: 0 0 13px;
-}
-
-.lesetext p:last-child {
-  margin-bottom: 0;
-}
-
-.lesetext .brief {
-  font-family: var(--ui);
-  font-size: 0.95em;
-}
-
-.lesetext .sprecher {
-  font-weight: 700;
-  color: var(--accent);
-}
-
-/* signs, notices and small ads render as separate little cards */
-.schild-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-  gap: 13px;
-  margin: 20px 0 10px;
-}
-
-.schild {
-  padding: 16px 16px 15px;
-  border-radius: 13px;
+.rdr-flow .schild {
+  break-inside: avoid;
+  padding: 14px 16px 13px;
+  border-radius: 12px;
   border: 1px dashed var(--border);
   background: var(--bg-raised);
+  margin: 0 0 12px;
   line-height: 1.6;
 }
 
-.schild .s-nr {
-  font-family: var(--ui);
-  font-size: 0.7rem;
+.rdr-flow .schild .s-nr {
+  display: block;
+  font-size: 0.72em;
   font-weight: 800;
   letter-spacing: 0.1em;
   color: var(--accent);
-  display: block;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
-.schild p {
-  margin: 0 0 4px;
+.rdr-flow .schild p {
+  margin: 0 0 3px;
 }
 
-.schild p:last-child {
+.rdr-flow .schild p:last-child {
   margin-bottom: 0;
 }
 
-/* ---------- reveal panels (Wortschatz / translation) ---------- */
-
-.panel {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--bg-raised);
-  margin: 14px 0;
-  overflow: hidden;
-}
-
-.panel > button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 14px 18px;
-  border: 0;
-  background: none;
-  font-family: var(--ui);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text);
-  text-align: left;
-  cursor: pointer;
-}
-
-.panel > button .chev {
-  margin-left: auto;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  transition: transform 0.2s ease;
-}
-
-.panel.open > button .chev {
-  transform: rotate(90deg);
-}
-
-.panel .panel-body {
-  display: none;
-  padding: 0 18px 18px;
-}
-
-.panel.open .panel-body {
-  display: block;
-}
-
-.panel .hint {
-  font-family: var(--ui);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 400;
-}
-
-.panel .panel-body p {
-  line-height: 1.75;
-  margin: 0 0 12px;
-}
-
-table.wortschatz {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-table.wortschatz td {
-  padding: 7px 8px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-}
-
-table.wortschatz tr:last-child td {
-  border-bottom: 0;
-}
-
-table.wortschatz td:first-child {
-  font-weight: 700;
-  padding-right: 16px;
-}
-
-table.wortschatz td:last-child {
-  color: var(--text-muted);
-}
-
-/* ---------- tasks ---------- */
-
-.aufgaben {
-  margin: 28px 0 0;
-}
-
-.aufgaben > h2 {
-  font-size: 1.32rem;
-  margin: 0 0 4px;
-}
-
-.aufgaben > .lead {
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.teil-head {
-  font-family: var(--ui);
-  font-size: 0.74rem;
+.rdr-flow .teil-head {
+  font-size: 0.76em;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 26px 0 10px;
+  margin: 20px 0 9px;
+  break-after: avoid;
 }
 
-.task {
-  padding: 16px 18px;
-  border-radius: 14px;
+/* A task may split if it has to — same reasoning as the book's info
+   boxes. Its parts below are what stay together. */
+.rdr-flow .task {
+  break-inside: auto;
+  box-decoration-break: clone;
+  padding: 13px 15px;
+  border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--bg-raised);
-  margin: 0 0 12px;
-}
-
-.task .t-q {
-  display: flex;
-  gap: 10px;
   margin: 0 0 11px;
-  line-height: 1.65;
 }
 
-.task .t-n {
-  font-family: var(--ui);
+.rdr-flow .task .t-q {
+  display: flex;
+  gap: 9px;
+  margin: 0 0 10px;
+  line-height: 1.6;
+  break-inside: avoid;
+}
+
+.rdr-flow .task .t-n {
   font-weight: 800;
   color: var(--accent);
   flex: 0 0 auto;
 }
 
-.t-hint {
+.rdr-flow .t-hint {
   color: var(--text-muted);
-  font-size: 0.9em;
+  font-size: 0.92em;
 }
 
-.opts {
+/* an options group is short — never let it straddle two pages */
+.rdr-flow .opts {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
+  break-inside: avoid;
 }
 
-.opts.row {
+.rdr-flow .opts.row {
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.opts.row .opt {
-  flex: 1 1 130px;
+.rdr-flow .opts.row .opt {
+  flex: 1 1 120px;
 }
 
-.opt {
+.rdr-flow .opt {
   display: flex;
   align-items: flex-start;
   gap: 9px;
-  padding: 10px 13px;
-  border-radius: 11px;
+  padding: 9px 12px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--bg);
   cursor: pointer;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
-.opt input {
+.rdr-flow .opt input {
   margin: 3px 0 0;
   accent-color: var(--accent);
   flex: 0 0 auto;
 }
 
-.opt.sel {
+.rdr-flow .opt.sel {
   border-color: var(--accent);
 }
 
-.opt.right {
+.rdr-flow .opt.right {
   border-color: #2e7d55;
   background: color-mix(in srgb, #2e7d55 13%, var(--bg));
 }
 
-.opt.wrong {
+.rdr-flow .opt.wrong {
   border-color: #b4483c;
   background: color-mix(in srgb, #b4483c 13%, var(--bg));
 }
 
-.task input.gap,
-.task textarea.frei {
+.rdr-flow input.gap,
+.rdr-flow textarea.frei {
   width: 100%;
-  padding: 11px 13px;
-  border-radius: 11px;
+  padding: 10px 12px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1em;
+  break-inside: avoid;
 }
 
-.task textarea.frei {
-  min-height: 94px;
-  resize: vertical;
-  line-height: 1.6;
+.rdr-flow textarea.frei {
+  min-height: 80px;
+  resize: none;
+  line-height: 1.55;
 }
 
-.task input.gap:focus,
-.task textarea.frei:focus {
+.rdr-flow input.gap:focus,
+.rdr-flow textarea.frei:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
 
-.task input.gap.right { border-color: #2e7d55; }
-.task input.gap.wrong { border-color: #b4483c; }
+.rdr-flow input.gap.right { border-color: #2e7d55; }
+.rdr-flow input.gap.wrong { border-color: #b4483c; }
 
-.t-fb {
+.rdr-flow .t-fb {
   display: none;
-  margin-top: 11px;
-  padding: 11px 13px;
-  border-radius: 11px;
-  font-size: 0.93rem;
-  line-height: 1.65;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.94em;
+  line-height: 1.6;
+  break-inside: avoid;
 }
 
-.t-fb.show { display: block; }
+.rdr-flow .t-fb.show { display: block; }
 
-.t-fb.ok {
+.rdr-flow .t-fb.ok {
   background: color-mix(in srgb, #2e7d55 13%, var(--bg));
   border: 1px solid color-mix(in srgb, #2e7d55 40%, var(--border));
 }
 
-.t-fb.no {
+.rdr-flow .t-fb.no {
   background: color-mix(in srgb, #b4483c 12%, var(--bg));
   border: 1px solid color-mix(in srgb, #b4483c 38%, var(--border));
 }
 
-.t-fb.muster {
+.rdr-flow .t-fb.muster {
   background: var(--bg);
   border: 1px solid var(--border);
 }
 
-.t-fb b { font-weight: 800; }
-
-/* ---------- action bar + score ---------- */
-
-.task-bar {
+.rdr-flow .task-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 9px;
   align-items: center;
-  margin: 22px 0 8px;
+  margin: 18px 0 6px;
+  break-inside: avoid;
 }
 
-.btn-check,
-.btn-reset {
-  font-family: var(--ui);
+.rdr-flow .btn-check,
+.rdr-flow .btn-reset {
+  font-family: inherit;
   font-weight: 700;
-  font-size: 0.95rem;
-  padding: 12px 22px;
-  border-radius: 12px;
+  font-size: 0.95em;
+  padding: 11px 20px;
+  border-radius: 11px;
   border: 1px solid var(--border);
   background: var(--bg-raised);
   color: var(--text);
   cursor: pointer;
 }
 
-.btn-check {
+.rdr-flow .btn-check {
   border-color: transparent;
   background: var(--grad);
   color: #fff;
 }
 
-.score {
-  font-family: var(--ui);
+.rdr-flow .score {
   font-weight: 800;
-  padding: 10px 16px;
-  border-radius: 11px;
+  padding: 9px 15px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--bg-raised);
 }
 
-.score.good {
+.rdr-flow .score.good {
   border-color: #2e7d55;
   color: #2e7d55;
-}
-
-/* ---------- prev / next ---------- */
-
-.unit-nav {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin: 34px 0 10px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-  font-family: var(--ui);
-  font-weight: 700;
-}
-
-.unit-nav .sp { margin-left: auto; }
-
-.unit-nav a {
-  padding: 11px 17px;
-  border-radius: 11px;
-  border: 1px solid var(--border);
-  background: var(--bg-raised);
-  color: var(--text);
 }
 
 /* ---------- phone ---------- */
 
 @media (max-width: 760px) {
-  .lesetext {
-    padding: 18px 17px;
-    line-height: 1.8;
-  }
-
-  .task {
-    padding: 14px 15px;
-  }
-
   .unit-list {
     grid-template-columns: 1fr;
   }
+}
 
-  .btn-check,
-  .btn-reset {
+@media (max-width: 720px) {
+  .rdr-flow .task {
+    padding: 11px 13px;
+  }
+
+  .rdr-flow .btn-check,
+  .rdr-flow .btn-reset {
     flex: 1 1 auto;
     text-align: center;
   }
 
-  .task-bar .score {
+  .rdr-flow .score {
     width: 100%;
     text-align: center;
-  }
-
-  .unit-nav {
-    flex-wrap: wrap;
   }
 }

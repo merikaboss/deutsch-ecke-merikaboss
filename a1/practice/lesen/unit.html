@@ -4,82 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lesen — Übungsbuch — A1 — Deutsch Ecke</title>
-  <meta name="description" content="A German A1 reading unit: the text, its vocabulary, an English translation to check against, and tasks that mark themselves." />
+  <meta name="description" content="A German A1 reading unit: the text, its vocabulary, tasks that mark themselves, and an English translation to check against — read as real pages you turn." />
   <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../../../css/style.css" />
   <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/bookreader.css" />
   <link rel="stylesheet" href="../../../css/practice.css" />
 </head>
 <body class="premium" data-page="practice-unit">
 
-  <div class="aurora" aria-hidden="true">
-    <span class="a1"></span>
-    <span class="a2"></span>
-    <span class="a3"></span>
-    <span class="mesh"></span>
-    <span class="grain"></span>
-  </div>
+  <div class="rdr" id="rdr">
 
-  <div class="attribution-bar">
-    A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
-  </div>
+    <div class="rdr-bar">
+      <div class="rdr-bar-left">
+        <button class="rdr-btn" id="rdr-contents" type="button" aria-label="Contents">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../../assets/icons.svg#icon-list"></use></svg>
+        </button>
+        <a class="rdr-btn" href="../../index.html" aria-label="A1 home">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../../assets/icons.svg#icon-home"></use></svg>
+        </a>
+      </div>
 
-  <header class="site-header">
-    <div class="wrap-wide">
-      <a href="../../../index.html" class="brand">
-        <span class="brand-mark" aria-hidden="true">DE</span>
-        Deutsch Ecke
-      </a>
-      <nav>
-        <a href="../../index.html">A1 home</a>
-        <a href="../../book/index.html">Written Book</a>
-        <a href="../index.html">Übungsbuch</a>
-        <a href="index.html" class="current">Lesen</a>
-      </nav>
-    </div>
-  </header>
+      <div class="rdr-title">
+        <span class="kick">Übungsbuch &middot; Lesen</span>
+        <span class="name" id="rdr-name">Lesen</span>
+      </div>
 
-  <main class="wrap narrow" id="unit-host"></main>
-
-  <div class="wrap narrow">
-    <nav class="unit-nav" id="unit-nav"></nav>
-  </div>
-
-  <footer class="site-footer">
-    <div class="wrap-wide">
-      Notes from a personal A1 study journey.
-      <div class="footer-links">
-        <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
+      <div class="rdr-bar-right">
+        <button class="rdr-btn" id="rdr-font-out" type="button" aria-label="Smaller text" title="Smaller text">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../../assets/icons.svg#icon-zoom-out"></use></svg>
+        </button>
+        <button class="rdr-btn" id="rdr-font-in" type="button" aria-label="Bigger text" title="Bigger text">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../../assets/icons.svg#icon-zoom-in"></use></svg>
+        </button>
+        <button class="rdr-btn" id="rdr-mode" type="button" aria-label="Switch to scroll view">
+          <svg class="icon-svg" aria-hidden="true"><use href="../../../assets/icons.svg#icon-written-book"></use></svg>
+        </button>
       </div>
     </div>
-  </footer>
+
+    <div class="rdr-stage" id="rdr-stage">
+      <span class="rdr-gutter" aria-hidden="true"></span>
+      <div class="rdr-track" id="rdr-track">
+        <div class="rdr-flow" id="rdr-flow"></div>
+      </div>
+
+      <button class="rdr-turn back" id="rdr-turn-back" type="button" aria-label="Previous page">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../../assets/icons.svg#icon-arrow-right"></use></svg>
+      </button>
+      <button class="rdr-turn fwd" id="rdr-turn-fwd" type="button" aria-label="Next page">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../../assets/icons.svg#icon-arrow-right"></use></svg>
+      </button>
+    </div>
+
+    <div class="rdr-foot">
+      <div class="rdr-progress"><span id="rdr-progress"></span></div>
+      <div class="rdr-foot-row">
+        <span id="rdr-unit-label"></span>
+        <span class="rdr-hintbar"><kbd>&#8592;</kbd><kbd>&#8594;</kbd> turn pages &middot; <kbd>C</kbd> contents</span>
+        <span id="rdr-page-label"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rdr-scrim" id="rdr-scrim"></div>
+  <aside class="rdr-drawer" id="rdr-drawer" aria-label="Einheiten">
+    <div class="rdr-drawer-head">
+      <strong>Einheiten</strong>
+      <button class="rdr-btn" id="rdr-drawer-close" type="button" aria-label="Close contents">
+        <svg class="icon-svg" aria-hidden="true"><use href="../../../assets/icons.svg#icon-close"></use></svg>
+      </button>
+    </div>
+    <ul class="rdr-drawer-list" id="rdr-drawer-list"></ul>
+  </aside>
 
   <script src="../../../js/practice-lesen.js"></script>
   <script src="../../../js/practice.js"></script>
-  <script src="../../../js/ui.js"></script>
-  <script>
-    (function () {
-      var want = new URLSearchParams(location.search).get("u");
-      var i = LESEN_UNITS.findIndex(function (u) { return u.id === want; });
-      if (i < 0) i = 0;
-
-      var unit = LESEN_UNITS[i];
-      document.title = unit.title + " — Lesen — Übungsbuch — Deutsch Ecke";
-      DE_PRACTICE.mount(unit, document.getElementById("unit-host"));
-
-      var prev = LESEN_UNITS[i - 1];
-      var next = LESEN_UNITS[i + 1];
-      var nav = document.getElementById("unit-nav");
-      var h = "";
-      if (prev) h += '<a href="unit.html?u=' + prev.id + '">&larr; ' + prev.title + "</a>";
-      h += '<span class="sp"></span>';
-      h += '<a href="index.html">Alle Einheiten</a>';
-      if (next) h += '<a href="unit.html?u=' + next.id + '">' + next.title + " &rarr;</a>";
-      nav.innerHTML = h;
-    })();
-  </script>
+  <script src="../../../js/practice-reader.js"></script>
 </body>
 </html>
