@@ -1,7 +1,8 @@
 /* ============================================================
    Deutsch Ecke — mobile swipe rows
    On phones, the hub's level cards (A1 / A2) and the A1 page's
-   path cards (Picture Book / Written Book) become one horizontal
+   path cards (Picture Book / Written Book) and the hub's "What's
+   inside" feature cards become one horizontal
    snap-scrolling row instead of a tall vertical stack, so there
    is far less to scroll past.
 
@@ -19,7 +20,8 @@
   /* ---------- the row itself ---------- */
 
   .premium .level-grid,
-  .premium .path-grid {
+  .premium .path-grid,
+  .premium .feature-grid {
     display: flex;
     flex-wrap: nowrap;
     grid-template-columns: none;
@@ -46,14 +48,16 @@
   }
 
   .premium .level-grid::-webkit-scrollbar,
-  .premium .path-grid::-webkit-scrollbar {
+  .premium .path-grid::-webkit-scrollbar,
+  .premium .feature-grid::-webkit-scrollbar {
     display: none;
   }
 
   /* ---------- the cards ---------- */
 
   .premium .level-card,
-  .premium .path-card {
+  .premium .path-card,
+  .premium .feature {
     flex: 0 0 auto;
     /* 79% deliberately leaves a slice of the next card showing.
        A full-width card would look like the whole content and
@@ -71,14 +75,16 @@
      are both dropped here for that reason — :hover also sticks
      after a tap on a phone, which would leave a card lifted. */
   .premium .level-grid .reveal,
-  .premium .path-grid .reveal {
+  .premium .path-grid .reveal,
+  .premium .feature-grid .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
 
   .landing a.level-card:hover,
-  a.path-card:hover {
+  a.path-card:hover,
+  .feature:hover {
     transform: none;
   }
 

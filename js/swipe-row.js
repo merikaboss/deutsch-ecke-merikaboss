@@ -79,7 +79,7 @@
 
   function init() {
     if (!phone.matches) return;
-    document.querySelectorAll(".level-grid, .path-grid").forEach(function (row) {
+    document.querySelectorAll(".level-grid, .path-grid, .feature-grid").forEach(function (row) {
       if (row.dataset.swipeRow) return;
       if (build(row)) row.dataset.swipeRow = "1";
     });
