@@ -18,9 +18,9 @@
   var MODE_KEY = "a1-journey-book-mode";
   var GAP = 56;
   var FONT_STEPS = [0.92, 1.02, 1.14, 1.28];
-  // A phone starts a step bigger: the smaller sizes pack the lines too
-  // tightly to read comfortably on a narrow screen.
-  var START_FONT_PHONE = 2;
+  // 1.02rem on both: with the wide side margins the turn buttons need, a
+  // phone line is short enough that this is the size that reads properly.
+  var START_FONT_PHONE = 1;
   var START_FONT_WIDE = 1;
 
   var el = {};
