@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesen — Übungsbuch — A1 — Deutsch Ecke</title>
+  <meta name="description" content="Reading practice for German A1: graded stories with vocabulary and translation, plus short everyday texts like signs, notes and small ads." />
+  <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/practice.css" />
+</head>
+<body class="premium" data-page="practice-lesen-toc">
+
+  <div class="aurora" aria-hidden="true">
+    <span class="a1"></span>
+    <span class="a2"></span>
+    <span class="a3"></span>
+    <span class="mesh"></span>
+    <span class="grain"></span>
+  </div>
+
+  <div class="attribution-bar">
+    A personal project by <a href="https://github.com/merikaboss" target="_blank" rel="noopener">merikaboss</a>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap-wide">
+      <a href="../../../index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">DE</span>
+        Deutsch Ecke
+      </a>
+      <nav>
+        <a href="../../index.html">A1 home</a>
+        <a href="../../picture-book/index.html">Picture Book</a>
+        <a href="../../book/index.html">Written Book</a>
+        <a href="../index.html" class="current">Übungsbuch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap-wide">
+
+    <section class="hero" style="padding: 40px 0 6px;">
+      <div class="u-kicker" style="font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 700;">
+        Übungsbuch &middot; Teil 1
+      </div>
+      <h1 style="margin: 6px 0 2px;">Lesen</h1>
+      <p style="font-style: italic; color: var(--text-muted); margin: 0 0 12px;">Reading</p>
+      <p class="unit-intro">
+        Work through these in order — they get harder as you go. Read each German
+        text once without stopping and without looking anything up, even where
+        you only half understand it. Then open the Wortschatz and read it again.
+        Only check the English translation when you have already answered the
+        questions.
+      </p>
+    </section>
+
+    <div id="lesen-index"></div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap-wide">
+      Notes from a personal A1 study journey.
+      <div class="footer-links">
+        <a href="https://chat.whatsapp.com/GpNXmNTD5xa5YuwGwRcQmc" target="_blank" rel="noopener">Join the WhatsApp group</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../js/practice-lesen.js"></script>
+  <script src="../../../js/practice.js"></script>
+  <script src="../../../js/ui.js"></script>
+  <script>
+    (function () {
+      var host = document.getElementById("lesen-index");
+      var done = DE_PRACTICE.results();
+      var html = "";
+
+      LESEN_GRUPPEN.forEach(function (g) {
+        var units = LESEN_UNITS.filter(function (u) { return u.gruppe === g.key; });
+        if (!units.length) return;
+
+        html +=
+          '<section class="unit-group"><h2>' + g.titel +
+          ' <span style="font-weight:400;font-style:italic;color:var(--text-muted);font-size:0.75em;">' +
+          g.unter + "</span></h2><p>" + g.text + '</p><div class="unit-list">';
+
+        units.forEach(function (u, i) {
+          var r = done[u.id];
+          html +=
+            '<a class="unit-item" href="unit.html?u=' + u.id + '">' +
+            '<div class="u-top"><span class="u-nr">' + u.id + "</span>" +
+            "<span>" + u.aufgaben.length + " Aufgaben</span>" +
+            (r ? '<span class="u-done">&#10003; ' + r.r + "/" + r.t + "</span>" : "") +
+            '<span class="stufe">' + "●".repeat(u.stufe) + "○".repeat(3 - u.stufe) + "</span>" +
+            "</div>" +
+            "<h3>" + u.title + "</h3>" +
+            '<div class="u-focus">' + u.focus + "</div>" +
+            "</a>";
+        });
+
+        html += "</div></section>";
+      });
+
+      host.innerHTML = html;
+    })();
+  </script>
+</body>
+</html>

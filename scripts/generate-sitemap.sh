@@ -63,6 +63,18 @@ PB_LASTMOD=$(latest_of "${PB_SHARED[@]}")
     echo "  <url><loc>${BASE}/a1/book/chapter-${i}.html</loc><lastmod>$(lastmod "$f")</lastmod></url>"
   done
 
+  # Übungsbuch. Every Lesen unit is the same physical file plus its data,
+  # so they share one lastmod, the same way the Picture Book viewer does.
+  LESEN_SHARED=(a1/practice/lesen/unit.html js/practice-lesen.js js/practice.js css/practice.css)
+  LESEN_LASTMOD=$(latest_of "${LESEN_SHARED[@]}")
+
+  echo "  <url><loc>${BASE}/a1/practice/</loc><lastmod>$(lastmod a1/practice/index.html)</lastmod></url>"
+  echo "  <url><loc>${BASE}/a1/practice/lesen/</loc><lastmod>$(lastmod a1/practice/lesen/index.html)</lastmod></url>"
+
+  for u in $(grep -o 'id: "L[0-9]\+"' js/practice-lesen.js | grep -o 'L[0-9]\+'); do
+    echo "  <url><loc>${BASE}/a1/practice/lesen/unit.html?u=${u}</loc><lastmod>${LESEN_LASTMOD}</lastmod></url>"
+  done
+
   echo '</urlset>'
 } > sitemap.xml
 

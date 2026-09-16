@@ -1,0 +1,592 @@
+/* ============================================================
+   Deutsch Ecke — Übungsbuch (Practice Book)
+   Loaded after theme.css on the practice pages: the skill cards,
+   the unit index, the reading text, and the task marking.
+   No backdrop-filter / blur anywhere, per the repaint rules.
+   ============================================================ */
+
+/* ---------- skill cards (Lesen / Schreiben / Sprechen) ---------- */
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+  padding: 14px 0 8px;
+}
+
+.skill-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 24px 24px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.skill-card .s-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--grad);
+  color: #fff;
+}
+
+.skill-card .s-icon .icon-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.skill-card h2 {
+  font-size: 1.32rem;
+  margin: 2px 0 0;
+}
+
+.skill-card .s-de {
+  font-family: var(--ui);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.skill-card p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.skill-card .s-cta {
+  font-family: var(--ui);
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.skill-card .s-count {
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.skill-card.soon {
+  opacity: 0.62;
+}
+
+.skill-card.soon .s-icon {
+  background: var(--border);
+  color: var(--text-muted);
+}
+
+/* ---------- unit index ---------- */
+
+.unit-group {
+  padding: 10px 0 4px;
+}
+
+.unit-group > h2 {
+  font-size: 1.42rem;
+  margin: 0 0 4px;
+}
+
+.unit-group > p {
+  color: var(--text-muted);
+  margin: 0 0 18px;
+  max-width: 62ch;
+}
+
+.unit-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+  gap: 14px;
+  padding: 0 0 26px;
+}
+
+.unit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  color: var(--text);
+}
+
+.unit-item .u-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--ui);
+  font-size: 0.71rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.unit-item .u-nr {
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.unit-item h3 {
+  font-size: 1.06rem;
+  margin: 0;
+}
+
+.unit-item .u-focus {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.stufe {
+  margin-left: auto;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+.u-done {
+  font-family: var(--ui);
+  font-size: 0.71rem;
+  font-weight: 800;
+  color: #2e7d55;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- the unit page ---------- */
+
+.unit-head {
+  padding: 8px 0 6px;
+}
+
+.unit-head .u-kicker {
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.unit-head h1 {
+  margin: 6px 0 2px;
+}
+
+.unit-head .u-sub {
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0 0 10px;
+}
+
+.unit-intro {
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+
+/* The German text itself. This never carries bracket translations —
+   that is what the Wortschatz and the reveal panel below are for. */
+.lesetext {
+  padding: 22px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  background: var(--bg-raised);
+  margin: 20px 0 8px;
+  line-height: 1.85;
+}
+
+.lesetext p {
+  margin: 0 0 13px;
+}
+
+.lesetext p:last-child {
+  margin-bottom: 0;
+}
+
+.lesetext .brief {
+  font-family: var(--ui);
+  font-size: 0.95em;
+}
+
+.lesetext .sprecher {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* signs, notices and small ads render as separate little cards */
+.schild-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 13px;
+  margin: 20px 0 10px;
+}
+
+.schild {
+  padding: 16px 16px 15px;
+  border-radius: 13px;
+  border: 1px dashed var(--border);
+  background: var(--bg-raised);
+  line-height: 1.6;
+}
+
+.schild .s-nr {
+  font-family: var(--ui);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.schild p {
+  margin: 0 0 4px;
+}
+
+.schild p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- reveal panels (Wortschatz / translation) ---------- */
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.panel > button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 18px;
+  border: 0;
+  background: none;
+  font-family: var(--ui);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.panel > button .chev {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.panel.open > button .chev {
+  transform: rotate(90deg);
+}
+
+.panel .panel-body {
+  display: none;
+  padding: 0 18px 18px;
+}
+
+.panel.open .panel-body {
+  display: block;
+}
+
+.panel .hint {
+  font-family: var(--ui);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.panel .panel-body p {
+  line-height: 1.75;
+  margin: 0 0 12px;
+}
+
+table.wortschatz {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.wortschatz td {
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+table.wortschatz tr:last-child td {
+  border-bottom: 0;
+}
+
+table.wortschatz td:first-child {
+  font-weight: 700;
+  padding-right: 16px;
+}
+
+table.wortschatz td:last-child {
+  color: var(--text-muted);
+}
+
+/* ---------- tasks ---------- */
+
+.aufgaben {
+  margin: 28px 0 0;
+}
+
+.aufgaben > h2 {
+  font-size: 1.32rem;
+  margin: 0 0 4px;
+}
+
+.aufgaben > .lead {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.teil-head {
+  font-family: var(--ui);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 26px 0 10px;
+}
+
+.task {
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  margin: 0 0 12px;
+}
+
+.task .t-q {
+  display: flex;
+  gap: 10px;
+  margin: 0 0 11px;
+  line-height: 1.65;
+}
+
+.task .t-n {
+  font-family: var(--ui);
+  font-weight: 800;
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+
+.t-hint {
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.opts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opts.row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.opts.row .opt {
+  flex: 1 1 130px;
+}
+
+.opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 10px 13px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.opt input {
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+  flex: 0 0 auto;
+}
+
+.opt.sel {
+  border-color: var(--accent);
+}
+
+.opt.right {
+  border-color: #2e7d55;
+  background: color-mix(in srgb, #2e7d55 13%, var(--bg));
+}
+
+.opt.wrong {
+  border-color: #b4483c;
+  background: color-mix(in srgb, #b4483c 13%, var(--bg));
+}
+
+.task input.gap,
+.task textarea.frei {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.task textarea.frei {
+  min-height: 94px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.task input.gap:focus,
+.task textarea.frei:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.task input.gap.right { border-color: #2e7d55; }
+.task input.gap.wrong { border-color: #b4483c; }
+
+.t-fb {
+  display: none;
+  margin-top: 11px;
+  padding: 11px 13px;
+  border-radius: 11px;
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.t-fb.show { display: block; }
+
+.t-fb.ok {
+  background: color-mix(in srgb, #2e7d55 13%, var(--bg));
+  border: 1px solid color-mix(in srgb, #2e7d55 40%, var(--border));
+}
+
+.t-fb.no {
+  background: color-mix(in srgb, #b4483c 12%, var(--bg));
+  border: 1px solid color-mix(in srgb, #b4483c 38%, var(--border));
+}
+
+.t-fb.muster {
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.t-fb b { font-weight: 800; }
+
+/* ---------- action bar + score ---------- */
+
+.task-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 22px 0 8px;
+}
+
+.btn-check,
+.btn-reset {
+  font-family: var(--ui);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.btn-check {
+  border-color: transparent;
+  background: var(--grad);
+  color: #fff;
+}
+
+.score {
+  font-family: var(--ui);
+  font-weight: 800;
+  padding: 10px 16px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+
+.score.good {
+  border-color: #2e7d55;
+  color: #2e7d55;
+}
+
+/* ---------- prev / next ---------- */
+
+.unit-nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 34px 0 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-family: var(--ui);
+  font-weight: 700;
+}
+
+.unit-nav .sp { margin-left: auto; }
+
+.unit-nav a {
+  padding: 11px 17px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  color: var(--text);
+}
+
+/* ---------- phone ---------- */
+
+@media (max-width: 760px) {
+  .lesetext {
+    padding: 18px 17px;
+    line-height: 1.8;
+  }
+
+  .task {
+    padding: 14px 15px;
+  }
+
+  .unit-list {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-check,
+  .btn-reset {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .task-bar .score {
+    width: 100%;
+    text-align: center;
+  }
+
+  .unit-nav {
+    flex-wrap: wrap;
+  }
+}
