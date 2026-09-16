@@ -128,18 +128,24 @@ html.reader body {
   overflow: hidden;
 }
 
+/* The columns live in this element's scrollable overflow, so the flow is
+   the scroller and a page turn is a sideways scroll. Moving the text with
+   a transform instead makes it a composited layer that this engine keeps
+   promoting and dropping, which leaves the previous page painted
+   underneath the new one — two pages of words on top of each other. */
 .rdr-flow {
   height: 100%;
   column-fill: auto;
   column-gap: 56px;
-  transform: translateX(0);
+  /* The turn is an instant scroll, not an animated one: a smooth scroll
+     restarts every time another turn interrupts it, so it lands between two
+     pages, and the half-finished frames leave the old page painted under the
+     new one. Instant turns always repaint cleanly. */
+  overflow: hidden;
+  touch-action: pan-y;
   font-family: var(--ui);
   font-size: var(--rdr-font);
   line-height: 1.72;
-}
-
-.rdr-flow.animate {
-  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* a faint gutter line down the middle of a two-page spread */
@@ -271,6 +277,7 @@ html.reader body {
   letter-spacing: -0.015em;
   margin: 18px 0 8px;
   break-after: avoid;
+  break-inside: avoid;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -290,6 +297,22 @@ html.reader body {
 
 .rdr-flow li {
   margin-bottom: 5px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+
+/* Tables are wrapped (in book-reader.js) in a scroller capped at one page.
+   A table left to fragment across the column break is painted across both
+   pages at once by this engine, and an unsplittable table taller than a page
+   spills onto the facing page while leaving its own page half empty. A
+   capped scroller can do neither: it never splits and never overflows. */
+.rdr-flow .tbl-wrap {
+  max-height: var(--tbl-max, none);
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin: 10px 0 16px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
 }
 
 .rdr-flow table {
@@ -297,10 +320,18 @@ html.reader body {
   border-collapse: collapse;
   margin: 10px 0 16px;
   font-size: 0.9em;
-  border-radius: 10px;
-  overflow: hidden;
   border: 1px solid var(--border);
   background: var(--bg-raised);
+}
+
+.rdr-flow .tbl-wrap > table {
+  margin: 0;
+}
+
+.rdr-flow tr,
+.rdr-flow th,
+.rdr-flow td {
+  break-inside: avoid;
 }
 
 .rdr-flow th,
@@ -332,7 +363,13 @@ html.reader body {
   padding: 15px 17px;
   margin: 18px 0;
   box-shadow: none;
-  break-inside: avoid-column;
+  /* Long boxes continue on the next page rather than being pushed whole:
+     keeping them together either wastes most of a page or, when the box is
+     taller than a page, spills it over the facing one. box-decoration-break
+     re-draws the background and the coloured edge on each part. */
+  break-inside: auto;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .rdr-flow .info-box h3,
@@ -643,7 +680,7 @@ html.reader body {
   height: auto;
   column-width: auto !important;
   columns: auto !important;
-  transform: none !important;
+  overflow: visible;
   max-width: 720px;
   margin: 0 auto;
 }
@@ -675,6 +712,16 @@ html.reader body {
     line-height: 1.68;
   }
 
+  /* denser tables on a phone, so far fewer of them need to scroll */
+  .rdr-flow table {
+    font-size: 0.84em;
+  }
+
+  .rdr-flow th,
+  .rdr-flow td {
+    padding: 6px 8px;
+  }
+
   /* edge zones stay, but narrower so they don't eat the text */
   .rdr-turn {
     width: 34px;
@@ -703,7 +750,6 @@ html.reader body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rdr-flow.animate,
   .rdr-drawer,
   .rdr-scrim,
   .rdr-progress span {

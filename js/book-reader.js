@@ -28,6 +28,7 @@
   var cols = 1;
   var step = 1;
   var drag = null;
+  var settleTimer = null;
 
   function clamp(v, lo, hi) {
     return v < lo ? lo : v > hi ? hi : v;
@@ -48,6 +49,23 @@
   }
 
   /* ---------- pagination ---------- */
+
+  // Every table goes in a wrapper that scrolls and is capped at one page
+  // (see bookreader.css). A table that fragments across a column break is
+  // painted across both pages at once by this engine — its box really does
+  // span them — and an unsplittable table taller than a page spills onto the
+  // facing page. A capped scroller can do neither.
+  function wrapTables() {
+    var tables = el.flow.querySelectorAll("table");
+    for (var i = 0; i < tables.length; i++) {
+      var t = tables[i];
+      if (t.parentNode.className === "tbl-wrap") continue;
+      var wrap = document.createElement("div");
+      wrap.className = "tbl-wrap";
+      t.parentNode.insertBefore(wrap, t);
+      wrap.appendChild(t);
+    }
+  }
 
   function layout(keepRatio) {
     var ratio = keepRatio && pages > 1 ? page / pages : 0;
@@ -73,6 +91,8 @@
     el.flow.style.columnWidth = colW + "px";
     el.flow.style.columnGap = gap + "px";
     el.flow.style.height = h + "px";
+    // leave room for the padding and heading of the box a table sits in
+    el.flow.style.setProperty("--tbl-max", Math.max(220, h - 46) + "px");
 
     step = w + gap;
 
@@ -85,9 +105,25 @@
     updateMeta();
   }
 
+  // Turning a page scrolls the flow sideways. Transforming the text instead
+  // leaves the previous page painted underneath the new one on this engine,
+  // so the two pages' words overlap.
+  //
+  // A smooth scroll restarts from wherever it has got to, so turning several
+  // pages quickly leaves the text stranded between two pages, with a strip of
+  // the previous one still showing. Snapping once the scrolling has stopped
+  // puts the page exactly where it belongs.
+  function snapToPage() {
+    var want = page * step;
+    if (Math.abs(el.flow.scrollLeft - want) > 1) el.flow.scrollLeft = want;
+  }
+
+  // `animate` is kept for the callers but deliberately ignored: turns are
+  // instant, so a page always lands exactly on its column.
   function apply(animate) {
-    el.flow.classList.toggle("animate", !!animate);
-    el.flow.style.transform = "translateX(" + -(page * step) + "px)";
+    el.flow.scrollLeft = page * step;
+    window.clearTimeout(settleTimer);
+    settleTimer = window.setTimeout(snapToPage, 120);
   }
 
   function updateMeta() {
@@ -154,7 +190,11 @@
     try {
       localStorage.setItem(MODE_KEY, scrollMode ? "scroll" : "page");
     } catch (e) {}
-    if (!scrollMode) window.requestAnimationFrame(function () { layout(false); });
+    if (scrollMode) {
+      el.flow.scrollLeft = 0;
+    } else {
+      window.requestAnimationFrame(function () { layout(false); });
+    }
   }
 
   /* ---------- drawer ---------- */
@@ -246,6 +286,7 @@
 
     buildDrawer();
     appendEndCard();
+    wrapTables();
 
     document.getElementById("rdr-contents").addEventListener("click", function () {
       setDrawer(true);
@@ -272,6 +313,8 @@
 
     document.getElementById("rdr-turn-back").addEventListener("click", function () { turn(-1); });
     document.getElementById("rdr-turn-fwd").addEventListener("click", function () { turn(1); });
+
+    el.flow.addEventListener("scrollend", snapToPage);
 
     el.stage.addEventListener("pointerdown", onDown);
     el.stage.addEventListener("pointerup", onUp);
