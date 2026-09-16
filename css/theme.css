@@ -769,3 +769,174 @@
     background-position: 14% 50%;
   }
 }
+
+/* ============================================================
+   Author card with follow links (home page)
+   ============================================================ */
+
+.premium .author-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px 26px;
+  align-items: center;
+  margin: 0 0 56px;
+  padding: 30px 32px;
+  border-radius: 24px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.premium .author-photo {
+  position: relative;
+  display: block;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--grad);
+  box-shadow: 0 0 0 3px var(--bg-raised), 0 0 0 5px var(--accent);
+}
+
+.premium .author-photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.premium .author-initials {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ui);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.premium .author-text .kicker {
+  display: block;
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.premium .author-text h2 {
+  font-size: 1.45rem;
+  margin: 0 0 6px;
+}
+
+.premium .author-text .handle {
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+.premium .author-text p {
+  color: var(--text-muted);
+  margin: 0 0 10px;
+  max-width: 60ch;
+}
+
+.premium .author-site {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ui);
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.premium .author-site .icon-svg {
+  width: 16px;
+  height: 16px;
+}
+
+.premium .follow {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+
+.premium .follow-label {
+  display: block;
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.premium .follow-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.premium .follow-list a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.premium .follow-list .icon-svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (hover: hover) {
+  .premium .follow-list a:hover,
+  .premium .author-site:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+@media (max-width: 760px) {
+  .premium .author-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    padding: 26px 20px;
+  }
+
+  .premium .author-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .premium .follow {
+    width: 100%;
+  }
+
+  .premium .follow-list {
+    justify-content: center;
+    gap: 14px 16px;
+    max-width: 224px;
+    margin: 0 auto;
+  }
+}
