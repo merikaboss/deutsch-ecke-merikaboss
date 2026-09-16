@@ -431,6 +431,380 @@ var LESEN_UNITS = [
 
       { teil: "Teil 4 — Schreiben Sie selbst.", typ: "frei", frage: "Sie interessieren sich für das Zimmer in Anzeige A. Schreiben Sie eine kurze E-Mail (4 – 5 Sätze): Stellen Sie sich vor, fragen Sie, ob das Zimmer noch frei ist, und schlagen Sie einen Termin vor.", muster: "Guten Tag, mein Name ist Amina Sow und ich studiere Informatik an der Universität Bremen. Ich habe Ihre Anzeige gelesen und interessiere mich sehr für das Zimmer. Ist es ab dem 1. Mai noch frei? Ich rauche nicht und bin sehr ruhig. Kann ich das Zimmer vielleicht am Samstagnachmittag ansehen? Mit freundlichen Grüßen, Amina Sow", warum: "An eine fremde Person schreibt man *Sie* und benutzt „Guten Tag“ und „Mit freundlichen Grüßen“." }
     ]
+  },
+  /* ---------------------------------------------------------- */
+  {
+    id: "L07",
+    gruppe: "geschichten",
+    stufe: 2,
+    title: "Der erste Arbeitstag",
+    subtitle: "Joseph starts an apprenticeship",
+    focus: "Perfekt, war und hatte, Uhrzeiten, Berufe",
+    intro:
+      "Joseph tells his sister about his first day at work, so almost everything is in the past: the Perfekt for what he did, and *war* and *hatte* for how things were. Notice how often a sentence starts with a time — *um sieben Uhr, danach, am Nachmittag* — and where the verb goes after it.",
+    text: [
+      "Liebe Esther,",
+      "heute war mein erster Tag in der Ausbildung, und ich muss dir unbedingt alles erzählen!",
+      "Ich bin schon um fünf Uhr aufgestanden, denn ich war sehr nervös. Um halb sieben bin ich mit der Straßenbahn zur Firma gefahren. Die Firma heißt Elektro Hartmann und hat zwölf Mitarbeiter. Ich war natürlich viel zu früh da und habe zwanzig Minuten vor der Tür gewartet.",
+      "Um sieben Uhr hat mich mein Chef, Herr Hartmann, begrüßt. Er ist ungefähr fünfzig Jahre alt und sehr freundlich. Zuerst hat er mir die Werkstatt und das Lager gezeigt. Dann habe ich meine Arbeitskleidung bekommen: eine blaue Hose, eine Jacke und feste Schuhe.",
+      "Danach hat er mich zu Stefan gebracht. Stefan ist Geselle und arbeitet schon acht Jahre in der Firma. Mit ihm bin ich im Auto zu einer Baustelle gefahren. Dort bauen sie gerade ein neues Kindergartengebäude. Ich habe Kabel getragen, Stefan beim Messen geholfen und sehr viele neue Wörter gehört. Ich habe nicht alles verstanden, aber Stefan hat alles zweimal erklärt.",
+      "Um zwölf Uhr hatten wir eine halbe Stunde Mittagspause. Die anderen Kollegen haben Brote gegessen, aber ich hatte nichts dabei. Stefan hat mir ein Brötchen gegeben — das war wirklich nett.",
+      "Am Nachmittag sind wir zurück in die Werkstatt gefahren. Ich habe die Werkzeuge sortiert und aufgeräumt. Um vier Uhr war Feierabend.",
+      "Jetzt bin ich sehr müde, aber auch glücklich. Morgen bringe ich mein eigenes Essen mit! Nächste Woche beginnt auch die Berufsschule, zwei Tage pro Woche.",
+      "Grüß Mama und Papa von mir!",
+      "Dein Joseph"
+    ],
+    wortschatz: [
+      ["die Ausbildung, -en", "apprenticeship, vocational training"],
+      ["unbedingt", "absolutely, really"],
+      ["nervös", "nervous"],
+      ["die Firma, Firmen", "company"],
+      ["der Mitarbeiter, -", "employee"],
+      ["begrüßen", "to greet, to welcome"],
+      ["die Werkstatt, -stätten", "workshop"],
+      ["das Lager, -", "storeroom"],
+      ["der Geselle, -n", "qualified tradesman (journeyman)"],
+      ["die Baustelle, -n", "building site"],
+      ["das Kabel, -", "cable"],
+      ["tragen (hat getragen)", "to carry"],
+      ["messen", "to measure"],
+      ["erklären", "to explain"],
+      ["das Werkzeug, -e", "tool"],
+      ["der Feierabend", "end of the working day"],
+      ["die Berufsschule, -n", "vocational college"]
+    ],
+    uebersetzung: [
+      "Dear Esther,",
+      "today was my first day of my apprenticeship, and I really have to tell you everything!",
+      "I got up at five o'clock, because I was very nervous. At half past six I took the tram to the company. The company is called Elektro Hartmann and has twelve employees. Of course I was there far too early and waited in front of the door for twenty minutes.",
+      "At seven o'clock my boss, Mr Hartmann, welcomed me. He is about fifty years old and very friendly. First he showed me the workshop and the storeroom. Then I got my work clothes: blue trousers, a jacket and sturdy shoes.",
+      "After that he took me to Stefan. Stefan is a qualified electrician and has worked at the company for eight years. I drove with him to a building site. They are building a new nursery there at the moment. I carried cables, helped Stefan with measuring and heard a great many new words. I didn't understand everything, but Stefan explained everything twice.",
+      "At twelve o'clock we had a half-hour lunch break. The other colleagues ate sandwiches, but I hadn't brought anything. Stefan gave me a bread roll — that was really kind.",
+      "In the afternoon we drove back to the workshop. I sorted the tools and tidied up. At four o'clock work was over.",
+      "Now I am very tired, but happy too. Tomorrow I'm bringing my own food! Next week vocational college starts as well, two days a week.",
+      "Say hello to Mum and Dad from me!",
+      "Your Joseph"
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Joseph ist zu spät zur Firma gekommen.", antwort: false, warum: "Er war zu früh da und hat zwanzig Minuten gewartet." },
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Herr Hartmann ist Josephs Chef.", antwort: true },
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Joseph hat den ganzen Tag in der Werkstatt gearbeitet.", antwort: false, warum: "Am Vormittag war er mit Stefan auf einer Baustelle." },
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Joseph hat nicht alle Wörter verstanden.", antwort: true },
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Die Berufsschule beginnt morgen.", antwort: false, warum: "Sie beginnt *nächste Woche*." },
+
+      { teil: "Teil 2 — Wählen Sie die richtige Antwort.", typ: "mc", frage: "Wie ist Joseph zur Firma gefahren?", optionen: ["Mit dem Auto", "Mit dem Fahrrad", "Mit der Straßenbahn", "Mit dem Bus"], antwort: 2 },
+      { teil: "Teil 2 — Wählen Sie die richtige Antwort.", typ: "mc", frage: "Was hat Joseph auf der Baustelle gemacht?", optionen: ["Er hat Brote gegessen und gewartet.", "Er hat Kabel getragen und beim Messen geholfen.", "Er hat Werkzeuge sortiert.", "Er hat einen Kindergarten besucht."], antwort: 1 },
+      { teil: "Teil 2 — Wählen Sie die richtige Antwort.", typ: "mc", frage: "Warum hat Stefan Joseph ein Brötchen gegeben?", optionen: ["Joseph hatte kein Essen dabei.", "Stefan hatte keinen Hunger.", "Es war Josephs Geburtstag.", "Joseph hat ihn gefragt."], antwort: 0 },
+      { teil: "Teil 2 — Wählen Sie die richtige Antwort.", typ: "mc", frage: "Wie lange hat Joseph an diesem Tag gearbeitet?", optionen: ["Von fünf bis zwölf Uhr", "Von sieben bis sechzehn Uhr", "Von halb sieben bis vier Uhr", "Acht Jahre"], antwort: 1, warum: "Um sieben Uhr hat er angefangen, um vier Uhr — also 16 Uhr — war Feierabend." },
+
+      { teil: "Teil 3 — Ergänzen Sie das Partizip aus dem Text.", typ: "luecke", frage: "Ich bin schon um fünf Uhr ___.", hinweis: "aufstehen", antwort: ["aufgestanden"] },
+      { teil: "Teil 3 — Ergänzen Sie das Partizip aus dem Text.", typ: "luecke", frage: "Herr Hartmann hat mir die Werkstatt ___.", hinweis: "zeigen", antwort: ["gezeigt"] },
+      { teil: "Teil 3 — Ergänzen Sie das Partizip aus dem Text.", typ: "luecke", frage: "Stefan hat alles zweimal ___.", hinweis: "erklären", antwort: ["erklärt", "erklaert"], warum: "Verben mit *er-* bekommen kein *ge-*." },
+      { teil: "Teil 3 — Ergänzen Sie das Partizip aus dem Text.", typ: "luecke", frage: "Am Nachmittag sind wir zurück in die Werkstatt ___.", hinweis: "fahren", antwort: ["gefahren"] },
+
+      { teil: "Teil 4 — war oder hatte?", typ: "luecke", frage: "Ich ___ sehr nervös.", antwort: ["war"] },
+      { teil: "Teil 4 — war oder hatte?", typ: "luecke", frage: "Um zwölf Uhr ___ wir eine halbe Stunde Pause.", antwort: ["hatten"] },
+
+      { teil: "Teil 5 — Schreiben Sie selbst.", typ: "frei", frage: "Erinnern Sie sich an Ihren ersten Tag in einer neuen Arbeit, Schule oder einem Kurs. Schreiben Sie fünf Sätze im Perfekt.", woerter: 45, muster: "Mein erster Tag im Deutschkurs war im März. Ich bin mit dem Bus zur Sprachschule gefahren. Zuerst haben wir uns alle vorgestellt. Dann hat die Lehrerin das Buch erklärt. In der Pause habe ich mit einer Frau aus Syrien Kaffee getrunken — sie ist heute meine Freundin.", checkliste: ["*sein* bei *fahren, gehen, kommen*?", "Partizip am Satzende?", "Mindestens ein Satz mit *war* oder *hatte*?"] }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "L08",
+    gruppe: "geschichten",
+    stufe: 2,
+    title: "Der Umzug",
+    subtitle: "Moving flat in one Saturday",
+    focus: "Modalverben, Imperativ, Möbel und Zimmer, Wechselpräpositionen",
+    intro:
+      "A move is full of instructions — *Stell den Schrank dorthin! Wir müssen noch …* — so this story is built on modal verbs and the imperative. Watch the furniture as it moves: *in die Küche* when it is being carried there, *in der Küche* once it is standing there.",
+    text: [
+      "Familie Diallo zieht um. Die alte Wohnung hat nur zwei Zimmer, und seit der kleine Moussa da ist, ist sie viel zu eng. Die neue Wohnung ist in der Lindenstraße, nur zehn Minuten entfernt. Sie hat drei Zimmer, eine große Küche und einen Balkon.",
+      "Am Samstag um acht Uhr klingelt es. Vier Freunde sind gekommen und wollen helfen. Aminata macht zuerst Kaffee für alle. Dann sagt sie: „Die Kisten mit den Büchern sind sehr schwer. Tragt sie bitte zu zweit!“",
+      "Ihr Mann Ibrahim hat einen Transporter gemietet. Er muss ihn bis 18 Uhr zurückbringen, denn sonst kostet er mehr. Deshalb müssen alle schnell arbeiten.",
+      "Das Sofa ist das größte Problem. Es passt nicht durch die Tür. „Wir müssen die Beine abschrauben“, sagt Kwame. „Hat jemand einen Schraubenzieher?“ Zum Glück hat Aminata einen in ihrer Werkzeugkiste.",
+      "Um zwölf Uhr ist der Transporter voll, und sie fahren zur neuen Wohnung. Dort gibt es einen Aufzug, aber er ist klein. Den Kühlschrank können sie nicht in den Aufzug stellen. Sie müssen ihn in den dritten Stock tragen. Danach machen alle eine Pause auf dem Balkon und essen Pizza.",
+      "Am Nachmittag stellen sie die Möbel in die Zimmer. „Stellt das Bett bitte an die Wand, nicht vor das Fenster!“, sagt Aminata. Das Kinderbett kommt in das kleine Zimmer neben dem Bad. Den Esstisch stellen sie in die Küche.",
+      "Um Viertel vor sechs bringt Ibrahim den Transporter zurück — gerade noch rechtzeitig. Am Abend sitzen alle zusammen in der neuen Küche. Überall stehen noch Kisten, und die Lampen hängen noch nicht. Aber Moussa schläft schon ruhig in seinem neuen Zimmer.",
+      "„Vielen Dank für eure Hilfe“, sagt Ibrahim. „Nächsten Monat machen wir eine Einweihungsparty. Ihr seid natürlich eingeladen!“"
+    ],
+    wortschatz: [
+      ["umziehen (ist umgezogen)", "to move house (separable)"],
+      ["der Umzug, -e", "move, removal"],
+      ["eng", "cramped, tight"],
+      ["entfernt", "away (distance)"],
+      ["die Kiste, -n", "box, crate"],
+      ["zu zweit", "in twos, the two of you together"],
+      ["der Transporter, -", "van"],
+      ["mieten", "to rent, to hire"],
+      ["abschrauben", "to unscrew"],
+      ["der Schraubenzieher, -", "screwdriver"],
+      ["der Aufzug, -e", "lift"],
+      ["der Stock / das Stockwerk", "floor, storey"],
+      ["rechtzeitig", "in time"],
+      ["die Einweihungsparty, -s", "house-warming party"]
+    ],
+    uebersetzung: [
+      "The Diallo family is moving. The old flat only has two rooms, and since little Moussa arrived it has been far too cramped. The new flat is in Lindenstraße, only ten minutes away. It has three rooms, a large kitchen and a balcony.",
+      "On Saturday at eight o'clock the doorbell rings. Four friends have come and want to help. Aminata first makes coffee for everyone. Then she says: \"The boxes of books are very heavy. Please carry them in twos!\"",
+      "Her husband Ibrahim has hired a van. He has to take it back by 6 p.m., otherwise it costs more. So everyone has to work fast.",
+      "The sofa is the biggest problem. It won't go through the door. \"We have to unscrew the legs,\" says Kwame. \"Does anyone have a screwdriver?\" Luckily Aminata has one in her toolbox.",
+      "At twelve o'clock the van is full and they drive to the new flat. There is a lift there, but it is small. They can't put the fridge in the lift. They have to carry it up to the third floor. After that everyone takes a break on the balcony and eats pizza.",
+      "In the afternoon they put the furniture in the rooms. \"Please put the bed against the wall, not in front of the window!\" says Aminata. The cot goes into the small room next to the bathroom. They put the dining table in the kitchen.",
+      "At a quarter to six Ibrahim takes the van back — just in time. In the evening everyone sits together in the new kitchen. There are still boxes everywhere, and the lamps aren't hung yet. But Moussa is already sleeping peacefully in his new room.",
+      "\"Thank you so much for your help,\" says Ibrahim. \"Next month we're having a house-warming party. You're invited, of course!\""
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Die neue Wohnung ist größer als die alte.", antwort: true, warum: "Alt: zwei Zimmer. Neu: drei Zimmer, große Küche, Balkon." },
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Die Familie hat eine Umzugsfirma bezahlt.", antwort: false, warum: "Freunde helfen, und Ibrahim hat selbst einen Transporter gemietet." },
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Den Kühlschrank tragen sie die Treppe hoch.", antwort: true },
+      { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Am Abend ist die Wohnung ganz fertig.", antwort: false, warum: "Es stehen noch Kisten herum und die Lampen hängen noch nicht." },
+
+      { teil: "Teil 2 — Wählen Sie die richtige Antwort.", typ: "mc", frage: "Warum müssen alle schnell arbeiten?", optionen: ["Moussa muss schlafen.", "Der Transporter muss um 18 Uhr zurück sein.", "Es regnet.", "Die Pizza wird kalt."], antwort: 1 },
+      { teil: "Teil 2 — Wählen Sie die richtige Antwort.", typ: "mc", frage: "Was ist das Problem mit dem Sofa?", optionen: ["Es ist kaputt.", "Es ist zu schwer für den Aufzug.", "Es passt nicht durch die Tür.", "Es gefällt Aminata nicht."], antwort: 2 },
+      { teil: "Teil 2 — Wählen Sie die richtige Antwort.", typ: "mc", frage: "Wo steht das Kinderbett jetzt?", optionen: ["In der Küche", "Im Zimmer neben dem Bad", "Auf dem Balkon", "Vor dem Fenster"], antwort: 1 },
+      { teil: "Teil 2 — Wählen Sie die richtige Antwort.", typ: "mc", frage: "Was plant Ibrahim für nächsten Monat?", optionen: ["Noch einen Umzug", "Eine Party in der neuen Wohnung", "Einen Urlaub", "Neue Lampen kaufen"], antwort: 1 },
+
+      { teil: "Teil 3 — Modalverben aus dem Text", typ: "luecke", frage: "Vier Freunde sind gekommen und ___ helfen.", antwort: ["wollen"] },
+      { teil: "Teil 3 — Modalverben aus dem Text", typ: "luecke", frage: "Er ___ den Transporter bis 18 Uhr zurückbringen.", antwort: ["muss"] },
+      { teil: "Teil 3 — Modalverben aus dem Text", typ: "luecke", frage: "Den Kühlschrank ___ sie nicht in den Aufzug stellen.", antwort: ["können", "koennen"] },
+
+      { teil: "Teil 4 — Wohin oder wo?", teilIntro: "Bewegung (wohin?) → Akkusativ. Position (wo?) → Dativ.", typ: "luecke", frage: "Den Esstisch stellen sie in ___ Küche.", antwort: ["die"] },
+      { teil: "Teil 4 — Wohin oder wo?", typ: "luecke", frage: "Am Abend sitzen alle in ___ neuen Küche.", antwort: ["der"] },
+      { teil: "Teil 4 — Wohin oder wo?", typ: "luecke", frage: "Stellt das Bett bitte an ___ Wand!", antwort: ["die"] },
+      { teil: "Teil 4 — Wohin oder wo?", typ: "luecke", frage: "Das Kinderbett steht neben ___ Bad.", antwort: ["dem"] },
+
+      { teil: "Teil 5 — Schreiben Sie selbst.", typ: "frei", frage: "Ein Freund zieht am Samstag um und bittet Sie um Hilfe. Sie können nur am Vormittag. Schreiben Sie ihm eine Nachricht.", woerter: 35, muster: "Hallo Kwame, natürlich helfe ich dir beim Umzug! Ich kann aber nur am Vormittag, denn um 14 Uhr muss ich arbeiten. Ich bin um acht Uhr bei dir. Soll ich etwas mitbringen? Ich habe Werkzeug und ein paar Kisten. Bis Samstag, Moritz", checkliste: ["Zusage und Einschränkung (nur vormittags) mit Grund?", "Modalverb auf Position 2, Infinitiv am Ende?"] }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "L09",
+    gruppe: "geschichten",
+    stufe: 3,
+    title: "Das Familienfest",
+    subtitle: "Grandmother turns eighty",
+    focus: "Familie, Possessivartikel, Genitiv-s bei Namen, Zahlen und Jahre",
+    intro:
+      "This is the longest story so far, and it is full of people. Keep a small family tree in your head — or on paper — as you read, because the tasks ask who is whose. Names with *-s* (*Omas Geburtstag, Leilas Mann*) tell you who belongs to whom.",
+    text: [
+      "Am letzten Sonntag im Juni ist Oma Hadiza achtzig Jahre alt geworden. Sie wohnt seit über vierzig Jahren in Köln. Sie ist 1981 mit ihrem Mann Musa aus Ghana nach Deutschland gekommen. Opa Musa ist leider vor sechs Jahren gestorben.",
+      "Oma Hadiza hat drei Kinder: zwei Töchter und einen Sohn. Die älteste Tochter, Leila, ist Lehrerin und wohnt mit ihrem Mann Thomas in Bonn. Sie haben zwei Kinder, Jonas und Mira. Jonas ist zweiundzwanzig und studiert in München, Mira ist sechzehn und geht noch zur Schule.",
+      "Omas Sohn Samuel lebt mit seiner Frau Grace und dem kleinen Daniel in Hamburg. Daniel ist erst drei Jahre alt und damit Omas jüngster Enkel. Die jüngste Tochter, Efua, ist Ärztin. Sie ist nicht verheiratet und wohnt nur zwei Straßen von ihrer Mutter entfernt. Sie besucht Oma fast jeden Tag.",
+      "Für das Fest hat Efua einen Raum in einem Restaurant am Rhein reserviert. Alle sind gekommen, sogar Jonas aus München — er ist mit dem Nachtzug gefahren und war sehr müde. Insgesamt waren es fünfunddreißig Gäste: die Familie, Nachbarn, alte Freundinnen aus der Kirche und zwei Cousinen aus Accra. Die Cousinen sind extra für das Fest nach Deutschland geflogen.",
+      "Zuerst hat Samuel eine kleine Rede gehalten. Er hat erzählt, wie seine Eltern in den Achtzigerjahren in Köln angefangen haben: Opa Musa hat bei Ford gearbeitet, Oma hat als Näherin Kleider genäht. Viele Gäste haben gelacht, manche haben auch ein bisschen geweint.",
+      "Dann gab es ein großes Buffet mit deutschem und ghanaischem Essen: Kartoffelsalat neben Jollof-Reis, Braten neben Kelewele. Mira hat mit ihrer Freundin eine Torte gebacken — mit einer großen 80 aus Schokolade.",
+      "Am Abend hat Daniel auf Omas Schoß geschlafen, und die Erwachsenen haben alte Fotos angesehen. Zum Schluss hat Oma Hadiza gesagt: „Das ist das schönste Geschenk: Alle meine Kinder und Enkel sind heute hier.“"
+    ],
+    wortschatz: [
+      ["werden (ist geworden)", "to become; here: to turn (an age)"],
+      ["sterben (ist gestorben)", "to die"],
+      ["der Enkel, - / die Enkelin, -nen", "grandson / granddaughter"],
+      ["älteste / jüngste", "eldest / youngest"],
+      ["reservieren", "to book, to reserve"],
+      ["sogar", "even"],
+      ["insgesamt", "in total"],
+      ["die Cousine, -n / der Cousin, -s", "cousin"],
+      ["extra", "specially"],
+      ["eine Rede halten", "to give a speech"],
+      ["die Näherin, -nen", "seamstress"],
+      ["nähen", "to sew"],
+      ["weinen", "to cry"],
+      ["der Braten, -", "roast (meat)"],
+      ["der Schoß", "lap"]
+    ],
+    uebersetzung: [
+      "On the last Sunday in June, Grandma Hadiza turned eighty. She has lived in Cologne for over forty years. She came to Germany from Ghana in 1981 with her husband Musa. Grandpa Musa sadly died six years ago.",
+      "Grandma Hadiza has three children: two daughters and a son. The eldest daughter, Leila, is a teacher and lives with her husband Thomas in Bonn. They have two children, Jonas and Mira. Jonas is twenty-two and studies in Munich, Mira is sixteen and still at school.",
+      "Grandma's son Samuel lives with his wife Grace and little Daniel in Hamburg. Daniel is only three years old, which makes him Grandma's youngest grandchild. The youngest daughter, Efua, is a doctor. She isn't married and lives just two streets away from her mother. She visits Grandma almost every day.",
+      "For the celebration Efua booked a room in a restaurant on the Rhine. Everyone came, even Jonas from Munich — he took the night train and was very tired. There were thirty-five guests in total: the family, neighbours, old friends from church and two cousins from Accra. The cousins flew to Germany specially for the celebration.",
+      "First Samuel gave a short speech. He told how his parents started out in Cologne in the eighties: Grandpa Musa worked at Ford, Grandma sewed clothes as a seamstress. Many guests laughed, and some cried a little too.",
+      "Then there was a big buffet with German and Ghanaian food: potato salad next to jollof rice, roast meat next to kelewele. Mira baked a cake with her friend — with a big 80 made of chocolate.",
+      "In the evening Daniel fell asleep on Grandma's lap, and the adults looked at old photos. At the end Grandma Hadiza said: \"This is the most beautiful present: all my children and grandchildren are here today.\""
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Wer ist wer?", typ: "mc", frage: "Wer ist Mira?", optionen: ["Omas Tochter", "Leilas Tochter", "Samuels Frau", "Efuas Freundin"], antwort: 1 },
+      { teil: "Teil 1 — Wer ist wer?", typ: "mc", frage: "Wer ist Thomas für Oma Hadiza?", optionen: ["Ihr Sohn", "Ihr Enkel", "Ihr Schwiegersohn — der Mann ihrer Tochter", "Ihr Bruder"], antwort: 2 },
+      { teil: "Teil 1 — Wer ist wer?", typ: "mc", frage: "Wie viele Enkel hat Oma Hadiza?", optionen: ["Zwei", "Drei", "Vier", "Fünf"], antwort: 1, warum: "Jonas und Mira (Leilas Kinder) und Daniel (Samuels Sohn) — Efua hat keine Kinder." },
+      { teil: "Teil 1 — Wer ist wer?", typ: "mc", frage: "Wer wohnt am nächsten bei Oma?", optionen: ["Leila", "Samuel", "Efua", "Jonas"], antwort: 2 },
+
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "Oma Hadiza lebt seit 1981 in Deutschland.", antwort: true },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "Opa Musa war auch auf dem Fest.", antwort: false, warum: "Er ist vor sechs Jahren gestorben." },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "Jonas ist mit dem Flugzeug gekommen.", antwort: false, warum: "Er ist mit dem Nachtzug gefahren. Die Cousinen aus Accra sind geflogen." },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "Auf dem Buffet gab es nur ghanaisches Essen.", antwort: false, warum: "Deutsches und ghanaisches Essen." },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "Mira hat die Torte gebacken.", antwort: true },
+
+      { teil: "Teil 3 — Zahlen im Text", typ: "luecke", frage: "Wie alt war Oma Hadiza, als sie nach Deutschland gekommen ist? Rechnen Sie.", hinweis: "Zahl", antwort: ["35", "fünfunddreißig", "fuenfunddreissig"], warum: "Sie ist jetzt 80. Von 1981 bis heute sind es etwa 45 Jahre: 80 − 45 = 35." },
+      { teil: "Teil 3 — Zahlen im Text", typ: "luecke", frage: "Wie viele Gäste waren auf dem Fest?", hinweis: "Zahl", antwort: ["35", "fünfunddreißig", "fuenfunddreissig"] },
+
+      { teil: "Teil 4 — Wessen?", teilIntro: "Ergänzen Sie den Namen mit *-s*.", typ: "luecke", frage: "Thomas ist ___ Mann.", hinweis: "Leila", antwort: ["Leilas"] },
+      { teil: "Teil 4 — Wessen?", typ: "luecke", frage: "Daniel ist ___ Sohn.", hinweis: "Samuel", antwort: ["Samuels"] },
+      { teil: "Teil 4 — Wessen?", typ: "luecke", frage: "Daniel hat auf ___ Schoß geschlafen.", hinweis: "Oma", antwort: ["Omas"] },
+
+      { teil: "Teil 5 — Schreiben Sie selbst.", typ: "frei", frage: "Beschreiben Sie ein Familienfest, das Sie erlebt haben: Wer hat gefeiert, wer war da, was gab es zu essen, was hat Ihnen gefallen?", woerter: 60, muster: "Letzten Dezember hat mein Bruder Kofi geheiratet. Das Fest war in Kumasi, und über zweihundert Gäste waren da. Meine Eltern, alle Tanten und Onkel und viele Freunde sind gekommen. Es gab Fufu, Reis und sehr viel Hähnchen. Am Abend haben wir bis zwei Uhr getanzt. Am schönsten war die Rede von meinem Vater — er hat fast geweint.", checkliste: ["Possessivartikel richtig: *meine Eltern, mein Bruder*?", "Perfekt für die Ereignisse, *es gab* für das Essen?"] }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "L10",
+    gruppe: "uebungen",
+    stufe: 2,
+    title: "Am Bahnhof",
+    subtitle: "Departure boards, timetables and notices",
+    focus: "Fahrpläne lesen, Gleis und Abfahrt, Verspätung, Hinweise",
+    intro:
+      "A station gives you information in tiny pieces: a line on a departure board, a note on a timetable, a sign by the ticket machine. Every detail counts — a platform number, a footnote, the word *nur* — and the tasks are built around exactly those details.",
+    schilder: [
+      { nr: "A", zeilen: ["*Abfahrt — Hannover Hbf*", "10:12  RE 4410  Braunschweig  Gleis 3", "10:18  ICE 571  Berlin Hbf  Gleis 9  *+15 Min.*", "10:25  S 5  Flughafen  Gleis 1", "10:31  RB 38  Göttingen  Gleis 4 *→ heute Gleis 6*", "10:40  IC 2037  Hamburg Hbf  Gleis 11  *fällt aus*"] },
+      { nr: "B", zeilen: ["*Fahrkartenautomat*", "Nur Karte oder Münzen.", "Keine Scheine!", "Fahrkarten für den Fernverkehr (IC/ICE) bitte im Reisezentrum oder online kaufen."] },
+      { nr: "C", zeilen: ["*Reisezentrum*", "Mo – Fr  6:00 – 21:00", "Sa, So und Feiertage  8:00 – 20:00", "Bitte ziehen Sie eine Nummer."] },
+      { nr: "D", zeilen: ["*Hinweis*", "Wegen Bauarbeiten fahren vom 12. bis 26. Mai", "zwischen Hannover und Hildesheim", "keine Züge.", "Bitte nutzen Sie die Busse (Ersatzverkehr)", "vor dem Hauptausgang."] },
+      { nr: "E", zeilen: ["*Gepäckaufbewahrung*", "Schließfächer im Untergeschoss", "klein (bis 24 Std.)  4 €", "groß (bis 24 Std.)  6 €"] },
+      { nr: "F", zeilen: ["*Fahrradmitnahme*", "In Regionalzügen (RE, RB, S-Bahn) möglich.", "Mo – Fr 6 – 9 Uhr nicht erlaubt.", "Fahrradkarte: 5 € pro Tag"] }
+    ],
+    wortschatz: [
+      ["die Abfahrt, -en / die Ankunft", "departure / arrival"],
+      ["das Gleis, -e", "platform, track"],
+      ["der Hauptbahnhof (Hbf)", "main station"],
+      ["die Verspätung, -en", "delay"],
+      ["ausfallen (fällt aus)", "to be cancelled"],
+      ["der Schein, -e / die Münze, -n", "banknote / coin"],
+      ["der Fernverkehr", "long-distance trains"],
+      ["das Reisezentrum", "travel centre, ticket office"],
+      ["eine Nummer ziehen", "to take a number (queue ticket)"],
+      ["die Bauarbeiten (Pl.)", "construction work"],
+      ["der Ersatzverkehr", "replacement bus service"],
+      ["das Schließfach, -fächer", "locker"],
+      ["das Untergeschoss", "basement level"],
+      ["erlaubt", "allowed"]
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Die Anzeigetafel (A)", typ: "rf", frage: "Der ICE nach Berlin fährt heute pünktlich.", antwort: false, warum: "*+15 Min.* — er hat 15 Minuten Verspätung." },
+      { teil: "Teil 1 — Die Anzeigetafel (A)", typ: "rf", frage: "Der Zug nach Göttingen fährt heute von Gleis 6.", antwort: true },
+      { teil: "Teil 1 — Die Anzeigetafel (A)", typ: "rf", frage: "Man kann um 10:40 Uhr mit dem IC nach Hamburg fahren.", antwort: false, warum: "*fällt aus* — der Zug fährt heute nicht." },
+      { teil: "Teil 1 — Die Anzeigetafel (A)", typ: "mc", frage: "Sie müssen zum Flughafen. Wohin gehen Sie?", optionen: ["Gleis 1", "Gleis 3", "Gleis 9", "Gleis 11"], antwort: 0 },
+      { teil: "Teil 1 — Die Anzeigetafel (A)", typ: "mc", frage: "Wann fährt der ICE nach Berlin wirklich ab?", optionen: ["Um 10:03", "Um 10:18", "Um 10:33", "Um 10:15"], antwort: 2, warum: "10:18 + 15 Minuten = 10:33." },
+
+      { teil: "Teil 2 — Die anderen Schilder", typ: "mc", frage: "Sie haben nur einen 20-Euro-Schein und brauchen eine Fahrkarte für den RE. Was machen Sie?", optionen: ["Sie bezahlen am Automaten mit dem Schein.", "Sie bezahlen mit Karte oder gehen ins Reisezentrum.", "Sie fahren ohne Fahrkarte.", "Sie ziehen eine Nummer am Automaten."], antwort: 1, warum: "Der Automat nimmt *keine Scheine*." },
+      { teil: "Teil 2 — Die anderen Schilder", typ: "rf", frage: "Schild B: Am Automaten kann man ICE-Fahrkarten kaufen.", antwort: false, warum: "Fernverkehr: nur im Reisezentrum oder online." },
+      { teil: "Teil 2 — Die anderen Schilder", typ: "rf", frage: "Schild C: Das Reisezentrum ist am Sonntag um 7 Uhr geöffnet.", antwort: false, warum: "Sonntags erst ab 8:00 Uhr." },
+      { teil: "Teil 2 — Die anderen Schilder", typ: "mc", frage: "Sie möchten am 20. Mai nach Hildesheim fahren. Was steht auf Schild D?", optionen: ["Der Zug fährt von Gleis 6.", "Sie müssen einen Bus nehmen.", "Die Fahrt ist kostenlos.", "Es gibt keine Verbindung."], antwort: 1 },
+      { teil: "Teil 2 — Die anderen Schilder", typ: "mc", frage: "Sie haben einen großen Koffer und möchten ihn für fünf Stunden abgeben. Was kostet das?", optionen: ["4 €", "5 €", "6 €", "Nichts"], antwort: 2 },
+      { teil: "Teil 2 — Die anderen Schilder", typ: "mc", frage: "Sie möchten am Dienstag um 8 Uhr mit dem Fahrrad in der S-Bahn fahren. Geht das?", optionen: ["Ja, mit einer Fahrradkarte für 5 €.", "Ja, das ist kostenlos.", "Nein, zu dieser Zeit ist es nicht erlaubt.", "Nein, Fahrräder sind nie erlaubt."], antwort: 2, warum: "Montag bis Freitag von 6 bis 9 Uhr: nicht erlaubt." },
+
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "Wo sind die Schließfächer?", hinweis: "Schild E", antwort: ["im Untergeschoss", "Untergeschoss", "im Untergeschoß"] },
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "Wie heißt das deutsche Wort für _cancelled_ auf der Tafel? (zwei Wörter)", antwort: ["fällt aus", "faellt aus"] },
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "Wo fahren die Ersatzbusse ab?", hinweis: "Schild D", antwort: ["vor dem Hauptausgang", "Hauptausgang", "am Hauptausgang"] }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "L11",
+    gruppe: "uebungen",
+    stufe: 2,
+    title: "Nachrichten im Alltag",
+    subtitle: "Texts, emails and notes from one week",
+    focus: "Kurze Mitteilungen verstehen, wer schreibt wem und warum",
+    intro:
+      "Six short messages from one ordinary week — from a friend, a colleague, a school, a neighbour. In each one, ask yourself three things: who is writing, to whom, and what do they want the reader to do?",
+    schilder: [
+      { nr: "A", zeilen: ["*SMS von Tanja*", "Hi! Bin schon im Park, aber es fängt gleich an zu regnen. Wollen wir uns lieber im Café Lotte treffen? Gleiche Zeit. LG"] },
+      { nr: "B", zeilen: ["*E-Mail von der Schule*", "Liebe Eltern der Klasse 3b,", "am Freitag fallen die 5. und 6. Stunde wegen einer Lehrerkonferenz aus. Der Unterricht endet also um 11:30 Uhr. Die Nachmittagsbetreuung findet normal statt.", "Mit freundlichen Grüßen, R. Fischer, Schulleitung"] },
+      { nr: "C", zeilen: ["*Zettel an der Haustür*", "Liebe Nachbarn, am Samstag feiern wir ab 19 Uhr den 30. Geburtstag von Paul. Es kann etwas lauter werden — wir bitten um Verständnis! Sie sind herzlich eingeladen, auf ein Glas vorbeizukommen.", "Paul und Nina, 2. Stock"] },
+      { nr: "D", zeilen: ["*Nachricht von einem Kollegen*", "Hallo Emeka, ich bin heute krank und kann die Kundin um 14 Uhr nicht treffen. Kannst du das übernehmen? Die Unterlagen liegen auf meinem Schreibtisch, gelbe Mappe. Danke! Jan"] },
+      { nr: "E", zeilen: ["*E-Mail von der Bibliothek*", "Guten Tag, das Buch „Deutsch im Alltag“ ist seit dem 3. Oktober überfällig. Bitte geben Sie es bis zum 17. Oktober zurück oder verlängern Sie es online. Ab dem 18. Oktober kostet jeder Tag 0,50 €.", "Ihre Stadtbibliothek"] },
+      { nr: "F", zeilen: ["*Sprachnachricht (aufgeschrieben)*", "Mama hier. Wir kommen am Sonntag nicht mit dem Zug, sondern mit dem Auto. Du musst uns also nicht vom Bahnhof abholen. Wir sind gegen Mittag bei dir. Kuss!"] }
+    ],
+    wortschatz: [
+      ["gleich", "in a moment; also: same"],
+      ["ausfallen (fällt aus)", "to be cancelled"],
+      ["die Betreuung", "supervision, childcare"],
+      ["um Verständnis bitten", "to ask for understanding"],
+      ["vorbeikommen", "to drop by"],
+      ["übernehmen", "to take over"],
+      ["die Unterlagen (Pl.)", "documents, papers"],
+      ["die Mappe, -n", "folder"],
+      ["überfällig", "overdue"],
+      ["verlängern", "to renew, to extend"],
+      ["gegen Mittag", "around midday"]
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Welche Nachricht?", typ: "mc", frage: "In welcher Nachricht ändert jemand den Treffpunkt?", optionen: ["A", "C", "D", "F"], antwort: 0 },
+      { teil: "Teil 1 — Welche Nachricht?", typ: "mc", frage: "Welche Nachricht ist eine Einladung?", optionen: ["B", "C", "E", "F"], antwort: 1 },
+      { teil: "Teil 1 — Welche Nachricht?", typ: "mc", frage: "In welcher Nachricht geht es um Geld?", optionen: ["B", "C", "D", "E"], antwort: 3 },
+      { teil: "Teil 1 — Welche Nachricht?", typ: "mc", frage: "Wer muss nach dieser Nachricht etwas *nicht* mehr machen?", optionen: ["Tanjas Freundin in A", "Emeka in D", "Das Kind der Mutter in F", "Die Eltern in B"], antwort: 2, warum: "Die Eltern kommen mit dem Auto — das Kind muss sie nicht vom Bahnhof abholen." },
+
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "A: Tanja möchte später kommen.", antwort: false, warum: "*Gleiche Zeit* — nur der Ort ändert sich." },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "B: Am Freitag haben die Kinder früher Schluss.", antwort: true },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "B: Am Freitag gibt es keine Nachmittagsbetreuung.", antwort: false, warum: "*findet normal statt*." },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "C: Paul und Nina entschuldigen sich schon vorher für den Lärm.", antwort: true },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "D: Jan bittet Emeka, einen Termin für ihn zu machen.", antwort: true, warum: "Emeka soll das Treffen mit der Kundin *übernehmen*." },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "E: Wer das Buch am 16. Oktober zurückgibt, bezahlt nichts.", antwort: true },
+
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "D: Wo findet Emeka die Unterlagen? (Farbe)", antwort: ["gelb", "gelbe Mappe", "in der gelben Mappe"] },
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "B: Um wie viel Uhr endet der Unterricht am Freitag?", antwort: ["11:30", "11.30", "11:30 Uhr", "halb zwölf"] },
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "E: Was kann man online mit dem Buch machen?", hinweis: "Verb", antwort: ["verlängern", "es verlängern"] },
+
+      { teil: "Teil 4 — Schreiben Sie selbst.", typ: "frei", frage: "Antworten Sie Jan (Nachricht D).", punkte: ["Sagen Sie zu.", "Stellen Sie eine Frage zum Termin.", "Wünschen Sie gute Besserung."], woerter: 30, muster: "Hallo Jan, kein Problem, ich übernehme den Termin um 14 Uhr. Wie heißt die Kundin, und kommt sie ins Büro? Gute Besserung und ruh dich aus! Emeka", checkliste: ["Alle drei Punkte?", "*du*-Form unter Kollegen?"] }
+    ]
+  },
+
+  /* ---------------------------------------------------------- */
+  {
+    id: "L12",
+    gruppe: "uebungen",
+    stufe: 3,
+    title: "Informationen im Internet",
+    subtitle: "Finding the right page",
+    focus: "Webseiten überfliegen, das Wichtige finden, Bedingungen verstehen",
+    intro:
+      "You need something done — a new ID card, a swimming course, a vet at the weekend — and the internet offers several pages. You do not read them all word for word. You scan for the one detail that decides: the day, the price, the condition. Each task gives you a person and a need; find the page that really fits.",
+    schilder: [
+      { nr: "A", zeilen: ["*bürgeramt-nord.de*", "Personalausweis und Reisepass beantragen", "Nur mit Termin! Termine online oder unter 0511 168 40.", "Bitte mitbringen: altes Dokument, ein biometrisches Foto.", "Do bis 19 Uhr geöffnet."] },
+      { nr: "B", zeilen: ["*buergerservice-sued.de*", "Wohnung anmelden — ohne Termin", "Mo, Mi, Fr  8 – 12 Uhr", "Bitte mitbringen: Pass und Wohnungsgeberbestätigung vom Vermieter."] },
+      { nr: "C", zeilen: ["*tierarzt-notdienst-hannover.de*", "Ihr Tier ist am Wochenende krank?", "Notdienst Sa & So  9 – 18 Uhr, ohne Termin.", "Nachts: bitte zuerst anrufen.", "Adresse wechselt jede Woche — siehe Liste."] },
+      { nr: "D", zeilen: ["*tierpraxis-lindner.de*", "Impfungen, Kontrollen, Beratung", "Mo – Fr  8 – 18 Uhr, nur nach Termin", "Samstag und Sonntag geschlossen."] },
+      { nr: "E", zeilen: ["*baeder-hannover.de/kurse*", "Schwimmkurs für Erwachsene (Anfänger)", "10 Termine, dienstags 19:30 – 20:15", "80 € — mit Hannover-Aktiv-Pass 40 €", "Anmeldung an der Kasse."] },
+      { nr: "F", zeilen: ["*schwimmschule-delfin.de*", "Seepferdchen-Kurse für Kinder ab 5", "Samstagvormittag, 8 Termine, 95 €", "Eltern dürfen zuschauen.", "Anmeldung nur online."] }
+    ],
+    wortschatz: [
+      ["beantragen", "to apply for"],
+      ["der Personalausweis, -e", "identity card"],
+      ["biometrisch", "biometric"],
+      ["anmelden", "to register (an address)"],
+      ["die Wohnungsgeberbestätigung", "landlord's confirmation of residence"],
+      ["der Notdienst, -e", "emergency service"],
+      ["wechseln", "to change"],
+      ["die Impfung, -en", "vaccination"],
+      ["die Beratung, -en", "advice, consultation"],
+      ["der Anfänger, -", "beginner"],
+      ["zuschauen", "to watch"],
+      ["das Seepferdchen", "seahorse — the first swimming badge for children"]
+    ],
+    aufgaben: [
+      { teil: "Teil 1 — Welche Seite passt?", typ: "mc", frage: "Herr Owusu ist gerade umgezogen und muss seine neue Adresse anmelden. Er möchte keinen Termin machen.", optionen: ["A", "B", "Keine der beiden."], antwort: 1 },
+      { teil: "Teil 1 — Welche Seite passt?", typ: "mc", frage: "Frau Kaya braucht einen neuen Reisepass. Sie arbeitet jeden Tag bis 17 Uhr.", optionen: ["A", "B", "Keine der beiden."], antwort: 0, warum: "Seite A ist donnerstags bis 19 Uhr geöffnet — mit Termin." },
+      { teil: "Teil 1 — Welche Seite passt?", typ: "mc", frage: "Am Sonntagnachmittag frisst Ihr Hund nichts mehr und liegt nur noch.", optionen: ["C", "D", "Keine der beiden."], antwort: 0 },
+      { teil: "Teil 1 — Welche Seite passt?", typ: "mc", frage: "Ihre Katze braucht nächste Woche eine Impfung. Sie möchten einen festen Termin.", optionen: ["C", "D", "Keine der beiden."], antwort: 1 },
+      { teil: "Teil 1 — Welche Seite passt?", typ: "mc", frage: "Amara ist 30 und kann nicht schwimmen. Sie hat wenig Geld und einen Hannover-Aktiv-Pass. Dienstagabends hat sie Zeit.", optionen: ["E", "F", "Keine der beiden."], antwort: 0 },
+      { teil: "Teil 1 — Welche Seite passt?", typ: "mc", frage: "Ein Vater möchte seine vierjährige Tochter für einen Schwimmkurs anmelden.", optionen: ["E", "F", "Keine der beiden."], antwort: 2, warum: "Seite F nimmt Kinder erst *ab 5*, und Seite E ist nur für Erwachsene." },
+
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "A: Für einen Personalausweis braucht man ein Foto.", antwort: true },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "B: Man kann am Dienstag zum Bürgerservice gehen.", antwort: false, warum: "Nur Montag, Mittwoch und Freitag." },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "C: Der Tiernotdienst ist immer an derselben Adresse.", antwort: false, warum: "*Adresse wechselt jede Woche*." },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "C: Nachts soll man vorher telefonieren.", antwort: true },
+      { teil: "Teil 2 — Richtig oder falsch?", typ: "rf", frage: "F: Die Anmeldung ist auch an der Kasse möglich.", antwort: false, warum: "*Anmeldung nur online*." },
+
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "E: Wie lange dauert eine Schwimmstunde? (Minuten)", antwort: ["45", "45 Minuten", "fünfundvierzig"] },
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "E: Wie viel kostet ein einzelner Termin ohne Pass?", hinweis: "80 € : 10", antwort: ["8", "8 €", "8 Euro", "8,00 €"] },
+      { teil: "Teil 3 — Ergänzen Sie.", typ: "luecke", frage: "B: Was muss man vom Vermieter mitbringen? (ein Wort)", antwort: ["Wohnungsgeberbestätigung", "die Wohnungsgeberbestätigung", "eine Wohnungsgeberbestätigung"] },
+
+      { teil: "Teil 4 — Schreiben Sie selbst.", typ: "frei", frage: "Sie möchten den Schwimmkurs E machen, aber dienstags arbeiten Sie bis 20 Uhr. Schreiben Sie eine kurze E-Mail an das Bad.", punkte: ["Sagen Sie, welcher Kurs Sie interessiert.", "Erklären Sie das Problem mit der Zeit.", "Fragen Sie nach einem anderen Tag."], woerter: 40, muster: ["Sehr geehrte Damen und Herren,", "ich interessiere mich für den Schwimmkurs für Erwachsene (Anfänger). Leider arbeite ich dienstags bis 20 Uhr und kann um 19:30 Uhr noch nicht da sein.", "Gibt es den Kurs auch an einem anderen Tag, zum Beispiel am Donnerstag oder am Wochenende?", "Mit freundlichen Grüßen", "Amara Diallo"], checkliste: ["Formelle Anrede und formeller Gruß?", "Das Problem ist klar (Zeit)?", "Eine konkrete Frage?"] }
+    ]
   }
 
 ];
