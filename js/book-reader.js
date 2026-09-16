@@ -18,6 +18,10 @@
   var MODE_KEY = "a1-journey-book-mode";
   var GAP = 56;
   var FONT_STEPS = [0.92, 1.02, 1.14, 1.28];
+  // A phone starts a step bigger: the smaller sizes pack the lines too
+  // tightly to read comfortably on a narrow screen.
+  var START_FONT_PHONE = 2;
+  var START_FONT_WIDE = 1;
 
   var el = {};
   var chapterId = null;
@@ -296,15 +300,19 @@
     });
     el.scrim.addEventListener("click", function () { setDrawer(false); });
 
-    var fontIdx = 1;
+    var fontIdx = window.innerWidth <= 720 ? START_FONT_PHONE : START_FONT_WIDE;
     try {
       var saved = localStorage.getItem(FONT_KEY);
-      if (saved !== null) fontIdx = parseInt(saved, 10) || 0;
+      if (saved !== null) fontIdx = parseInt(saved, 10);
     } catch (e) {}
-    el.root.style.setProperty("--rdr-font", FONT_STEPS[clamp(fontIdx, 0, 3)] + "rem");
+    fontIdx = clamp(isNaN(fontIdx) ? START_FONT_WIDE : fontIdx, 0, FONT_STEPS.length - 1);
+    el.root.style.setProperty("--rdr-font", FONT_STEPS[fontIdx] + "rem");
 
-    document.getElementById("rdr-font").addEventListener("click", function () {
-      fontIdx = applyFont((fontIdx + 1) % FONT_STEPS.length);
+    document.getElementById("rdr-font-in").addEventListener("click", function () {
+      fontIdx = applyFont(fontIdx + 1);
+    });
+    document.getElementById("rdr-font-out").addEventListener("click", function () {
+      fontIdx = applyFont(fontIdx - 1);
     });
 
     el.modeBtn.addEventListener("click", function () {

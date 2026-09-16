@@ -146,6 +146,10 @@ html.reader body {
   font-family: var(--ui);
   font-size: var(--rdr-font);
   line-height: 1.72;
+  /* German compounds are long: without this, a word like
+     "Personalpronomen" runs past the edge of a narrow page and is cut off
+     instead of wrapping. */
+  overflow-wrap: break-word;
 }
 
 /* a faint gutter line down the middle of a two-page spread */
@@ -457,22 +461,28 @@ html.reader body {
    Page-turn zones on the left and right edges
    ============================================================ */
 
+/* Round buttons on the page edges, the same idea as the Picture Book's:
+   visible at all times, so turning a page is not a hidden gesture. The
+   track's side padding keeps them clear of the text. */
 .rdr-turn {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 56px;
-  border: 0;
-  background: transparent;
-  color: var(--text-muted);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  color: var(--text);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 4;
   padding: 0;
-  opacity: 0;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  opacity: 0.9;
+  box-shadow: var(--shadow-lg);
+  transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .rdr-turn .icon-svg {
@@ -481,7 +491,7 @@ html.reader body {
 }
 
 .rdr-turn.back {
-  left: 0;
+  left: 8px;
 }
 
 .rdr-turn.back .icon-svg {
@@ -489,16 +499,13 @@ html.reader body {
 }
 
 .rdr-turn.fwd {
-  right: 0;
-}
-
-.rdr-stage:hover .rdr-turn {
-  opacity: 0.55;
+  right: 8px;
 }
 
 .rdr-turn:hover {
-  opacity: 1 !important;
+  opacity: 1;
   color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
 }
 
 /* ============================================================
@@ -704,12 +711,18 @@ html.reader body {
     font-size: 0.9rem;
   }
 
+  /* wide side margins so the turn buttons never sit on the words */
   .rdr-track {
-    padding: 18px 20px 16px;
+    padding: 18px 46px 16px;
   }
 
   .rdr-flow {
     line-height: 1.68;
+  }
+
+  /* a smaller chapter title, so long compound words still fit the page */
+  .rdr-flow .book-header h1 {
+    font-size: 1.6em;
   }
 
   /* denser tables on a phone, so far fewer of them need to scroll */
@@ -722,14 +735,22 @@ html.reader body {
     padding: 6px 8px;
   }
 
-  /* edge zones stay, but narrower so they don't eat the text */
   .rdr-turn {
-    width: 34px;
-    opacity: 0;
+    width: 38px;
+    height: 38px;
   }
 
-  .rdr-stage:hover .rdr-turn {
-    opacity: 0;
+  .rdr-turn .icon-svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .rdr-turn.back {
+    left: 3px;
+  }
+
+  .rdr-turn.fwd {
+    right: 3px;
   }
 
   .rdr-hintbar {
