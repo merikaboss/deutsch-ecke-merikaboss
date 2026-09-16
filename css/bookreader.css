@@ -502,10 +502,15 @@ html.reader body {
   right: 8px;
 }
 
-.rdr-turn:hover {
-  opacity: 1;
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+/* Only where a pointer can really hover. On a touch screen the :hover state
+   sticks after a tap, and recolouring the arrow to the accent would hide it
+   against the accent-coloured tab — the arrow would vanish mid-read. */
+@media (hover: hover) {
+  .rdr-turn:hover {
+    opacity: 1;
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  }
 }
 
 /* ============================================================
@@ -761,6 +766,16 @@ html.reader body {
   .rdr-turn.fwd {
     right: 0;
     border-radius: 15px 0 0 15px;
+  }
+
+  /* the arrow keeps its colour after a tap, so it never disappears */
+  .rdr-turn:hover,
+  .rdr-turn:focus,
+  .rdr-turn:active {
+    background: var(--accent);
+    border-color: transparent;
+    color: var(--bg);
+    opacity: 1;
   }
 
   .rdr-hintbar {
