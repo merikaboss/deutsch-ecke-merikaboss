@@ -79,6 +79,42 @@
       ]
     },
 
+    "practice-unit": {
+      key: "practice",
+      steps: [
+        {
+          sel: ".rdr-title",
+          title: "How a unit works",
+          text: "Each unit starts with what you need to know, then the tasks. Read it page by page, like the Written Book."
+        },
+        {
+          sel: "#rdr-turn-fwd",
+          title: "Turn the page",
+          text: "Tap this arrow for the next page, or swipe the page to the left. The arrow on the other side goes back."
+        },
+        {
+          sel: "#rdr-font-out",
+          title: "Text size",
+          text: "Make the text smaller or bigger. The size is shared with the Written Book and remembered."
+        },
+        {
+          sel: "#rdr-mode",
+          title: "Page view or scrolling",
+          text: "Switch between turning pages and one long scroll, whichever is easier while you type."
+        },
+        {
+          sel: "#rdr-contents",
+          title: "All units",
+          text: "Open the list to jump to any unit in this part."
+        },
+        {
+          sel: ".rdr-foot-row",
+          title: "Check your answers",
+          text: "At the end of the tasks, one button marks everything and explains mistakes. Your result is saved on this device."
+        }
+      ]
+    },
+
     // No tour on the A1 landing page on purpose: it reveals its cards as you
     // scroll, so a first-visit guide there either points below the fold or
     // fights the animation. The cards already explain both books in words.

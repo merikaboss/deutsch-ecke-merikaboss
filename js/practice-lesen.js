@@ -23,7 +23,7 @@ var LESEN_UNITS = [
     subtitle: "A day in Anna's life",
     focus: "Präsens, trennbare Verben, Uhrzeit, Wochentage",
     intro:
-      "Start here. The text below uses the present tense and a lot of separable verbs — the kind of German you meet in the very first weeks. Read it once straight through without stopping, even if you do not understand every word. Then read it again with the Wortschatz open.",
+      "The text below uses the present tense and a lot of separable verbs — the kind of German you meet in the very first weeks. Read it once straight through without stopping, even if you do not understand every word. Then read it again with the Wortschatz open.",
     text: [
       "Anna Weber wohnt in Bremen. Sie ist vierundzwanzig Jahre alt und arbeitet in einem Büro.",
       "Von Montag bis Freitag steht Anna um halb sieben auf. Zuerst geht sie ins Badezimmer und duscht. Dann zieht sie sich an und geht in die Küche.",
@@ -332,7 +332,7 @@ var LESEN_UNITS = [
     subtitle: "Signs, opening hours and a note on the table",
     focus: "Öffnungszeiten lesen, kurze Mitteilungen verstehen",
     intro:
-      "This is the kind of German you have to read fastest in real life: a sign on a door, a price list, a note somebody left you. There is no story here and no translation panel — read each box, then answer. Look especially at the opening times and the small print.",
+      "This is the kind of German you have to read fastest in real life: a sign on a door, a price list, a note somebody left you. There is no story here — read each box, then answer the tasks. Look especially at the opening times and the small print.",
     schilder: [
       { nr: "A", zeilen: ["*Bäckerei Sommer*", "Mo – Fr  6.00 – 18.30", "Sa  6.00 – 13.00", "Sonntag geschlossen"] },
       { nr: "B", zeilen: ["*Achtung!*", "Aufzug außer Betrieb.", "Bitte benutzen Sie die Treppe.", "Wir reparieren ihn am Montag."] },
@@ -440,12 +440,12 @@ var LESEN_GRUPPEN = [
     key: "geschichten",
     titel: "Lesegeschichten",
     unter: "Reading stories",
-    text: "Longer texts to read for understanding. Each one comes with a Wortschatz list and a full English translation you can open — but read the German first and only check afterwards."
+    text: "Longer texts to read for understanding. Each one comes with a Wortschatz list and a full English translation at the end of the unit."
   },
   {
     key: "uebungen",
     titel: "Leseübungen",
     unter: "Reading tasks",
-    text: "Short, real-world German: signs, opening hours, notes and small ads. No translation here on purpose — this is the reading you have to do quickly and without help."
+    text: "Short, real-world German: signs, opening hours, notes and small ads. The reading you have to do quickly in everyday life, without a dictionary."
   }
 ];

@@ -20,8 +20,9 @@
       re-paginates and then jumps back to the page the anchor
       element actually landed on.
 
-   Depends on LESEN_UNITS (practice-lesen.js) and DE_PRACTICE
-   (practice.js).
+   Which part it reads — Lesen, Schreiben or Sprechen — comes from
+   <body data-skill>. Depends on DE_PRACTICE (practice.js) and that
+   part's unit file (practice-lesen.js, -schreiben.js, -sprechen.js).
    ============================================================ */
 
 (function () {
@@ -35,6 +36,7 @@
 
   var el = {};
   var units = [];
+  var sk = null;
   var unit = null;
   var idx = 0;
   var page = 0;
@@ -227,11 +229,16 @@
         '<span class="done">Ende dieser Einheit</span><span class="nxt"></span>' +
         '<span class="hintline">Keep turning to carry straight on.</span>';
       card.querySelector(".nxt").textContent = "Weiter: " + next.title;
+    } else if (sk.next) {
+      card.innerHTML =
+        '<span class="done">Ende von ' + sk.label + "</span>" +
+        '<a class="nxt" href="../' + sk.next.key + '/index.html">Weiter mit ' + sk.next.label + " &rarr;</a>" +
+        '<span class="hintline">Or open the contents to go back to any unit.</span>';
     } else {
       card.innerHTML =
-        '<span class="done">Das war die letzte Einheit</span>' +
-        '<span class="nxt">More Lesen units are on the way.</span>' +
-        '<span class="hintline">Open the contents to go back to any unit.</span>';
+        '<span class="done">Ende von ' + sk.label + "</span>" +
+        '<a class="nxt" href="../index.html">Zurück zum Übungsbuch</a>' +
+        '<span class="hintline">Or open the contents to go back to any unit.</span>';
     }
     el.flow.appendChild(card);
   }
@@ -271,17 +278,18 @@
     el.scrim = document.getElementById("rdr-scrim");
     el.modeBtn = document.getElementById("rdr-mode");
 
-    units = window.LESEN_UNITS || [];
+    sk = DE_PRACTICE.skill(document.body.getAttribute("data-skill") || "lesen");
+    units = sk.units;
     var want = new URLSearchParams(location.search).get("u");
     idx = Math.max(0, units.findIndex(function (u) { return u.id === want; }));
     unit = units[idx];
     if (!unit) return;
 
-    document.title = unit.title + " — Übungsbuch — Deutsch Ecke";
+    document.title = unit.title + " — " + sk.label + " — Übungsbuch — Deutsch Ecke";
     var nameEl = document.getElementById("rdr-name");
     if (nameEl) nameEl.textContent = unit.title;
 
-    el.flow.innerHTML = DE_PRACTICE.render(unit);
+    el.flow.innerHTML = DE_PRACTICE.render(unit, sk.key);
     /* Re-paginate synchronously. The DOM is already updated by the time
        this runs, and reading scrollWidth forces the layout anyway — doing
        it in requestAnimationFrame would silently never happen while the

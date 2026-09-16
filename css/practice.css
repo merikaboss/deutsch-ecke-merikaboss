@@ -432,3 +432,329 @@
     text-align: center;
   }
 }
+
+/* ============================================================
+   Additions for all three parts
+   ============================================================ */
+
+/* index: difficulty dots and sub-lines */
+.stufe {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.stufe i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+}
+
+.stufe i.on {
+  background: var(--accent);
+}
+
+.u-done {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.u-done .icon-svg {
+  width: 13px;
+  height: 13px;
+}
+
+.unit-item .u-sub {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: -3px;
+}
+
+.unit-group .g-unter {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.75em;
+}
+
+.practice-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  padding: 6px 0 30px;
+}
+
+.practice-steps div {
+  padding: 16px 18px;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+
+.practice-steps b {
+  display: block;
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.practice-steps p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+/* ---------- in the reader ---------- */
+
+.rdr-flow .teil-intro {
+  color: var(--text-muted);
+  font-size: 0.94em;
+  margin: -3px 0 11px;
+}
+
+/* A message or letter. It may run on to the next page, so it is a plain
+   block with a clone-decorated edge, like the book's info boxes. */
+.rdr-flow .brief {
+  break-inside: auto;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  border-left: 3px solid var(--accent);
+  background: var(--bg);
+  border-radius: 0 10px 10px 0;
+  padding: 11px 14px;
+  margin: 4px 0 12px;
+  line-height: 1.6;
+}
+
+.rdr-flow .brief p {
+  margin: 0 0 2px;
+}
+
+.rdr-flow .brief .b-leer,
+.rdr-flow .t-fb .b-leer {
+  height: 0.6em;
+  margin: 0;
+}
+
+.rdr-flow .brief .b-kopf {
+  display: block;
+  font-size: 0.72em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+/* word tiles for building a sentence */
+.rdr-flow .chips {
+  margin: 0 0 9px;
+  line-height: 2.15;
+  break-inside: avoid;
+}
+
+.rdr-flow .chips span {
+  display: inline-block;
+  padding: 0 10px;
+  margin: 0 5px 0 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  line-height: 1.75;
+  font-weight: 600;
+}
+
+/* forms: label above field, one row per field, never split */
+.rdr-flow .formular label.f-row {
+  display: block;
+  margin: 0 0 9px;
+  break-inside: avoid;
+}
+
+.rdr-flow .formular .f-label {
+  display: block;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  margin: 0 0 3px;
+}
+
+.rdr-flow .punkte {
+  margin: 0 0 10px;
+  padding-left: 1.2em;
+}
+
+.rdr-flow .punkte li {
+  margin: 0 0 3px;
+}
+
+.rdr-flow textarea.satz {
+  min-height: 0;
+}
+
+.rdr-flow .wc {
+  font-size: 0.8em;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-align: right;
+}
+
+.rdr-flow .t-fb ul {
+  margin: 6px 0 4px;
+  padding-left: 1.2em;
+}
+
+.rdr-flow .t-fb.muster p {
+  margin: 0 0 2px;
+}
+
+.rdr-flow .t-fb.muster > b:first-child {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.rdr-flow .t-fb ul.check {
+  margin-top: 4px;
+}
+
+/* speaking: word card, tools, model answer */
+.rdr-flow .karte {
+  display: block;
+  break-inside: avoid;
+  max-width: 250px;
+  margin: 2px auto 12px;
+  padding: 12px 14px 14px;
+  text-align: center;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+}
+
+.rdr-flow .karte .k-thema {
+  display: block;
+  font-size: 0.7em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.rdr-flow .karte .k-wort {
+  display: block;
+  font-size: 1.25em;
+  font-weight: 800;
+}
+
+.rdr-flow .stichworte {
+  margin: 0 0 10px;
+  font-size: 0.95em;
+}
+
+.rdr-flow .sp-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 10px;
+  break-inside: avoid;
+}
+
+.rdr-flow .btn-small {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.86em;
+  padding: 8px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  background: var(--bg);
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.rdr-flow .btn-small[hidden] {
+  display: none;
+}
+
+.rdr-flow .btn-small .icon-svg {
+  width: 15px;
+  height: 15px;
+}
+
+.rdr-flow .btn-small.on {
+  background: #b4483c;
+  border-color: #b4483c;
+  color: #fff;
+}
+
+.rdr-flow .btn-small:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.rdr-flow .sp-muster {
+  display: none;
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  line-height: 1.6;
+  break-inside: auto;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.rdr-flow .task.shown .sp-muster {
+  display: block;
+}
+
+.rdr-flow .sp-muster p {
+  margin: 0 0 3px;
+}
+
+.rdr-flow .sp-muster .sp-warum {
+  color: var(--text-muted);
+  font-size: 0.92em;
+  margin-top: 7px;
+}
+
+.rdr-flow .sp-muster .btn-small {
+  margin-top: 8px;
+}
+
+.rdr-flow a.nxt {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* long tables arrive as several runs (see renderTable in practice.js):
+   same column widths in every run, and each run sits flush under the
+   one before, so on the same page they read as one table */
+.rdr-flow table.run {
+  table-layout: fixed;
+}
+
+.rdr-flow .tbl-wrap:has(> table.run) {
+  margin-bottom: 0;
+}
+
+.rdr-flow .tbl-wrap:has(> table.cont) {
+  margin-top: -1px;
+}
+
+.rdr-flow .tbl-wrap:has(> table.run) + :not(.tbl-wrap) {
+  margin-top: 16px;
+}

@@ -58,21 +58,25 @@ PB_LASTMOD=$(latest_of "${PB_SHARED[@]}")
     echo "  <url><loc>${BASE}/a1/picture-book/page.html?n=${i}</loc><lastmod>${m}</lastmod></url>"
   done
 
-  for i in $(seq -w 0 53); do
+  for i in $(seq -w 0 55); do
     f="a1/book/chapter-${i}.html"
     echo "  <url><loc>${BASE}/a1/book/chapter-${i}.html</loc><lastmod>$(lastmod "$f")</lastmod></url>"
   done
 
-  # Übungsbuch. Every Lesen unit is the same physical file plus its data,
-  # so they share one lastmod, the same way the Picture Book viewer does.
-  LESEN_SHARED=(a1/practice/lesen/unit.html js/practice-lesen.js js/practice.js css/practice.css)
-  LESEN_LASTMOD=$(latest_of "${LESEN_SHARED[@]}")
-
+  # Übungsbuch. Every unit of a part is the same physical file plus its
+  # data, so a part's units share one lastmod, the way the Picture Book
+  # viewer does.
   echo "  <url><loc>${BASE}/a1/practice/</loc><lastmod>$(lastmod a1/practice/index.html)</lastmod></url>"
-  echo "  <url><loc>${BASE}/a1/practice/lesen/</loc><lastmod>$(lastmod a1/practice/lesen/index.html)</lastmod></url>"
 
-  for u in $(grep -o 'id: "L[0-9]\+"' js/practice-lesen.js | grep -o 'L[0-9]\+'); do
-    echo "  <url><loc>${BASE}/a1/practice/lesen/unit.html?u=${u}</loc><lastmod>${LESEN_LASTMOD}</lastmod></url>"
+  for part in lesen:L schreiben:S sprechen:P; do
+    name=${part%%:*}
+    prefix=${part##*:}
+    shared=(a1/practice/${name}/unit.html js/practice-${name}.js js/practice.js js/practice-reader.js css/practice.css)
+    m=$(latest_of "${shared[@]}")
+    echo "  <url><loc>${BASE}/a1/practice/${name}/</loc><lastmod>$(lastmod a1/practice/${name}/index.html)</lastmod></url>"
+    for u in $(grep -o "id: \"${prefix}[0-9]\+\"" js/practice-${name}.js | grep -o "${prefix}[0-9]\+"); do
+      echo "  <url><loc>${BASE}/a1/practice/${name}/unit.html?u=${u}</loc><lastmod>${m}</lastmod></url>"
+    done
   done
 
   echo '</urlset>'
