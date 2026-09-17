@@ -58,7 +58,7 @@ PB_LASTMOD=$(latest_of "${PB_SHARED[@]}")
     echo "  <url><loc>${BASE}/a1/picture-book/page.html?n=${i}</loc><lastmod>${m}</lastmod></url>"
   done
 
-  for i in $(seq -w 0 55); do
+  for i in $(seq -w 0 56); do
     f="a1/book/chapter-${i}.html"
     echo "  <url><loc>${BASE}/a1/book/chapter-${i}.html</loc><lastmod>$(lastmod "$f")</lastmod></url>"
   done

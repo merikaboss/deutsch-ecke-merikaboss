@@ -37,7 +37,7 @@
         },
         {
           sel: "#rdr-contents",
-          title: "All 56 chapters",
+          title: "All 57 chapters",
           text: "Open the contents to jump straight to any chapter."
         },
         {

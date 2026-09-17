@@ -90,5 +90,6 @@ const CHAPTERS = [
 
 const EXTRA_CHAPTERS = [
   { id: "54", file: null, de: "Präpositionen (alle Fälle)", en: "Prepositions in all four cases", syllabus: "reference" },
-  { id: "55", file: null, de: "Konjunktionen und Vergleiche", en: "Conjunctions and comparisons", syllabus: "reference" }
+  { id: "55", file: null, de: "Konjunktionen und Vergleiche", en: "Conjunctions and comparisons", syllabus: "reference" },
+  { id: "56", file: null, de: "Der, die oder das? Genus erkennen", en: "How to tell a noun's gender, with 600+ nouns", syllabus: "reference" }
 ];
