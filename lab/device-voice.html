@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Phone voice test — Deutsch Ecke</title>
+<style>
+  :root{
+    --bg:#12100e; --panel:#1b1815; --line:#332e28; --ink:#f0e9df;
+    --dim:#a89c8c; --accent:#e0a458; --accent-ink:#241a0d;
+    --de:#e0a458; --good:#7ac07a; --bad:#e07a7a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:20px 16px 70px; background:var(--bg); color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  h1{font-size:1.3rem; margin:0 0 4px}
+  h2{font-size:1rem; margin:0 0 10px; color:var(--accent)}
+  .sub{color:var(--dim); font-size:.85rem; margin:0 0 22px; line-height:1.5}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:15px}
+  .hint{color:var(--dim); font-size:.82rem; margin:0 0 12px; line-height:1.5}
+
+  .vlist{display:grid; gap:8px}
+  .vrow{
+    display:flex; align-items:center; gap:10px; width:100%; text-align:left;
+    background:#221e1a; border:1px solid var(--line); color:var(--ink);
+    border-radius:10px; padding:12px 13px; font-size:.93rem; cursor:pointer;
+  }
+  .vrow[aria-pressed="true"]{border-color:var(--accent); background:#2f2619}
+  .vrow .nm{font-weight:600; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .vrow .tag{color:var(--dim); font-size:.74rem; white-space:nowrap}
+  .vrow .hear{
+    background:#3a2d18; border:1px solid #5a4526; color:var(--accent);
+    border-radius:7px; padding:6px 11px; font-size:.78rem; cursor:pointer; white-space:nowrap;
+  }
+
+  .seg{display:flex; gap:8px}
+  .seg button{
+    flex:1; background:#221e1a; border:1px solid var(--line); color:var(--ink);
+    border-radius:10px; padding:13px 6px; font-size:.93rem; cursor:pointer; font-weight:600;
+  }
+  .seg button[aria-pressed="true"]{border-color:var(--accent); background:#2f2619; color:var(--accent)}
+
+  button.go{
+    display:block; width:100%; background:var(--accent); color:var(--accent-ink);
+    border:0; border-radius:10px; padding:14px; font-size:.97rem; font-weight:700;
+    cursor:pointer; margin-top:12px;
+  }
+  button.go:disabled{opacity:.4; cursor:default}
+  button.ghost{
+    background:transparent; color:var(--dim); border:1px solid var(--line);
+    border-radius:8px; padding:10px 12px; font-size:.84rem; cursor:pointer; width:100%; margin-top:8px;
+  }
+
+  .words{display:flex; flex-wrap:wrap; gap:8px}
+  .words button{
+    background:#2b2319; border:1px solid #4a3c26; color:var(--de);
+    border-radius:99px; padding:11px 17px; font-size:1.03rem; cursor:pointer; font-weight:600;
+  }
+  .words button.en{color:#9dc4e0; border-color:#2f4a5c; background:#1b2630}
+
+  .page{border:1px solid var(--line); border-radius:10px; padding:14px; background:#191614; margin-top:12px}
+  .page h3{font-size:1.02rem; margin:0 0 10px; color:#fff}
+  .blk{padding:9px 10px; border-radius:8px; margin:0 -4px 4px; border:1px solid transparent}
+  .blk.now{background:#33281a; border-color:var(--accent)}
+  .blk.done{opacity:.5}
+  .de-word{color:var(--de); font-weight:600}
+  .en-gloss{color:var(--dim)}
+  table.demo{width:100%; border-collapse:collapse; margin:8px 0; font-size:.88rem}
+  table.demo td,table.demo th{border:1px solid var(--line); padding:6px 8px; text-align:left}
+  table.demo th{color:var(--accent); font-size:.78rem}
+
+  .steps{background:#241d15; border:1px solid #4a3c26; border-radius:10px; padding:14px; margin-top:12px}
+  .steps ol{margin:8px 0 0; padding-left:20px; font-size:.9rem; line-height:1.7}
+  .steps li b{color:var(--accent)}
+  .warn{color:#f0c98a; font-size:.88rem; margin:0}
+  .ok{color:var(--good); font-size:.88rem; margin:0}
+  .note{color:var(--dim); font-size:.79rem; margin-top:12px; line-height:1.5}
+  .err{color:var(--bad); font-size:.84rem; margin-top:10px}
+</style>
+</head>
+<body>
+
+<h1>Phone voice test</h1>
+<p class="sub">This uses the German voice already built into your phone. Nothing to download, nothing stored. If your phone has no German voice, it shows you exactly how to add it.</p>
+
+<!-- what the phone has -->
+<div class="card">
+  <h2>German voices on this phone</h2>
+  <div id="deStatus"></div>
+  <div class="vlist" id="deVoices"></div>
+  <div id="install"></div>
+</div>
+
+<div class="card">
+  <h2>English voices on this phone</h2>
+  <div class="vlist" id="enVoices"></div>
+  <p class="note" id="enNote"></p>
+</div>
+
+<div class="card">
+  <h2>Speed</h2>
+  <div class="seg" id="speed">
+    <button data-v="0.75" aria-pressed="true">Slow</button>
+    <button data-v="1.00" aria-pressed="false">Normal</button>
+    <button data-v="1.25" aria-pressed="false">Fast</button>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Single words</h2>
+  <p class="hint">German in gold, English in blue.</p>
+  <div class="words" id="words"></div>
+</div>
+
+<div class="card">
+  <h2>A real page</h2>
+  <button class="go" id="play">Read this page aloud</button>
+  <button class="ghost" id="stop">Stop</button>
+  <div class="page" id="page"></div>
+  <p class="note">Tap any paragraph to hear just that one.</p>
+  <div class="err" id="err"></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var WORDS = [
+    { t:"krank", de:true }, { t:"sein", de:true }, { t:"Übermut", de:true },
+    { t:"Entschuldigung", de:true }, { t:"sechzehn", de:true }, { t:"verschreiben", de:true },
+    { t:"Kopfschmerzen", de:true }, { t:"Apotheke", de:true },
+    { t:"the doctor", de:false }, { t:"pharmacy", de:false }
+  ];
+
+  var PAGE = [
+    { h:"27. Krank sein — Beim Arzt" },
+    { runs:[ {t:"This is one of the chapters you will actually need, probably sooner than you would like. The language you need is very specific.", l:"en"} ] },
+    { runs:[ {t:"German gives you three sentence shapes. The first uses", l:"en"},
+             {t:"sein", l:"de"}, {t:"— and because", l:"en"},
+             {t:"krank", l:"de"}, {t:"is an adjective standing after the verb, it never changes its ending:", l:"en"},
+             {t:"Ich bin krank.", l:"de"} ] },
+    { table:[
+        ["sein + krank",    "Ich bin krank.",         "I am ill."],
+        ["haben + illness", "Ich habe Fieber.",       "I have a fever."],
+        ["mir geht es …",   "Mir geht es nicht gut.", "I don't feel well."]
+      ] },
+    { runs:[ {t:"At the doctor's you will hear:", l:"en"},
+             {t:"Was fehlt Ihnen denn? Seit wann haben Sie diese Schmerzen?", l:"de"} ] },
+    { runs:[ {t:"Ich habe seit drei Tagen starke Kopfschmerzen und Fieber. Können Sie mir etwas verschreiben?", l:"de"} ] },
+    { runs:[ {t:"One practical note: a", l:"en"}, {t:"Drogerie", l:"de"},
+             {t:"is not a pharmacy. Medicine comes from the", l:"en"}, {t:"Apotheke", l:"de"},
+             {t:", and only there.", l:"en"} ] }
+  ];
+
+  var $ = function (s) { return document.querySelector(s); };
+  var deVoice = null, enVoice = null, rate = 0.75;
+  var busy = false, stopped = false, keepAlive = null;
+
+  var synth = window.speechSynthesis;
+
+  /* ── find the voices ──────────────────────────────────── */
+  function allVoices() {
+    try { return synth ? synth.getVoices() || [] : []; } catch (e) { return []; }
+  }
+  function byLang(prefix) {
+    return allVoices().filter(function (v) { return (v.lang || "").toLowerCase().indexOf(prefix) === 0; });
+  }
+
+  /* Android often reports several German voices; prefer a local one and,
+     where the name hints at it, a female then male pair. */
+  function describe(v) {
+    var bits = [];
+    if (v.localService) bits.push("on the phone"); else bits.push("needs internet");
+    if (v.default) bits.push("default");
+    return bits.join(" · ");
+  }
+
+  function paintVoices() {
+    var de = byLang("de"), en = byLang("en");
+
+    $("#deStatus").innerHTML = de.length
+      ? '<p class="ok">✓ ' + de.length + ' German voice' + (de.length > 1 ? "s" : "") + ' found on this phone.</p>'
+      : '<p class="warn">This phone has no German voice installed yet.</p>';
+
+    renderList("#deVoices", de, function (v) { deVoice = v; paintVoices(); }, deVoice, "de-DE");
+    renderList("#enVoices", en, function (v) { enVoice = v; paintVoices(); }, enVoice, "en-US");
+
+    $("#enNote").textContent = en.length
+      ? "Pick whichever sounds best — this one reads the English explanations."
+      : "No English voice found, which is unusual. The English parts will be skipped.";
+
+    $("#install").innerHTML = de.length ? "" : installSteps();
+    if (de.length && !deVoice) { deVoice = de[0]; paintVoices(); }
+    if (en.length && !enVoice) { enVoice = en[0]; paintVoices(); }
+  }
+
+  function renderList(sel, list, onPick, current, lang) {
+    var host = $(sel); host.innerHTML = "";
+    list.forEach(function (v) {
+      var row = document.createElement("div");
+      row.className = "vrow";
+      row.setAttribute("aria-pressed", current && current.name === v.name ? "true" : "false");
+      row.innerHTML = '<span class="nm"></span><span class="tag"></span><button class="hear">Hear</button>';
+      row.querySelector(".nm").textContent = v.name;
+      row.querySelector(".tag").textContent = describe(v);
+      row.onclick = function (e) { if (e.target.className !== "hear") onPick(v); };
+      row.querySelector(".hear").onclick = function (e) {
+        e.stopPropagation();
+        onPick(v);
+        say(lang === "de-DE" ? "Ich habe seit drei Tagen starke Kopfschmerzen." : "This is how the English parts will sound.", lang === "de-DE", v);
+      };
+      host.appendChild(row);
+    });
+  }
+
+  function installSteps() {
+    var ua = navigator.userAgent;
+    if (/Android/i.test(ua)) {
+      return '<div class="steps">' +
+        '<p class="warn"><b>How to add German on Android</b></p>' +
+        '<ol>' +
+        '<li>Open <b>Settings</b></li>' +
+        '<li>Search for <b>Text-to-speech</b> (it sits under <i>System → Languages &amp; input</i> on most phones, or <i>Accessibility</i>)</li>' +
+        '<li>Tap the gear next to <b>Google Text-to-Speech</b></li>' +
+        '<li>Tap <b>Install voice data</b></li>' +
+        '<li>Choose <b>Deutsch</b> and let it download</li>' +
+        '<li>Come back here and reload this page</li>' +
+        '</ol>' +
+        '<p class="note">If Google Text-to-Speech is missing entirely, install it from the Play Store first — it is called <b>Speech Recognition &amp; Synthesis</b>.</p>' +
+        '</div>';
+    }
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      return '<div class="steps">' +
+        '<p class="warn"><b>How to add German on iPhone</b></p>' +
+        '<ol>' +
+        '<li>Open <b>Settings</b></li>' +
+        '<li>Go to <b>Accessibility</b> → <b>Spoken Content</b> → <b>Voices</b></li>' +
+        '<li>Tap <b>Deutsch</b> and pick a voice to download</li>' +
+        '<li>Come back here and reload this page</li>' +
+        '</ol></div>';
+    }
+    return '<div class="steps">' +
+      '<p class="warn"><b>How to add German on Windows</b></p>' +
+      '<ol>' +
+      '<li>Open <b>Settings</b> → <b>Time &amp; Language</b> → <b>Language</b></li>' +
+      '<li><b>Add a language</b> → <b>Deutsch (Deutschland)</b></li>' +
+      '<li>Tick <b>Speech</b> in the optional features, then install</li>' +
+      '<li>Restart the browser and reload this page</li>' +
+      '</ol>' +
+      '<p class="note">Chrome and Edge also carry their own German voices, so try one of those browsers before changing any settings.</p>' +
+      '</div>';
+  }
+
+  /* ── speaking ─────────────────────────────────────────── */
+  function say(text, isDe, forceVoice) {
+    return new Promise(function (resolve) {
+      if (!synth) return resolve();
+      var v = forceVoice || (isDe ? deVoice : enVoice);
+      if (!v) return resolve();
+      var u = new SpeechSynthesisUtterance(text);
+      u.voice = v;
+      u.lang = v.lang;
+      u.rate = rate;
+      u.pitch = 1;
+      u.volume = 1;
+      var done = false;
+      var finish = function () { if (!done) { done = true; resolve(); } };
+      u.onend = finish;
+      u.onerror = finish;
+      /* some engines never fire onend — never hang the page on it */
+      setTimeout(finish, Math.max(4000, text.length * 220));
+      synth.speak(u);
+    });
+  }
+
+  /* Chrome stops speaking after about 15 seconds unless nudged. */
+  function startKeepAlive() {
+    stopKeepAlive();
+    keepAlive = setInterval(function () {
+      if (synth && synth.speaking && !synth.paused) { synth.pause(); synth.resume(); }
+    }, 9000);
+  }
+  function stopKeepAlive() { if (keepAlive) { clearInterval(keepAlive); keepAlive = null; } }
+
+  function chunks(runs) {
+    var out = [];
+    runs.forEach(function (r) {
+      (r.t.match(/[^.!?…]+[.!?…]*/g) || [r.t]).forEach(function (p) {
+        p = p.trim(); if (p) out.push({ t:p, de:r.l === "de" });
+      });
+    });
+    return out;
+  }
+
+  async function speakBlock(runs) {
+    var list = chunks(runs);
+    for (var i = 0; i < list.length; i++) {
+      if (stopped) return;
+      await say(list[i].t, list[i].de);
+    }
+  }
+
+  /* ── the page ─────────────────────────────────────────── */
+  function buildPage() {
+    var host = $("#page"); host.innerHTML = "";
+    PAGE.forEach(function (b) {
+      if (b.h) { var h = document.createElement("h3"); h.textContent = b.h; host.appendChild(h); return; }
+      var el = document.createElement("div"); el.className = "blk";
+      if (b.table) {
+        var t = '<table class="demo"><tr><th>Pattern</th><th>German</th><th>English</th></tr>';
+        b.table.forEach(function (r) {
+          t += '<tr><td>' + r[0] + '</td><td class="de-word">' + r[1] + '</td><td class="en-gloss">' + r[2] + '</td></tr>';
+        });
+        el.innerHTML = t + "</table>";
+        el.dataset.runs = JSON.stringify(b.table.reduce(function (a, r) {
+          return a.concat([{ t:r[1], l:"de" }, { t:r[2], l:"en" }]);
+        }, []));
+      } else {
+        el.innerHTML = b.runs.map(function (r) {
+          return r.l === "de" ? '<span class="de-word">' + r.t + '</span>' : '<span>' + r.t + '</span>';
+        }).join(" ");
+        el.dataset.runs = JSON.stringify(b.runs);
+      }
+      el.onclick = async function () {
+        if (busy) return;
+        busy = true; stopped = false; synth.cancel(); startKeepAlive();
+        Array.prototype.forEach.call(host.querySelectorAll(".blk"), function (e) { e.className = "blk"; });
+        el.className = "blk now";
+        await speakBlock(JSON.parse(el.dataset.runs));
+        el.className = "blk done"; stopKeepAlive(); busy = false;
+      };
+      host.appendChild(el);
+    });
+  }
+
+  function buildWords() {
+    var host = $("#words"); host.innerHTML = "";
+    WORDS.forEach(function (w) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = w.t;
+      if (!w.de) b.className = "en";
+      b.onclick = async function () {
+        if (busy) return;
+        busy = true; stopped = false; synth.cancel();
+        await say(w.t, w.de);
+        busy = false;
+      };
+      host.appendChild(b);
+    });
+  }
+
+  async function readAll() {
+    if (busy) return;
+    if (!deVoice) { $("#err").textContent = "No German voice on this phone yet — see the steps above."; return; }
+    busy = true; stopped = false; $("#err").textContent = "";
+    synth.cancel(); startKeepAlive();
+    $("#play").disabled = true;
+    var bl = Array.prototype.slice.call($("#page").querySelectorAll(".blk"));
+    for (var i = 0; i < bl.length; i++) {
+      if (stopped) break;
+      bl.forEach(function (b, k) { b.className = "blk" + (k < i ? " done" : ""); });
+      bl[i].className = "blk now";
+      bl[i].scrollIntoView({ block:"center", behavior:"smooth" });
+      $("#play").textContent = "Reading… " + (i + 1) + " / " + bl.length;
+      await speakBlock(JSON.parse(bl[i].dataset.runs));
+    }
+    bl.forEach(function (b) { b.className = "blk done"; });
+    stopKeepAlive();
+    busy = false; $("#play").disabled = false; $("#play").textContent = "Read it again";
+  }
+
+  /* ── wire ─────────────────────────────────────────────── */
+  buildPage(); buildWords(); paintVoices();
+
+  /* voices arrive asynchronously, and on Android often only after a delay */
+  if (synth) {
+    synth.onvoiceschanged = paintVoices;
+    var tries = 0;
+    var poll = setInterval(function () {
+      if (allVoices().length || ++tries > 20) { clearInterval(poll); paintVoices(); }
+    }, 300);
+  } else {
+    $("#deStatus").innerHTML = '<p class="warn">This browser cannot speak at all. Try Chrome.</p>';
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("#speed button"), function (b) {
+    b.onclick = function () {
+      Array.prototype.forEach.call(document.querySelectorAll("#speed button"), function (o) { o.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      rate = parseFloat(b.dataset.v);
+    };
+  });
+
+  $("#play").onclick = readAll;
+  $("#stop").onclick = function () {
+    stopped = true; stopKeepAlive();
+    if (synth) synth.cancel();
+    busy = false; $("#play").disabled = false; $("#play").textContent = "Read this page aloud";
+  };
+})();
+</script>
+</body>
+</html>
