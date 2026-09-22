@@ -139,8 +139,12 @@
   var ORT   = "https://cdnjs.cloudflare.com/ajax/libs/onnxruntime-web/1.18.0/";
   var CACHE = "de-voice-all";
 
-  var DEMO = "Ich habe seit drei Tagen starke Kopfschmerzen. Können Sie mir etwas verschreiben?";
-  var DEMO_EN = "This is how the English explanations will sound to your students.";
+  /* Hear plays a full sentence AND two bare words. The page is full of
+     single German words inside English sentences, and some voices fall
+     apart on those while sounding fine on a long sentence — so the
+     short ones have to be part of the audition, not a later surprise. */
+  var DEMO = ["Ich habe seit drei Tagen starke Kopfschmerzen. Können Sie mir etwas verschreiben?", "krank", "sein"];
+  var DEMO_EN = ["This is how the English explanations will sound to your students.", "pharmacy"];
 
   /* Every German voice that exists in this engine. Grouped by the
      recording's sample rate, which is a fact from its own config file. */
@@ -148,14 +152,14 @@
     { g:"Full quality — 22 kHz", id:"t-high",  nm:"Thorsten HD",        sex:"male",   mb:108, p:"de/de_DE/thorsten/high/de_DE-thorsten-high.onnx",                          note:"studio recording, highest detail" },
     { g:"Full quality — 22 kHz", id:"t-med",   nm:"Thorsten",           sex:"male",   mb:60,  p:"de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx",                      note:"studio recording" },
     { g:"Full quality — 22 kHz", id:"t-emo",   nm:"Thorsten (calm)",    sex:"male",   mb:73,  p:"de/de_DE/thorsten_emotional/medium/de_DE-thorsten_emotional-medium.onnx", sid:4, note:"same speaker, neutral delivery" },
-    { g:"Full quality — 22 kHz", id:"mls-118", nm:"Frauenstimme 1",     sex:"female", mb:73,  p:"de/de_DE/mls/medium/de_DE-mls-medium.onnx",                                sid:118, note:"audiobook reader" },
-    { g:"Full quality — 22 kHz", id:"mls-90",  nm:"Frauenstimme 2",     sex:"female", mb:73,  p:"de/de_DE/mls/medium/de_DE-mls-medium.onnx",                                sid:90,  note:"audiobook reader, same file as above" },
+    { g:"Full quality — 22 kHz", id:"mls-118", nm:"Frauenstimme 1",     sex:"female", mb:73,  p:"de/de_DE/mls/medium/de_DE-mls-medium.onnx",                                sid:118, note:"GARBLES SINGLE WORDS — fine on sentences only" },
+    { g:"Full quality — 22 kHz", id:"mls-90",  nm:"Frauenstimme 2",     sex:"female", mb:73,  p:"de/de_DE/mls/medium/de_DE-mls-medium.onnx",                                sid:90,  note:"GARBLES SINGLE WORDS — same file as above" },
 
     { g:"Lower quality — 16 kHz, consonants cut off", id:"karlsson", nm:"Karlsson", sex:"male",   mb:60, p:"de/de_DE/karlsson/low/de_DE-karlsson-low.onnx" },
     { g:"Lower quality — 16 kHz, consonants cut off", id:"pavoque",  nm:"Pavoque",  sex:"male",   mb:60, p:"de/de_DE/pavoque/low/de_DE-pavoque-low.onnx" },
     { g:"Lower quality — 16 kHz, consonants cut off", id:"t-low",    nm:"Thorsten (low)", sex:"male", mb:60, p:"de/de_DE/thorsten/low/de_DE-thorsten-low.onnx" },
-    { g:"Lower quality — 16 kHz, consonants cut off", id:"kerstin",  nm:"Kerstin",  sex:"female", mb:60, p:"de/de_DE/kerstin/low/de_DE-kerstin-low.onnx" },
-    { g:"Lower quality — 16 kHz, consonants cut off", id:"ramona",   nm:"Ramona",   sex:"female", mb:60, p:"de/de_DE/ramona/low/de_DE-ramona-low.onnx" },
+    { g:"Lower quality — 16 kHz, consonants cut off", id:"kerstin",  nm:"Kerstin",  sex:"female", mb:60, p:"de/de_DE/kerstin/low/de_DE-kerstin-low.onnx", note:"duller, but steady on single words" },
+    { g:"Lower quality — 16 kHz, consonants cut off", id:"ramona",   nm:"Ramona",   sex:"female", mb:60, p:"de/de_DE/ramona/low/de_DE-ramona-low.onnx",  note:"duller, but steady on single words" },
     { g:"Lower quality — 16 kHz, consonants cut off", id:"eva",      nm:"Eva",      sex:"female", mb:20, p:"de/de_DE/eva_k/x_low/de_DE-eva_k-x_low.onnx" }
   ];
 
@@ -369,9 +373,12 @@
         var loadedVoice = await load(v);
         if (isDe) pickDe = v; else pickEn = v;
         render();
-        $("#status").textContent = "Playing " + v.nm + "…";
-        var s = await synth(isDe ? DEMO : DEMO_EN, loadedVoice);
-        if (s) await play(wav(s.pcm, s.rate));
+        var demo = isDe ? DEMO : DEMO_EN;
+        for (var d = 0; d < demo.length; d++) {
+          $("#status").textContent = v.nm + " — " + (d === 0 ? "full sentence…" : 'single word "' + demo[d] + '"…');
+          var s = await synth(demo[d], loadedVoice);
+          if (s) await play(wav(s.pcm, s.rate));
+        }
         $("#status").textContent = v.nm + " — done. Try the next one.";
         if (pickDe) $("#play").disabled = false;
       } catch (e) {
