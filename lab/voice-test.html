@@ -9,7 +9,7 @@
   :root{
     --bg:#12100e; --panel:#1b1815; --line:#332e28; --ink:#f0e9df;
     --dim:#a89c8c; --accent:#e0a458; --accent-ink:#241a0d;
-    --de:#e0a458; --en:#7fb2d8; --good:#7ac07a; --bad:#e07a7a;
+    --de:#e0a458; --good:#7ac07a; --bad:#e07a7a;
   }
   *{box-sizing:border-box}
   body{
@@ -17,123 +17,136 @@
     font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     -webkit-text-size-adjust:100%;
   }
-  h1{font-size:1.35rem; margin:0 0 4px}
-  h2{font-size:1.02rem; margin:0 0 4px; color:var(--accent)}
-  .sub{color:var(--dim); font-size:.86rem; margin:0 0 22px}
-  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:16px}
-  .step{font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); margin-bottom:8px}
+  h1{font-size:1.32rem; margin:0 0 4px}
+  h2{font-size:1rem; margin:0 0 4px; color:var(--accent)}
+  .sub{color:var(--dim); font-size:.85rem; margin:0 0 20px}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:15px}
+  .step{font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); margin-bottom:8px}
   .hint{color:var(--dim); font-size:.82rem; margin:0 0 12px; line-height:1.5}
 
-  .voices{display:grid; gap:7px}
-  .voice{
-    display:flex; align-items:center; gap:10px; width:100%; text-align:left;
-    background:#221e1a; border:1px solid var(--line); color:var(--ink);
-    border-radius:10px; padding:11px 13px; font-size:.94rem; cursor:pointer;
+  .pair{display:flex; gap:9px}
+  .pair button{
+    flex:1; background:#221e1a; border:1px solid var(--line); color:var(--ink);
+    border-radius:10px; padding:14px 8px; font-size:.95rem; cursor:pointer; font-weight:600;
   }
-  .voice[aria-pressed="true"]{border-color:var(--accent); background:#2b2319}
-  .voice .nm{font-weight:600}
-  .voice .meta{color:var(--dim); font-size:.79rem; margin-left:auto; text-align:right; white-space:nowrap}
-  .tick{color:var(--good)}
+  .pair button[aria-pressed="true"]{border-color:var(--accent); background:#2f2619; color:var(--accent)}
+  .pair button small{display:block; font-weight:400; font-size:.74rem; color:var(--dim); margin-top:3px}
+  .pair button[aria-pressed="true"] small{color:#c9a87a}
 
   button.go{
     display:block; width:100%; background:var(--accent); color:var(--accent-ink);
-    border:0; border-radius:10px; padding:13px; font-size:.98rem; font-weight:700;
-    cursor:pointer; margin-top:11px;
+    border:0; border-radius:10px; padding:14px; font-size:.98rem; font-weight:700;
+    cursor:pointer; margin-top:12px;
   }
   button.go:disabled{opacity:.42; cursor:default}
   button.ghost{
     background:transparent; color:var(--dim); border:1px solid var(--line);
-    border-radius:8px; padding:9px 12px; font-size:.84rem; cursor:pointer;
+    border-radius:8px; padding:9px 12px; font-size:.83rem; cursor:pointer;
   }
   .bar{height:7px; background:#2a2521; border-radius:99px; overflow:hidden; margin-top:11px; display:none}
   .bar.on{display:block}
   .bar i{display:block; height:100%; width:0; background:var(--accent); transition:width .15s linear}
 
-  .speeds{display:flex; gap:7px; margin:12px 0}
+  .speeds{display:flex; gap:7px}
   .speeds button{
     flex:1; background:#221e1a; border:1px solid var(--line); color:var(--ink);
-    border-radius:8px; padding:10px 4px; font-size:.84rem; cursor:pointer;
+    border-radius:8px; padding:11px 4px; font-size:.84rem; cursor:pointer;
   }
-  .speeds button[aria-pressed="true"]{border-color:var(--accent); background:#2b2319; color:var(--accent)}
+  .speeds button[aria-pressed="true"]{border-color:var(--accent); background:#2f2619; color:var(--accent)}
 
-  /* the fake chapter page */
-  .page{border:1px solid var(--line); border-radius:10px; padding:15px 14px; background:#191614; margin-top:6px}
-  .page h3{font-size:1.05rem; margin:0 0 10px; color:#fff}
+  .words{display:flex; flex-wrap:wrap; gap:7px; margin-top:4px}
+  .words button{
+    background:#2b2319; border:1px solid #4a3c26; color:var(--de);
+    border-radius:99px; padding:9px 15px; font-size:1rem; cursor:pointer; font-weight:600;
+  }
+  .words button:active{background:#3a2d18}
+
+  .page{border:1px solid var(--line); border-radius:10px; padding:14px; background:#191614; margin-top:10px}
+  .page h3{font-size:1.02rem; margin:0 0 10px; color:#fff}
   .blk{padding:8px 10px; border-radius:8px; margin:0 -4px 4px; border:1px solid transparent}
   .blk.now{background:#33281a; border-color:var(--accent)}
   .blk.done{opacity:.5}
   .de-word{color:var(--de); font-weight:600}
   .en-gloss{color:var(--dim)}
-  table.demo{width:100%; border-collapse:collapse; margin:8px 0; font-size:.9rem}
-  table.demo th,table.demo td{border:1px solid var(--line); padding:6px 8px; text-align:left}
-  table.demo th{color:var(--accent); font-size:.8rem}
+  table.demo{width:100%; border-collapse:collapse; margin:8px 0; font-size:.88rem}
+  table.demo td,table.demo th{border:1px solid var(--line); padding:6px 8px; text-align:left}
+  table.demo th{color:var(--accent); font-size:.78rem}
 
   table.kv{width:100%; border-collapse:collapse; font-size:.85rem}
-  table.kv td{padding:5px 0; border-bottom:1px solid var(--line); vertical-align:top}
+  table.kv td{padding:5px 0; border-bottom:1px solid var(--line)}
   table.kv td:first-child{color:var(--dim); width:58%}
   table.kv td:last-child{text-align:right; font-variant-numeric:tabular-nums}
-  .note{color:var(--dim); font-size:.8rem; margin-top:10px; line-height:1.5}
+  .note{color:var(--dim); font-size:.79rem; margin-top:10px; line-height:1.5}
   .err{color:var(--bad); font-size:.84rem; margin-top:10px; white-space:pre-wrap; word-break:break-word}
+  details{margin-top:12px} summary{color:var(--dim); font-size:.83rem; cursor:pointer}
 </style>
 </head>
 <body>
 
-<h1>Page reader test</h1>
-<p class="sub">Not connected to the site. This answers three things: can a voice run inside the browser, how good does it sound, and can it switch between English and German the way your chapters need.</p>
+<h1>Page reader test — round 2</h1>
+<p class="sub">Two voices this time, picked by measurement rather than guesswork, with the loudness and the articulation fixed.</p>
 
-<!-- 1 ─ German voice -->
+<!-- 1 ─ voice -->
 <div class="card">
   <div class="step">Step 1</div>
-  <h2>The German voice</h2>
-  <p class="hint">This is the one that matters. Try a male and a female and tell me which you prefer.</p>
-  <div class="voices" id="deVoices"></div>
-  <button class="go" id="deDl" disabled>Choose a voice first</button>
-  <div class="bar" id="deBar"><i></i></div>
-  <div class="err" id="deErr"></div>
+  <h2>Choose the narrator</h2>
+  <p class="hint">One download (73&nbsp;MB) contains both. Switching between them afterwards is instant — nothing more to fetch.</p>
+  <div class="pair" id="who">
+    <button data-sex="male"   aria-pressed="true">Male<small>adult, clear</small></button>
+    <button data-sex="female" aria-pressed="false">Female<small>adult, clear</small></button>
+  </div>
+  <button class="go" id="dl">Download the German voices (73 MB)</button>
+  <div class="bar" id="bar"><i></i></div>
+  <div class="err" id="dlErr"></div>
+  <details>
+    <summary>If neither sounds right, try these alternates</summary>
+    <div class="pair" style="margin-top:10px">
+      <button class="alt" data-sex="male"   data-sid="32"  aria-pressed="false">Male 2<small>lower, steadier</small></button>
+      <button class="alt" data-sex="female" data-sid="183" aria-pressed="false">Female 2<small>warmer, deeper</small></button>
+    </div>
+    <p class="note">Same download — these are other speakers inside the same file.</p>
+  </details>
 </div>
 
-<!-- 2 ─ English voice -->
+<!-- 2 ─ clarity -->
 <div class="card">
   <div class="step">Step 2</div>
-  <h2>The English voice</h2>
-  <p class="hint">Your chapters explain in English and quote in German, so the reader needs both. Every English voice is also about 60&nbsp;MB — which is why the last option here matters: your phone already has an English voice built in, and using it would halve the download.</p>
-  <div class="voices" id="enVoices"></div>
-  <button class="go" id="enDl" disabled>Choose a voice first</button>
-  <div class="bar" id="enBar"><i></i></div>
-  <div class="err" id="enErr"></div>
+  <h2>How clearly it speaks</h2>
+  <div class="speeds" id="speeds">
+    <button data-ls="1.55" aria-pressed="false">Sehr deutlich</button>
+    <button data-ls="1.30" aria-pressed="true">Deutlich</button>
+    <button data-ls="1.08" aria-pressed="false">Normal</button>
+  </div>
+  <p class="note">Last time the audio was never normalised, which is why it sounded quiet. It is now brought up to full level with a gentle lift on the soft parts, so consonants come through on a phone speaker.</p>
 </div>
 
-<!-- 3 ─ the page -->
+<!-- 3 ─ words -->
 <div class="card">
   <div class="step">Step 3</div>
-  <h2>Read a real page</h2>
-  <p class="hint">This is genuine text from Chapter 27 of your book. <span class="de-word">German</span> is highlighted; everything else is English. Press play and listen to how it moves between the two.</p>
-  <div class="speeds">
-    <button data-sp="1.45" aria-pressed="false">Sehr langsam</button>
-    <button data-sp="1.15" aria-pressed="true">Langsam</button>
-    <button data-sp="1.0"  aria-pressed="false">Normal</button>
-  </div>
-  <button class="go" id="play" disabled>Download a German voice first</button>
+  <h2>Single words</h2>
+  <p class="hint">You said <span class="de-word">krank</span> wasn't coming out properly. Single words are the hardest case — tap each one.</p>
+  <div class="words" id="words"></div>
+  <div class="err" id="wordErr"></div>
+</div>
+
+<!-- 4 ─ page -->
+<div class="card">
+  <div class="step">Step 4</div>
+  <h2>A real page</h2>
+  <p class="hint">Genuine text from Chapter 27. German is highlighted. English uses your phone's own voice — you said that side is fine, so nothing extra is downloaded for it.</p>
+  <button class="go" id="play" disabled>Download the voices first</button>
   <button class="ghost" id="stop" style="width:100%;margin-top:8px">Stop</button>
   <div class="page" id="page"></div>
   <p class="note">Tap any paragraph to hear just that one.</p>
   <div class="err" id="playErr"></div>
 </div>
 
-<!-- 4 ─ numbers -->
-<div class="card">
-  <div class="step">Step 4</div>
-  <h2>Measurements</h2>
-  <table class="kv" id="stats"><tbody></tbody></table>
-  <p class="note">"Speed vs real time" is the number that decides this. 2x means a 4-second sentence takes 2 seconds to prepare, so it stays ahead of you while reading. Under 1x means gaps you would notice.</p>
-</div>
-
-<!-- 5 ─ device -->
+<!-- 5 ─ numbers -->
 <div class="card">
   <div class="step">Step 5</div>
-  <h2>Your device</h2>
-  <table class="kv" id="diag"><tbody></tbody></table>
-  <button class="ghost" id="clear" style="margin-top:12px">Delete downloaded voices</button>
+  <h2>Measurements</h2>
+  <table class="kv" id="stats"><tbody></tbody></table>
+  <button class="ghost" id="clear" style="margin-top:12px">Delete the download</button>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/onnxruntime-web/1.18.0/ort.min.js"></script>
@@ -142,55 +155,46 @@
 (function () {
   "use strict";
 
-  var VOICE_BASE = "https://huggingface.co/diffusionstudio/piper-voices/resolve/main";
-  var WASM_BASE  = "https://cdn.jsdelivr.net/npm/@diffusionstudio/piper-wasm@1.0.0/build/piper_phonemize";
-  var ORT_BASE   = "https://cdnjs.cloudflare.com/ajax/libs/onnxruntime-web/1.18.0/";
-  var CACHE = "de-voice-test-v1";
+  var BASE  = "https://huggingface.co/diffusionstudio/piper-voices/resolve/main";
+  var MODEL = "de/de_DE/mls/medium/de_DE-mls-medium.onnx";
+  var WASM  = "https://cdn.jsdelivr.net/npm/@diffusionstudio/piper-wasm@1.0.0/build/piper_phonemize";
+  var ORT   = "https://cdnjs.cloudflare.com/ajax/libs/onnxruntime-web/1.18.0/";
+  var CACHE = "de-voice-v2";
 
-  var DE = [
-    { id:"de_DE-thorsten-medium", nm:"Thorsten", sex:"male",   mb:60, path:"de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx" },
-    { id:"de_DE-karlsson-low",    nm:"Karlsson", sex:"male",   mb:60, path:"de/de_DE/karlsson/low/de_DE-karlsson-low.onnx" },
-    { id:"de_DE-kerstin-low",     nm:"Kerstin",  sex:"female", mb:60, path:"de/de_DE/kerstin/low/de_DE-kerstin-low.onnx" },
-    { id:"de_DE-ramona-low",      nm:"Ramona",   sex:"female", mb:60, path:"de/de_DE/ramona/low/de_DE-ramona-low.onnx" },
-    { id:"de_DE-eva_k-x_low",     nm:"Eva",      sex:"female", mb:20, path:"de/de_DE/eva_k/x_low/de_DE-eva_k-x_low.onnx" }
-  ];
-  var EN = [
-    { id:"en_GB-alba-medium",       nm:"Alba",   sex:"female (British)", mb:60, path:"en/en_GB/alba/medium/en_GB-alba-medium.onnx" },
-    { id:"en_GB-alan-medium",       nm:"Alan",   sex:"male (British)",   mb:60, path:"en/en_GB/alan/medium/en_GB-alan-medium.onnx" },
-    { id:"en_US-hfc_female-medium", nm:"Hannah", sex:"female (US)",      mb:60, path:"en/en_US/hfc_female/medium/en_US-hfc_female-medium.onnx" },
-    { id:"__device__",              nm:"Use this phone's own English voice", sex:"no download", mb:0, path:null }
-  ];
+  /* Chosen by measuring all 236 speakers in this model on one German
+     sentence — pitch (adult, neither childish nor elderly), consonant
+     clarity, steadiness and strength. 13 and 163 won their ranges. */
+  var SID = { male:13, female:163 };
 
-  /* Real text from a1/book/chapter-27.html, marked up the same way the book marks it. */
+  var WORDS = ["krank", "sein", "Übermut", "Entschuldigung", "sechzehn",
+               "verschreiben", "Kopfschmerzen", "Apotheke", "Ärztin", "schwimmen"];
+
   var PAGE = [
     { h:"27. Krank sein — Beim Arzt" },
-    { runs:[ {t:"This is one of the chapters you will actually need, probably sooner than you would like. Being ill in a foreign country is stressful, and the language you need is very specific.", l:"en"} ] },
-    { runs:[ {t:"German gives you three different sentence shapes. The first uses", l:"en"},
-             {t:"sein", l:"de"}, {t:"(to be), and because", l:"en"},
-             {t:"krank", l:"de"}, {t:"(ill, sick) is an adjective standing after the verb, it never changes its ending:", l:"en"},
-             {t:"Ich bin krank.", l:"de"}, {t:"(I am ill.)", l:"en"} ] },
+    { runs:[ {t:"This is one of the chapters you will actually need, probably sooner than you would like. The language you need is very specific.", l:"en"} ] },
+    { runs:[ {t:"German gives you three sentence shapes. The first uses", l:"en"},
+             {t:"sein", l:"de"}, {t:"— and because", l:"en"},
+             {t:"krank", l:"de"}, {t:"is an adjective standing after the verb, it never changes its ending:", l:"en"},
+             {t:"Ich bin krank.", l:"de"} ] },
     { table:[
-        ["sein + krank",   "Ich bin krank.",        "I am ill."],
-        ["haben + illness","Ich habe Fieber.",      "I have a fever."],
-        ["mir geht es …",  "Mir geht es nicht gut.","I don't feel well."]
+        ["sein + krank",    "Ich bin krank.",         "I am ill."],
+        ["haben + illness", "Ich habe Fieber.",       "I have a fever."],
+        ["mir geht es …",   "Mir geht es nicht gut.", "I don't feel well."]
       ] },
     { runs:[ {t:"At the doctor's you will hear:", l:"en"},
-             {t:"Was fehlt Ihnen denn? Seit wann haben Sie diese Schmerzen?", l:"de"},
-             {t:"— literally \"what is missing from you\", which is simply how German asks what is wrong.", l:"en"} ] },
+             {t:"Was fehlt Ihnen denn? Seit wann haben Sie diese Schmerzen?", l:"de"} ] },
     { runs:[ {t:"Ich habe seit drei Tagen starke Kopfschmerzen und Fieber. Können Sie mir etwas verschreiben?", l:"de"} ] },
-    { runs:[ {t:"One more practical note: a", l:"en"}, {t:"Drogerie", l:"de"},
+    { runs:[ {t:"One practical note: a", l:"en"}, {t:"Drogerie", l:"de"},
              {t:"is not a pharmacy. Medicine comes from the", l:"en"}, {t:"Apotheke", l:"de"},
              {t:", and only there.", l:"en"} ] }
   ];
 
   var $ = function (s) { return document.querySelector(s); };
-  var slot = { de:null, en:null };       // { cfg, session, rate, id }
-  var pickDe = null, pickEn = null;
-  var lengthScale = 1.15, busy = false, stopped = false, audio = null;
+  var cfg = null, session = null, sex = "male", sid = SID.male;
+  var lengthScale = 1.30, busy = false, stopped = false, audio = null;
 
-  /* ── tables ───────────────────────────────────────────── */
   function row(sel, k, v) {
-    var b = $(sel).tBodies[0], id = sel.slice(1) + "-" + k.replace(/\W+/g, "");
+    var b = $(sel).tBodies[0], id = "s-" + k.replace(/\W+/g, "");
     var tr = document.getElementById(id);
     if (!tr) { tr = document.createElement("tr"); tr.id = id; tr.innerHTML = "<td></td><td></td>"; tr.cells[0].textContent = k; b.appendChild(tr); }
     tr.cells[1].textContent = v;
@@ -198,62 +202,11 @@
   var stat = function (k, v) { row("#stats", k, v); };
   function fmt(ms) { return ms >= 1000 ? (ms / 1000).toFixed(1) + " s" : Math.round(ms) + " ms"; }
 
-  /* ── voice pickers ────────────────────────────────────── */
-  function paint(list, host, current, onPick) {
-    var box = $(host); box.innerHTML = "";
-    list.forEach(function (v) {
-      var b = document.createElement("button");
-      b.className = "voice"; b.type = "button";
-      b.setAttribute("aria-pressed", current && current.id === v.id ? "true" : "false");
-      b.innerHTML = '<span class="nm"></span><span class="meta"></span>';
-      b.querySelector(".nm").textContent = v.mb ? v.nm + " — " + v.sex : v.nm;
-      b.querySelector(".meta").textContent = v.mb ? v.mb + " MB" : v.sex;
-      b.onclick = function () { if (!busy) onPick(v); };
-      box.appendChild(b); v._el = b;
-    });
-    markCached();
-  }
-
-  function paintAll() {
-    paint(DE, "#deVoices", pickDe, function (v) {
-      pickDe = v; paintAll();
-      $("#deDl").disabled = false;
-      $("#deDl").textContent = "Download " + v.nm + " (" + v.mb + " MB)";
-    });
-    paint(EN, "#enVoices", pickEn, function (v) {
-      pickEn = v; paintAll();
-      if (!v.mb) {
-        slot.en = { device:true };
-        $("#enDl").disabled = true;
-        $("#enDl").textContent = "Using this phone's English voice — nothing to download";
-        refreshPlay();
-      } else {
-        $("#enDl").disabled = false;
-        $("#enDl").textContent = "Download " + v.nm + " (" + v.mb + " MB)";
-      }
-    });
-  }
-
-  function markCached() {
-    if (!("caches" in window)) return;
-    caches.open(CACHE).then(function (c) { return c.keys(); }).then(function (ks) {
-      var have = ks.map(function (r) { return r.url; });
-      DE.concat(EN).forEach(function (v) {
-        if (!v._el || !v.path) return;
-        var m = v._el.querySelector(".meta");
-        if (m) m.innerHTML = have.indexOf(VOICE_BASE + "/" + v.path) > -1
-          ? '<span class="tick">on this phone</span>' : v.mb + " MB";
-      });
-      row("#diag", "Voices downloaded", have.filter(function (u) { return /\.onnx$/.test(u); }).length);
-    });
-  }
-
-  /* ── fetch + cache ────────────────────────────────────── */
+  /* ── download + cache ─────────────────────────────────── */
   async function grab(url, onProgress) {
     var c = ("caches" in window) ? await caches.open(CACHE) : null;
     var hit = c && await c.match(url);
     if (hit) return { buf: await hit.arrayBuffer(), fresh:false };
-
     var res = await fetch(url);
     if (!res.ok) throw new Error("Download failed (" + res.status + ")");
     var total = +(res.headers.get("Content-Length") || 0);
@@ -269,115 +222,109 @@
     return { buf: buf.buffer, fresh:true };
   }
 
-  async function load(v, which, btn, bar, err) {
+  async function download() {
     if (busy) return;
-    busy = true;
-    $(err).textContent = ""; $(btn).disabled = true;
-    $(bar).classList.add("on");
-    var fill = $(bar + " i"), t0 = performance.now();
+    busy = true; $("#dl").disabled = true; $("#dlErr").textContent = "";
+    $("#bar").classList.add("on");
+    var fill = $("#bar i"), t0 = performance.now();
     try {
-      var cj = await grab(VOICE_BASE + "/" + v.path + ".json");
-      var cfg = JSON.parse(new TextDecoder().decode(cj.buf));
-
-      var mdl = await grab(VOICE_BASE + "/" + v.path, function (got, total) {
+      var cj = await grab(BASE + "/" + MODEL + ".json");
+      cfg = JSON.parse(new TextDecoder().decode(cj.buf));
+      var mdl = await grab(BASE + "/" + MODEL, function (got, total) {
         fill.style.width = (total ? got / total * 100 : 0) + "%";
-        $(btn).textContent = "Downloading… " + (got / 1048576).toFixed(1) + " MB";
+        $("#dl").textContent = "Downloading… " + (got / 1048576).toFixed(0) + " MB";
       });
       var dl = performance.now() - t0;
-      stat(v.nm + " — " + (mdl.fresh ? "downloaded in" : "loaded from phone"), fmt(dl));
-      if (mdl.fresh && dl > 200) stat(v.nm + " — download speed", (v.mb / (dl / 1000)).toFixed(1) + " MB/s");
+      stat(mdl.fresh ? "Download time" : "Loaded from phone", fmt(dl));
+      if (mdl.fresh && dl > 300) stat("Download speed", (73 / (dl / 1000)).toFixed(1) + " MB/s");
 
-      fill.style.width = "100%";
-      $(btn).textContent = "Starting the engine…";
+      fill.style.width = "100%"; $("#dl").textContent = "Starting the engine…";
       var t1 = performance.now();
-      ort.env.wasm.wasmPaths = ORT_BASE;
-      ort.env.wasm.numThreads = 1;      /* GitHub Pages sends no COOP/COEP headers */
+      ort.env.wasm.wasmPaths = ORT;
+      ort.env.wasm.numThreads = 1;        /* GitHub Pages sends no COOP/COEP headers */
       ort.env.logLevel = "error";
-      var session = await ort.InferenceSession.create(mdl.buf);
-      stat(v.nm + " — engine start-up", fmt(performance.now() - t1));
-
-      slot[which] = { cfg:cfg, session:session, rate:cfg.audio.sample_rate, id:v.id };
-      $(btn).textContent = v.nm + " is ready";
-      markCached();
+      session = await ort.InferenceSession.create(mdl.buf);
+      stat("Engine start-up", fmt(performance.now() - t1));
+      $("#dl").textContent = "Ready — both voices are on this phone";
+      $("#play").disabled = false; $("#play").textContent = "Read this page aloud";
     } catch (e) {
-      $(err).textContent = "✕ " + (e && e.message ? e.message : e);
-      $(btn).textContent = "Try again";
+      $("#dlErr").textContent = "✕ " + (e && e.message ? e.message : e);
+      $("#dl").textContent = "Try again";
     } finally {
-      busy = false; $(btn).disabled = false;
-      setTimeout(function () { $(bar).classList.remove("on"); fill.style.width = "0"; }, 500);
-      refreshPlay();
+      busy = false; $("#dl").disabled = false;
+      setTimeout(function () { $("#bar").classList.remove("on"); fill.style.width = "0"; }, 500);
     }
   }
 
-  function refreshPlay() {
-    var ok = !!slot.de;
-    $("#play").disabled = !ok;
-    $("#play").textContent = ok
-      ? (slot.en ? "Read this page aloud" : "Read it (German parts only until you pick an English voice)")
-      : "Download a German voice first";
-  }
-
-  /* ── text → phonemes → ids (through the voice's own table) ── */
-  function phonemize(text, espeakVoice) {
+  /* ── text → sound ─────────────────────────────────────── */
+  function phonemize(text) {
     return new Promise(function (resolve, reject) {
       var out = [];
       createPiperPhonemize({
         print: function (l) { try { out.push(JSON.parse(l).phonemes); } catch (e) {} },
         printErr: function (e) { reject(new Error(String(e))); },
         locateFile: function (p) {
-          if (/\.wasm$/.test(p)) return WASM_BASE + ".wasm";
-          if (/\.data$/.test(p)) return WASM_BASE + ".data";
-          return p;
+          return /\.wasm$/.test(p) ? WASM + ".wasm" : /\.data$/.test(p) ? WASM + ".data" : p;
         }
       }).then(function (mod) {
-        mod.callMain(["-l", espeakVoice, "--input", JSON.stringify([{ text:text.trim() }]), "--espeak_data", "/espeak-ng-data"]);
-        out.length ? resolve(out) : reject(new Error("Nothing could be read from that text."));
+        mod.callMain(["-l", cfg.espeak.voice, "--input", JSON.stringify([{ text:text.trim() }]), "--espeak_data", "/espeak-ng-data"]);
+        out.length ? resolve(out) : reject(new Error("Nothing to read there."));
       }).catch(reject);
     });
   }
 
-  /* Each voice has its OWN phoneme table (Eva 130 symbols, Thorsten 152),
-     so the phonemizer's default ids overflow smaller models. Map here. */
-  function toIds(phonemes, cfg) {
-    var m = cfg.phoneme_id_map, ids = [];
-    var add = function (k) { if (m[k]) Array.prototype.push.apply(ids, m[k]); };
+  /* Each voice has its own phoneme table, so map through this model's
+     rather than trusting the phonemizer's default ids. */
+  function toIds(ph) {
+    var m = cfg.phoneme_id_map, o = [];
+    var add = function (k) { if (m[k]) Array.prototype.push.apply(o, m[k]); };
     add("^"); add("_");
-    phonemes.forEach(function (p) { if (m[p]) { Array.prototype.push.apply(ids, m[p]); add("_"); } });
+    ph.forEach(function (p) { if (m[p]) { Array.prototype.push.apply(o, m[p]); add("_"); } });
     add("$");
-    return ids;
+    return o;
   }
 
-  async function synth(text, which) {
-    var s = slot[which];
-    var groups = await phonemize(text, s.cfg.espeak.voice);
-    var inf = s.cfg.inference || {};
-    var parts = [];
+  /* Bring the clip up to full level, lifting quiet parts so consonants
+     survive a phone speaker. This is what was missing before. */
+  function loudness(x) {
+    var peak = 0, i, a;
+    for (i = 0; i < x.length; i++) { a = x[i] < 0 ? -x[i] : x[i]; if (a > peak) peak = a; }
+    if (peak < 1e-5) return x;
+    var pre = 1 / peak, drive = 2.2, k = Math.tanh(drive);
+    for (i = 0; i < x.length; i++) x[i] = Math.tanh(x[i] * pre * drive) / k * 0.97;
+    return x;
+  }
+
+  async function synth(text, slow) {
+    var single = !/\s/.test(text.trim());
+    if (single) text = text.trim().replace(/[.!?]*$/, ".");   /* a bare word needs an ending */
+    var groups = await phonemize(text);
+    var ls = lengthScale * (slow || single ? 1.15 : 1);
+    var inf = cfg.inference || {}, parts = [];
     for (var g = 0; g < groups.length; g++) {
-      var ids = toIds(groups[g], s.cfg);
+      var ids = toIds(groups[g]);
       if (ids.length < 4) continue;
       var feeds = {
         input: new ort.Tensor("int64", BigInt64Array.from(ids.map(function (i) { return BigInt(i); })), [1, ids.length]),
         input_lengths: new ort.Tensor("int64", BigInt64Array.from([BigInt(ids.length)])),
         scales: new ort.Tensor("float32", Float32Array.from([
-          inf.noise_scale != null ? inf.noise_scale : 0.667,
-          lengthScale,
-          inf.noise_w != null ? inf.noise_w : 0.8
-        ]))
+          inf.noise_scale != null ? inf.noise_scale : 0.333,
+          ls,
+          inf.noise_w != null ? inf.noise_w : 0.333
+        ])),
+        sid: new ort.Tensor("int64", BigInt64Array.from([BigInt(sid)]))
       };
-      if (s.cfg.speaker_id_map && Object.keys(s.cfg.speaker_id_map).length) {
-        feeds.sid = new ort.Tensor("int64", BigInt64Array.from([0n]));
-      }
-      var out = await s.session.run(feeds);
+      var out = await session.run(feeds);
       parts.push(out.output.data);
     }
     var n = parts.reduce(function (a, p) { return a + p.length; }, 0);
     var all = new Float32Array(n), at = 0;
     parts.forEach(function (p) { all.set(p, at); at += p.length; });
-    return { pcm: all, rate: s.rate };
+    return { pcm: loudness(all), rate: cfg.audio.sample_rate };
   }
 
-  function wav(samples, rate) {
-    var n = samples.length, dv = new DataView(new ArrayBuffer(44 + n * 2));
+  function wav(x, rate) {
+    var n = x.length, dv = new DataView(new ArrayBuffer(44 + n * 2));
     var put = function (o, s) { for (var i = 0; i < s.length; i++) dv.setUint8(o + i, s.charCodeAt(i)); };
     put(0, "RIFF"); dv.setUint32(4, 36 + n * 2, true); put(8, "WAVEfmt ");
     dv.setUint32(16, 16, true); dv.setUint16(20, 1, true); dv.setUint16(22, 1, true);
@@ -385,7 +332,7 @@
     dv.setUint16(32, 2, true); dv.setUint16(34, 16, true);
     put(36, "data"); dv.setUint32(40, n * 2, true);
     for (var i = 0; i < n; i++) {
-      var v = Math.max(-1, Math.min(1, samples[i]));
+      var v = Math.max(-1, Math.min(1, x[i]));
       dv.setInt16(44 + i * 2, v < 0 ? v * 0x8000 : v * 0x7fff, true);
     }
     return new Blob([dv.buffer], { type:"audio/wav" });
@@ -404,69 +351,57 @@
     return new Promise(function (res) {
       if (!window.speechSynthesis) return res();
       var u = new SpeechSynthesisUtterance(text);
-      var v = speechSynthesis.getVoices().filter(function (x) { return /^en/i.test(x.lang); })[0];
-      if (v) u.voice = v;
-      u.rate = 1 / lengthScale;
+      var v = speechSynthesis.getVoices().filter(function (x) { return /^en/i.test(x.lang); });
+      var want = v.filter(function (x) { return sex === "female" ? /female|samantha|zira|karen|moira/i.test(x.name) : /male|david|daniel|alex|fred/i.test(x.name); });
+      if (want[0]) u.voice = want[0]; else if (v[0]) u.voice = v[0];
+      u.rate = 1 / lengthScale; u.volume = 1;
       u.onend = u.onerror = function () { res(); };
       speechSynthesis.speak(u);
     });
   }
 
-  /* ── read one block ───────────────────────────────────────
-     Split into sentences and prepare the NEXT one while the
-     current one is playing, so you only ever wait for the
-     first sentence instead of the whole paragraph. */
-
+  /* ── reading, one sentence ahead ──────────────────────── */
   function chunks(runs) {
     var out = [];
     runs.forEach(function (r) {
-      var which = r.l === "de" ? "de" : "en";
       (r.t.match(/[^.!?…]+[.!?…]*/g) || [r.t]).forEach(function (p) {
-        p = p.trim();
-        if (p) out.push({ t:p, w:which });
+        p = p.trim(); if (p) out.push({ t:p, de:r.l === "de" });
       });
     });
     return out;
   }
-
   async function prepare(ch) {
     if (!ch) return null;
-    if (ch.w === "en" && slot.en && slot.en.device) return { device:ch.t };
-    if (!slot[ch.w]) return null;                    /* no voice for that language yet */
-    var s = await synth(ch.t, ch.w);
+    if (!ch.de) return { device:ch.t };
+    var s = await synth(ch.t);
     return { blob: wav(s.pcm, s.rate), secs: s.pcm.length / s.rate };
   }
-
   async function speakBlock(runs) {
     var list = chunks(runs);
     if (!list.length) return null;
-
     var t0 = performance.now(), first = 0, waited = 0, secs = 0, spoke = false;
     var pending = prepare(list[0]);
-
     for (var i = 0; i < list.length; i++) {
       if (stopped) return null;
       var m0 = performance.now();
-      var cur = await pending;                       /* only blocks if it isn't ready yet */
+      var cur = await pending;
       waited += performance.now() - m0;
       if (i + 1 < list.length) pending = prepare(list[i + 1]);
       if (!cur) continue;
       if (!first) first = performance.now() - t0;
       spoke = true;
-      if (cur.device) { await speakDevice(cur.device); }
+      if (cur.device) await speakDevice(cur.device);
       else { secs += cur.secs; await play(cur.blob); }
     }
     return spoke ? { first:first, waited:waited, secs:secs } : null;
   }
 
-  /* ── the page ─────────────────────────────────────────── */
+  /* ── page ─────────────────────────────────────────────── */
   function buildPage() {
     var host = $("#page"); host.innerHTML = "";
     PAGE.forEach(function (b, i) {
-      var el = document.createElement(b.h ? "h3" : "div");
-      if (!b.h) el.className = "blk";
-      if (b.h) { el.textContent = b.h; host.appendChild(el); return; }
-
+      if (b.h) { var h = document.createElement("h3"); h.textContent = b.h; host.appendChild(h); return; }
+      var el = document.createElement("div"); el.className = "blk";
       if (b.table) {
         var t = '<table class="demo"><tr><th>Pattern</th><th>German</th><th>English</th></tr>';
         b.table.forEach(function (r) {
@@ -482,105 +417,110 @@
         }).join(" ");
         el.dataset.runs = JSON.stringify(b.runs);
       }
-      el.onclick = function () { if (!busy) one(i, el); };
+      el.onclick = function () { if (!busy && session) one(el); };
       host.appendChild(el);
     });
   }
 
-  function clearMarks() {
-    Array.prototype.forEach.call($("#page").querySelectorAll(".blk"), function (e) { e.className = "blk"; });
-  }
-
-  async function one(i, el) {
-    busy = true; stopped = false; clearMarks(); el.className = "blk now";
-    try {
-      var r = await speakBlock(JSON.parse(el.dataset.runs));
-      if (r) report(r);
-    } catch (e) { $("#playErr").textContent = "✕ " + (e.message || e); }
-    el.className = "blk done"; busy = false;
-  }
-
   function report(r) {
-    stat("Wait before it starts speaking", fmt(r.first));
-    stat("Last paragraph — audio length", r.secs.toFixed(1) + " s");
-    stat("Last paragraph — silence while it thinks", fmt(r.waited));
+    stat("Wait before it speaks", fmt(r.first));
+    stat("Audio length", r.secs.toFixed(1) + " s");
     if (r.waited > 0) stat("Speed vs real time", (r.secs / (r.waited / 1000)).toFixed(1) + "x");
   }
 
-  async function readAll() {
-    if (busy) return;
+  async function one(el) {
     busy = true; stopped = false;
-    $("#playErr").textContent = ""; clearMarks();
-    $("#play").disabled = true;
-    var blocks = Array.prototype.slice.call($("#page").querySelectorAll(".blk"));
-    var tm = 0, ts = 0;
-    for (var i = 0; i < blocks.length; i++) {
-      if (stopped) break;
-      blocks.forEach(function (b, k) { b.className = "blk" + (k < i ? " done" : ""); });
-      blocks[i].className = "blk now";
-      blocks[i].scrollIntoView({ block:"center", behavior:"smooth" });
-      $("#play").textContent = "Reading… " + (i + 1) + " / " + blocks.length;
-      try {
-        var r = await speakBlock(JSON.parse(blocks[i].dataset.runs));
-        if (r) { tm += r.waited; ts += r.secs; report(r); }
-      } catch (e) { $("#playErr").textContent = "✕ " + (e.message || e); break; }
-    }
-    blocks.forEach(function (b) { b.className = "blk done"; });
-    if (ts) { stat("Whole page — audio", ts.toFixed(1) + " s"); stat("Whole page — waiting in total", fmt(tm)); }
-    busy = false; $("#play").disabled = false; refreshPlay();
+    Array.prototype.forEach.call($("#page").querySelectorAll(".blk"), function (e) { e.className = "blk"; });
+    el.className = "blk now";
+    try { var r = await speakBlock(JSON.parse(el.dataset.runs)); if (r) report(r); }
+    catch (e) { $("#playErr").textContent = "✕ " + (e.message || e); }
+    el.className = "blk done"; busy = false;
   }
 
-  /* ── device info ──────────────────────────────────────── */
-  function diagnose() {
-    var ua = navigator.userAgent;
-    row("#diag", "Device", /Android/.test(ua) ? "Android" : /iPhone|iPad/.test(ua) ? "iPhone/iPad" : /Windows/.test(ua) ? "Windows" : "other");
-    row("#diag", "Processor cores", navigator.hardwareConcurrency || "unknown");
-    row("#diag", "Memory", navigator.deviceMemory ? navigator.deviceMemory + " GB" : "not reported");
-    row("#diag", "Can store voices", ("caches" in window) ? "yes" : "NO");
-    row("#diag", "WebAssembly", (typeof WebAssembly === "object") ? "yes" : "NO");
-    if (navigator.storage && navigator.storage.estimate) {
-      navigator.storage.estimate().then(function (e) {
-        row("#diag", "Space available", Math.round((e.quota || 0) / 1048576) + " MB");
-      });
+  async function readAll() {
+    if (busy || !session) return;
+    busy = true; stopped = false; $("#playErr").textContent = "";
+    $("#play").disabled = true;
+    var bl = Array.prototype.slice.call($("#page").querySelectorAll(".blk"));
+    var tm = 0, ts = 0;
+    for (var i = 0; i < bl.length; i++) {
+      if (stopped) break;
+      bl.forEach(function (b, k) { b.className = "blk" + (k < i ? " done" : ""); });
+      bl[i].className = "blk now";
+      bl[i].scrollIntoView({ block:"center", behavior:"smooth" });
+      $("#play").textContent = "Reading… " + (i + 1) + " / " + bl.length;
+      try { var r = await speakBlock(JSON.parse(bl[i].dataset.runs)); if (r) { tm += r.waited; ts += r.secs; report(r); } }
+      catch (e) { $("#playErr").textContent = "✕ " + (e.message || e); break; }
     }
-    var say = function () {
-      var vs = (window.speechSynthesis && speechSynthesis.getVoices()) || [];
-      row("#diag", "Phone's own English voices", vs.filter(function (v) { return /^en/i.test(v.lang); }).length || "none");
-      row("#diag", "Phone's own German voices", vs.filter(function (v) { return /^de/i.test(v.lang); }).length || "none");
-    };
-    say();
-    if (window.speechSynthesis) speechSynthesis.onvoiceschanged = say;
+    bl.forEach(function (b) { b.className = "blk done"; });
+    if (ts) { stat("Whole page — audio", ts.toFixed(1) + " s"); stat("Whole page — waiting", fmt(tm)); }
+    busy = false; $("#play").disabled = false; $("#play").textContent = "Read it again";
+  }
+
+  /* ── words ────────────────────────────────────────────── */
+  function buildWords() {
+    var host = $("#words"); host.innerHTML = "";
+    WORDS.forEach(function (w) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = w;
+      b.onclick = async function () {
+        if (busy || !session) { $("#wordErr").textContent = session ? "" : "Download the voices first."; return; }
+        busy = true; $("#wordErr").textContent = "";
+        try { var s = await synth(w); await play(wav(s.pcm, s.rate)); }
+        catch (e) { $("#wordErr").textContent = "✕ " + (e.message || e); }
+        busy = false;
+      };
+      host.appendChild(b);
+    });
   }
 
   /* ── wire ─────────────────────────────────────────────── */
-  paintAll(); buildPage(); diagnose();
+  function setVoice(newSex, newSid) {
+    sex = newSex; sid = newSid;
+    Array.prototype.forEach.call(document.querySelectorAll("#who button"), function (b) {
+      b.setAttribute("aria-pressed", (b.dataset.sex === sex && newSid === SID[sex]) ? "true" : "false");
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("button.alt"), function (b) {
+      b.setAttribute("aria-pressed", (+b.dataset.sid === sid) ? "true" : "false");
+    });
+  }
 
-  $("#deDl").onclick = function () { if (pickDe) load(pickDe, "de", "#deDl", "#deBar", "#deErr"); };
-  $("#enDl").onclick = function () { if (pickEn && pickEn.path) load(pickEn, "en", "#enDl", "#enBar", "#enErr"); };
+  buildPage(); buildWords(); setVoice("male", SID.male);
+
+  Array.prototype.forEach.call(document.querySelectorAll("#who button"), function (b) {
+    b.onclick = function () { if (!busy) setVoice(b.dataset.sex, SID[b.dataset.sex]); };
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("button.alt"), function (b) {
+    b.onclick = function () { if (!busy) setVoice(b.dataset.sex, +b.dataset.sid); };
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("#speeds button"), function (b) {
+    b.onclick = function () {
+      Array.prototype.forEach.call(document.querySelectorAll("#speeds button"), function (o) { o.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      lengthScale = parseFloat(b.dataset.ls);
+    };
+  });
+
+  $("#dl").onclick = download;
   $("#play").onclick = readAll;
   $("#stop").onclick = function () {
     stopped = true;
     if (audio) { try { audio.pause(); } catch (e) {} }
     if (window.speechSynthesis) speechSynthesis.cancel();
   };
-
-  Array.prototype.forEach.call(document.querySelectorAll(".speeds button"), function (b) {
-    b.onclick = function () {
-      Array.prototype.forEach.call(document.querySelectorAll(".speeds button"), function (o) { o.setAttribute("aria-pressed", "false"); });
-      b.setAttribute("aria-pressed", "true");
-      lengthScale = parseFloat(b.dataset.sp);
-    };
-  });
-
   $("#clear").onclick = function () {
     caches.delete(CACHE).then(function () {
-      slot.de = slot.en = null; pickDe = pickEn = null;
-      $("#deDl").textContent = "Choose a voice first"; $("#deDl").disabled = true;
-      $("#enDl").textContent = "Choose a voice first"; $("#enDl").disabled = true;
-      paintAll(); refreshPlay();
+      session = null; cfg = null;
+      $("#play").disabled = true; $("#play").textContent = "Download the voices first";
+      $("#dl").textContent = "Download the German voices (73 MB)";
     });
   };
 
+  if ("caches" in window) {
+    caches.open(CACHE).then(function (c) { return c.match(BASE + "/" + MODEL); }).then(function (hit) {
+      if (hit) $("#dl").textContent = "Already downloaded — tap to start the engine";
+    });
+  }
   window.addEventListener("error", function (e) { $("#playErr").textContent = "✕ " + (e.message || "error"); });
 })();
 </script>
