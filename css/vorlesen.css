@@ -1,0 +1,285 @@
+/* ============================================================
+   Vorlesen — the reading helper for the Written Book
+
+   A floating pill inside .rdr-stage. The stage is position:relative
+   and never scrolls in either mode (the flow scrolls sideways in page
+   view, the track scrolls down in scroll view), so anchoring here keeps
+   the pill still without reserving any space in the text.
+
+   No backdrop-filter, no blur, no border-radius on anything large —
+   this engine leaves stale paint behind when those meet a scrolling
+   box. Movement is transform and opacity only.
+   ============================================================ */
+
+.vl-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;                 /* over the text, under the drawer (40) */
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--accent, #e0a458);
+  color: var(--accent, #e0a458);
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vl-pill .icon-svg {
+  width: 21px;
+  height: 21px;
+  pointer-events: none;
+}
+
+.vl-pill:active { background: rgba(224, 164, 88, 0.16); }
+
+/* speaking: a steady pulse so it is obvious something is running */
+.vl-pill.speaking {
+  background: var(--accent, #e0a458);
+  color: var(--bg, #12100e);
+}
+.vl-pill.speaking::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--accent, #e0a458);
+  opacity: 0;
+  animation: vl-ring 1.6s ease-out infinite;
+}
+@keyframes vl-ring {
+  0%   { opacity: 0.55; transform: scale(1); }
+  100% { opacity: 0;    transform: scale(1.5); }
+}
+
+/* ---------- "new here" treatment ----------
+   People are already using the site, so on a first visit the pill
+   announces itself, then settles down for good once it is used. */
+
+.vl-pill.fresh {
+  background: var(--accent, #e0a458);
+  color: var(--bg, #12100e);
+  animation: vl-attention 2.4s ease-in-out 3;
+}
+@keyframes vl-attention {
+  0%, 100% { transform: scale(1); }
+  8%       { transform: scale(1.14); }
+  16%      { transform: scale(1); }
+  24%      { transform: scale(1.09); }
+  32%      { transform: scale(1); }
+}
+
+.vl-new {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: #d9534f;
+  color: #fff;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 99px;
+  pointer-events: none;
+}
+
+/* ---------- the panel ---------- */
+
+.vl-panel {
+  position: absolute;
+  top: 64px;
+  right: 12px;
+  z-index: 6;
+  width: min(290px, calc(100vw - 32px));
+  background: var(--bg-raised, #1b1815);
+  border: 1px solid var(--border, #332e28);
+  border-radius: 12px;
+  padding: 15px;
+  display: none;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+.vl-panel.open { display: block; }
+
+.vl-panel h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: var(--accent, #e0a458);
+}
+.vl-panel p {
+  margin: 0 0 12px;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--text-dim, #a89c8c);
+}
+
+.vl-go {
+  display: block;
+  width: 100%;
+  background: var(--accent, #e0a458);
+  color: var(--bg, #241a0d);
+  border: 0;
+  border-radius: 9px;
+  padding: 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.vl-go:disabled { opacity: 0.5; cursor: default; }
+
+.vl-bar {
+  height: 6px;
+  background: var(--bg, #2a2521);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 10px;
+  display: none;
+}
+.vl-bar.on { display: block; }
+.vl-bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent, #e0a458);
+  transition: width 0.15s linear;
+}
+
+.vl-note {
+  margin: 10px 0 0;
+  font-size: 0.76rem;
+  color: var(--text-dim, #a89c8c);
+  line-height: 1.5;
+}
+.vl-err { color: #e07a7a; font-size: 0.8rem; margin-top: 8px; }
+
+.vl-stop {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border, #332e28);
+  color: var(--text-dim, #a89c8c);
+  border-radius: 9px;
+  padding: 10px;
+  font-size: 0.84rem;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* ---------- what is being read ----------
+   Background colour only. Anything that changes size would re-flow the
+   columns and move every page after it. */
+
+.vl-now {
+  background: rgba(224, 164, 88, 0.20);
+  border-radius: 3px;
+}
+
+/* the precise version, where the browser supports it: highlights the
+   exact sentence without putting anything into the document at all */
+::highlight(vl-now) {
+  background-color: rgba(224, 164, 88, 0.26);
+}
+
+/* ---------- double-tap bubble ---------- */
+
+.vl-bubble {
+  position: fixed;
+  z-index: 45;
+  background: var(--bg-raised, #1b1815);
+  border: 1px solid var(--accent, #e0a458);
+  border-radius: 10px;
+  padding: 8px;
+  display: none;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+}
+.vl-bubble.open { display: block; }
+.vl-bubble .w {
+  font-size: 0.82rem;
+  color: var(--accent, #e0a458);
+  font-weight: 700;
+  padding: 0 6px 7px;
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vl-bubble button {
+  display: block;
+  width: 100%;
+  background: #2b2319;
+  border: 1px solid var(--border, #332e28);
+  color: var(--text, #f0e9df);
+  border-radius: 7px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+.vl-bubble button:active { background: #3a2d18; }
+
+/* double-tap must not zoom the page instead */
+.rdr-flow { touch-action: manipulation; }
+
+/* ---------- first-use guide ---------- */
+
+.vl-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: rgba(0, 0, 0, 0.55);
+}
+.vl-guide.open { display: flex; }
+.vl-guide .card {
+  background: var(--bg-raised, #1b1815);
+  border: 1px solid var(--accent, #e0a458);
+  border-radius: 14px;
+  padding: 18px;
+  max-width: 320px;
+}
+.vl-guide h5 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: var(--accent, #e0a458);
+}
+.vl-guide p {
+  margin: 0 0 14px;
+  font-size: 0.87rem;
+  line-height: 1.55;
+  color: var(--text, #f0e9df);
+}
+.vl-guide .row { display: flex; gap: 8px; align-items: center; }
+.vl-guide .dots { flex: 1; font-size: 0.75rem; color: var(--text-dim, #a89c8c); }
+.vl-guide .nxt {
+  background: var(--accent, #e0a458);
+  color: var(--bg, #241a0d);
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.vl-guide .skip {
+  background: transparent;
+  border: 0;
+  color: var(--text-dim, #a89c8c);
+  font-size: 0.83rem;
+  cursor: pointer;
+  padding: 9px 4px;
+}
+
+@media (max-width: 720px) {
+  .vl-pill { width: 40px; height: 40px; top: 10px; right: 10px; }
+  .vl-pill .icon-svg { width: 19px; height: 19px; }
+  .vl-panel { top: 58px; right: 10px; }
+}
