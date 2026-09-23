@@ -5,9 +5,11 @@
    voices that run inside the browser. Nothing is sent anywhere and
    nothing plays until the reader asks for it.
 
-   How it knows which language to speak: the chapters already mark it.
-   Every German span carries class "de-word", so a word's language is
-   read off the page rather than guessed.
+   How it knows which language to speak: the chapters mark it. German
+   carries class "de-word" (shown in gold) or lang="de" (no visible
+   change); English glosses carry class "en". The innermost mark wins,
+   so a German name inside an English translation is still German.
+   Everything unmarked is English. Nothing is guessed at reading time.
 
    How it knows what is on screen: pages are CSS columns scrolled
    sideways inside .rdr-flow, and one page is exactly the width of
@@ -203,6 +205,14 @@
 
   /* ─── reading the page ─────────────────────────────────────── */
 
+  function isGerman(el) {
+    var m = el && el.closest(".de-word, .en, [lang]");
+    if (!m) return false;
+    if (m.classList.contains("de-word")) return true;
+    if (m.classList.contains("en")) return false;
+    return /^de\b/i.test(m.getAttribute("lang"));   /* <html lang="en"> lands here too */
+  }
+
   /* Collect every sentence in the flow as a Range, tagged with its
      language. Ranges are used rather than element text so a sentence
      that is split across a column break can still be located exactly. */
@@ -210,7 +220,7 @@
     var units = [];
     var walker = document.createTreeWalker(flow, NodeFilter.SHOW_TEXT, {
       acceptNode: function (n) {
-        if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (!n.nodeValue) return NodeFilter.FILTER_REJECT;
         var p = n.parentElement;
         if (!p) return NodeFilter.FILTER_REJECT;
         /* skip the furniture: the syllabus kicker, the link to the topic
@@ -229,15 +239,27 @@
     var BLOCK = "td,th,li,p,h1,h2,h3,h4,h5,h6,figcaption,blockquote,dt,dd," +
                 ".book-title,.book-sub,.exercise-item";
 
-    var node, run = null, lastBlock = null;
+    /* Spaces and punctuation belong to no language. They ride along with
+       the run they sit in, so a space between two German spans stays a
+       space ("Ich sehe" + "den Mann", not "Ich seheden Mann") and a lone
+       "___ (" between two German words doesn't split them into separate
+       utterances with a pause in between. */
+    var NEUTRAL = /^[^\p{L}\p{N}]*$/u;
+    var node, run = null, lastBlock = null, held = [];
     while ((node = walker.nextNode())) {
-      var isDe = !!node.parentElement.closest(".de-word");
       var block = node.parentElement.closest(BLOCK) || flow;
-      if (!run || run.de !== isDe || block !== lastBlock) {
-        run = { de:isDe, pieces:[] };
+      if (block !== lastBlock) { run = null; held = []; }
+      lastBlock = block;
+      if (NEUTRAL.test(node.nodeValue)) {
+        if (run) run.pieces.push(node); else held.push(node);
+        continue;
+      }
+      var isDe = isGerman(node.parentElement);
+      if (!run || run.de !== isDe) {
+        run = { de:isDe, pieces:held };
+        held = [];
         units.push(run);
       }
-      lastBlock = block;
       run.pieces.push(node);
     }
 
@@ -258,7 +280,8 @@
       });
       at = at;
     });
-    return out.filter(function (u) { return u.text.length > 0; });
+    /* a piece with nothing to say ("·", "—", "___") is never sent to a voice */
+    return out.filter(function (u) { return /[\p{L}\p{N}]/u.test(u.text); });
   }
 
   /* map a character span across the run's text nodes into a Range */
@@ -494,7 +517,7 @@
     if (e <= s) return null;
     var rg = document.createRange();
     rg.setStart(node, s); rg.setEnd(node, e);
-    return { range:rg, word:text.slice(s, e), de:!!node.parentElement.closest(".de-word") };
+    return { range:rg, word:text.slice(s, e), de:isGerman(node.parentElement) };
   }
 
   function onTap(e) {
