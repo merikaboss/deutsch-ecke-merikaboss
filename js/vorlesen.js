@@ -70,6 +70,8 @@
   var GAP_LINE = 520;       /* end of a line, cell, heading or paragraph */
   var GAP_SENTENCE = 380;   /* . ! ? inside a paragraph */
   var GAP_SWITCH = 60;      /* German to English inside one sentence */
+  var PAD_LEAD = 30;        /* silence at the start of every clip, ms */
+  var PAD_TAIL = 120;       /* … and at the end — counted as part of the pause */
 
   var stage, flow, track, root;
   var pill, panel, bar, barFill, goBtn, stopBtn, note, errLine, bubble, speedBtn, speedMenu;
@@ -137,26 +139,47 @@
     de = await loadVoice(DE, tick);
     doneMb = DE.mb;
     en = await loadVoice(EN, tick);
+    await phonemizer();                /* warm it up now, not on the first word */
     barFill.style.width = "100%";
   }
 
   /* ─── text to sound ────────────────────────────────────────── */
 
-  function phonemize(text, voice) {
-    return new Promise(function (resolve, reject) {
-      var out = [];
-      createPiperPhonemize({
-        print: function (l) { try { out.push(JSON.parse(l).phonemes); } catch (e) {} },
-        printErr: function (e) { reject(new Error(String(e))); },
+  /* The phonemizer (text → sounds) is started ONCE and reused. Starting it
+     costs about 2 s — it loads the whole espeak dictionary — and it used
+     to be started afresh for every clip, which is what made the long
+     pause before a German word inside English (every switch of language
+     is a new clip). Reused, a call takes 10–90 ms. Its output was checked
+     to be identical to a fresh start, German and English alternating.
+     If it ever fails, the next call simply starts a new one. */
+  var phonMod = null, phonSink = null, phonErr = null;
+  function phonemizer() {
+    if (!phonMod) {
+      phonMod = createPiperPhonemize({
+        print: function (l) { try { if (phonSink) phonSink.push(JSON.parse(l).phonemes); } catch (e) {} },
+        printErr: function (e) { phonErr = String(e); },
         locateFile: function (p) {
           return /\.wasm$/.test(p) ? WASM_BASE + ".wasm"
                : /\.data$/.test(p) ? WASM_BASE + ".data" : p;
         }
-      }).then(function (m) {
-        m.callMain(["-l", voice, "--input", JSON.stringify([{ text:text }]), "--espeak_data", "/espeak-ng-data"]);
-        out.length ? resolve(out) : reject(new Error("nothing to read"));
-      }).catch(reject);
-    });
+      });
+      phonMod.catch(function () { phonMod = null; });
+    }
+    return phonMod;
+  }
+
+  async function phonemize(text, voice) {
+    var m = await phonemizer();
+    phonSink = []; phonErr = null;
+    try {
+      m.callMain(["-l", voice, "--input", JSON.stringify([{ text:text }]), "--espeak_data", "/espeak-ng-data"]);
+    } catch (e) {
+      phonMod = null;                      /* broken: start a new one next time */
+      throw e;
+    }
+    var out = phonSink; phonSink = null;
+    if (!out.length) { if (phonErr) phonMod = null; throw new Error("nothing to read"); }
+    return out;
   }
 
   /* each voice has its own phoneme table — map through it rather than
@@ -211,8 +234,14 @@
       parts.push(out.output.data);
     }
     if (!parts.length) return null;
+    /* A little silence before and after the speech. Piper's clips start
+       and end within a few milliseconds of the sound, and phones often
+       swallow the first and last moments of a clip — which took the last
+       letter off a single word. The padding is taken back out of the
+       pauses between pieces, so the reading doesn't get any slower. */
+    var lead = Math.round(v.rate * PAD_LEAD / 1000), tail = Math.round(v.rate * PAD_TAIL / 1000);
     var n = parts.reduce(function (a, p) { return a + p.length; }, 0);
-    var all = new Float32Array(n), at = 0;
+    var all = new Float32Array(lead + n + tail), at = lead;
     parts.forEach(function (p) { all.set(p, at); at += p.length; });
     var b = wav(level(all), v.rate);
     b.vlSpeed = sp;               /* so a speed change can tell which clips are stale */
@@ -476,7 +505,10 @@
       if (isScrollMode()) follow(units[i].range);
       await play(blob);
       if (gone()) break;
-      if (i + 1 < units.length) await pause(units[i].gap * SPEEDS[speedOf(units[i].de)].len);
+      if (i + 1 < units.length) {
+        var wait = units[i].gap * SPEEDS[speedOf(units[i].de)].len - PAD_TAIL - PAD_LEAD;
+        if (wait > 0) await pause(wait);
+      }
     }
     if (!gone()) { clearHighlight(); unwatchPage(); setSpeaking(false); }
   }
