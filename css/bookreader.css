@@ -716,17 +716,10 @@ html.reader body {
     font-size: 0.9rem;
   }
 
-  /* the page takes nearly the whole screen; the side margins are just wider
-     than the turn tabs below, so the tabs sit beside the text, never on it
-     (at 18px they hid the first letter of the lines next to them) */
+  /* the page takes nearly the whole screen — see the turn buttons below,
+     which hug the edges instead of needing a margin of their own */
   .rdr-track {
-    padding: 18px 26px 16px;
-  }
-
-  /* the chapter title keeps clear of the Vorlesen mic and Speed buttons,
-     which float over the top-right corner of the first page */
-  .rdr-flow .book-header {
-    padding-right: 50px;
+    padding: 18px 18px 16px;
   }
 
   .rdr-flow {
@@ -749,10 +742,10 @@ html.reader body {
   }
 
   /* Bright tabs held against the screen edges. A round button in the middle
-     of the page would sit on two or three lines of text; narrow tabs in the
-     page margin cover none of it. */
+     of the page would sit on two or three lines of text; a tab this narrow
+     covers a few pixels, so the text can have the full width of the screen. */
   .rdr-turn {
-    width: 22px;
+    width: 27px;
     height: 58px;
     border-radius: 0 15px 15px 0;
     background: var(--accent);
