@@ -57,6 +57,18 @@
   100% { opacity: 0;    transform: scale(1.5); }
 }
 
+/* getting the saved voices ready: a turning arc around the mic */
+.vl-pill.loading::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent, #e0a458);
+  animation: vl-spin 0.9s linear infinite;
+}
+@keyframes vl-spin { to { transform: rotate(360deg); } }
+
 /* ---------- "new here" treatment ----------
    People are already using the site, so on a first visit the pill
    announces itself, then settles down for good once it is used. */

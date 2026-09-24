@@ -634,8 +634,54 @@
 
     if (speaking) { stop(); return; }
     if (de && en) { startReading(); return; }
-    panel.classList.toggle("open");
-    if (panel.classList.contains("open") && !store(GUIDE_KEY)) guide();
+    if (panel.classList.contains("open")) { panel.classList.remove("open"); return; }
+    ensureVoices().then(function (ok) { if (ok) startReading(); });
+  }
+
+  /* ─── voices already on this device ────────────────────────────
+     The two voices are kept in the browser's Cache Storage after the
+     first download, on every page of the site. A new page only has to
+     read them back from the device (a few seconds, no internet needed
+     for the voices) — the download offer appears again only if the
+     person clears the site's data. */
+
+  var MODEL_URLS = [DE, EN].reduce(function (a, v) {
+    return a.concat(VOICE_BASE + "/" + v.path, VOICE_BASE + "/" + v.path + ".json");
+  }, []);
+
+  async function hasSavedVoices() {
+    if (!("caches" in window)) return false;
+    try {
+      var c = await caches.open(CACHE);
+      for (var i = 0; i < MODEL_URLS.length; i++) if (!(await c.match(MODEL_URLS[i]))) return false;
+      return true;
+    } catch (e) { return false; }
+  }
+
+  var waking = null;
+  function ensureVoices() {
+    if (de && en) return Promise.resolve(true);
+    if (waking) return waking;
+    waking = hasSavedVoices().then(function (saved) {
+      if (!saved) {
+        panel.classList.add("open");
+        if (!store(GUIDE_KEY)) guide();
+        return false;
+      }
+      pill.classList.add("loading");
+      pill.setAttribute("aria-label", "Getting the voices ready");
+      return install().then(function () { return true; }, function (e) {
+        errLine.textContent = "✕ " + (e && e.message ? e.message : e);
+        panel.classList.add("open");
+        return false;
+      });
+    }).then(function (ok) {
+      pill.classList.remove("loading");
+      if (!speaking) pill.setAttribute("aria-label", "Vorlesen — read this page aloud");
+      waking = null;
+      return ok;
+    });
+    return waking;
   }
 
   async function onGo() {
@@ -646,6 +692,9 @@
     bar.classList.add("on");
     try {
       await install();
+      /* ask the browser to keep the voices even when space runs low —
+         without this it may quietly clear them and ask for the download again */
+      try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
       goBtn.textContent = "Ready";
       note.textContent = "Ready. It will start reading now — press the button again to stop.";
       setTimeout(function () { panel.classList.remove("open"); startReading(); }, 500);
@@ -658,7 +707,10 @@
   }
 
   function startReading(fromRange) {
-    if (!de || !en) { panel.classList.add("open"); return; }
+    if (!de || !en) {
+      ensureVoices().then(function (ok) { if (ok) startReading(fromRange); });
+      return;
+    }
     if (speaking) stop();
     setTimeout(function () { read(unitsForNow(fromRange)); }, 60);
   }
@@ -760,7 +812,7 @@
     one.textContent = "Read this word";
     one.onclick = async function () {
       bubble.classList.remove("open");
-      if (!de || !en) { panel.classList.add("open"); return; }
+      if (!(await ensureVoices())) return;
       stop();
       setSpeaking(true);
       highlight(hit.range);
