@@ -88,11 +88,82 @@
   pointer-events: none;
 }
 
+/* ---------- speed ----------
+   A small tag hanging under the mic, same ring and colour, so the two
+   read as one control. Filled lightly when not at normal speed, so a
+   changed setting is never a surprise. */
+
+.vl-speed {
+  position: absolute;
+  top: 62px;
+  right: 12px;
+  z-index: 5;
+  width: 44px;
+  height: 24px;
+  padding: 0;
+  border-radius: 99px;
+  background: var(--bg, #12100e);
+  border: 1.5px solid var(--accent, #e0a458);
+  color: var(--accent, #e0a458);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.vl-speed.changed { background: rgba(224, 164, 88, 0.22); }
+.vl-speed:active { background: rgba(224, 164, 88, 0.3); }
+
+.vl-speedmenu {
+  position: absolute;
+  top: 94px;
+  right: 12px;
+  z-index: 6;
+  min-width: 170px;
+  background: var(--bg-raised, #1b1815);
+  border: 1px solid var(--border, #332e28);
+  border-radius: 12px;
+  padding: 6px;
+  display: none;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+.vl-speedmenu.open { display: block; }
+.vl-speedmenu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 12px;
+  color: var(--text, #f0e9df);
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+}
+.vl-speedmenu button:hover { background: rgba(224, 164, 88, 0.08); }
+.vl-speedmenu button.on { background: rgba(224, 164, 88, 0.16); color: var(--accent, #e0a458); font-weight: 700; }
+.vl-speedmenu .tick {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border, #5a5046);
+  flex: none;
+}
+.vl-speedmenu button.on .tick {
+  border-color: var(--accent, #e0a458);
+  background: radial-gradient(circle, var(--accent, #e0a458) 0 4px, transparent 5px);
+}
+.vl-speedmenu .nm { flex: 1; }
+.vl-speedmenu .tg { font-size: 0.78rem; color: var(--text-dim, #a89c8c); }
+
 /* ---------- the panel ---------- */
 
 .vl-panel {
   position: absolute;
-  top: 64px;
+  top: 94px;
   right: 12px;
   z-index: 6;
   width: min(290px, calc(100vw - 32px));
@@ -281,5 +352,7 @@
 @media (max-width: 720px) {
   .vl-pill { width: 40px; height: 40px; top: 10px; right: 10px; }
   .vl-pill .icon-svg { width: 19px; height: 19px; }
-  .vl-panel { top: 58px; right: 10px; }
+  .vl-panel { top: 86px; right: 10px; }
+  .vl-speed { top: 56px; right: 10px; width: 40px; height: 22px; font-size: 0.66rem; }
+  .vl-speedmenu { top: 86px; right: 10px; }
 }

@@ -38,9 +38,32 @@
 
   var SEEN_KEY = "de-vorlesen-seen-v1";
   var GUIDE_KEY = "de-vorlesen-guide-v1";
+  var SPEED_KEY = "de-vorlesen-speed-v1";
+
+  /* Speed is made when the voice speaks (Piper's length scale), not by
+     stretching the finished audio, so slow stays clear and natural
+     instead of warbling. Slow is for hearing every sound; fast is still
+     comfortably followable. "len" multiplies Piper's length scale; the
+     voice does not respond to it one-for-one, so the numbers were
+     measured on real sentences: 1.42 gives 0.75× in both voices, 0.67
+     gives 1.3× (German) to 1.4× (English). Single words keep their level. */
+  var SPEEDS = {
+    slow:   { len:1.42, label:"Slow",   tag:"0.75×" },
+    normal: { len:1,    label:"Normal", tag:"1×"    },
+    fast:   { len:0.67, label:"Fast",   tag:"1.3×"  }
+  };
+  var speed = SPEEDS[store(SPEED_KEY)] ? store(SPEED_KEY) : "normal";
+
+  /* Silence after each piece, in ms at normal speed. Piper leaves almost
+     none at the end of a clip, so without this two German lines ran
+     together and sounded like one sentence. */
+  var GAP_LINE = 520;       /* end of a line, cell, heading or paragraph */
+  var GAP_SENTENCE = 380;   /* . ! ? inside a paragraph */
+  var GAP_SWITCH = 60;      /* German to English inside one sentence */
 
   var stage, flow, track, root;
-  var pill, panel, bar, barFill, goBtn, stopBtn, note, errLine, bubble;
+  var pill, panel, bar, barFill, goBtn, stopBtn, note, errLine, bubble, speedBtn, speedMenu;
+  var keepBubbleUntil = 0;
   var de = null, en = null;
   var busy = false, speaking = false, stopFlag = false, audio = null;
   var watchLeft = null;
@@ -147,12 +170,17 @@
     return x;
   }
 
-  async function synth(text, isDe) {
+  /* finalEnd: this piece closes a line. A line with no full stop
+     (a heading, a table cell, "Wie ___ Sie") is given one, so the voice
+     lets its tone fall like the end of a sentence instead of carrying on. */
+  async function synth(text, isDe, finalEnd) {
     var v = isDe ? de : en;
     if (!v) return null;
+    var sp = speed;
     var t = text.trim();
     if (!t) return null;
     if (!/\s/.test(t)) t = t.replace(/[.!?,;:]*$/, ".");   /* a bare word needs an ending */
+    else if (finalEnd && !/[.!?…:]["'“”„)\]]*$/.test(t)) t += ".";
     var groups = await phonemize(t, v.cfg.espeak.voice);
     var inf = v.cfg.inference || {};
     var parts = [];
@@ -164,7 +192,7 @@
         input_lengths: new ort.Tensor("int64", BigInt64Array.from([BigInt(ids.length)])),
         scales: new ort.Tensor("float32", Float32Array.from([
           inf.noise_scale != null ? inf.noise_scale : 0.667,
-          (inf.length_scale != null ? inf.length_scale : 1) * 1.1,
+          (inf.length_scale != null ? inf.length_scale : 1) * 1.1 * SPEEDS[sp].len,
           inf.noise_w != null ? inf.noise_w : 0.8
         ]))
       };
@@ -176,7 +204,10 @@
     var n = parts.reduce(function (a, p) { return a + p.length; }, 0);
     var all = new Float32Array(n), at = 0;
     parts.forEach(function (p) { all.set(p, at); at += p.length; });
-    return wav(level(all), v.rate);
+    var b = wav(level(all), v.rate);
+    b.vlSpeed = sp;               /* so a speed change can tell which clips are stale */
+    b.vlSec = all.length / v.rate;
+    return b;
   }
 
   function wav(x, rate) {
@@ -194,13 +225,31 @@
     return new Blob([dv.buffer], { type:"audio/wav" });
   }
 
+  var playDone = null;
   function play(blob) {
     return new Promise(function (res) {
       if (audio) { try { audio.pause(); URL.revokeObjectURL(audio.src); } catch (e) {} }
       audio = new Audio(URL.createObjectURL(blob));
-      audio.onended = audio.onerror = function () { res(); };
-      audio.play().catch(function () { res(); });
+      audio.vlSpeed = blob.vlSpeed;
+      audio.preservesPitch = true;
+      var done = function () { if (playDone === done) playDone = null; res(); };
+      playDone = done;
+      audio.onended = audio.onerror = done;
+      audio.play().catch(done);
     });
+  }
+
+  /* the sentence already playing follows a speed change at once (pitch
+     kept); everything after it is made fresh at the new speed */
+  function setSpeed(s) {
+    if (!SPEEDS[s]) return;
+    if (s !== speed) speedEpoch++;
+    speed = s;
+    store(SPEED_KEY, s);
+    if (audio && !audio.paused && audio.vlSpeed) {
+      audio.playbackRate = SPEEDS[audio.vlSpeed].len / SPEEDS[s].len;
+    }
+    drawSpeed();
   }
 
   /* ─── reading the page ─────────────────────────────────────── */
@@ -256,7 +305,7 @@
       }
       var isDe = isGerman(node.parentElement);
       if (!run || run.de !== isDe) {
-        run = { de:isDe, pieces:held };
+        run = { de:isDe, pieces:held, block:block };
         held = [];
         units.push(run);
       }
@@ -276,12 +325,19 @@
       if (!spans.length) spans = [{ s:0, e:text.length }];
       spans.forEach(function (sp) {
         var rg = rangeFor(r.pieces, sp.s, sp.e);
-        if (rg) out.push({ range:rg, text:text.slice(sp.s, sp.e).trim(), de:r.de });
+        if (rg) out.push({ range:rg, text:text.slice(sp.s, sp.e).trim(), de:r.de, block:r.block });
       });
       at = at;
     });
     /* a piece with nothing to say ("·", "—", "___") is never sent to a voice */
-    return out.filter(function (u) { return /[\p{L}\p{N}]/u.test(u.text); });
+    out = out.filter(function (u) { return /[\p{L}\p{N}]/u.test(u.text); });
+    /* how much silence follows each piece: the end of a line, the end of
+       a sentence, or just a change of voice in the middle of a sentence */
+    out.forEach(function (u, i) {
+      u.lineEnd = i === out.length - 1 || out[i + 1].block !== u.block;
+      u.gap = u.lineEnd ? GAP_LINE : /[.!?…:]["'“”„)\]]*$/.test(u.text) ? GAP_SENTENCE : GAP_SWITCH;
+    });
+    return out;
   }
 
   /* map a character span across the run's text nodes into a Range */
@@ -338,40 +394,95 @@
     var pageAtStart = isScrollMode() ? null : currentPage();
     if (pageAtStart !== null) watchPage(pageAtStart);
 
-    var pending = synth(units[0].text, units[0].de);
+    /* each reading has its own number, so an older one that is still
+       waiting on the engine can never wake up and talk over a new one */
+    var id = ++readId;
+    var gone = function () { return stopFlag || id !== readId; };
+    var make = function (u) { return synth(u.text, u.de, u.lineEnd).catch(function () { return null; }); };
+
+    /* The engine works ahead of the voice, one clip after another, up to
+       AHEAD pieces in front. With only one piece of lookahead, a short
+       heading followed by a long sentence left a 2–3 s silence while the
+       sentence was still being made. */
+    var AHEAD = 4, clips = [], chain = Promise.resolve(), epoch = speedEpoch;
+    var ensure = function (k) {
+      if (k >= units.length || clips[k]) return;
+      clips[k] = chain = chain.then(function () { return gone() ? null : make(units[k]); });
+    };
     for (var i = 0; i < units.length; i++) {
-      if (stopFlag) break;
-      var blob = await pending;
-      if (i + 1 < units.length) pending = synth(units[i + 1].text, units[i + 1].de);
-      if (stopFlag) break;
+      if (gone()) break;
+      if (epoch !== speedEpoch) {
+        /* speed changed: everything prepared ahead is remade at the new speed */
+        epoch = speedEpoch;
+        for (var k = i; k < clips.length; k++) clips[k] = null;
+        chain = Promise.resolve();
+      }
+      for (var a = i; a <= i + AHEAD; a++) ensure(a);
+      var blob = await clips[i];
+      if (blob && blob.vlSpeed !== speed && !gone()) blob = await make(units[i]);
+      /* a very short piece (a heading, one word) waits for the next one
+         to be ready, so the pause comes before it, not in the middle */
+      if (blob && blob.vlSec < 1.2 && i + 1 < units.length && !gone()) await clips[i + 1];
+      clips[i] = true;
+      if (gone()) break;
       if (!blob) continue;
       highlight(units[i].range);
-      if (isScrollMode()) {
-        var el = units[i].range.startContainer.parentElement;
-        if (el && el.scrollIntoView) el.scrollIntoView({ block:"center", behavior:"smooth" });
-      }
+      if (isScrollMode()) follow(units[i].range);
       await play(blob);
+      if (gone()) break;
+      if (i + 1 < units.length) await pause(units[i].gap * SPEEDS[speed].len);
     }
-    clearHighlight();
-    unwatchPage();
-    setSpeaking(false);
+    if (!gone()) { clearHighlight(); unwatchPage(); setSpeaking(false); }
+  }
+  var readId = 0, speedEpoch = 0;
+
+  /* scroll view: keep the sentence being read comfortably on screen.
+     Only moves when it gets near an edge, so the text doesn't jump on
+     every sentence; smooth when the page is visible, instant otherwise
+     (a hidden tab never runs the smooth animation). */
+  function follow(range) {
+    var r = range.getBoundingClientRect(), t = track.getBoundingClientRect();
+    if (!r.height) return;
+    if (r.top >= t.top + t.height * 0.12 && r.bottom <= t.top + t.height * 0.72) return;
+    track.scrollBy({
+      top: r.top - (t.top + t.height * 0.3),
+      behavior: document.visibilityState === "visible" ? "smooth" : "instant"
+    });
+  }
+
+  /* a silence that ends at once if reading is stopped */
+  var pauseEnd = null;
+  function pause(ms) {
+    return new Promise(function (res) {
+      var t = setTimeout(done, ms);
+      function done() { clearTimeout(t); pauseEnd = null; res(); }
+      pauseEnd = done;
+    });
   }
 
   /* turning the page stops the reading — it was reading that page */
+  /* The scroll event alone is not enough: a browser can hold scroll
+     events back (a hidden or throttled tab), and then the old page kept
+     talking. A light check of the position every 200 ms backs it up. */
+  var watchTimer = null;
   function watchPage(startPage) {
     unwatchPage();
     watchLeft = function () {
       if (currentPage() !== startPage) stop();
     };
     flow.addEventListener("scroll", watchLeft, { passive:true });
+    watchTimer = setInterval(watchLeft, 200);
   }
   function unwatchPage() {
     if (watchLeft) { flow.removeEventListener("scroll", watchLeft); watchLeft = null; }
+    if (watchTimer) { clearInterval(watchTimer); watchTimer = null; }
   }
 
   function stop() {
     stopFlag = true;
     if (audio) { try { audio.pause(); } catch (e) {} }
+    if (playDone) playDone();
+    if (pauseEnd) pauseEnd();
     clearHighlight();
     unwatchPage();
     setSpeaking(false);
@@ -432,11 +543,37 @@
       '<button class="vl-go" type="button">Download the voices (' + TOTAL_MB + " MB)</button>" +
       '<div class="vl-bar"><i></i></div>' +
       '<button class="vl-stop" type="button">Stop reading</button>' +
-      '<p class="vl-note">One download, kept on this device. Double-tap any word to hear just that word.</p>' +
+      '<p class="vl-note">One download, kept on this device. Double-tap a word (on a computer: click and hold it) to hear just that word.</p>' +
       '<div class="vl-err"></div>';
 
+    /* speed: a small tag under the mic; tap it for Slow / Normal / Fast */
+    speedBtn = document.createElement("button");
+    speedBtn.type = "button";
+    speedBtn.className = "vl-speed";
+    speedMenu = document.createElement("div");
+    speedMenu.className = "vl-speedmenu";
+    speedMenu.setAttribute("role", "menu");
+    Object.keys(SPEEDS).forEach(function (k) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("role", "menuitemradio");
+      b.dataset.speed = k;
+      b.innerHTML = '<span class="tick"></span><span class="nm"></span><span class="tg"></span>';
+      $(".nm", b).textContent = SPEEDS[k].label;
+      $(".tg", b).textContent = SPEEDS[k].tag;
+      b.addEventListener("click", function () { setSpeed(k); speedMenu.classList.remove("open"); });
+      speedMenu.appendChild(b);
+    });
+    speedBtn.addEventListener("click", function () {
+      panel.classList.remove("open");
+      speedMenu.classList.toggle("open");
+    });
+
     stage.appendChild(pill);
+    stage.appendChild(speedBtn);
+    stage.appendChild(speedMenu);
     stage.appendChild(panel);
+    drawSpeed();
 
     bar = $(".vl-bar", panel);
     barFill = $(".vl-bar i", panel);
@@ -455,7 +592,27 @@
     stopBtn.addEventListener("click", function () { stop(); });
     document.addEventListener("click", function (e) {
       if (!panel.contains(e.target) && e.target !== pill && !pill.contains(e.target)) panel.classList.remove("open");
-      if (!bubble.contains(e.target)) bubble.classList.remove("open");
+      if (!speedMenu.contains(e.target) && !speedBtn.contains(e.target)) speedMenu.classList.remove("open");
+      /* The gesture that opens the word bubble is followed by the
+         browser's own click on that same word. Without this, that click
+         closed the bubble the instant it appeared (the phone bug). */
+      if (Date.now() < keepBubbleUntil) return;
+      if (!bubble.contains(e.target)) closeBubble();
+    }, true);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { closeBubble(); speedMenu.classList.remove("open"); }
+    });
+  }
+
+  function drawSpeed() {
+    if (!speedBtn) return;
+    speedBtn.textContent = SPEEDS[speed].tag;
+    speedBtn.setAttribute("aria-label", "Reading speed: " + SPEEDS[speed].label);
+    speedBtn.classList.toggle("changed", speed !== "normal");
+    Array.prototype.forEach.call(speedMenu.children, function (b) {
+      var on = b.dataset.speed === speed;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-checked", on ? "true" : "false");
     });
   }
 
@@ -520,20 +677,68 @@
     return { range:rg, word:text.slice(s, e), de:isGerman(node.parentElement) };
   }
 
+  /* Phone: double-tap a word. Computer: click and hold a word (a mouse
+     double-click works too, but the browser's own word-selection on
+     double-click is what people fight with, so hold is the main way). */
+  var HOLD_MS = 450;
+  var holdTimer = null, holdXY = null, holdOpened = false;
+
+  function onDown(e) {
+    if (e.pointerType !== "mouse" && e.pointerType !== "pen") return;
+    if (e.button !== 0) return;
+    cancelHold();
+    holdXY = [e.clientX, e.clientY];
+    holdTimer = setTimeout(function () {
+      holdTimer = null;
+      var hit = wordAt(holdXY[0], holdXY[1]);
+      if (!hit) return;
+      holdOpened = true;
+      clearSelection();
+      showBubble(hit, holdXY[0], holdXY[1]);
+    }, HOLD_MS);
+  }
+  function onMove(e) {
+    if (holdTimer && holdXY && (Math.abs(e.clientX - holdXY[0]) > 6 || Math.abs(e.clientY - holdXY[1]) > 6)) cancelHold();
+  }
+  function cancelHold() { if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; } }
+
   function onTap(e) {
+    cancelHold();
+    if (holdOpened) {
+      /* releasing the button after a hold: keep the bubble, drop the click */
+      holdOpened = false;
+      keepBubbleUntil = Date.now() + 400;
+      clearSelection();
+      lastTap = 0; lastXY = null;
+      return;
+    }
     var now = Date.now();
     var x = e.clientX, y = e.clientY;
     var near = lastXY && Math.abs(x - lastXY[0]) < 24 && Math.abs(y - lastXY[1]) < 24;
     if (now - lastTap < 400 && near) {
       lastTap = 0; lastXY = null;
       var hit = wordAt(x, y);
-      if (hit) { e.preventDefault(); showBubble(hit, x, y); }
+      if (hit) { e.preventDefault(); clearSelection(); showBubble(hit, x, y); }
       return;
     }
     lastTap = now; lastXY = [x, y];
   }
 
+  function clearSelection() {
+    try { var s = window.getSelection(); if (s && !s.isCollapsed) s.removeAllRanges(); } catch (e) {}
+  }
+
+  function closeBubble() {
+    if (bubble && bubble.classList.contains("open")) {
+      bubble.classList.remove("open");
+      if (!speaking) clearHighlight();
+    }
+  }
+
   function showBubble(hit, x, y) {
+    keepBubbleUntil = Date.now() + 600;
+    /* show which word was picked while its options are open */
+    if (!speaking) highlight(hit.range);
     bubble.innerHTML = "";
     var w = document.createElement("div");
     w.className = "w";
@@ -580,7 +785,8 @@
     var steps = [
       { h:"Vorlesen", p:"It reads the page you are looking at — German in a German voice, English in an English one — and stops at the bottom of the page." },
       { h:"One page at a time", p:"Turn to the next page and press the button again. In scroll view it reads the whole chapter instead." },
-      { h:"Any single word", p:"Double-tap a word to hear just that word, or to start reading from there." }
+      { h:"Any single word", p:"Double-tap a word — on a computer, click and hold it — to hear just that word, or to start reading from there." },
+      { h:"Speed", p:"The small button under the microphone sets the speed: Slow for hearing every sound, Normal, or Fast." }
     ];
     var i = 0;
     var wrap = document.createElement("div");
@@ -617,8 +823,24 @@
     if (!root || !stage || !flow || !track) return;
 
     build();
+    flow.addEventListener("pointerdown", onDown);
+    flow.addEventListener("pointermove", onMove, { passive:true });
     flow.addEventListener("pointerup", onTap);
+    flow.addEventListener("pointercancel", cancelHold);
+    /* a mouse double-click selects the word; the bubble replaces that */
+    flow.addEventListener("dblclick", function () { if (bubble.classList.contains("open")) clearSelection(); });
+    flow.addEventListener("scroll", function () { if (Date.now() > keepBubbleUntil) closeBubble(); }, { passive:true });
+    track.addEventListener("scroll", function () { if (Date.now() > keepBubbleUntil) closeBubble(); }, { passive:true });
+    window.addEventListener("resize", closeBubble);
     window.addEventListener("pagehide", stop);
+
+    /* switching between page view and scroll view mid-reading stops it:
+       the two modes read different amounts, so carrying on would be wrong */
+    var wasScroll = isScrollMode();
+    new MutationObserver(function () {
+      var now = isScrollMode();
+      if (now !== wasScroll) { wasScroll = now; if (speaking) stop(); closeBubble(); }
+    }).observe(root, { attributes:true, attributeFilter:["class"] });
   }
 
   if (document.readyState === "loading") {
