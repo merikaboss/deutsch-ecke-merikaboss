@@ -498,16 +498,26 @@
   function unitsForNow(fromRange) {
     var all = collect();
     if (fromRange) {
-      var startTop = fromRange.getBoundingClientRect();
-      var seen = false;
-      all = all.filter(function (u) {
-        if (seen) return true;
-        var r = u.range.getBoundingClientRect();
-        if (r.top > startTop.top - 2 || (Math.abs(r.top - startTop.top) < 2 && r.left >= startTop.left - 2)) {
-          seen = true; return true;
-        }
-        return false;
-      });
+      /* Start at the tapped word itself, found by its place in the text.
+         (Comparing screen positions failed in page view: the pages sit
+         side by side, so earlier pages counted as "below" the word and
+         reading went back to the top.) */
+      var n = fromRange.startContainer, o = fromRange.startOffset, at = -1;
+      for (var i = 0; i < all.length; i++) {
+        var c;
+        try { c = all[i].range.comparePoint(n, o); } catch (e) { continue; }
+        if (c <= 0) { at = i; break; }          /* the word is inside, or before, this piece */
+      }
+      if (at < 0) return [];
+      var first = all[at];
+      if (first.range.comparePoint(n, o) === 0) {
+        /* the word is in the middle of this sentence: read from the word on */
+        var rg = first.range.cloneRange();
+        rg.setStart(n, o);
+        first = { range:rg, text:rg.toString().trim(), de:first.de, block:first.block,
+                  lineEnd:first.lineEnd, gap:first.gap };
+      }
+      all = [first].concat(all.slice(at + 1));
     }
     if (isScrollMode()) return all;
     var p = currentPage();
