@@ -101,9 +101,9 @@
 }
 
 /* ---------- speed ----------
-   A small tag hanging under the mic, same ring and colour, so the two
-   read as one control. Filled lightly when not at normal speed, so a
-   changed setting is never a surprise. */
+   A small "Speed" tag hanging under the mic, same ring and colour, so the
+   two read as one control. Filled lightly when either voice is not at
+   normal speed, so a changed setting is never a surprise. */
 
 .vl-speed {
   position: absolute;
@@ -117,7 +117,7 @@
   background: var(--bg, #12100e);
   border: 1.5px solid var(--accent, #e0a458);
   color: var(--accent, #e0a458);
-  font-size: 0.7rem;
+  font-size: 0.64rem;
   font-weight: 800;
   letter-spacing: 0.01em;
   line-height: 1;
@@ -132,7 +132,7 @@
   top: 94px;
   right: 12px;
   z-index: 6;
-  min-width: 170px;
+  min-width: 230px;
   background: var(--bg-raised, #1b1815);
   border: 1px solid var(--border, #332e28);
   border-radius: 12px;
@@ -140,18 +140,30 @@
   display: none;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
 }
-.vl-speedmenu.open { display: block; }
+.vl-speedmenu.open { display: flex; gap: 4px; }
+
+/* two columns: English on the left, German on the right */
+.vl-speedcol { flex: 1 1 0; min-width: 0; }
+.vl-speedcol + .vl-speedcol { border-left: 1px solid var(--border, #332e28); padding-left: 4px; }
+.vl-speedhead {
+  padding: 6px 10px 4px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim, #a89c8c);
+}
 .vl-speedmenu button {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
   background: transparent;
   border: 0;
   border-radius: 8px;
-  padding: 11px 12px;
+  padding: 10px 10px;
   color: var(--text, #f0e9df);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-align: left;
   cursor: pointer;
 }
@@ -365,6 +377,6 @@
   .vl-pill { width: 40px; height: 40px; top: 10px; right: 10px; }
   .vl-pill .icon-svg { width: 19px; height: 19px; }
   .vl-panel { top: 86px; right: 10px; }
-  .vl-speed { top: 56px; right: 10px; width: 40px; height: 22px; font-size: 0.66rem; }
+  .vl-speed { top: 56px; right: 10px; width: 40px; height: 22px; font-size: 0.6rem; }
   .vl-speedmenu { top: 86px; right: 10px; }
 }

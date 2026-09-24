@@ -48,11 +48,21 @@
      measured on real sentences: 1.42 gives 0.75× in both voices, 0.67
      gives 1.3× (German) to 1.4× (English). Single words keep their level. */
   var SPEEDS = {
-    slow:   { len:1.42, label:"Slow",   tag:"0.75×" },
-    normal: { len:1,    label:"Normal", tag:"1×"    },
-    fast:   { len:0.67, label:"Fast",   tag:"1.3×"  }
+    slow:   { len:1.42, label:"Slow"   },
+    normal: { len:1,    label:"Normal" },
+    fast:   { len:0.67, label:"Fast"   }
   };
-  var speed = SPEEDS[store(SPEED_KEY)] ? store(SPEED_KEY) : "normal";
+
+  /* German and English each have their own speed: a learner may want the
+     German slow and the English — which they already know — at normal or
+     fast. A speed chosen before the split applies to both. */
+  var SPEED_KEYS = { de:"de-vorlesen-speed-de-v1", en:"de-vorlesen-speed-en-v1" };
+  var speeds = {};
+  ["de", "en"].forEach(function (l) {
+    var v = store(SPEED_KEYS[l]) || store(SPEED_KEY);
+    speeds[l] = SPEEDS[v] ? v : "normal";
+  });
+  function speedOf(isDe) { return speeds[isDe ? "de" : "en"]; }
 
   /* Silence after each piece, in ms at normal speed. Piper leaves almost
      none at the end of a clip, so without this two German lines ran
@@ -176,7 +186,7 @@
   async function synth(text, isDe, finalEnd) {
     var v = isDe ? de : en;
     if (!v) return null;
-    var sp = speed;
+    var sp = speedOf(isDe);
     var t = text.trim();
     if (!t) return null;
     if (!/\s/.test(t)) t = t.replace(/[.!?,;:]*$/, ".");   /* a bare word needs an ending */
@@ -206,6 +216,7 @@
     parts.forEach(function (p) { all.set(p, at); at += p.length; });
     var b = wav(level(all), v.rate);
     b.vlSpeed = sp;               /* so a speed change can tell which clips are stale */
+    b.vlDe = !!isDe;
     b.vlSec = all.length / v.rate;
     return b;
   }
@@ -231,6 +242,7 @@
       if (audio) { try { audio.pause(); URL.revokeObjectURL(audio.src); } catch (e) {} }
       audio = new Audio(URL.createObjectURL(blob));
       audio.vlSpeed = blob.vlSpeed;
+      audio.vlDe = blob.vlDe;
       audio.preservesPitch = true;
       var done = function () { if (playDone === done) playDone = null; res(); };
       playDone = done;
@@ -241,12 +253,12 @@
 
   /* the sentence already playing follows a speed change at once (pitch
      kept); everything after it is made fresh at the new speed */
-  function setSpeed(s) {
-    if (!SPEEDS[s]) return;
-    if (s !== speed) speedEpoch++;
-    speed = s;
-    store(SPEED_KEY, s);
-    if (audio && !audio.paused && audio.vlSpeed) {
+  function setSpeed(lang, s) {
+    if (!SPEEDS[s] || !speeds[lang]) return;
+    if (s !== speeds[lang]) speedEpoch++;
+    speeds[lang] = s;
+    store(SPEED_KEYS[lang], s);
+    if (audio && !audio.paused && audio.vlSpeed && (audio.vlDe ? "de" : "en") === lang) {
       audio.playbackRate = SPEEDS[audio.vlSpeed].len / SPEEDS[s].len;
     }
     drawSpeed();
@@ -453,7 +465,7 @@
       }
       for (var a = i; a <= i + AHEAD; a++) ensure(a);
       var blob = await clips[i];
-      if (blob && blob.vlSpeed !== speed && !gone()) blob = await make(units[i]);
+      if (blob && blob.vlSpeed !== speedOf(units[i].de) && !gone()) blob = await make(units[i]);
       /* a very short piece (a heading, one word) waits for the next one
          to be ready, so the pause comes before it, not in the middle */
       if (blob && blob.vlSec < 1.2 && i + 1 < units.length && !gone()) await clips[i + 1];
@@ -464,7 +476,7 @@
       if (isScrollMode()) follow(units[i].range);
       await play(blob);
       if (gone()) break;
-      if (i + 1 < units.length) await pause(units[i].gap * SPEEDS[speed].len);
+      if (i + 1 < units.length) await pause(units[i].gap * SPEEDS[speedOf(units[i].de)].len);
     }
     if (!gone()) { clearHighlight(); unwatchPage(); setSpeaking(false); }
   }
@@ -604,23 +616,37 @@
       '<p class="vl-note">One download, kept on this device. Double-tap a word (on a computer: click and hold it) to hear just that word.</p>' +
       '<div class="vl-err"></div>';
 
-    /* speed: a small tag under the mic; tap it for Slow / Normal / Fast */
+    /* speed: a small tag under the mic. It opens two columns — English on
+       the left, German on the right — each with Slow / Normal / Fast.
+       The menu stays open while you choose, so both can be set at once;
+       a tap anywhere else closes it. */
     speedBtn = document.createElement("button");
     speedBtn.type = "button";
     speedBtn.className = "vl-speed";
+    speedBtn.textContent = "Speed";
     speedMenu = document.createElement("div");
     speedMenu.className = "vl-speedmenu";
-    speedMenu.setAttribute("role", "menu");
-    Object.keys(SPEEDS).forEach(function (k) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.setAttribute("role", "menuitemradio");
-      b.dataset.speed = k;
-      b.innerHTML = '<span class="tick"></span><span class="nm"></span><span class="tg"></span>';
-      $(".nm", b).textContent = SPEEDS[k].label;
-      $(".tg", b).textContent = SPEEDS[k].tag;
-      b.addEventListener("click", function () { setSpeed(k); speedMenu.classList.remove("open"); });
-      speedMenu.appendChild(b);
+    [["en", "English"], ["de", "Deutsch"]].forEach(function (col) {
+      var group = document.createElement("div");
+      group.className = "vl-speedcol";
+      group.setAttribute("role", "radiogroup");
+      group.setAttribute("aria-label", col[1] + " speed");
+      var h = document.createElement("div");
+      h.className = "vl-speedhead";
+      h.textContent = col[1];
+      group.appendChild(h);
+      Object.keys(SPEEDS).forEach(function (k) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("role", "radio");
+        b.dataset.lang = col[0];
+        b.dataset.speed = k;
+        b.innerHTML = '<span class="tick"></span><span class="nm"></span>';
+        $(".nm", b).textContent = SPEEDS[k].label;
+        b.addEventListener("click", function () { setSpeed(col[0], k); });
+        group.appendChild(b);
+      });
+      speedMenu.appendChild(group);
     });
     speedBtn.addEventListener("click", function () {
       panel.classList.remove("open");
@@ -664,11 +690,10 @@
 
   function drawSpeed() {
     if (!speedBtn) return;
-    speedBtn.textContent = SPEEDS[speed].tag;
-    speedBtn.setAttribute("aria-label", "Reading speed: " + SPEEDS[speed].label);
-    speedBtn.classList.toggle("changed", speed !== "normal");
-    Array.prototype.forEach.call(speedMenu.children, function (b) {
-      var on = b.dataset.speed === speed;
+    speedBtn.setAttribute("aria-label", "Reading speed — English: " + SPEEDS[speeds.en].label + ", German: " + SPEEDS[speeds.de].label);
+    speedBtn.classList.toggle("changed", speeds.en !== "normal" || speeds.de !== "normal");
+    Array.prototype.forEach.call(speedMenu.querySelectorAll("button"), function (b) {
+      var on = b.dataset.speed === speeds[b.dataset.lang];
       b.classList.toggle("on", on);
       b.setAttribute("aria-checked", on ? "true" : "false");
     });
@@ -903,7 +928,7 @@
       { h:"Vorlesen", p:"It reads the page you are looking at — German in a German voice, English in an English one — and stops at the bottom of the page." },
       { h:"One page at a time", p:"Turn to the next page and press the button again. In scroll view it reads the whole chapter instead." },
       { h:"Any single word", p:"Double-tap a word — on a computer, click and hold it — to hear just that word, or to start reading from there." },
-      { h:"Speed", p:"The small button under the microphone sets the speed: Slow for hearing every sound, Normal, or Fast." }
+      { h:"Speed", p:"The small Speed button under the microphone sets how fast each voice reads — English and German separately: Slow for hearing every sound, Normal, or Fast." }
     ];
     var i = 0;
     var wrap = document.createElement("div");
