@@ -206,7 +206,18 @@
   /* finalEnd: this piece closes a line. A line with no full stop
      (a heading, a table cell, "Wie ___ Sie") is given one, so the voice
      lets its tone fall like the end of a sentence instead of carrying on. */
-  async function synth(text, isDe, finalEnd) {
+  /* The engine makes one piece at a time. Asked for five or more at once
+     (a reading restarted several times in a row, plus "Read this word"),
+     it failed with "memory access out of bounds" and some pieces never
+     finished at all — the reading froze with the button still lit. */
+  var engineQueue = Promise.resolve();
+  function synth(text, isDe, finalEnd) {
+    var run = engineQueue.then(function () { return synthNow(text, isDe, finalEnd); });
+    engineQueue = run.catch(function () {});
+    return run;
+  }
+
+  async function synthNow(text, isDe, finalEnd) {
     var v = isDe ? de : en;
     if (!v) return null;
     var sp = speedOf(isDe);

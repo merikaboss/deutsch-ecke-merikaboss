@@ -689,6 +689,35 @@
       }
     });
 
+    /* Changing an answer after "Antworten prüfen": that task's old verdict
+       goes, so the page never says "Leider nicht" next to an answer that is
+       now right, and Vorlesen reads the task as a question again. Pressing
+       "Antworten prüfen" once more marks it afresh. Free writing is left
+       alone — its model answer is there to compare with while you edit. */
+    tasks.forEach(function (node, i) {
+      var t = unit.aufgaben[i];
+      if (t.typ === "frei") return;
+      function onEdit(e) {
+        if (!marked || !marked.results[i]) return;
+        if (!e.target.matches || !e.target.matches("input, textarea")) return;
+        marked.results[i] = null;
+        Array.prototype.forEach.call(node.querySelectorAll(".opt"), function (o) {
+          o.classList.remove("right", "wrong");
+        });
+        Array.prototype.forEach.call(node.querySelectorAll("input.gap, textarea"), function (f) {
+          f.classList.remove("right", "wrong");
+        });
+        var fb = node.querySelector(".t-fb");
+        fb.className = "t-fb";
+        fb.innerHTML = "";
+        /* stay on the page with the field being changed, even when the
+           task itself starts on the page before */
+        if (onReflow) onReflow(e.target);
+      }
+      node.addEventListener("input", onEdit);
+      node.addEventListener("change", onEdit);
+    });
+
     /* The German voice list arrives late on some devices. */
     function offerVoices() {
       if (!germanVoice()) return;
@@ -921,7 +950,7 @@
                r >= 0.6 ? "Good — you have passed the mark you need." :
                "Keep going — go through the explanations and try this unit again."));
     var again = [];
-    R.forEach(function (x, k) { if (x.points && x.won < x.points) again.push(k + 1); });
+    R.forEach(function (x, k) { if (x && x.points && x.won < x.points) again.push(k + 1); });
     if (again.length && again.length <= 8) {
       P.push(say((again.length === 1 ? "Look again at number " : "Look again at numbers ") +
         (again.length === 1 ? again[0] : again.slice(0, -1).join(", ") + " and " + again[again.length - 1]) + "."));
