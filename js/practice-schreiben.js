@@ -19,44 +19,44 @@ var SCHREIBEN_UNITS = [
     intro:
       "Forms are usually the first thing you ever write in German — at the registration office, at a language school, at the doctor's, for a sports club. They do not ask questions. They use short nouns, and you have to know what each one wants.",
     lernen: [
-      "German forms look much the same wherever you fill them in — at the Bürgeramt, at a school, at a doctor's surgery. Learn these words once and you can manage almost any of them, even when the rest of the form is hard to read.",
+      "German forms look much the same wherever you fill them in — at the {de:Bürgeramt}, at a school, at a doctor's surgery. Learn these words once and you can manage almost any of them, even when the rest of the form is hard to read.",
       { h3: "The words on almost every form" },
       {
-        kopf: ["Im Formular", "Was Sie schreiben", "Beispiel"],
+        kopf: ["Im Formular", "Was Sie schreiben", "{de:Beispiel}"],
         zeilen: [
-          ["Familienname / Nachname / Name", "surname", "Okello"],
-          ["Vorname", "first name", "Daniel"],
-          ["Geburtsdatum", "date of birth", "14.03.1999"],
-          ["Geburtsort", "town of birth", "Jinja"],
-          ["Geburtsland", "country of birth", "Uganda"],
-          ["Staatsangehörigkeit", "nationality", "ugandisch"],
-          ["Familienstand", "marital status", "ledig"],
-          ["Straße, Hausnummer", "street and number", "Bonner Straße 27"],
-          ["PLZ, Wohnort", "postcode and town", "50677 Köln"],
-          ["Telefon / Handy", "phone / mobile", "0176 5528193"],
+          ["Familienname / Nachname / Name", "{en:surname}", "Okello"],
+          ["Vorname", "{en:first name}", "Daniel"],
+          ["Geburtsdatum", "{en:date of birth}", "14.03.1999"],
+          ["Geburtsort", "{en:town of birth}", "Jinja"],
+          ["Geburtsland", "{en:country of birth}", "Uganda"],
+          ["Staatsangehörigkeit", "{en:nationality}", "ugandisch"],
+          ["Familienstand", "{en:marital status}", "ledig"],
+          ["Straße, Hausnummer", "{en:street and number}", "Bonner Straße 27"],
+          ["PLZ, Wohnort", "{en:postcode and town}", "50677 Köln"],
+          ["Telefon / Handy", "{en:phone / mobile}", "0176 5528193"],
           ["Beruf", "job", "Koch"],
-          ["Muttersprache", "first language", "Englisch"],
-          ["Datum, Unterschrift", "date, signature", "12.09.2026, D. Okello"]
+          ["Muttersprache", "{en:first language}", "Englisch"],
+          ["Datum, Unterschrift", "{en:date, signature}", "12.09.2026, D. Okello"]
         ]
       },
       {
         box: "rule",
-        titel: "Familienstand — four words",
+        titel: "{de:Familienstand} — four words",
         zeilen: [
-          ["ledig", "single, never married"],
-          ["verheiratet", "married"],
-          ["geschieden", "divorced"],
-          ["verwitwet", "widowed"]
+          ["ledig", "{en:single, never married}"],
+          ["verheiratet", "{en:married}"],
+          ["geschieden", "{en:divorced}"],
+          ["verwitwet", "{en:widowed}"]
         ]
       },
       {
         box: "rule",
         titel: "Dates and addresses",
         liste: [
-          "The date goes *day . month . year*: 14.03.1999 is the fourteenth of March. Never the month first.",
+          "The date goes *{en:day . month . year}*: 14.03.1999 is the fourteenth of March. Never the month first.",
           "In an address the street comes first and the number after it: *Bonner Straße 27*, not *27 Bonner Straße*.",
-          "The postcode (PLZ) stands in front of the town: *50677 Köln*.",
-          "_Anrede_ with boxes to tick: *Frau* for a woman, *Herr* for a man."
+          "The postcode ({de:PLZ}) stands in front of the town: *50677 Köln*.",
+          "_{de:Anrede}_ with boxes to tick: *Frau* for a woman, *Herr* for a man."
         ]
       },
       {
@@ -182,7 +182,7 @@ var SCHREIBEN_UNITS = [
     intro:
       "Before any email or message, the sentence itself has to stand. German is flexible about most words, but strict about one: the verb. Get the verb into the right place and a sentence already sounds German, even with small mistakes elsewhere.",
     lernen: [
-      "In a normal statement the conjugated verb is always in *position 2*. Position 2 does not mean the second word — it means the second *part*. The first part can be one word or a whole group of words.",
+      "In a normal statement the conjugated verb is always in *{en:position 2}*. Position 2 does not mean the second word — it means the second *{en:part}*. The first part can be one word or a whole group of words.",
       {
         kopf: ["Position 1", "Verb", "der Rest"],
         zeilen: [
@@ -197,12 +197,12 @@ var SCHREIBEN_UNITS = [
         titel: "Something else at the front — the subject moves behind the verb",
         text: [
           "When a time or place starts the sentence, the verb stays where it is and the subject goes straight after it.",
-          "*Ich* spiele am Sonntag Fußball. → *Am Sonntag* spiele *ich* Fußball."
+          "{de:*Ich* spiele am Sonntag Fußball. → *Am Sonntag* spiele *ich* Fußball.}"
         ]
       },
       { h3: "Questions" },
       {
-        kopf: ["Art", "Bau", "Beispiel"],
+        kopf: ["Art", "Bau", "{de:Beispiel}"],
         zeilen: [
           ["W-Frage", "W-Wort + Verb + Subjekt", "Wo *wohnst* du?"],
           ["Ja/Nein-Frage", "Verb + Subjekt", "*Wohnst* du in Hamburg?"],
@@ -211,9 +211,9 @@ var SCHREIBEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "The sentence bracket (Satzklammer)",
+        titel: "The sentence bracket ({de:Satzklammer})",
         text: [
-          "Some verbs come in two parts. The first part takes position 2, the second part goes to the very *end* of the sentence, and everything else sits in between."
+          "Some verbs come in two parts. The first part takes position 2, the second part goes to the very *{en:end}* of the sentence, and everything else sits in between."
         ],
         zeilen: [
           ["trennbares Verb", "Ich *rufe* dich morgen *an*."],
@@ -225,10 +225,10 @@ var SCHREIBEN_UNITS = [
         box: "mistake",
         titel: "Typical mistakes",
         liste: [
-          "~Heute ich gehe ins Kino.~ → *Heute gehe ich* ins Kino.",
-          "~Ich kann nicht kommen morgen.~ → Ich *kann* morgen nicht *kommen*.",
+          "{de:~Heute ich gehe ins Kino.~ → *Heute gehe ich* ins Kino.}",
+          "{de:~Ich kann nicht kommen morgen.~ → Ich *kann* morgen nicht *kommen*.}",
           "~Wo du wohnst?~ → *Wo wohnst du?*",
-          "~Ich stehe auf um sieben.~ → Ich *stehe* um sieben *auf*."
+          "{de:~Ich stehe auf um sieben.~ → Ich *stehe* um sieben *auf*.}"
         ]
       }
     ],
@@ -275,27 +275,27 @@ var SCHREIBEN_UNITS = [
     gruppe: "grundlagen",
     stufe: 2,
     title: "Sätze verbinden",
-    subtitle: "und, aber, oder, denn — zuerst, dann, danach",
+    subtitle: "{de:und, aber, oder, denn — zuerst, dann, danach}",
     focus: "Konjunktionen, Reihenfolge, Komma",
     intro:
       "A text made only of short sentences reads like a list. Two kinds of small words join them together, and they behave differently — one kind leaves the word order alone, the other takes position 1 and pushes the subject behind the verb.",
     lernen: [
       { h3: "Joining words that change nothing" },
-      "*und, aber, oder, denn* stand *between* two sentences. They do not count as a position, so the second sentence keeps its normal order.",
+      "*und, aber, oder, denn* stand *{en:between}* two sentences. They do not count as a position, so the second sentence keeps its normal order.",
       {
-        kopf: ["Wort", "Bedeutung", "Beispiel"],
+        kopf: ["Wort", "Bedeutung", "{de:Beispiel}"],
         zeilen: [
-          ["und", "and", "Ich koche, *und* mein Bruder deckt den Tisch."],
-          ["aber", "but", "Die Wohnung ist schön, *aber* sie ist teuer."],
-          ["oder", "or", "Trinkst du Tee, *oder* möchtest du Kaffee?"],
-          ["denn", "because", "Ich bleibe zu Hause, *denn* ich bin krank."]
+          ["und", "{en:and}", "Ich koche, *und* mein Bruder deckt den Tisch."],
+          ["aber", "{en:but}", "Die Wohnung ist schön, *aber* sie ist teuer."],
+          ["oder", "{en:or}", "Trinkst du Tee, *oder* möchtest du Kaffee?"],
+          ["denn", "{en:because}", "Ich bleibe zu Hause, *denn* ich bin krank."]
         ]
       },
       {
         box: "rule",
         titel: "Position 0",
         text: [
-          "Think of these four as position 0: *denn* | *ich* | *bin* | krank.",
+          "Think of these four as position 0: {de:*denn* | *ich* | *bin* | krank}.",
           "A comma goes before *aber* and *denn*. Before *und* and *oder* it is optional."
         ]
       },
@@ -312,10 +312,10 @@ var SCHREIBEN_UNITS = [
       },
       {
         box: "mistake",
-        titel: "denn and dann look alike",
+        titel: "{de:denn} and {de:dann} look alike",
         liste: [
-          "*denn* gives a reason and does not move the verb: …, *denn ich habe* Hunger.",
-          "*dann* means _then_ and is position 1: *Dann esse ich* etwas.",
+          "*denn* gives a reason and does not move the verb: …, {de:*denn ich habe* Hunger}.",
+          "*dann* means _then_ and is position 1: {de:*Dann esse ich* etwas}.",
           "~…, denn habe ich Hunger.~ is wrong — that would be the word order of *dann*."
         ]
       }
@@ -368,7 +368,7 @@ var SCHREIBEN_UNITS = [
     lernen: [
       { h3: "The shape of a short message" },
       {
-        kopf: ["Teil", "Beispiel"],
+        kopf: ["Teil", "{de:Beispiel}"],
         zeilen: [
           ["Anrede", "Hallo Jana, / Hi Jana,"],
           ["Die Information", "mein Bus hat Verspätung."],
@@ -385,7 +385,7 @@ var SCHREIBEN_UNITS = [
           "Bis gleich!",
           "Moritz"
         ],
-        titel: "Beispiel"
+        titel: "{de:Beispiel}"
       },
       {
         box: "rule",
@@ -406,7 +406,7 @@ var SCHREIBEN_UNITS = [
     ],
     redemittel: [
       {
-        titel: "Später kommen, absagen",
+        titel: "{de:Später kommen, absagen}",
         zeilen: [
           ["Ich komme etwas später.", "I'll be a bit late."],
           ["Ich stehe im Stau.", "I'm stuck in traffic."],
@@ -416,7 +416,7 @@ var SCHREIBEN_UNITS = [
         ]
       },
       {
-        titel: "Sich verabreden",
+        titel: "{de:Sich verabreden}",
         zeilen: [
           ["Hast du am Freitag Zeit?", "Are you free on Friday?"],
           ["Wollen wir zusammen … ?", "Shall we … together?"],
@@ -518,29 +518,29 @@ var SCHREIBEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "How the du-form is made",
+        titel: "How the {de:du}-form is made",
         liste: [
-          "Take the *du* form of the present tense and drop *-st* and *du*: du kauf*st* → *Kauf!*",
-          "Verbs that change *e* to *i* keep it: du n*i*mmst → *Nimm!*, du g*i*bst → *Gib!*",
-          "But *a → ä* does not stay: du fährst → *Fahr!*, du schläfst → *Schlaf!*",
-          "Separable verbs: the prefix goes to the end — *Ruf* mich bitte *an*!"
+          "Take the *du* form of the present tense and drop *-st* and *du*: {de:du kauf*st* → *Kauf!*}",
+          "Verbs that change *e* to *i* keep it: {de:du n*i*mmst → *Nimm!*, du g*i*bst → *Gib!*}",
+          "But *a → ä* does not stay: {de:du fährst → *Fahr!*, du schläfst → *Schlaf!*}",
+          "Separable verbs: the prefix goes to the end — {de:*Ruf* mich bitte *an*!}"
         ]
       },
       {
         box: "example",
         titel: "Three notes",
         text: [
-          "*Für die Mitbewohner:* Hallo ihr zwei, ich bin bis Sonntag bei meiner Familie. Bitte gießt die Blumen und bringt am Donnerstag den Müll raus! Danke, Kofi",
-          "*Für die Nachbarin:* Liebe Frau Weber, ich erwarte morgen ein Paket, aber ich bin nicht zu Hause. Können Sie es bitte für mich annehmen? Vielen Dank! Ihr Karim Haddad, 2. Stock",
-          "*Für die Kollegin:* Hallo Frau Brandt, Herr Liu hat um 11 Uhr angerufen. Bitte rufen Sie ihn zurück: 0421 339 870. Gruß, Nadia"
+          "{de:*Für die Mitbewohner:* Hallo ihr zwei, ich bin bis Sonntag bei meiner Familie. Bitte gießt die Blumen und bringt am Donnerstag den Müll raus! Danke, Kofi}",
+          "{de:*Für die Nachbarin:* Liebe Frau Weber, ich erwarte morgen ein Paket, aber ich bin nicht zu Hause. Können Sie es bitte für mich annehmen? Vielen Dank! Ihr Karim Haddad, 2. Stock}",
+          "{de:*Für die Kollegin:* Hallo Frau Brandt, Herr Liu hat um 11 Uhr angerufen. Bitte rufen Sie ihn zurück: 0421 339 870. Gruß, Nadia}"
         ]
       },
       {
         box: "mistake",
         titel: "Watch out",
         liste: [
-          "The *Sie*-form always keeps *Sie*: ~Kommen bitte morgen!~ → *Kommen Sie* bitte morgen!",
-          "The *du*-form has no *du* and no *-st*: ~Kaufst du Milch!~ → *Kauf* bitte Milch!",
+          "The *Sie*-form always keeps *Sie*: ~Kommen bitte morgen!~ → {de:*Kommen Sie* bitte morgen!}",
+          "The *du*-form has no *du* and no *-st*: ~Kaufst du Milch!~ → {de:*Kauf* bitte Milch!}",
           "A friendly note sounds rude without *bitte*. Put it after the verb: *Kauf bitte Brot.*"
         ]
       }
@@ -642,15 +642,15 @@ var SCHREIBEN_UNITS = [
       "Personal emails to friends follow the same pattern every time. Once you know the parts and the order they come in, you only have to fill in what is new — and the reader immediately sees what kind of message it is.",
       { h3: "A personal email" },
       {
-        kopf: ["Teil", "Beispiel", "Achtung"],
+        kopf: ["Teil", "{de:Beispiel}", "Achtung"],
         zeilen: [
-          ["Betreff", "Einladung zu meinem Geburtstag", "short, no full sentence"],
-          ["Anrede", "Liebe Clara, / Lieber Tobias,", "*Liebe* for a woman, *Lieber* for a man"],
-          ["Einleitung", "wie geht es dir?", "small letter after the comma"],
-          ["Inhalt", "Am Samstag feiere ich …", "one paragraph per point"],
+          ["Betreff", "Einladung zu meinem Geburtstag", "{en:short, no full sentence}"],
+          ["Anrede", "Liebe Clara, / Lieber Tobias,", "{en:*Liebe* for a woman, *Lieber* for a man}"],
+          ["Einleitung", "wie geht es dir?", "{en:small letter after the comma}"],
+          ["Inhalt", "Am Samstag feiere ich …", "{en:one paragraph per point}"],
           ["Schluss", "Ich freue mich auf deine Antwort.", ""],
-          ["Gruß", "Viele Grüße / Liebe Grüße", "no comma after it"],
-          ["Name", "Deine Maria / Dein Paul", "*Deine* from a woman, *Dein* from a man"]
+          ["Gruß", "Viele Grüße / Liebe Grüße", "{en:no comma after it}"],
+          ["Name", "Deine Maria / Dein Paul", "{en:*Deine* from a woman, *Dein* from a man}"]
         ]
       },
       {
@@ -660,15 +660,15 @@ var SCHREIBEN_UNITS = [
           "Each name gets its own word: *Liebe Clara, lieber Tobias,* — the second one small, because the line has already started."
         ]
       },
-      { h3: "Time: am, um, im, von … bis" },
+      { h3: "Time: {de:am, um, im, von … bis}" },
       {
-        kopf: ["Präposition", "wofür", "Beispiel"],
+        kopf: ["Präposition", "wofür", "{de:Beispiel}"],
         zeilen: [
-          ["am", "days, dates, parts of the day", "am Samstag, am 14. Juni, am Abend"],
-          ["um", "clock time", "um 19 Uhr, um halb acht"],
-          ["im", "months, seasons", "im Juli, im Sommer"],
-          ["von … bis", "from … to", "von 18 bis 23 Uhr"],
-          ["ab", "from … on", "ab 20 Uhr"]
+          ["am", "{en:days, dates, parts of the day}", "am Samstag, am 14. Juni, am Abend"],
+          ["um", "{en:clock time}", "um 19 Uhr, um halb acht"],
+          ["im", "{en:months, seasons}", "im Juli, im Sommer"],
+          ["von … bis", "{en:from … to}", "von 18 bis 23 Uhr"],
+          ["ab", "{en:from … on}", "ab 20 Uhr"]
         ]
       },
       {
@@ -684,7 +684,7 @@ var SCHREIBEN_UNITS = [
           "Liebe Grüße",
           "Eure Nadine"
         ],
-        titel: "Beispiel: eine Einladung"
+        titel: "{de:Beispiel: eine Einladung}"
       },
       {
         box: "example",
@@ -797,17 +797,17 @@ var SCHREIBEN_UNITS = [
           ["Pronomen", "du, dich, dir, dein", "Sie, Ihnen, Ihr — immer groß"],
           ["Schlusssatz", "Bis bald!", "Vielen Dank im Voraus. / Ich freue mich auf Ihre Antwort."],
           ["Gruß", "Viele Grüße / Liebe Grüße", "Mit freundlichen Grüßen"],
-          ["Name", "Dein Samuel", "Samuel Owusu (full name)"]
+          ["Name", "Dein Samuel", "Samuel Owusu {en:(full name)}"]
         ]
       },
       {
         box: "rule",
         titel: "Four steps in a formal email",
         liste: [
-          "*Why you are writing* — in the first sentence: _ich möchte gern einen Termin vereinbaren._",
-          "*The details* — what the problem is, which day, who it is for.",
-          "*The question or request* — _Haben Sie am Donnerstag einen Termin frei?_",
-          "*A closing sentence*, then the greeting and your full name."
+          "*{en:Why you are writing}* — in the first sentence: _{de:ich möchte gern einen Termin vereinbaren.}_",
+          "*{en:The details}* — what the problem is, which day, who it is for.",
+          "*{en:The question or request}* — _{de:Haben Sie am Donnerstag einen Termin frei?}_",
+          "*{en:A closing sentence}*, then the greeting and your full name."
         ]
       },
       {
@@ -824,7 +824,7 @@ var SCHREIBEN_UNITS = [
           "Mit freundlichen Grüßen",
           "Samuel Owusu"
         ],
-        titel: "Beispiel"
+        titel: "{de:Beispiel}"
       },
       {
         box: "mistake",
@@ -839,7 +839,7 @@ var SCHREIBEN_UNITS = [
     ],
     redemittel: [
       {
-        titel: "Termine",
+        titel: "{de:Termine}",
         zeilen: [
           ["Ich möchte gern einen Termin vereinbaren.", "I would like to make an appointment."],
           ["Haben Sie am … einen Termin frei?", "Do you have an appointment free on … ?"],
@@ -961,7 +961,7 @@ var SCHREIBEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "können and müssen",
+        titel: "{de:können} and {de:müssen}",
         text: ["Both are modal verbs: *ich* and *er / sie* have the same form, with no ending. The second verb goes to the end of the sentence as an infinitive."],
         zeilen: [
           ["ich kann / muss", "wir können / müssen"],
@@ -981,15 +981,15 @@ var SCHREIBEN_UNITS = [
           "Mit freundlichen Grüßen",
           "Leyla Ahmadi"
         ],
-        titel: "Beispiel"
+        titel: "{de:Beispiel}"
       },
       {
         box: "mistake",
         titel: "Watch the verb at the end",
         liste: [
-          "~Ich kann nicht kommen morgen.~ → Ich kann morgen nicht *kommen*.",
-          "~Er muss arbeitet.~ → Er muss *arbeiten*. — the second verb stays in the infinitive.",
-          "~Ich kannst …~ → Ich *kann*. The *-st* belongs to *du* only."
+          "{de:~Ich kann nicht kommen morgen.~ → Ich kann morgen nicht *kommen*.}",
+          "~Er muss arbeitet.~ → {de:Er muss *arbeiten*}. — the second verb stays in the infinitive.",
+          "~Ich kannst …~ → {de:Ich *kann*}. The *-st* belongs to *du* only."
         ]
       }
     ],
@@ -1115,9 +1115,9 @@ var SCHREIBEN_UNITS = [
         box: "rule",
         titel: "Make it easy to answer",
         liste: [
-          "Ask about what is *not* in the advert. Asking for information that is already there looks careless.",
+          "Ask about what is *{en:not}* in the advert. Asking for information that is already there looks careless.",
           "Two or three questions are enough. Give each its own sentence.",
-          "Start with a sentence that gives context: _Ich habe Ihre Anzeige auf der Webseite der Stadt gelesen._"
+          "Start with a sentence that gives context: _{de:Ich habe Ihre Anzeige auf der Webseite der Stadt gelesen.}_"
         ]
       },
       {
@@ -1134,7 +1134,7 @@ var SCHREIBEN_UNITS = [
           "Mit freundlichen Grüßen",
           "Grace Achieng"
         ],
-        titel: "Beispiel"
+        titel: "{de:Beispiel}"
       }
     ],
     aufgaben: [
@@ -1232,7 +1232,7 @@ var SCHREIBEN_UNITS = [
     lernen: [
       "A message about a problem answers four questions, in this order. If one is missing, the reply is usually a question back to you — and the problem waits another day.",
       {
-        kopf: ["Frage", "Beispiel"],
+        kopf: ["Frage", "{de:Beispiel}"],
         zeilen: [
           ["Was ist das Problem?", "Die Heizung im Schlafzimmer funktioniert nicht."],
           ["Seit wann?", "Seit Sonntag ist das Zimmer kalt."],
@@ -1243,17 +1243,17 @@ var SCHREIBEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "seit + dative",
-        text: ["*seit* says how long something has been going on, and it takes the dative. German uses the *present tense* for it — not a past tense."],
+        titel: "{de:seit} + dative",
+        text: ["*seit* says how long something has been going on, and it takes the dative. German uses the *{en:present tense}* for it — not a past tense."],
         zeilen: [
-          ["seit Montag / seit Mai", "no article"],
+          ["seit Montag / seit Mai", "{en:no article}"],
           ["seit einem Tag / seit einer Woche", "ein → einem / eine → einer"],
-          ["seit zwei Tagen / seit drei Wochen", "plural adds -n"]
+          ["seit zwei Tagen / seit drei Wochen", "{en:plural adds -n}"]
         ]
       },
       {
         box: "rule",
-        titel: "What already happened: Perfekt",
+        titel: "What already happened: {de:Perfekt}",
         zeilen: [
           ["bestellen", "Ich *habe* eine Jacke *bestellt*."],
           ["bekommen", "Ich *habe* eine falsche Größe *bekommen*."],
@@ -1265,15 +1265,15 @@ var SCHREIBEN_UNITS = [
         box: "mistake",
         titel: "Firm, but polite",
         liste: [
-          "~Machen Sie das sofort!~ → *Bitte* kümmern Sie sich so schnell wie möglich darum.",
-          "~Ich wohne hier seit zwei Jahren und die Heizung war kaputt seit Sonntag.~ → Die Heizung *ist seit Sonntag* kaputt.",
+          "{de:~Machen Sie das sofort!~ → *Bitte* kümmern Sie sich so schnell wie möglich darum.}",
+          "~Ich wohne hier seit zwei Jahren und die Heizung war kaputt seit Sonntag.~ → {de:Die Heizung *ist seit Sonntag* kaputt}.",
           "*bestellt* and *bekommen* have no *ge-*: verbs that begin with *be-, ver-, er-* never take it."
         ]
       }
     ],
     redemittel: [
       {
-        titel: "Probleme beschreiben",
+        titel: "{de:Probleme beschreiben}",
         zeilen: [
           ["… ist kaputt. / … funktioniert nicht.", "… is broken. / … doesn't work."],
           ["Das Wasser läuft nicht ab.", "The water doesn't drain."],
@@ -1381,7 +1381,7 @@ var SCHREIBEN_UNITS = [
     lernen: [
       "A good short profile has three or four small paragraphs, each about one thing. Put a blank line between them — on a phone screen a single block of text is hard to read.",
       {
-        kopf: ["Absatz", "Inhalt", "Beispiel"],
+        kopf: ["Absatz", "Inhalt", "{de:Beispiel}"],
         zeilen: [
           ["1", "Wer sind Sie?", "Ich heiße Omar, bin 31 und komme aus Marokko."],
           ["2", "Ihr Alltag", "Seit zwei Jahren lebe ich in Dortmund und arbeite als Krankenpfleger."],
@@ -1391,7 +1391,7 @@ var SCHREIBEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "mein, meine — and the others",
+        titel: "{de:mein, meine} — and the others",
         text: ["Possessive articles take the same endings as *ein / eine*. In the plural they end in *-e*."],
         zeilen: [
           ["ich", "mein Bruder · meine Schwester · mein Kind · meine Eltern"],
@@ -1403,10 +1403,10 @@ var SCHREIBEN_UNITS = [
       },
       {
         box: "example",
-        titel: "Don't start every sentence with Ich",
+        titel: "Don't start every sentence with {de:Ich}",
         text: [
           "~Ich wohne in Dortmund. Ich arbeite im Krankenhaus. Ich spiele gern Fußball.~",
-          "*In Dortmund* wohne ich seit zwei Jahren. *Dort* arbeite ich im Krankenhaus. *In meiner Freizeit* spiele ich gern Fußball.",
+          "{de:*In Dortmund* wohne ich seit zwei Jahren. *Dort* arbeite ich im Krankenhaus. *In meiner Freizeit* spiele ich gern Fußball.}",
           "Put a time, a place or *dort / dann / außerdem* at the front — and remember the verb stays in position 2."
         ]
       },
@@ -1425,7 +1425,7 @@ var SCHREIBEN_UNITS = [
           "Bis bald!",
           "Omar"
         ],
-        titel: "Beispiel: Tandem-Profil"
+        titel: "{de:Beispiel: Tandem-Profil}"
       }
     ],
     aufgaben: [
@@ -1502,11 +1502,11 @@ var SCHREIBEN_UNITS = [
     subtitle: "Writing about a trip",
     focus: "Perfekt mit haben und sein, Wetter, Postkarte und Nachricht",
     intro:
-      "A postcard or a long message from a trip mixes two times: what you have already done, in the Perfekt, and what it is like here now, in the present. Keeping those two apart is what this unit practises.",
+      "A postcard or a long message from a trip mixes two times: what you have already done, in the {de:Perfekt}, and what it is like here now, in the present. Keeping those two apart is what this unit practises.",
     lernen: [
       "A holiday message is short, but it follows a pattern. After the greeting, say where you are, tell two or three things you did, describe the place or the weather, and finish with what happens next.",
       {
-        kopf: ["Teil", "Zeit", "Beispiel"],
+        kopf: ["Teil", "Zeit", "{de:Beispiel}"],
         zeilen: [
           ["Wo sind Sie?", "Präsens", "Viele Grüße aus Dresden!"],
           ["Was haben Sie gemacht?", "Perfekt", "Gestern haben wir die Frauenkirche besichtigt."],
@@ -1516,8 +1516,8 @@ var SCHREIBEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "haben or sein?",
-        text: ["Most verbs form the Perfekt with *haben*. Verbs of movement from one place to another, and *bleiben*, *passieren*, *werden*, take *sein*."],
+        titel: "{de:haben} or {de:sein}?",
+        text: ["Most verbs form the {de:Perfekt} with *haben*. Verbs of movement from one place to another, and *bleiben*, *passieren*, *werden*, take *sein*."],
         zeilen: [
           ["haben", "gegessen · gesehen · gekauft · gemacht · getrunken · fotografiert"],
           ["sein", "gefahren · geflogen · gegangen · gekommen · geschwommen · geblieben"]
@@ -1527,20 +1527,20 @@ var SCHREIBEN_UNITS = [
         box: "rule",
         titel: "Participles without ge-",
         liste: [
-          "Verbs ending in *-ieren*: fotografieren → *fotografiert*, telefonieren → *telefoniert*.",
-          "Verbs starting with *be-, ver-, er-, ent-*: besuchen → *besucht*, besichtigen → *besichtigt*, vergessen → *vergessen*.",
-          "Separable verbs put *ge* in the middle: ankommen → an*ge*kommen, einkaufen → ein*ge*kauft."
+          "Verbs ending in *-ieren*: {de:fotografieren} → *fotografiert*, {de:telefonieren} → *telefoniert*.",
+          "Verbs starting with *be-, ver-, er-, ent-*: {de:besuchen} → *besucht*, {de:besichtigen} → *besichtigt*, {de:vergessen} → *vergessen*.",
+          "Separable verbs put *ge* in the middle: {de:ankommen → an*ge*kommen, einkaufen → ein*ge*kauft}."
         ]
       },
       {
         box: "example",
         titel: "The weather",
         zeilen: [
-          ["Die Sonne scheint.", "The sun is shining."],
-          ["Es ist heiß / warm / kühl / kalt.", "It's hot / warm / cool / cold."],
-          ["Es regnet. / Es schneit.", "It's raining. / It's snowing."],
-          ["Es ist windig / bewölkt.", "It's windy / cloudy."],
-          ["Wir haben Glück mit dem Wetter.", "We're lucky with the weather."]
+          ["Die Sonne scheint.", "{en:The sun is shining.}"],
+          ["Es ist heiß / warm / kühl / kalt.", "{en:It's hot / warm / cool / cold.}"],
+          ["Es regnet. / Es schneit.", "{en:It's raining. / It's snowing.}"],
+          ["Es ist windig / bewölkt.", "{en:It's windy / cloudy.}"],
+          ["Wir haben Glück mit dem Wetter.", "{en:We're lucky with the weather.}"]
         ]
       }
     ],

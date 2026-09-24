@@ -23,7 +23,7 @@ var LESEN_UNITS = [
     subtitle: "A day in Anna's life",
     focus: "Präsens, trennbare Verben, Uhrzeit, Wochentage",
     intro:
-      "The text below uses the present tense and a lot of separable verbs — the kind of German you meet in the very first weeks. Read it once straight through without stopping, even if you do not understand every word. Then read it again with the Wortschatz open.",
+      "The text below uses the present tense and a lot of separable verbs — the kind of German you meet in the very first weeks. Read it once straight through without stopping, even if you do not understand every word. Then read it again with the {de:Wortschatz} open.",
     text: [
       "Anna Weber wohnt in Bremen. Sie ist vierundzwanzig Jahre alt und arbeitet in einem Büro.",
       "Von Montag bis Freitag steht Anna um halb sieben auf. Zuerst geht sie ins Badezimmer und duscht. Dann zieht sie sich an und geht in die Küche.",
@@ -35,7 +35,7 @@ var LESEN_UNITS = [
       "Um elf Uhr geht Anna ins Bett. Sie ist müde, aber zufrieden."
     ],
     wortschatz: [
-      ["aufstehen", "to get up (separable: sie steht auf)"],
+      ["aufstehen", "to get up (separable: {de:sie steht auf})"],
       ["duschen", "to shower"],
       ["sich anziehen", "to get dressed"],
       ["frühstücken", "to have breakfast"],
@@ -47,7 +47,7 @@ var LESEN_UNITS = [
       ["dauern", "to last, to take (time)"],
       ["die Kantine, -n", "canteen, staff restaurant"],
       ["die Pause, -n", "break"],
-      ["anrufen", "to phone (separable: sie ruft an)"],
+      ["anrufen", "to phone (separable: {de:sie ruft an})"],
       ["treffen", "to meet"],
       ["besuchen", "to visit"],
       ["müde", "tired"],
@@ -79,7 +79,7 @@ var LESEN_UNITS = [
       { teil: "Teil 3 — Ergänzen Sie das fehlende Wort.", typ: "luecke", frage: "Anna ___ um halb sieben auf.", antwort: ["steht"], hinweis: "aufstehen, 3. Person Singular" },
       { teil: "Teil 3 — Ergänzen Sie das fehlende Wort.", typ: "luecke", frage: "Sie fährt mit ___ Bus zur Arbeit.", antwort: ["dem"], warum: "mit + Dativ. Der Bus wird im Dativ zu dem Bus." },
       { teil: "Teil 3 — Ergänzen Sie das fehlende Wort.", typ: "luecke", frage: "Am Samstag ___ sie ihre Freundin Lena.", antwort: ["trifft"], warum: "treffen ändert den Vokal: ich treffe, du triffst, sie trifft." },
-      { teil: "Teil 3 — Ergänzen Sie das fehlende Wort.", typ: "luecke", frage: "Um halb eins ___ sie ihre Mutter ___.", antwort: ["ruft an", "ruft ... an", "ruft an."], hinweis: "two words: anrufen is separable" },
+      { teil: "Teil 3 — Ergänzen Sie das fehlende Wort.", typ: "luecke", frage: "Um halb eins ___ sie ihre Mutter ___.", antwort: ["ruft an", "ruft ... an", "ruft an."], hinweis: "{en:two words:} anrufen {en:is separable}" },
       { teil: "Teil 3 — Ergänzen Sie das fehlende Wort.", typ: "luecke", frage: "Wie alt ist Anna? Schreiben Sie die Zahl als Wort.", antwort: ["vierundzwanzig", "24"], warum: "Im Deutschen kommt die Einerzahl zuerst: vier-und-zwanzig." },
 
       { teil: "Teil 4 — Schreiben Sie selbst.", typ: "frei", frage: "Und Sie? Beschreiben Sie Ihren Morgen in vier Sätzen. Benutzen Sie mindestens zwei trennbare Verben.", muster: "Ich stehe um sechs Uhr auf. Dann dusche ich und ziehe mich an. Um halb sieben frühstücke ich und trinke einen Tee. Um sieben Uhr verlasse ich das Haus und fahre mit dem Zug zur Arbeit.", warum: "Achten Sie darauf: bei trennbaren Verben steht die Vorsilbe am Satzende — ich stehe … *auf*." }
@@ -92,10 +92,10 @@ var LESEN_UNITS = [
     gruppe: "geschichten",
     stufe: 1,
     title: "Im Supermarkt",
-    subtitle: "Herr Koch does the shopping",
+    subtitle: "{de:Herr Koch} does the shopping",
     focus: "Akkusativ, Preise und Zahlen, Einkaufen, höfliche Fragen",
     intro:
-      "Shopping is where numbers stop being an exercise and start costing you money. Watch the prices in this text carefully — the tasks will ask you to read them back. Notice too how Herr Koch asks the shop assistant for help; that polite question is one you will reuse everywhere.",
+      "Shopping is where numbers stop being an exercise and start costing you money. Watch the prices in this text carefully — the tasks will ask you to read them back. Notice too how {de:Herr Koch} asks the shop assistant for help; that polite question is one you will reuse everywhere.",
     text: [
       "Herr Koch geht am Samstagmorgen einkaufen. Er nimmt eine Tasche und eine Einkaufsliste mit.",
       "Auf der Liste stehen: Brot, Milch, Eier, Käse, Tomaten und Äpfel.",
@@ -156,7 +156,7 @@ var LESEN_UNITS = [
       { teil: "Teil 3 — Ergänzen Sie den Artikel.", typ: "luecke", frage: "Er nimmt ___ Tasche mit.", antwort: ["eine"], warum: "die Tasche ist feminin — im Akkusativ bleibt es *eine*." },
       { teil: "Teil 3 — Ergänzen Sie den Artikel.", typ: "mc", frage: "Welcher Satz ist richtig?", optionen: ["Ich möchte einen Milch.", "Ich möchte eine Milch.", "Ich möchte ein Milch.", "Ich möchte einem Milch."], antwort: 1, warum: "die Milch ist feminin, also *eine* Milch." },
 
-      { teil: "Teil 4 — Im Geschäft sprechen", typ: "luecke", frage: "Wie fragt Herr Koch höflich nach Eiern? Schreiben Sie die Frage aus dem Text.", antwort: ["entschuldigung haben sie noch eier", "haben sie noch eier", "entschuldigung, haben sie noch eier?"], hinweis: "the exact question from the text" },
+      { teil: "Teil 4 — Im Geschäft sprechen", typ: "luecke", frage: "Wie fragt Herr Koch höflich nach Eiern? Schreiben Sie die Frage aus dem Text.", antwort: ["entschuldigung haben sie noch eier", "haben sie noch eier", "entschuldigung, haben sie noch eier?"], hinweis: "{en:the exact question from the text}" },
       { teil: "Teil 4 — Im Geschäft sprechen", typ: "frei", frage: "Sie suchen im Supermarkt Zucker, aber Sie finden ihn nicht. Schreiben Sie einen kurzen Dialog (4 Zeilen) mit einer Verkäuferin.", muster: "Sie: Entschuldigung, wo finde ich Zucker? — Verkäuferin: Der Zucker ist in Regal drei, neben dem Mehl. — Sie: Vielen Dank! Und haben Sie auch braunen Zucker? — Verkäuferin: Ja, der steht gleich daneben.", warum: "Mit *Entschuldigung* anfangen und *Sie* benutzen — im Geschäft duzt man fremde Menschen nicht." }
     ]
   },
@@ -167,10 +167,10 @@ var LESEN_UNITS = [
     gruppe: "geschichten",
     stufe: 2,
     title: "Die neue Wohnung",
-    subtitle: "Family Öztürk moves in",
+    subtitle: "Family {de:Öztürk} moves in",
     focus: "Wechselpräpositionen mit Dativ, Wohnung und Möbel, Zahlen über 100",
     intro:
-      "This text is built on the prepositions that tell you *where* something is — an, auf, hinter, in, neben, über, unter, vor, zwischen. When they answer the question *Wo?* they take the dative, and almost every sentence here is an example. Read it once for the story, then a second time hunting for those prepositions.",
+      "This text is built on the prepositions that tell you *{en:where}* something is — {de:an, auf, hinter, in, neben, über, unter, vor, zwischen}. When they answer the question *Wo?* they take the dative, and almost every sentence here is an example. Read it once for the story, then a second time hunting for those prepositions.",
     text: [
       "Familie Öztürk hat eine neue Wohnung. Sie liegt in der Gartenstraße, im dritten Stock. Das Haus hat keinen Aufzug, aber das ist kein Problem.",
       "Die Wohnung hat drei Zimmer, eine Küche, ein Bad und einen Balkon. Sie ist sechsundsiebzig Quadratmeter groß und kostet siebenhundertfünfzig Euro warm.",
@@ -183,7 +183,7 @@ var LESEN_UNITS = [
       "„Hier bleiben wir lange“, sagt Frau Öztürk."
     ],
     wortschatz: [
-      ["der Stock, Stockwerke", "floor, storey (im dritten Stock = on the third floor)"],
+      ["der Stock, Stockwerke", "floor, storey ({de:im dritten Stock} = on the third floor)"],
       ["der Aufzug, ¨-e", "lift, elevator"],
       ["der Quadratmeter, -", "square metre"],
       ["warm (bei Miete)", "rent including bills"],
@@ -191,7 +191,7 @@ var LESEN_UNITS = [
       ["gemütlich", "cosy"],
       ["der Schrank, ¨-e", "wardrobe, cupboard"],
       ["die Kleidung", "clothing"],
-      ["gehören", "to belong to (+ Dativ)"],
+      ["gehören", "to belong to (+ {de:Dativ})"],
       ["der Schreibtisch, -e", "desk"],
       ["das Licht, -er", "light"],
       ["die Spielsachen (Pl.)", "toys"],
@@ -203,15 +203,15 @@ var LESEN_UNITS = [
       ["die Nachbarn (Pl.)", "neighbours"]
     ],
     uebersetzung: [
-      "The Öztürk family has a new flat. It is in Gartenstraße, on the third floor. The building has no lift, but that is not a problem.",
+      "The {de:Öztürk} family has a new flat. It is in {de:Gartenstraße}, on the third floor. The building has no lift, but that is not a problem.",
       "The flat has three rooms, a kitchen, a bathroom and a balcony. It is seventy-six square metres and costs seven hundred and fifty euros including bills.",
       "The living room is the biggest room. A large sofa stands there in front of the window. The television hangs on the wall. Between the sofa and the television lies a blue carpet.",
       "The bedroom is small but cosy. Next to the bed stands a wardrobe for the clothes. Above the bed hangs a picture from Istanbul.",
       "The third room belongs to Elif. She is seven years old and is in the second year at school. Her desk stands by the window, because she has good light there. Under the bed lie her toys.",
       "The kitchen is new. The fridge stands to the right of the door, and the dishwasher is under the worktop. On the table there is always a bowl of fruit.",
-      "Mr Öztürk likes sitting on the balcony. There he drinks his tea in the morning and reads the news.",
+      "Mr {de:Öztürk} likes sitting on the balcony. There he drinks his tea in the morning and reads the news.",
       "The neighbours are friendly. Mrs Schulz lives below them and has already brought cake.",
-      "\"We are staying here a long time,\" says Mrs Öztürk."
+      "\"We are staying here a long time,\" says Mrs {de:Öztürk}."
     ],
     aufgaben: [
       { teil: "Teil 1 — Richtig oder falsch?", typ: "rf", frage: "Die Wohnung ist im dritten Stock.", antwort: true },
@@ -247,7 +247,7 @@ var LESEN_UNITS = [
     subtitle: "A weekend in Munich, written afterwards",
     focus: "Perfekt mit haben und sein, E-Mail-Form, Wochenende erzählen",
     intro:
-      "Everything in this email already happened, so it is written in the Perfekt — the tense Germans use to talk about the past in conversation and in messages. Watch which verbs take *haben* and which take *sein*: the ones with *sein* are almost all movement (fahren, gehen, kommen) or a change of state (werden, bleiben).",
+      "Everything in this email already happened, so it is written in the {de:Perfekt} — the tense Germans use to talk about the past in conversation and in messages. Watch which verbs take *haben* and which take *sein*: the ones with *sein* are almost all movement ({de:fahren, gehen, kommen}) or a change of state ({de:werden, bleiben}).",
     brief: true,
     text: [
       "*Von:* tarek.hassan@mail.de",
@@ -386,7 +386,7 @@ var LESEN_UNITS = [
     subtitle: "Small ads — find the right one",
     focus: "Anzeigen verstehen, Details vergleichen, Abkürzungen",
     intro:
-      "Small ads squeeze everything into as few words as possible, so they are full of abbreviations: *Zi.* for Zimmer, *NR* for Nichtraucher, *VB* for Verhandlungsbasis. Each task gives you a person with a need. Decide which advert fits them. Careful — one detail is usually wrong in the tempting answer.",
+      "Small ads squeeze everything into as few words as possible, so they are full of abbreviations: *Zi.* for {de:Zimmer}, *NR* for {de:Nichtraucher}, *VB* for {de:Verhandlungsbasis}. Each task gives you a person with a need. Decide which advert fits them. Careful — one detail is usually wrong in the tempting answer.",
     schilder: [
       { nr: "A", zeilen: ["*Zimmer in WG frei*", "18 m², möbliert, ab 1. Mai", "320 € warm, NR bevorzugt", "Nähe Universität", "Tel. 0176 22 44 88"] },
       { nr: "B", zeilen: ["*2-Zi.-Wohnung*", "55 m², Balkon, 2. Stock", "690 € warm, ab sofort", "Keine Haustiere!", "Tel. 0421 77 31 05"] },
@@ -441,7 +441,7 @@ var LESEN_UNITS = [
     subtitle: "Joseph starts an apprenticeship",
     focus: "Perfekt, war und hatte, Uhrzeiten, Berufe",
     intro:
-      "Joseph tells his sister about his first day at work, so almost everything is in the past: the Perfekt for what he did, and *war* and *hatte* for how things were. Notice how often a sentence starts with a time — *um sieben Uhr, danach, am Nachmittag* — and where the verb goes after it.",
+      "Joseph tells his sister about his first day at work, so almost everything is in the past: the {de:Perfekt} for what he did, and *war* and *hatte* for how things were. Notice how often a sentence starts with a time — *um sieben Uhr, danach, am Nachmittag* — and where the verb goes after it.",
     text: [
       "Liebe Esther,",
       "heute war mein erster Tag in der Ausbildung, und ich muss dir unbedingt alles erzählen!",
@@ -546,7 +546,7 @@ var LESEN_UNITS = [
       ["die Einweihungsparty, -s", "house-warming party"]
     ],
     uebersetzung: [
-      "The Diallo family is moving. The old flat only has two rooms, and since little Moussa arrived it has been far too cramped. The new flat is in Lindenstraße, only ten minutes away. It has three rooms, a large kitchen and a balcony.",
+      "The Diallo family is moving. The old flat only has two rooms, and since little Moussa arrived it has been far too cramped. The new flat is in {de:Lindenstraße}, only ten minutes away. It has three rooms, a large kitchen and a balcony.",
       "On Saturday at eight o'clock the doorbell rings. Four friends have come and want to help. Aminata first makes coffee for everyone. Then she says: \"The boxes of books are very heavy. Please carry them in twos!\"",
       "Her husband Ibrahim has hired a van. He has to take it back by 6 p.m., otherwise it costs more. So everyone has to work fast.",
       "The sofa is the biggest problem. It won't go through the door. \"We have to unscrew the legs,\" says Kwame. \"Does anyone have a screwdriver?\" Luckily Aminata has one in her toolbox.",

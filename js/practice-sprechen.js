@@ -50,22 +50,22 @@ var SPRECHEN_UNITS = [
         box: "mistake",
         titel: "Three mistakes almost everyone makes",
         liste: [
-          "~Ich habe 25 Jahre.~ → Ich *bin* 25 Jahre alt.",
-          "~Ich bin ein Lehrer.~ → Ich bin Lehrer. / Ich bin Lehrer*in*. — no article with jobs.",
-          "~Ich wohne in Hamburg seit zwei Jahren.~ → Ich wohne *seit zwei Jahren* in Hamburg. — time before place."
+          "~Ich habe 25 Jahre.~ → {de:Ich *bin* 25 Jahre alt}.",
+          "{de:~Ich bin ein Lehrer.~ → Ich bin Lehrer. / Ich bin Lehrer*in*.} — no article with jobs.",
+          "~Ich wohne in Hamburg seit zwei Jahren.~ → {de:Ich wohne *seit zwei Jahren* in Hamburg}. — time before place."
         ]
       },
       {
         box: "example",
         titel: "A model introduction",
         text: [
-          "Guten Tag! Mein Name ist Joseph Mwangi. Ich bin 28 Jahre alt und komme aus Kenia, aus Nakuru. Seit einem Jahr wohne ich in Stuttgart. Ich spreche Swahili und Englisch und lerne jetzt Deutsch. Von Beruf bin ich Elektriker, aber im Moment mache ich einen Sprachkurs. In meiner Freizeit spiele ich gern Basketball und ich koche viel. Ich bin verheiratet und habe eine Tochter."
+          "{de:Guten Tag! Mein Name ist Joseph Mwangi. Ich bin 28 Jahre alt und komme aus Kenia, aus Nakuru. Seit einem Jahr wohne ich in Stuttgart. Ich spreche Swahili und Englisch und lerne jetzt Deutsch. Von Beruf bin ich Elektriker, aber im Moment mache ich einen Sprachkurs. In meiner Freizeit spiele ich gern Basketball und ich koche viel. Ich bin verheiratet und habe eine Tochter.}"
         ]
       }
     ],
     redemittel: [
       {
-        titel: "Nachfragen und reagieren",
+        titel: "{de:Nachfragen und reagieren}",
         zeilen: [
           ["Wie bitte?", "Sorry? / Pardon?"],
           ["Können Sie das bitte wiederholen?", "Could you repeat that, please?"],
@@ -145,21 +145,21 @@ var SPRECHEN_UNITS = [
         titel: "The letters English speakers mix up",
         liste: [
           "*E* sounds like English _a_ in _say_; *I* sounds like English _ee_. So *E – I* is _eh – ee_.",
-          "*J* is _jott_, *V* is _fau_, *W* is _veh_.",
-          "*Ä, Ö, Ü* are said as their sound, or as _A Umlaut_, _O Umlaut_, _U Umlaut_. *ß* is _Eszett_.",
-          "Two of the same letter: _Doppel-_. *Anna* → A, Doppel-N, A."
+          "*J* is _{de:jott}_, *V* is _{de:fau}_, *W* is _{de:veh}_.",
+          "*Ä, Ö, Ü* are said as their sound, or as _{de:A Umlaut}_, _{de:O Umlaut}_, _{de:U Umlaut}_. *ß* is _{de:Eszett}_.",
+          "Two of the same letter: _{de:Doppel-}_. *Anna* → {de:A, Doppel-N, A}."
         ]
       },
       { h3: "Numbers" },
       {
         kopf: ["Zahl", "gesprochen", "Tipp"],
         zeilen: [
-          ["21", "einundzwanzig", "the ones come first"],
-          ["67", "siebenundsechzig", "*sieb*zig, not ~siebenzig~"],
-          ["30", "dreißig", "with ß, not ~dreizig~"],
+          ["21", "einundzwanzig", "{en:the ones come first}"],
+          ["67", "siebenundsechzig", "{en:*sieb*zig, not ~siebenzig~}"],
+          ["30", "dreißig", "{en:with {de:ß}, not ~dreizig~}"],
           ["16 / 17", "sechzehn / siebzehn", "*sech*zehn, *sieb*zehn"],
           ["100 / 250", "hundert / zweihundert­fünfzig", ""],
-          ["1998", "neunzehnhundert­acht­und­neunzig", "years before 2000"],
+          ["1998", "neunzehnhundert­acht­und­neunzig", "{en:years before 2000}"],
           ["2024", "zweitausend­vier­und­zwanzig", ""]
         ]
       },
@@ -167,10 +167,10 @@ var SPRECHEN_UNITS = [
         box: "rule",
         titel: "Phone numbers, prices, times",
         liste: [
-          "*Phone numbers* are given digit by digit or in pairs: 0176 44 58 21 → null-eins-sieben-sechs, vierundvierzig, achtundfünfzig, einundzwanzig. On the phone *zwei* is often said *zwo*, so it isn't confused with *drei*.",
-          "*Prices*: 3,50 € → drei Euro fünfzig. 0,99 € → neunundneunzig Cent.",
-          "*Official time* (station, radio): 18:45 → achtzehn Uhr fünfundvierzig.",
-          "*Everyday time*: 18:45 → Viertel vor sieben. 7:30 → halb acht — _half to eight_, not half past seven."
+          "*{en:Phone numbers}* are given digit by digit or in pairs: 0176 44 58 21 → {de:null-eins-sieben-sechs, vierundvierzig, achtundfünfzig, einundzwanzig}. On the phone *zwei* is often said *zwo*, so it isn't confused with *drei*.",
+          "*{en:Prices}*: 3,50 € → {de:drei Euro fünfzig}. 0,99 € → {de:neunundneunzig Cent}.",
+          "*{en:Official time}* (station, radio): 18:45 → {de:achtzehn Uhr fünfundvierzig}.",
+          "*{en:Everyday time}*: 18:45 → {de:Viertel vor sieben}. 7:30 → {de:halb acht} — _half to eight_, not half past seven."
         ]
       }
     ],
@@ -215,18 +215,18 @@ var SPRECHEN_UNITS = [
       "German has two kinds of question. A W-question starts with a question word and has the verb straight after it. A yes/no question has no question word — it starts with the verb itself. Which one you need depends on the answer you want.",
       { h3: "Question words" },
       {
-        kopf: ["Fragewort", "fragt nach", "Beispiel"],
+        kopf: ["Fragewort", "fragt nach", "{de:Beispiel}"],
         zeilen: [
           ["Wer?", "a person", "Wer ist das?"],
-          ["Was?", "a thing, an activity", "Was machst du am Wochenende?"],
-          ["Wo?", "a place", "Wo arbeitest du?"],
-          ["Woher?", "where from", "Woher kommen Sie?"],
-          ["Wohin?", "where to", "Wohin fährst du im Urlaub?"],
-          ["Wann?", "a time", "Wann hast du Geburtstag?"],
-          ["Wie?", "a way, a quality", "Wie ist deine Wohnung?"],
-          ["Wie viele?", "a number", "Wie viele Geschwister hast du?"],
-          ["Welche?", "one of several", "Welche Musik hörst du gern?"],
-          ["Warum?", "a reason", "Warum lernst du Deutsch?"]
+          ["Was?", "{en:a thing, an activity}", "Was machst du am Wochenende?"],
+          ["Wo?", "{en:a place}", "Wo arbeitest du?"],
+          ["Woher?", "{en:where from}", "Woher kommen Sie?"],
+          ["Wohin?", "{en:where to}", "Wohin fährst du im Urlaub?"],
+          ["Wann?", "{en:a time}", "Wann hast du Geburtstag?"],
+          ["Wie?", "{en:a way, a quality}", "Wie ist deine Wohnung?"],
+          ["Wie viele?", "{en:a number}", "Wie viele Geschwister hast du?"],
+          ["Welche?", "{en:one of several}", "Welche Musik hörst du gern?"],
+          ["Warum?", "{en:a reason}", "Warum lernst du Deutsch?"]
         ]
       },
       {
@@ -234,23 +234,23 @@ var SPRECHEN_UNITS = [
         titel: "From a word to a question",
         text: [
           "You get one word — *Geschwister*, *Wohnung*, *Beruf*. Pick the question word that fits, put the verb straight after it, then the subject.",
-          "*Geschwister* → Hast du Geschwister? / Wie viele Geschwister hast du?"
+          "{de:*Geschwister* → Hast du Geschwister? / Wie viele Geschwister hast du?}"
         ]
       },
       {
         box: "rule",
-        titel: "du or Sie",
+        titel: "{de:du} or {de:Sie}",
         zeilen: [
-          ["du", "friends, family, children, other learners in the course", "Wo wohnst *du*?"],
-          ["Sie", "strangers, officials, teachers, customers, anyone older you don't know", "Wo wohnen *Sie*?"]
+          ["du", "{en:friends, family, children, other learners in the course}", "Wo wohnst *du*?"],
+          ["Sie", "{en:strangers, officials, teachers, customers, anyone older you don't know}", "Wo wohnen *Sie*?"]
         ]
       },
       {
         box: "mistake",
         titel: "Answer the question that was asked",
         liste: [
-          "*Hast du Kinder?* is a yes/no question: start with *Ja* or *Nein* — Nein, ich habe keine Kinder.",
-          "Say *nein* with *kein* for nouns: ~Nein, ich habe nicht Kinder.~ → Nein, ich habe *keine* Kinder.",
+          "*Hast du Kinder?* is a yes/no question: start with *Ja* or *Nein* — {de:Nein, ich habe keine Kinder}.",
+          "Say *nein* with *kein* for nouns: ~Nein, ich habe nicht Kinder.~ → {de:Nein, ich habe *keine* Kinder}.",
           "Answer with *doch* when you contradict a negative question: *Hast du keinen Hunger?* — *Doch!*"
         ]
       }
@@ -304,7 +304,7 @@ var SPRECHEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "mögen",
+        titel: "{de:mögen}",
         zeilen: [
           ["ich mag", "wir mögen"],
           ["du magst", "ihr mögt"],
@@ -323,9 +323,9 @@ var SPRECHEN_UNITS = [
         box: "mistake",
         titel: "Watch out",
         liste: [
-          "*gern* goes after the verb: ~Ich gern esse Reis.~ → Ich esse *gern* Reis.",
-          "*kein* for nouns: ~Ich esse nicht Fleisch.~ → Ich esse *kein* Fleisch.",
-          "Meals take *zum*: *zum* Frühstück, *zum* Mittagessen, *zum* Abendessen."
+          "*gern* goes after the verb: ~Ich gern esse Reis.~ → {de:Ich esse *gern* Reis}.",
+          "*kein* for nouns: ~Ich esse nicht Fleisch.~ → {de:Ich esse *kein* Fleisch}.",
+          "Meals take *zum*: {de:*zum* Frühstück, *zum* Mittagessen, *zum* Abendessen}."
         ]
       }
     ],
@@ -381,25 +381,25 @@ var SPRECHEN_UNITS = [
     subtitle: "Word cards: free time",
     focus: "Hobbys, Häufigkeit, Perfekt fürs letzte Wochenende",
     intro:
-      "Talking about free time needs two tenses: the present for what you usually do, and the Perfekt for what you did last weekend. Both come up in almost every conversation, so both are on these cards.",
+      "Talking about free time needs two tenses: the present for what you usually do, and the {de:Perfekt} for what you did last weekend. Both come up in almost every conversation, so both are on these cards.",
     lernen: [
       { h3: "How often?" },
       {
         kopf: ["Wort", "Bedeutung"],
         zeilen: [
-          ["immer", "always"],
-          ["fast immer / meistens", "almost always / mostly"],
-          ["oft", "often"],
-          ["manchmal", "sometimes"],
-          ["selten", "rarely"],
-          ["nie", "never"],
-          ["jeden Tag / jede Woche", "every day / every week"],
-          ["einmal / zweimal pro Woche", "once / twice a week"]
+          ["immer", "{en:always}"],
+          ["fast immer / meistens", "{en:almost always / mostly}"],
+          ["oft", "{en:often}"],
+          ["manchmal", "{en:sometimes}"],
+          ["selten", "{en:rarely}"],
+          ["nie", "{en:never}"],
+          ["jeden Tag / jede Woche", "{en:every day / every week}"],
+          ["einmal / zweimal pro Woche", "{en:once / twice a week}"]
         ]
       },
       {
         box: "rule",
-        titel: "Talking about last weekend — Perfekt",
+        titel: "Talking about last weekend — {de:Perfekt}",
         text: ["*haben / sein* in position 2, the participle at the end. Verbs of movement and *bleiben* take *sein*."],
         zeilen: [
           ["spielen", "Ich *habe* Fußball *gespielt*."],
@@ -414,10 +414,10 @@ var SPRECHEN_UNITS = [
         box: "example",
         titel: "Suggesting and reacting",
         zeilen: [
-          ["Hast du Lust auf Kino?", "Fancy the cinema?"],
-          ["Wollen wir am Sonntag schwimmen gehen?", "Shall we go swimming on Sunday?"],
-          ["Gute Idee! / Gern!", "Good idea! / Sure!"],
-          ["Leider habe ich keine Zeit.", "Sorry, I don't have time."]
+          ["Hast du Lust auf Kino?", "{en:Fancy the cinema?}"],
+          ["Wollen wir am Sonntag schwimmen gehen?", "{en:Shall we go swimming on Sunday?}"],
+          ["Gute Idee! / Gern!", "{en:Good idea! / Sure!}"],
+          ["Leider habe ich keine Zeit.", "{en:Sorry, I don't have time.}"]
         ]
       }
     ],
@@ -465,29 +465,29 @@ var SPRECHEN_UNITS = [
       "There are several ways to ask for something in German, and they are not all equally polite. Which one you pick depends on who you are talking to and how big the favour is.",
       { h3: "From direct to very polite" },
       {
-        kopf: ["Form", "Beispiel", "wann"],
+        kopf: ["Form", "{de:Beispiel}", "wann"],
         zeilen: [
-          ["Imperativ + bitte", "Mach bitte das Fenster zu.", "friends, family"],
-          ["Kannst du …?", "Kannst du bitte das Fenster zumachen?", "friends — friendlier"],
-          ["Können Sie …?", "Können Sie bitte das Fenster zumachen?", "strangers, colleagues"],
-          ["Könnten Sie …?", "Könnten Sie bitte das Fenster zumachen?", "very polite"],
-          ["Ich hätte gern …", "Ich hätte gern ein Glas Wasser.", "asking for a thing"]
+          ["Imperativ + bitte", "Mach bitte das Fenster zu.", "{en:friends, family}"],
+          ["Kannst du …?", "Kannst du bitte das Fenster zumachen?", "{en:friends — friendlier}"],
+          ["Können Sie …?", "Können Sie bitte das Fenster zumachen?", "{en:strangers, colleagues}"],
+          ["Könnten Sie …?", "Könnten Sie bitte das Fenster zumachen?", "{en:very polite}"],
+          ["Ich hätte gern …", "Ich hätte gern ein Glas Wasser.", "{en:asking for a thing}"]
         ]
       },
       {
         box: "rule",
         titel: "Where the verb goes",
-        text: ["*Kannst / Können / Könnten* first, the infinitive at the very end. A separable verb stays together at the end: Können Sie das Fenster *zumachen*?"]
+        text: ["*Kannst / Können / Könnten* first, the infinitive at the very end. A separable verb stays together at the end: {de:Können Sie das Fenster *zumachen*?}"]
       },
       {
         box: "example",
         titel: "Reacting",
         zeilen: [
-          ["Ja, gern. / Natürlich. / Klar!", "Yes, of course."],
-          ["Kein Problem.", "No problem."],
-          ["Moment, bitte.", "Just a moment."],
-          ["Tut mir leid, das geht leider nicht.", "Sorry, that's not possible."],
-          ["Leider nicht, ich brauche ihn selbst.", "I'm afraid not, I need it myself."]
+          ["Ja, gern. / Natürlich. / Klar!", "{en:Yes, of course.}"],
+          ["Kein Problem.", "{en:No problem.}"],
+          ["Moment, bitte.", "{en:Just a moment.}"],
+          ["Tut mir leid, das geht leider nicht.", "{en:Sorry, that's not possible.}"],
+          ["Leider nicht, ich brauche ihn selbst.", "{en:I'm afraid not, I need it myself.}"]
         ]
       },
       {
@@ -545,11 +545,11 @@ var SPRECHEN_UNITS = [
         box: "rule",
         titel: "Three ways to order",
         zeilen: [
-          ["Ich hätte gern einen Kaffee.", "polite and very common"],
-          ["Ich nehme den Fisch.", "when choosing from the menu"],
-          ["Für mich bitte eine Cola.", "short, when ordering for a group"]
+          ["Ich hätte gern einen Kaffee.", "{en:polite and very common}"],
+          ["Ich nehme den Fisch.", "{en:when choosing from the menu}"],
+          ["Für mich bitte eine Cola.", "{en:short, when ordering for a group}"]
         ],
-        text: ["All three take the *accusative*: *einen* Kaffee, *den* Fisch, *eine* Cola, *ein* Wasser."]
+        text: ["All three take the *{en:accusative}*: {de:*einen* Kaffee, *den* Fisch, *eine* Cola, *ein* Wasser}."]
       },
       {
         box: "example",
@@ -566,7 +566,7 @@ var SPRECHEN_UNITS = [
         liste: [
           "~Ich will einen Kaffee.~ sounds rude. Use *Ich hätte gern* or *Ich möchte*.",
           "~Ich bekomme ein Wasser.~ is heard a lot, but *Ich hätte gern* is safer.",
-          "~Einen Wasser~ → *ein* Wasser. _das Wasser_ is neuter, so nothing changes in the accusative."
+          "~Einen Wasser~ → {de:*ein* Wasser}. _{de:das Wasser}_ is neuter, so nothing changes in the accusative."
         ]
       }
     ],
@@ -629,13 +629,13 @@ var SPRECHEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "zu + adjective",
+        titel: "{de:zu} + adjective",
         text: ["*zu* means _too_ and always says something is wrong: *zu groß, zu klein, zu lang, zu kurz, zu eng, zu weit, zu teuer*. To say it fits: *Sie passt.* / *Er passt gut.*"]
       },
       {
         box: "rule",
-        titel: "Pronouns for things: er, sie, es",
-        text: ["Clothes are _der, die, das_, and the pronoun follows the article — also in the accusative when you take it."],
+        titel: "Pronouns for things: {de:er, sie, es}",
+        text: ["Clothes are _{de:der, die, das}_, and the pronoun follows the article — also in the accusative when you take it."],
         zeilen: [
           ["der Pullover", "Er ist zu klein. → Ich nehme *ihn*."],
           ["die Jacke", "Sie ist schön. → Ich nehme *sie*."],
@@ -647,8 +647,8 @@ var SPRECHEN_UNITS = [
         box: "mistake",
         titel: "Watch out",
         liste: [
-          "~Wie viel kostet die Schuhe?~ → Wie viel *kosten* die Schuhe? — plural verb.",
-          "~Ich nehme es~ for _der Mantel_ → Ich nehme *ihn*.",
+          "{de:~Wie viel kostet die Schuhe?~ → Wie viel *kosten* die Schuhe?} — plural verb.",
+          "~Ich nehme es~ for _{de:der Mantel}_ → {de:Ich nehme *ihn*}.",
           "*Das steht Ihnen gut* means _it suits you_ — not that it stands."
         ]
       }
@@ -714,7 +714,7 @@ var SPRECHEN_UNITS = [
         box: "rule",
         titel: "Two ways to say it hurts",
         zeilen: [
-          ["Ich habe + …schmerzen", "Ich habe *Kopf*schmerzen. — only for some body parts: Kopf, Bauch, Hals, Rücken, Zahn, Ohren"],
+          ["Ich habe + …schmerzen", "Ich habe *Kopf*schmerzen. {en:— only for some body parts:} Kopf, Bauch, Hals, Rücken, Zahn, Ohren"],
           ["Mir tut … weh", "Mir *tut* der Arm weh. — Mir *tun* die Füße weh. (plural: *tun*)"]
         ]
       },
@@ -722,21 +722,21 @@ var SPRECHEN_UNITS = [
         box: "example",
         titel: "What the doctor says",
         zeilen: [
-          ["Was fehlt Ihnen?", "What's the matter?"],
-          ["Wo tut es weh?", "Where does it hurt?"],
-          ["Machen Sie bitte den Mund auf.", "Please open your mouth."],
-          ["Nehmen Sie die Tabletten dreimal täglich.", "Take the tablets three times a day."],
-          ["Bleiben Sie drei Tage im Bett.", "Stay in bed for three days."],
-          ["Hier ist Ihre Krankschreibung.", "Here is your sick note."]
+          ["Was fehlt Ihnen?", "{en:What's the matter?}"],
+          ["Wo tut es weh?", "{en:Where does it hurt?}"],
+          ["Machen Sie bitte den Mund auf.", "{en:Please open your mouth.}"],
+          ["Nehmen Sie die Tabletten dreimal täglich.", "{en:Take the tablets three times a day.}"],
+          ["Bleiben Sie drei Tage im Bett.", "{en:Stay in bed for three days.}"],
+          ["Hier ist Ihre Krankschreibung.", "{en:Here is your sick note.}"]
         ]
       },
       {
         box: "mistake",
         titel: "Watch out",
         liste: [
-          "~Ich bin Kopfschmerzen.~ → Ich *habe* Kopfschmerzen.",
-          "~Mein Bauch tut mir Schmerzen.~ → Mir tut der Bauch weh.",
-          "~Ich bin krank seit Montag.~ → Ich bin *seit Montag* krank."
+          "~Ich bin Kopfschmerzen.~ → {de:Ich *habe* Kopfschmerzen}.",
+          "{de:~Mein Bauch tut mir Schmerzen.~ → Mir tut der Bauch weh.}",
+          "{de:~Ich bin krank seit Montag.~ → Ich bin *seit Montag* krank.}"
         ]
       }
     ],
@@ -796,7 +796,7 @@ var SPRECHEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "zu, an, bis zu — and the dative",
+        titel: "{de:zu, an, bis zu} — and the dative",
         zeilen: [
           ["zu + dem = zum", "zum Bahnhof, zum Markt, zum Krankenhaus"],
           ["zu + der = zur", "zur Post, zur Schule, zur Ampel"],
@@ -809,22 +809,22 @@ var SPRECHEN_UNITS = [
         box: "example",
         titel: "Directions — the words",
         zeilen: [
-          ["geradeaus", "straight on"],
-          ["(nach) links / rechts", "(to the) left / right"],
-          ["die erste / zweite Straße links", "the first / second street on the left"],
-          ["die Ampel / die Kreuzung", "traffic lights / crossroads"],
-          ["über die Straße / über die Brücke", "across the road / over the bridge"],
-          ["an … vorbei", "past …"],
-          ["Da ist es.", "There it is."]
+          ["geradeaus", "{en:straight on}"],
+          ["(nach) links / rechts", "{en:(to the) left / right}"],
+          ["die erste / zweite Straße links", "{en:the first / second street on the left}"],
+          ["die Ampel / die Kreuzung", "{en:traffic lights / crossroads}"],
+          ["über die Straße / über die Brücke", "{en:across the road / over the bridge}"],
+          ["an … vorbei", "{en:past …}"],
+          ["Da ist es.", "{en:There it is.}"]
         ]
       },
       {
         box: "mistake",
         titel: "Watch out",
         liste: [
-          "~Wie komme ich nach Bahnhof?~ → *zum* Bahnhof. _nach_ is for towns and countries: nach Berlin.",
+          "~Wie komme ich nach Bahnhof?~ → *zum* {de:Bahnhof}. _{de:nach}_ is for towns and countries: {de:nach Berlin}.",
           "Instructions to a stranger use the *Sie*-imperative: *Gehen Sie*, *Nehmen Sie*.",
-          "~die zwei Straße~ → die *zweite* Straße."
+          "{de:~die zwei Straße~ → die *zweite* Straße.}"
         ]
       }
     ],
@@ -872,7 +872,7 @@ var SPRECHEN_UNITS = [
     intro:
       "On the phone there are no gestures and no lips to read, and people speak at normal speed. What helps is knowing the fixed phrases at the start and end of a call — and not being shy about asking someone to repeat.",
     lernen: [
-      "In Germany people answer the phone with their *surname*, often with the company name first. When you call, you do the same: say your name before you say why you are calling.",
+      "In Germany people answer the phone with their *{en:surname}*, often with the company name first. When you call, you do the same: say your name before you say why you are calling.",
       {
         kopf: ["Situation", "Sie hören", "Sie sagen"],
         zeilen: [
@@ -886,7 +886,7 @@ var SPRECHEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "Auf Wiederhören",
+        titel: "{de:Auf Wiederhören}",
         text: ["On the phone you say *Auf Wiederhören* (_until we hear each other again_), not *Auf Wiedersehen*. With friends: *Tschüss* or *Bis dann*."]
       },
       {
@@ -894,7 +894,7 @@ var SPRECHEN_UNITS = [
         titel: "Leaving a message on voicemail",
         text: [
           "Keep it in this order: name — why you called — what you would like — your number, slowly, twice.",
-          "_Guten Tag, hier ist Kwame Mensah. Ich habe eine Frage zu meinem Termin am Freitag. Bitte rufen Sie mich zurück. Meine Nummer ist 0157 32 18 44 — ich wiederhole: 0157 32 18 44. Vielen Dank!_"
+          "{de:_Guten Tag, hier ist Kwame Mensah. Ich habe eine Frage zu meinem Termin am Freitag. Bitte rufen Sie mich zurück. Meine Nummer ist 0157 32 18 44 — ich wiederhole: 0157 32 18 44. Vielen Dank!_}"
         ]
       },
       {
@@ -952,7 +952,7 @@ var SPRECHEN_UNITS = [
     intro:
       "Planning something together — a birthday present, a trip, a meeting — is a real conversation: one person suggests, the other agrees or says no and suggests something else, and at the end you have a plan. That back-and-forth is exactly what this last unit practises.",
     lernen: [
-      "A planning conversation goes round in a loop: *suggest — react — suggest again — agree*. Each person should speak several times, and the conversation ends only when you have decided who does what, and when.",
+      "A planning conversation goes round in a loop: *{en:suggest — react — suggest again — agree}*. Each person should speak several times, and the conversation ends only when you have decided who does what, and when.",
       {
         kopf: ["Sie möchten …", "Redemittel"],
         zeilen: [
@@ -966,24 +966,24 @@ var SPRECHEN_UNITS = [
       },
       {
         box: "rule",
-        titel: "Wollen wir …? and Wie wäre es mit …?",
+        titel: "{de:Wollen wir …?} and {de:Wie wäre es mit …?}",
         zeilen: [
           ["Wollen wir + Infinitiv am Ende?", "Wollen wir am Samstag ins Museum *gehen*?"],
           ["Wie wäre es mit + Dativ?", "Wie wäre es mit *einem* Picknick? — mit *dem* Zug?"],
-          ["Lass uns …", "Lass uns zusammen *kochen*! (friends)"]
+          ["Lass uns …", "Lass uns zusammen *kochen*! {en:(friends)}"]
         ]
       },
       {
         box: "example",
         titel: "A short planning conversation",
         text: [
-          "*A:* Nächste Woche hat Tom Geburtstag. Wollen wir ihm zusammen etwas schenken?",
-          "*B:* Gute Idee! Wie wäre es mit einem Buch?",
-          "*A:* Hm, er liest nicht so gern. Was ist mit Kinokarten?",
-          "*B:* Ja, das ist besser. Wann kaufen wir sie?",
-          "*A:* Hast du am Donnerstag nach dem Kurs Zeit?",
-          "*B:* Donnerstag geht leider nicht, da arbeite ich. Freitag?",
-          "*A:* Freitag passt. Also treffen wir uns am Freitag um fünf am Kino."
+          "{de:*A:* Nächste Woche hat Tom Geburtstag. Wollen wir ihm zusammen etwas schenken?}",
+          "{de:*B:* Gute Idee! Wie wäre es mit einem Buch?}",
+          "{de:*A:* Hm, er liest nicht so gern. Was ist mit Kinokarten?}",
+          "{de:*B:* Ja, das ist besser. Wann kaufen wir sie?}",
+          "{de:*A:* Hast du am Donnerstag nach dem Kurs Zeit?}",
+          "{de:*B:* Donnerstag geht leider nicht, da arbeite ich. Freitag?}",
+          "{de:*A:* Freitag passt. Also treffen wir uns am Freitag um fünf am Kino.}"
         ]
       }
     ],

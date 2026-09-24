@@ -275,12 +275,24 @@
         /* skip the furniture: the syllabus kicker, the link to the topic
            sheet, the end-of-chapter card and our own controls. None of
            it is the chapter, and read aloud it is just noise. */
-        if (p.closest(".book-kicker, .image-link, .rdr-end, .vl-pill, .vl-panel, script, style")) {
+        if (p.closest(".book-kicker, .image-link, .rdr-end, .vl-pill, .vl-panel, script, style, button, textarea, select")) {
           return NodeFilter.FILTER_REJECT;
         }
+        /* nothing that isn't on screen: an answer box before it is
+           opened, a model answer before "show" */
+        if (!p.getClientRects().length) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
+
+    /* A page can give its own spoken version of a block — the Übungsbuch
+       does this for each task, so that after marking it says what you
+       chose, whether it was right, and why. The hook returns pieces:
+       [{ el, parts: [{ text, de }] }] — or null to read the block as it
+       stands. */
+    var SCRIPT = window.VORLESEN_SCRIPT;
+    var scripted = SCRIPT && SCRIPT.selector ? SCRIPT.selector : null;
+    var doneBlocks = [];
 
     /* A run must never cross a block boundary. Without this, a table
        cell's pronunciation glues onto the next row's number and comes
@@ -295,7 +307,19 @@
        utterances with a pause in between. */
     var NEUTRAL = /^[^\p{L}\p{N}]*$/u;
     var node, run = null, lastBlock = null, held = [];
+    var out = [];
     while ((node = walker.nextNode())) {
+      var own = scripted && node.parentElement.closest(scripted);
+      if (own) {
+        if (doneBlocks.indexOf(own) >= 0) continue;
+        doneBlocks.push(own);
+        var pieces = SCRIPT.speak(own);
+        if (pieces) {
+          run = null; held = []; lastBlock = own;
+          units.push({ scripted: pieces });
+          continue;
+        }
+      }
       var block = node.parentElement.closest(BLOCK) || flow;
       if (block !== lastBlock) { run = null; held = []; }
       lastBlock = block;
@@ -313,8 +337,18 @@
     }
 
     /* split each language run into sentences, each with its own Range */
-    var out = [];
     units.forEach(function (r) {
+      if (r.scripted) {
+        /* each piece highlights its own element; each part is one voice */
+        r.scripted.forEach(function (pc) {
+          var rg = document.createRange();
+          rg.selectNodeContents(pc.el);
+          pc.parts.forEach(function (pt) {
+            if (pt.text && /[\p{L}\p{N}]/u.test(pt.text)) out.push({ range:rg, text:pt.text.trim(), de:!!pt.de, block:pc, scripted:true, group:r.scripted });
+          });
+        });
+        return;
+      }
       var text = r.pieces.map(function (n) { return n.nodeValue; }).join("");
       if (!text.trim()) return;
       var re = /[^.!?…]+[.!?…]*/g, m, at = 0;
@@ -510,7 +544,7 @@
       }
       if (at < 0) return [];
       var first = all[at];
-      if (first.range.comparePoint(n, o) === 0) {
+      if (!first.scripted && first.range.comparePoint(n, o) === 0) {
         /* the word is in the middle of this sentence: read from the word on */
         var rg = first.range.cloneRange();
         rg.setStart(n, o);
@@ -521,13 +555,27 @@
     }
     if (isScrollMode()) return all;
     var p = currentPage();
-    return all.filter(function (u) { return pageOf(u.range) === p; });
+    /* a scripted block (an Übungsbuch task) belongs to the page where it
+       starts and is read whole — question and correction together — even
+       when its correction runs over onto the next page */
+    var groupPage = [];
+    return all.filter(function (u) {
+      if (!u.group) return pageOf(u.range) === p;
+      for (var i = 0; i < groupPage.length; i++) if (groupPage[i][0] === u.group) return groupPage[i][1] === p;
+      var gp = pageOf(u.range);
+      groupPage.push([u.group, gp]);
+      return gp === p;
+    });
   }
 
   /* ─── the pill, panel and guide ────────────────────────────── */
 
+  /* the icon sprite, found from the page itself: book chapters sit two
+     folders deep, Übungsbuch units three */
   function icon(name) {
-    return '<svg class="icon-svg" aria-hidden="true"><use href="../../assets/icons.svg#icon-' + name + '"></use></svg>';
+    var u = document.querySelector('use[href*="icons.svg#"]');
+    var sprite = u ? u.getAttribute("href").split("#")[0] : "../../assets/icons.svg";
+    return '<svg class="icon-svg" aria-hidden="true"><use href="' + sprite + "#icon-" + name + '"></use></svg>';
   }
 
   function build() {
@@ -745,9 +793,15 @@
   var HOLD_MS = 450;
   var holdTimer = null, holdXY = null, holdOpened = false;
 
+  /* answer buttons, typing fields and form controls keep their own taps */
+  function isControl(t) {
+    return !!(t && t.closest && t.closest("input, textarea, select, button, label, a, .opt"));
+  }
+
   function onDown(e) {
     if (e.pointerType !== "mouse" && e.pointerType !== "pen") return;
     if (e.button !== 0) return;
+    if (isControl(e.target)) return;
     cancelHold();
     holdXY = [e.clientX, e.clientY];
     holdTimer = setTimeout(function () {
@@ -774,6 +828,7 @@
       lastTap = 0; lastXY = null;
       return;
     }
+    if (isControl(e.target)) { lastTap = 0; lastXY = null; return; }
     var now = Date.now();
     var x = e.clientX, y = e.clientY;
     var near = lastXY && Math.abs(x - lastXY[0]) < 24 && Math.abs(y - lastXY[1]) < 24;

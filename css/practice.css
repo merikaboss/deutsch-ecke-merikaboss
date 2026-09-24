@@ -367,6 +367,16 @@
   border: 1px solid var(--border);
 }
 
+/* the English explanation under a correction — the same quieter
+   italic the Written Book uses for English */
+.rdr-flow .t-fb .t-erkl {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.rdr-flow .t-fb .t-erkl b { font-style: normal; }
+
 .rdr-flow .task-bar {
   display: flex;
   flex-wrap: wrap;

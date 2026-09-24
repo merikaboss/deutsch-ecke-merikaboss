@@ -205,7 +205,7 @@
         '<span class="n">' + (i + 1) + "</span>" +
         '<span class="tt"><span class="de"></span><span class="en"></span></span>';
       a.querySelector(".de").textContent = u.title;
-      a.querySelector(".en").textContent = u.subtitle || u.focus;
+      a.querySelector(".en").textContent = DE_PRACTICE.plain(u.subtitle || u.focus);
       li.appendChild(a);
       el.drawerList.appendChild(li);
     });
