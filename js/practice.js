@@ -424,13 +424,21 @@
       h += renderTask(t, ++n);
     });
 
+    /* each button carries a small English line under the German, so a
+       beginner knows what it does before pressing it */
+    var btn = function (cls, de, en, hidden) {
+      return '<button type="button" class="' + cls + '"' + (hidden ? " hidden" : "") + ">" +
+        '<span class="b-de">' + de + '</span><span class="b-en" lang="en">' + en + "</span></button>";
+    };
+    var allSpeaking = unit.aufgaben.every(function (t) { return t.typ === "sprechen"; });
     h +=
       '<div class="task-bar">' +
-      '<button type="button" class="btn-check">' +
-      (unit.aufgaben.every(function (t) { return t.typ === "sprechen"; }) ? "Auswerten" : "Antworten prüfen") +
-      "</button>" +
-      '<button type="button" class="btn-reset">Noch einmal</button>' +
+      btn("btn-check", allSpeaking ? "Auswerten" : "Antworten prüfen", allSpeaking ? "Mark my tasks" : "Check my answers") +
+      btn("btn-reset", "Noch einmal", "Start again") +
       '<span class="score" hidden></span>' +
+      /* after marking: straight back to the first task, where the
+         corrections now sit under every answer */
+      btn("btn-review", "Korrekturen ansehen", "See the corrections", true) +
       "</div>";
 
     if (unit.uebersetzung && unit.uebersetzung.length) {
@@ -711,6 +719,7 @@
       marked = { results: results, won: won, points: points };
 
       score.hidden = false;
+      review.hidden = false;
       if (points === 0) {
         score.textContent = "Vergleichen Sie mit den Musterlösungen";
         score.classList.remove("good");
@@ -752,7 +761,21 @@
         node.querySelector(".t-fb").className = "t-fb";
       });
       score.hidden = true;
+      review.hidden = true;
       if (onReflow) onReflow(tasks[0]);
+    });
+
+    /* "Korrekturen ansehen": marking leaves you on the score at the end;
+       this takes you back to the first task, where every correction now
+       sits under its answer. Page view turns to that page; scroll view
+       scrolls there. */
+    var review = host.querySelector(".btn-review");
+    review.addEventListener("click", function () {
+      var first = tasks[0];
+      if (!first) return;
+      var rdr = document.getElementById("rdr");
+      if (rdr && rdr.classList.contains("scrollmode")) first.scrollIntoView({ block: "start", behavior: "instant" });
+      else if (onReflow) onReflow(first);
     });
   }
 
@@ -903,6 +926,7 @@
       P.push(say((again.length === 1 ? "Look again at number " : "Look again at numbers ") +
         (again.length === 1 ? again[0] : again.slice(0, -1).join(", ") + " and " + again[again.length - 1]) + "."));
     }
+    P.push(say("To see every correction, press"), sag("Korrekturen ansehen."));
     return [{ el: bar, parts: P }];
   }
 

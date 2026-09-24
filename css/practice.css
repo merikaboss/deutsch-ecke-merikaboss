@@ -405,6 +405,29 @@
   color: #fff;
 }
 
+/* German on top, a small English line under it */
+.rdr-flow .task-bar button .b-de { display: block; }
+.rdr-flow .task-bar button .b-en {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.74em;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.rdr-flow .btn-review {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95em;
+  padding: 11px 20px;
+  border-radius: 11px;
+  border: 1.5px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+.rdr-flow .btn-review[hidden] { display: none; }
+
 .rdr-flow .score {
   font-weight: 800;
   padding: 9px 15px;
@@ -432,7 +455,8 @@
   }
 
   .rdr-flow .btn-check,
-  .rdr-flow .btn-reset {
+  .rdr-flow .btn-reset,
+  .rdr-flow .btn-review {
     flex: 1 1 auto;
     text-align: center;
   }
